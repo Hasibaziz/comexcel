@@ -3,3 +3,10 @@ SELECT Invoice
 	  ,[Category]                       
       ,sum(cast(CAST(QTY AS FLOAT) AS INT))
   FROM [Commercial].[dbo].[Importinfo] GROUP BY Invoice, Category
+
+
+
+
+
+/*********  Collapsible ***********/
+http://jqueryui.com/accordion/#collapsible
