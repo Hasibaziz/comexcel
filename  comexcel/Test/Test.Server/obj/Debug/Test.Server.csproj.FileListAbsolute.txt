@@ -18,3 +18,13 @@ E:\Commercial\Test\Test.Server\bin\Debug\Test.Domain.pdb
 E:\Commercial\Test\Test.Server\obj\Debug\ResolveAssemblyReference.cache
 E:\Commercial\Test\Test.Server\obj\Debug\Test.Server.dll
 E:\Commercial\Test\Test.Server\obj\Debug\Test.Server.pdb
+E:\ comexcel\Test\Test.Server\bin\Debug\Test.Server.dll
+E:\ comexcel\Test\Test.Server\bin\Debug\Test.Server.pdb
+E:\ comexcel\Test\Test.Server\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\ comexcel\Test\Test.Server\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\ comexcel\Test\Test.Server\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+E:\ comexcel\Test\Test.Server\bin\Debug\Test.Domain.dll
+E:\ comexcel\Test\Test.Server\bin\Debug\Test.Domain.pdb
+E:\ comexcel\Test\Test.Server\obj\Debug\ResolveAssemblyReference.cache
+E:\ comexcel\Test\Test.Server\obj\Debug\Test.Server.dll
+E:\ comexcel\Test\Test.Server\obj\Debug\Test.Server.pdb

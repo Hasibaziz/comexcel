@@ -17,6 +17,11 @@ namespace Test.Controllers
     {
         //
         // GET: /Configuration/
+        //**-Hasib
+        //CTRL + M + O will collapse all.
+        //CTRL + M + L will expand all.
+        //CTRL + M + P will expand all and disable outlining.
+        //CTRL + M + M will collapse/expand the current section.
 
         public ActionResult Index()
         {
@@ -812,6 +817,7 @@ namespace Test.Controllers
             };
 
         }
+
 
     }
 }
