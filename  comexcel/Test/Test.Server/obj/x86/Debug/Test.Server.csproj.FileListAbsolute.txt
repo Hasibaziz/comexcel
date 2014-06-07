@@ -1,0 +1,10 @@
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Test.Server.dll
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Test.Server.pdb
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Microsoft.Practices.ObjectBuilder.dll
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Test.Domain.dll
+E:\Commercial\Test\Test.Server\bin\x86\Debug\Test.Domain.pdb
+E:\Commercial\Test\Test.Server\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Commercial\Test\Test.Server\obj\x86\Debug\Test.Server.dll
+E:\Commercial\Test\Test.Server\obj\x86\Debug\Test.Server.pdb

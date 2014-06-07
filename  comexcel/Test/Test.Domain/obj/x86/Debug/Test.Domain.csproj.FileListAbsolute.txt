@@ -1,0 +1,7 @@
+E:\Commercial\Test\Test.Domain\bin\x86\Debug\Test.Domain.dll
+E:\Commercial\Test\Test.Domain\bin\x86\Debug\Test.Domain.pdb
+E:\Commercial\Test\Test.Domain\bin\x86\Debug\Iesi.Collections.dll
+E:\Commercial\Test\Test.Domain\bin\x86\Debug\NHibernate.dll
+E:\Commercial\Test\Test.Domain\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Commercial\Test\Test.Domain\obj\x86\Debug\Test.Domain.dll
+E:\Commercial\Test\Test.Domain\obj\x86\Debug\Test.Domain.pdb

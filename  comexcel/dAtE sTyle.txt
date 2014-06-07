@@ -1,0 +1,19 @@
+CONVERT(DATE, [BEDate], 103) AS BEDate
+
+convert(datetime, substring([BEDate],5,4) + substring([BEDate],1,2) + substring([BEDate],3,2),112)
+
+
+
+(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,4)+ RIGHT([BEDate],4))
+
+
+(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6))
+
+
+SELECT 
+CONVERT(DATE,[AMDDate],103),
+[AMDDate]
+,( substring([AMDDate],0,2) + substring([AMDDate],3,6) + substring([AMDDate],6,10))
+ ,(LEFT(AMDDate, 2)+ SUBSTRING(AMDDate, 3,4)+ RIGHT(AMDDate,4))
+ ,(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6))
+  FROM [Commercial].[dbo].[Importinfo]

@@ -1,0 +1,35 @@
+USE [Commercial]
+GO
+/****** Object:  Trigger [dbo].[Insertinvoice]    Script Date: 05/21/2014 14:27:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER TRIGGER [dbo].[trInsertinvoice]
+      ON  [Commercial].[dbo].[Excel] 
+      FOR  INSERT,DELETE,UPDATE
+AS 
+DECLARE  @Invoice AS nvarchar(MAX);
+DECLARE  @IDate   AS nvarchar(50);
+
+select @Invoice=i.Invoice from inserted i;	
+
+
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	 IF (NOT EXISTS(SELECT Invoice from [dbo].[Invoiceinfo] WHERE Invoice=@Invoice))
+	 
+    -- Insert statements for trigger here
+    INSERT INTO dbo.Invoiceinfo(Invoice, IDate)
+	 SELECT Invoice,
+	        IDate=GETDATE()
+	 FROM Excel GROUP BY Invoice
+
+END

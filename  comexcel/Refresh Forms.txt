@@ -1,0 +1,9 @@
+    //window.location.href = window.location.href;     
+        //window.location.reload();
+        //location.reload()
+        //history.go(0)
+        //location.href = location.href
+        //location.href = location.pathname;
+        //location.replace(location.pathname)
+        //location.reload(false) 
+            //window.location.href = window.location.href;

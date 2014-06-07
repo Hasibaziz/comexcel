@@ -1,0 +1,14 @@
+D:\Test\Test\Test.Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Test\Test\Test.Domain\bin\Debug\Iesi.Collections.dll
+D:\Test\Test\Test.Domain\bin\Debug\NHibernate.dll
+D:\Test\Test\Test.Domain\bin\Debug\Test.Domain.dll
+D:\Test\Test\Test.Domain\bin\Debug\Test.Domain.pdb
+D:\Test\Test\Test.Domain\obj\Debug\Test.Domain.dll
+D:\Test\Test\Test.Domain\obj\Debug\Test.Domain.pdb
+E:\Commercial\Test\Test.Domain\bin\Debug\Test.Domain.dll
+E:\Commercial\Test\Test.Domain\bin\Debug\Test.Domain.pdb
+E:\Commercial\Test\Test.Domain\bin\Debug\Iesi.Collections.dll
+E:\Commercial\Test\Test.Domain\bin\Debug\NHibernate.dll
+E:\Commercial\Test\Test.Domain\obj\Debug\ResolveAssemblyReference.cache
+E:\Commercial\Test\Test.Domain\obj\Debug\Test.Domain.dll
+E:\Commercial\Test\Test.Domain\obj\Debug\Test.Domain.pdb
