@@ -232,6 +232,10 @@ namespace Test.Structure.TaskManager
                     ctrrptBLL = new CategoriesrptBLL();
                     return ctrrptBLL.GetAllInvoiceBycatname(param);
                     break;
+                case TestTask.AG_GetqtytotalvalueRecord:
+                    ctrrptBLL = new CategoriesrptBLL();
+                    return ctrrptBLL.GetqtytotalvalueRecord(param);
+                    break;
                 #endregion
 
 

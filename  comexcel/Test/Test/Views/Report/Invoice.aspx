@@ -16,7 +16,11 @@
                 Invoice : <%: Html.TextBoxFor(m => m.Invoice, new { @class = "Control_Moni_Width_100" })%>                   
                 Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new { @readonly = "true", @class = "Width=250" })%>              
                 <%--<input type="button" value="Show" title="Save"  id="Getvalue" /> &nbsp; &nbsp;&nbsp;--%>
-                <%--<input type="button" value="Save As Excel" title="Save As Excel"   onclick="impexcel()" />--%>          
+                <%--<input type="button" value="Save As Excel" title="Save As Excel"   onclick="impexcel()" />--%>   
+                
+              <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>
+               <div>Sum of QTY  : <span style="color:Red;" id="SumQTY" ></span> </div>   
+               <div>Sum of Value: <span style="color:Red;" id="SumTotalval" ></span> </div>    
         </div> 
      </fieldset>  
      <fieldset><div id="RecordsContainer"></div></fieldset>
@@ -147,5 +151,13 @@
     });
  
 </script>
+<script type="text/javascript">
+    $('input#Invoice, #CategoryID').change(function () {
+        $.post('<%: ResolveUrl("~/Report/Getqtytotalval?categoryname=")%>' + $("#CategoryID option:selected").text() + "&invoice=" + $("#Invoice").val(), function (data) {            
+            $("#SumQTY").html(data.SumQTY);
+            $("#SumTotalval").html(data.SumTotalval);                 
+        });
 
+    });
+</script>
 </asp:Content>

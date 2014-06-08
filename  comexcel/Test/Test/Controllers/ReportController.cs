@@ -123,5 +123,26 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
+        public JsonResult Getqtytotalval(string categoryname, string invoice)
+        {
+            //if ((invoice.ToString() == "") || (categoryname.ToString() == ""))
+            //{
+            //    return Json(new { Result = "ERROR", Message = "Enter Invoice or Category Name" });
+            //}
+            //else
+            //{
+                try
+                {
+                    ImportexcelEntity obj = (ImportexcelEntity)GetqtytotalvalueRecord(categoryname, invoice);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+           // }
+        }
     }
 }

@@ -79,6 +79,7 @@ namespace Test.Structure
         #region Auto Generated - InventoryList.
         public const string AG_GetAllCategoriesRecord = "AG_GetAllCategoriesRecord";
         public const string AG_GetAllInvoiceBycatname = "AG_GetAllInvoiceBycatname";
+        public const string AG_GetqtytotalvalueRecord = "AG_GetqtytotalvalueRecord";
         #endregion
 
 

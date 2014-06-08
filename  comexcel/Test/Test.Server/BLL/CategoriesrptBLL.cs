@@ -27,5 +27,12 @@ namespace Test.Server.BLL
             retObj = (object)rptDAL.GetAllInvoiceBycatname(impEntity, param);
             return retObj;
         }
+        public object GetqtytotalvalueRecord(object param)
+        {
+            object retObj = null;
+            CategoriesrptDAL rptDAL = new CategoriesrptDAL();
+            retObj = (object)rptDAL.GetqtytotalvalueRecord(param);
+            return retObj;
+        }
     }
 }

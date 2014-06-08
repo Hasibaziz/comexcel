@@ -30,5 +30,19 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetqtytotalvalueRecord(object param)
+        {
+            ImportexcelEntity obj = (ImportexcelEntity)param;
+            Database db = DatabaseFactory.CreateDatabase();
+            //string sql = "SELECT sum(cast(CAST(QTY AS FLOAT) AS INT)) AS SumQTY, sum(cast(CAST(TotalValue AS FLOAT) AS INT)) AS SumTotalval FROM [Commercial].[dbo].[Importinfo] GROUP BY '" + obj.Category + "', '" + obj.Invoice + "' ORDER BY '" + obj.Category + "', '" + obj.Invoice + "'  ASC";
+            //DbCommand dbCommand = db.GetSqlStringCommand(sql);
+
+            object[] parameters = new object[] { obj.Invoice, obj.Category };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetSumqtytotalvalue", parameters);
+
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

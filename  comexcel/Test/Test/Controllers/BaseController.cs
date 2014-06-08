@@ -215,5 +215,25 @@ namespace Test.Controllers
                 return null;
             }
         }
+
+        public object GetqtytotalvalueRecord(string Pcategoryname, string Pinvoice)
+        {
+
+            ImportexcelEntity _Model = new ImportexcelEntity();
+            _Model.Category = Pcategoryname;
+            _Model.Invoice = Pinvoice;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetqtytotalvalueRecord, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                //_Model.ItemID = dr["ItemID"].ToString();               
+                _Model.SumQTY = dr["SumQTY"].ToString();
+                _Model.SumTotalval = dr["SumTotalval"].ToString();               
+
+            }
+            return _Model;
+        }
+
     }
 }

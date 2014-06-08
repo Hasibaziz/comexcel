@@ -34,7 +34,7 @@
                 <input id="Button1" type="button" value="Delete" title="Delete"   onclick="Fordelete()" />       
              </div>
              <div><asp:Label ID="lblMessage" runat="server"  Font-Bold="true" /></div>
-             <div id="progressbar"><div class="progress-label"></div></div>                     
+             <div id="progressbar"><div class="progress-label">Loading...</div></div>                     
          </fieldset>
         <% } %>        
    <div id="RecordsContainer"></div>
