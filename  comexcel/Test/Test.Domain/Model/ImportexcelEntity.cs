@@ -27,6 +27,8 @@ namespace Test.Domain.Model
        public string Mode { set; get; }
        public string ImportDate { set; get; }
 
+       public string StartDate { set; get; }
+       public string EndDate { set; get; }
        public string SumQTY { set; get; }
        public string SumTotalval { set; get; }
 
