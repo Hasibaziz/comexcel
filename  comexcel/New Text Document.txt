@@ -1,0 +1,51 @@
+ DECLARE @StartDate VARCHAR(12)
+DECLARE @EndDate   VARCHAR(12)
+DECLARE @pCagegory VARCHAR(MAX)
+DECLARE @pInvoice VARCHAR(MAX)
+SET @StartDate='22/04/2014'
+SET @EndDate='22/04/2014'
+SET @pCagegory='ACCESSORIES'
+SET @pInvoice=''
+ 
+ SELECT ID
+          , [Invoice]
+          , [Category]
+          , [Item]
+          , [QTY]
+          , [Unit]
+          , CONVERT(decimal(10,2), [TotalValue]) AS TotalValue
+          , [Mode] 
+          , [BENo]
+          --, CONVERT(DATE, [BEDate], 103)
+          ,(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate
+          FROM [Commercial].[dbo].[Importinfo] 
+          WHERE 
+          --(Invoice=@pInvoice AND Category=@pCagegory)
+           Category=@pCagegory AND
+          (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6))  
+            BETWEEN   (LEFT(@StartDate, 2)+ SUBSTRING(@StartDate, 3,3)+ SUBSTRING(@StartDate,6,6))
+            AND (LEFT(@EndDate, 2)+ SUBSTRING(@EndDate, 3,3)+ SUBSTRING(@EndDate,6,6))
+          ORDER BY Invoice, Category  ASC
+
+
+
+------------------------------------------------------------------------------------------------------
+ DECLARE @StartDate VARCHAR(12)
+DECLARE @EndDate   VARCHAR(12)
+DECLARE @pCagegory VARCHAR(MAX)
+DECLARE @pInvoice VARCHAR(MAX)
+SET @StartDate='22/04/2014'
+SET @EndDate='22/04/2014'
+SET @pCagegory='ACCESSORIES'
+SET @pInvoice='BA0401.14S'
+ 
+ 
+  SELECT  sum(cast(CAST(QTY AS decimal(10,2)) AS decimal(10,2))) AS SumQTY
+          , sum(cast(CAST(TotalValue AS decimal(10,2)) AS decimal(10,2))) AS SumTotalval
+          FROM [Commercial].[dbo].[Importinfo] 
+          WHERE Category=@pCagegory
+           AND
+          (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6))  
+            BETWEEN   (LEFT(@StartDate, 2)+ SUBSTRING(@StartDate, 3,3)+ SUBSTRING(@StartDate,6,6))
+            AND (LEFT(@EndDate, 2)+ SUBSTRING(@EndDate, 3,3)+ SUBSTRING(@EndDate,6,6))
+          GROUP BY  Category  
