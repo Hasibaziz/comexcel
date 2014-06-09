@@ -216,12 +216,14 @@ namespace Test.Controllers
             }
         }
 
-        public object GetqtytotalvalueRecord(string Pcategoryname, string Pinvoice)
+        public object GetqtytotalvalueRecord(string Pcategoryname, string Pinvoice, string PSDate, string PEDate)
         {
 
             ImportexcelEntity _Model = new ImportexcelEntity();
             _Model.Category = Pcategoryname;
             _Model.Invoice = Pinvoice;
+            _Model.StartDate = PSDate;
+            _Model.EndDate = PEDate;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetqtytotalvalueRecord, _Model);
 
             foreach (DataRow dr in dt.Rows)

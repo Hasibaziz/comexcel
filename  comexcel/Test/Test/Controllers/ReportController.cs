@@ -75,7 +75,7 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public JsonResult AllInvoiceBycatname(ImportexcelEntity _Model, string invoice = "", string CatName = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult AllInvoiceBycatname(ImportexcelEntity _Model, string invoice = "", string CatName = "", string SDate="", string EDate="", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
@@ -83,6 +83,8 @@ namespace Test.Controllers
                 {
                     _Model.Invoice = invoice;
                     _Model.Category = CatName;
+                    _Model.StartDate = SDate;
+                    _Model.EndDate = EDate;
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllInvoiceBycatname, _Model);
                     List<ImportexcelEntity> ItemList = null;
                     ItemList = new List<ImportexcelEntity>();
@@ -124,7 +126,7 @@ namespace Test.Controllers
             }
         }
 
-        public JsonResult Getqtytotalval(string categoryname, string invoice)
+        public JsonResult Getqtytotalval(string categoryname, string invoice, string SDate="", string EDate="")
         {
             //if ((invoice.ToString() == "") || (categoryname.ToString() == ""))
             //{
@@ -134,7 +136,7 @@ namespace Test.Controllers
             //{
                 try
                 {
-                    ImportexcelEntity obj = (ImportexcelEntity)GetqtytotalvalueRecord(categoryname, invoice);
+                    ImportexcelEntity obj = (ImportexcelEntity)GetqtytotalvalueRecord(categoryname, invoice, SDate,EDate);
 
                     return Json(obj);
                 }

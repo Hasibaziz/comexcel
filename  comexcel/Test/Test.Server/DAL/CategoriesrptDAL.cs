@@ -23,7 +23,7 @@ namespace Test.Server.DAL
         public DataTable GetAllInvoiceBycatname(ImportexcelEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            object[] parameters = new object[] { obj.Invoice, obj.Category};
+            object[] parameters = new object[] { obj.Invoice, obj.Category, obj.StartDate, obj.EndDate};
             DbCommand dbCommand = db.GetStoredProcCommand("spGetInvoiceBycatname", parameters);
 
            
@@ -38,7 +38,7 @@ namespace Test.Server.DAL
             //string sql = "SELECT sum(cast(CAST(QTY AS FLOAT) AS INT)) AS SumQTY, sum(cast(CAST(TotalValue AS FLOAT) AS INT)) AS SumTotalval FROM [Commercial].[dbo].[Importinfo] GROUP BY '" + obj.Category + "', '" + obj.Invoice + "' ORDER BY '" + obj.Category + "', '" + obj.Invoice + "'  ASC";
             //DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
-            object[] parameters = new object[] { obj.Invoice, obj.Category };
+            object[] parameters = new object[] { obj.Invoice, obj.Category, obj.StartDate, obj.EndDate };
             DbCommand dbCommand = db.GetStoredProcCommand("spGetSumqtytotalvalue", parameters);
 
             DataSet ds = db.ExecuteDataSet(dbCommand);

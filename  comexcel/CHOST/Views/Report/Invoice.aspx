@@ -5,6 +5,16 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+ <script type="text/javascript">
+     $(function () {
+         $("#StartDate, #EndDate").datepicker({
+             dateFormat: 'dd/mm/yy',
+             numberOfMonths: 3,
+             buttonImage: "~/Content/images/calendar.png",
+             showButtonPanel: true
+         });
+     });
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("Control/LeftMenu"); %>
 </div>
@@ -17,8 +27,9 @@
                 Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new { @readonly = "true", @class = "Width=250" })%>              
                 <%--<input type="button" value="Show" title="Save"  id="Getvalue" /> &nbsp; &nbsp;&nbsp;--%>
                 <%--<input type="button" value="Save As Excel" title="Save As Excel"   onclick="impexcel()" />--%>   
-                
-              <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>
+                B/E From Date : <%: Html.TextBoxFor(m => m.StartDate, new { @class = "Control_Moni_Width_100" })%>  
+                B/E To Date : <%: Html.TextBoxFor(m => m.EndDate, new { @class = "Control_Moni_Width_100" })%>  
+              <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>              
                <div>Sum of QTY  : <span style="color:Red;" id="SumQTY" ></span> </div>   
                <div>Sum of Value: <span style="color:Red;" id="SumTotalval" ></span> </div>    
         </div> 
@@ -93,14 +104,14 @@
 </script>
 <script type="text/javascript">
 
-    $('input#Invoice, #CategoryID').change(function () {
+    $('input#Invoice, #CategoryID, #StartDate, #EndDate ').change(function () {
         $('#RecordsContainer').jtable({
             paging: true,
             pageSize: 20,
             sorting: false,
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '/Report/AllInvoiceBycatname?invoice=' + $("#Invoice").val() + "&CatName=" + $("#CategoryID option:selected").text()
+                listAction: '/Report/AllInvoiceBycatname?invoice=' + $("#Invoice").val() + "&CatName=" + $("#CategoryID option:selected").text() + "&SDate=" + $("#StartDate").val() + "&EDate=" + $("#EndDate").val()
             },
             fields: {
                 Id: {
@@ -153,11 +164,10 @@
 </script>
 <script type="text/javascript">
     $('input#Invoice, #CategoryID').change(function () {
-        $.post('<%: ResolveUrl("~/Report/Getqtytotalval?categoryname=")%>' + $("#CategoryID option:selected").text() + "&invoice=" + $("#Invoice").val(), function (data) {            
+        $.post('<%: ResolveUrl("~/Report/Getqtytotalval?categoryname=")%>' + $("#CategoryID option:selected").text() + "&invoice=" + $("#Invoice").val() + "&SDate=" + $("#StartDate").val() + "&EDate=" + $("#EndDate").val(), function (data) {            
             $("#SumQTY").html(data.SumQTY);
             $("#SumTotalval").html(data.SumTotalval);                 
         });
-
     });
 </script>
 </asp:Content>
