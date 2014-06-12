@@ -62,5 +62,14 @@ namespace Test.Server.BLL
             retObj = (object)importexcelDAL.SetPostdata(OBJ, param);
             return retObj;
         }
+        public object Duplicateheckinv(object param)
+        {
+            object retObj = null;
+            //string DUPINV = param.ToString();
+            ImportexcelDAL importexcelDAL = new ImportexcelDAL();
+            //ImportexcelEntity OBJ = (ImportexcelEntity)param;
+            retObj = (object)importexcelDAL.Duplicateheckinv(param);
+            return retObj;
+        }
     }
 }

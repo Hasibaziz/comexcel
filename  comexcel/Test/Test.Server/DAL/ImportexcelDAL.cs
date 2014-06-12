@@ -63,5 +63,18 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);          
             return true;
         }
+
+        public DataTable Duplicateheckinv(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            //string sql = "SELECT COUNT(Usermail) as MailCount FROM ITInventory.dbo.Login_info GROUP BY Usermail HAVING COUNT(Usermail)>=1";
+            //string sql = "SELECT B.Invoice AS Invoice  FROM [Commercial][dbo].[ExcelImport] AS A,[Commercial][dbo].[Importinfo] AS B where A.Invoice like '%" + DUPINV + "%'";
+            string sql = "SELECT B.Invoice AS Invoice  FROM [Commercial].[dbo].[ExcelImport] AS A,[Commercial].[dbo].[Importinfo] AS B where B.Invoice like A.Invoice";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            //db.AddInParameter(dbCommand, "Usermail", DbType.String, UserEntity.Usermail);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

@@ -237,5 +237,18 @@ namespace Test.Controllers
             return _Model;
         }
 
+        public object GetDuplicatecheckinv(string Pinvoice)
+        {
+            ImportexcelEntity _Model = new ImportexcelEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_Duplicateheckinv, Pinvoice);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.Invoice = dr["Invoice"].ToString();
+
+            }
+            return _Model;
+        }
+
     }
 }

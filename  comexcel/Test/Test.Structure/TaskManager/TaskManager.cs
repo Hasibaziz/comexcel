@@ -220,6 +220,10 @@ namespace Test.Structure.TaskManager
                     importexcelBLL = new ImportexcelBLL();
                     return importexcelBLL.SetPostdata(param);
                     break;
+                case TestTask.AG_Duplicateheckinv:
+                    importexcelBLL = new ImportexcelBLL();
+                    return importexcelBLL.Duplicateheckinv(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - InventoryList

@@ -34,5 +34,6 @@ namespace Test.Server.BLL
             retObj = (object)rptDAL.GetqtytotalvalueRecord(param);
             return retObj;
         }
+
     }
 }

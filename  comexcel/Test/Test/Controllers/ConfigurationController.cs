@@ -778,10 +778,16 @@ namespace Test.Controllers
         }
         public JsonResult Postdata()
         {
+            ImportexcelEntity _Model = new ImportexcelEntity();
             try
             {
-                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_SetPostdata, null);
-                return Json(new { Result="OK"});
+                if (Duplicateheckinv(_Model.Invoice) != false)
+                    return Json(new { Result = "Message", Message = "Invoice already Exists!." });
+                else
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_SetPostdata, null);
+                    return Json(new { Result = "OK" });
+                }
             }
             catch (Exception ex)
             {
@@ -818,6 +824,22 @@ namespace Test.Controllers
 
         }
 
+        public bool Duplicateheckinv(string Pinvoice)
+        {
+            try
+            {
+                ImportexcelEntity obj = (ImportexcelEntity)GetDuplicatecheckinv(Pinvoice);
+                //var obj1 = GetDupMail(UserID);                
+                if (obj.Invoice == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
     }
 }

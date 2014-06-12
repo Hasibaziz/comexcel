@@ -133,12 +133,11 @@ namespace Test.Controllers
             //    return Json(new { Result = "ERROR", Message = "Enter Invoice or Category Name" });
             //}
             //else
-            //{
+            //{            
                 try
                 {
-                    ImportexcelEntity obj = (ImportexcelEntity)GetqtytotalvalueRecord(categoryname, invoice, SDate,EDate);
-
-                    return Json(obj);
+                        ImportexcelEntity obj = (ImportexcelEntity)GetqtytotalvalueRecord(categoryname, invoice, SDate, EDate);
+                        return Json(obj);                   
                 }
                 catch (Exception ex)
                 {
@@ -146,5 +145,6 @@ namespace Test.Controllers
                 }
            // }
         }
-    }
+
+     }
 }
