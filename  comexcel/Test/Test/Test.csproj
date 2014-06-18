@@ -340,6 +340,7 @@
     <Content Include="Views\Configuration\ServiceName.aspx" />
     <Content Include="Views\Configuration\UDInfo.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Report\AllUDInfo.aspx" />
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\Index.aspx" />
     <Content Include="Views\Report\Invoice.aspx" />

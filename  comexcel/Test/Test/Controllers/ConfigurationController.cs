@@ -778,11 +778,13 @@ namespace Test.Controllers
         }
         public JsonResult Postdata()
         {
+            bool result = true;
             ImportexcelEntity _Model = new ImportexcelEntity();
             try
             {
                 if (Duplicateheckinv(_Model.Invoice) != false)
-                    return Json(new { Result = "Message", Message = "Invoice already Exists!." });
+                    //return Json(new { Result = "Message", Message = "Invoice already Exists!." });                    
+                    return Json(new { result }, JsonRequestBehavior.AllowGet);
                 else
                 {
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_SetPostdata, null);

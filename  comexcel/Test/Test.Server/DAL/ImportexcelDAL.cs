@@ -40,9 +40,13 @@ namespace Test.Server.DAL
             object[] parametersUDNo = new object[] { obj.UDNo, obj.AMDNo, obj.AMDDate };
             DbCommand dbCommandUDNo = db.GetStoredProcCommand("spGetUDinfoRecord", parametersUDNo);
 
+            object[] parametersLOC = new object[] { obj.Factory };
+            DbCommand dbCommandLOC = db.GetStoredProcCommand("spGetLocationRecord", parametersLOC);
+
             DataSet ds = db.ExecuteDataSet(dbCommand);
             DataSet dsInv = db.ExecuteDataSet(dbCommandInv);
-            DataSet dsUDNo = db.ExecuteDataSet(dbCommandUDNo);          
+            DataSet dsUDNo = db.ExecuteDataSet(dbCommandUDNo);
+            DataSet dsLOC = db.ExecuteDataSet(dbCommandLOC);
             return true;
         }
         public DataTable GetAllImportExcelRecord(object param)

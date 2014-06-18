@@ -82,24 +82,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AllUDInfoBLL.cs" />
     <Compile Include="BLL\BEInfoBLL.CS" />
     <Compile Include="BLL\CategoriesrptBLL.cs" />
     <Compile Include="BLL\CategorydetailsBLL.cs" />
     <Compile Include="BLL\CategorynameBLL.cs" />
     <Compile Include="BLL\CommonBLL.cs" />
     <Compile Include="BLL\ImportexcelBLL.cs" />
+    <Compile Include="BLL\LocationInfoBLL.cs" />
     <Compile Include="BLL\ModeinfoBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLLPartial.cs" />
     <Compile Include="BLL\TrServicemasterBLL.cs" />
     <Compile Include="BLL\TrServicemasterBLLPartial.cs" />
     <Compile Include="BLL\UDInformationBLL.cs" />
+    <Compile Include="DAL\AllUDInfoDAL.cs" />
     <Compile Include="DAL\BEInfoDAL.cs" />
     <Compile Include="DAL\CategoriesrptDAL.cs" />
     <Compile Include="DAL\CategorydetailsDAL.cs" />
     <Compile Include="DAL\CategorynameDAL.cs" />
     <Compile Include="DAL\CommomDAL.cs" />
     <Compile Include="DAL\ImportexcelDAL.cs" />
+    <Compile Include="DAL\LocationInfoDAL.cs" />
     <Compile Include="DAL\ModeinfoDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDALPartial.cs" />

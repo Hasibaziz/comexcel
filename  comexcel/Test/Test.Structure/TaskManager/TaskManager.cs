@@ -94,6 +94,14 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                #region Auto Generated - LocationList
+                case TestTask.AG_GetLocationbyID:
+                    LocationInfoBLL locBLL = null;
+                    locBLL = new LocationInfoBLL();
+                    return locBLL.GetLocationbyID(param);
+                    break;               
+                #endregion
+
                 #region Auto Generated - CategoryDetails
                 case TestTask.AG_GetAllCategorydetailsRecord:
                     CategorydetailsBLL categorydetailsBLL = null;
@@ -240,6 +248,22 @@ namespace Test.Structure.TaskManager
                     ctrrptBLL = new CategoriesrptBLL();
                     return ctrrptBLL.GetqtytotalvalueRecord(param);
                     break;
+                #endregion
+
+                #region Auto Generated - InventoryList
+                case TestTask.AG_GetAllUDInfoListRecord:
+                    AllUDInfoBLL UDBLL = null;
+                    UDBLL = new AllUDInfoBLL();
+                    return UDBLL.GetAllUDInfoListRecord(param);
+                    break;
+                //case TestTask.AG_GetAllInvoiceBycatname:
+                //    ctrrptBLL = new CategoriesrptBLL();
+                //    return ctrrptBLL.GetAllInvoiceBycatname(param);
+                //    break;
+                //case TestTask.AG_GetqtytotalvalueRecord:
+                //    ctrrptBLL = new CategoriesrptBLL();
+                //    return ctrrptBLL.GetqtytotalvalueRecord(param);
+                //    break;
                 #endregion
 
 

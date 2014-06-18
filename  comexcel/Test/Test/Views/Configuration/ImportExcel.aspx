@@ -162,45 +162,63 @@ function CheckFileName()
        // $.post('<%: ResolveUrl("/Configuration/Postdata")%>');
         //alert("Process Done");
         // $("#dialog-message").dialog({
-        $('<div></div>').html('Want to Post Data! Yes/Cancel').dialog({       
-        modal: true,
-        buttons: {
-            "Yes": function () {
-                $.post('<%: ResolveUrl("/Configuration/Postdata")%>');    
-//                $(function () {
-//                    $("#progressbar").progressbar({ value: 0 });
-//                    setTimeout(updateProgress, 3000);                   
-//                });
-                $(function () {
-                        var progressbar = $("#progressbar"),
-                        progressLabel = $(".progress-label");
-                        progressbar.progressbar({
-                            value: false,
-                            change: function () {
-                                progressLabel.text(progressbar.progressbar("value") + "%");
-                            },
-                            complete: function () {
-                                progressLabel.text("Complete!");
-                                window.location.href = window.location.href;
-                            }
-                        });
-                        function progress() {
-                            var val = progressbar.progressbar("value") || 0;
-                            progressbar.progressbar("value", val + 1);
-                            if (val < 99) {
-                                setTimeout(progress, 100);
-                            }
+        $('<div></div>').html('Want to Post Data! Yes/Cancel').dialog({
+            modal: true,
+            dataType: "json",
+            buttons: {
+                "Yes": function () {
+                    //$.post('<%: ResolveUrl("/Configuration/Postdata")%>');
+                    $.post('<%: ResolveUrl("/Configuration/Postdata")%>', function (result) {
+                        //                $(function () {
+                        //                    $("#progressbar").progressbar({ value: 0 });
+                        //                    setTimeout(updateProgress, 3000);                   
+                        //                });
+                        $(this).dialog("close");
+                        if (result.result) {
+                           
+                           alert("Already Posted  " + result.result);                           
+                        } else {
+                            ///////////////////////////////////////////////////
+                           $(function () {
+                               $(this).dialog("close");
+                                var progressbar = $("#progressbar"),
+                                progressLabel = $(".progress-label");
+                                progressbar.progressbar({
+                                    value: false,
+                                    change: function () {
+                                        progressLabel.text(progressbar.progressbar("value") + "%");
+                                    },
+                                    complete: function () {
+                                        progressLabel.text("Complete!");
+                                        window.location.href = window.location.href;
+                                    }
+                                });
+                                function progress() {
+                                    var val = progressbar.progressbar("value") || 0;
+                                    progressbar.progressbar("value", val + 1);
+                                    if (val < 99) {
+                                        setTimeout(progress, 100);
+                                    }
+                                }
+                                setTimeout(progress, 3000);
+                            });
+                            //window.location.href = window.location.href;
+                           // $(this).dialog("close");
+
+
+                            ///////////////////////////////
                         }
-                        setTimeout(progress, 3000);
-                  });                  
-                //window.location.href = window.location.href;
-                $(this).dialog("close");
-            },
-            "Cancel": function () {
-                $(this).dialog("close");
+                    }, "json");
+
+                    ///////////////////////////////
+
+
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
             }
-        }
-    }); 
+        }); 
    return true;
 
 }

@@ -52,6 +52,10 @@ namespace Test.Structure
         //public const string AG_GetSingleTrServicedetailsRecordById = "AG_GetSingleTrServicedetailsRecordById";
         #endregion
 
+        #region Auto Generated - LocationInformation
+        public const string AG_GetLocationbyID = "AG_GetLocationbyID";     
+        #endregion
+
         #region Auto Generated - BEInformation
         public const string AG_GetAllBEMasterRecord = "AG_GetAllBEMasterRecord";
         public const string AG_SaveBEInfo = "AG_SaveBEInfo";
@@ -81,6 +85,13 @@ namespace Test.Structure
         public const string AG_GetAllInvoiceBycatname = "AG_GetAllInvoiceBycatname";
         public const string AG_GetqtytotalvalueRecord = "AG_GetqtytotalvalueRecord";
         public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
+
+        #region Auto Generated - UDInfoList.
+        public const string AG_GetAllUDInfoListRecord = "AG_GetAllUDInfoListRecord";
+        //public const string AG_GetAllInvoiceBycatname = "AG_GetAllInvoiceBycatname";
+        //public const string AG_GetqtytotalvalueRecord = "AG_GetqtytotalvalueRecord";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
         #endregion
 
 

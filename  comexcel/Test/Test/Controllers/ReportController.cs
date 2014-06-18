@@ -146,5 +146,65 @@ namespace Test.Controllers
            // }
         }
 
+        public ActionResult AllUDInfo()
+        {
+            LocationEntity locEntity = new LocationEntity();
+            ViewData["Location"]=GetALLlocation(locEntity);
+            return View();
+        }
+        [HttpPost]
+        public JsonResult AllUDInfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllUDInfoListRecord, null);
+                    List<ImportexcelEntity> ItemList = null;
+                    ItemList = new List<ImportexcelEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ImportexcelEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                UDNo = dr["UDNo"].ToString(),
+                                AMDNo = dr["AMDNo"].ToString(),
+                                AMDDate = dr["AMDDate"].ToString(),
+                                Factory = dr["Location"].ToString(),
+                                Invoice = dr["Invoice"].ToString(),
+                                Category = dr["Category"].ToString(),
+                                Item = dr["Item"].ToString(),
+                                QTY = dr["QTY"].ToString(),
+                                Unit = dr["Unit"].ToString(),
+                                TotalValue = dr["TotalValue"].ToString(),
+                                Mode = dr["Mode"].ToString(),
+                                BENo = dr["BENo"].ToString(),
+                                BEDate = dr["BEDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+
+
      }
 }

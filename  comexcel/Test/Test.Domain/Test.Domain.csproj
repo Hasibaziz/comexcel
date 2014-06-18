@@ -85,6 +85,7 @@
     <Compile Include="Model\CommonEntity.cs" />
     <Compile Include="Model\CompanyEntity.cs" />
     <Compile Include="Model\ImportexcelEntity.cs" />
+    <Compile Include="Model\LocationEntity.cs" />
     <Compile Include="Model\ModeinfoEntity.cs" />
     <Compile Include="Model\TrServicedetailsEntity.cs" />
     <Compile Include="Model\TrServicemasterEntity.cs" />

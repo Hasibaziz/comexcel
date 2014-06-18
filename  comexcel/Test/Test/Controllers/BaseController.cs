@@ -215,6 +215,29 @@ namespace Test.Controllers
                 return null;
             }
         }
+        public List<SelectListItem> GetALLlocation(LocationEntity location)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetLocationbyID, location);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["Location"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public object GetqtytotalvalueRecord(string Pcategoryname, string Pinvoice, string PSDate, string PEDate)
         {
