@@ -39,6 +39,7 @@
         <% } %>        
    <div id="RecordsContainer"></div>
    </div>
+   <div id="dialog" title="Dialog Title" style="display:none"> Some text</div> 
 </div>
 <script type="text/javascript">
 
@@ -52,12 +53,12 @@
             actions: {
                 listAction: '<%=Url.Content("~/Configuration/AllImportExcelList") %>',
                 //createAction: '<%=Url.Content("~/Configuration/AddUpdateCategoryDetails") %>'
-                //deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',
+                deleteAction: '<%=Url.Content("~/Configuration/DeleteAllImportExcelList") %>'
                 //updateAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>',
                 //createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
             },
             fields: {
-                Id: {
+                ID: {
                     key: true,
                     create: false,
                     edit: false,
@@ -77,7 +78,7 @@
                 },
                 AMDDate: {
                     title: 'AMD Date',
-                    width: '8%'
+                    width: '10%'
                 },
                 Factory: {
                     title: 'Factory',
@@ -121,7 +122,7 @@
                 },
                 BEDate: {
                     title: 'B/E Date',
-                    width: '8%'
+                    width: '10%'
                 },
                 Passbook: {
                     title: 'Passbook',
@@ -162,45 +163,64 @@ function CheckFileName()
        // $.post('<%: ResolveUrl("/Configuration/Postdata")%>');
         //alert("Process Done");
         // $("#dialog-message").dialog({
-        $('<div></div>').html('Want to Post Data! Yes/Cancel').dialog({       
-        modal: true,
-        buttons: {
-            "Yes": function () {
-                $.post('<%: ResolveUrl("/Configuration/Postdata")%>');    
-//                $(function () {
-//                    $("#progressbar").progressbar({ value: 0 });
-//                    setTimeout(updateProgress, 3000);                   
-//                });
-                $(function () {
-                        var progressbar = $("#progressbar"),
-                        progressLabel = $(".progress-label");
-                        progressbar.progressbar({
-                            value: false,
-                            change: function () {
-                                progressLabel.text(progressbar.progressbar("value") + "%");
-                            },
-                            complete: function () {
-                                progressLabel.text("Complete!");
-                                window.location.href = window.location.href;
-                            }
-                        });
-                        function progress() {
-                            var val = progressbar.progressbar("value") || 0;
-                            progressbar.progressbar("value", val + 1);
-                            if (val < 99) {
-                                setTimeout(progress, 100);
-                            }
+        $('<div></div>').html('Want to Post Data! Yes/Cancel').dialog({
+            modal: true,
+            dataType: "json",
+            buttons: {
+                "Yes": function () {
+                    $(this).dialog("close");
+                    //$.post('<%: ResolveUrl("/Configuration/Postdata")%>');
+                    $.post('<%: ResolveUrl("/Configuration/Postdata")%>', function (result) {
+                        //                $(function () {
+                        //                    $("#progressbar").progressbar({ value: 0 });
+                        //                    setTimeout(updateProgress, 3000);                   
+                        //                });
+
+                        if (result.result) {
+                            //alert("Already Posted  " + result.result);
+                            alert("Data Already Posted!  ");
+                            $(".dialog").dialog("option", "buttons", { "Ok": function () { $(this).dialog("close"); } });
+                        } else {
+                            ///////////////////////////////////////////////////
+                            $(function () {
+                                $(this).dialog("close");
+                                var progressbar = $("#progressbar"),
+                                progressLabel = $(".progress-label");
+                                progressbar.progressbar({
+                                    value: false,
+                                    change: function () {
+                                        progressLabel.text(progressbar.progressbar("value") + "%");
+                                    },
+                                    complete: function () {
+                                        progressLabel.text("Complete!");
+                                        window.location.href = window.location.href;
+                                    }
+                                });
+                                function progress() {
+                                    var val = progressbar.progressbar("value") || 0;
+                                    progressbar.progressbar("value", val + 1);
+                                    if (val < 99) {
+                                        setTimeout(progress, 100);
+                                    }
+                                }
+                                setTimeout(progress, 3000);
+                            });
+                            //window.location.href = window.location.href;
+                            // $(this).dialog("close");
+
+                            ///////////////////////////////
                         }
-                        setTimeout(progress, 3000);
-                  });                  
-                //window.location.href = window.location.href;
-                $(this).dialog("close");
-            },
-            "Cancel": function () {
-                $(this).dialog("close");
+                    }, "json");
+
+                    ///////////////////////////////
+
+
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
             }
-        }
-    }); 
+        }); 
    return true;
 
 }

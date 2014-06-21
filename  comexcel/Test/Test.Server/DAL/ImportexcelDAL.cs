@@ -43,16 +43,31 @@ namespace Test.Server.DAL
             object[] parametersLOC = new object[] { obj.Factory };
             DbCommand dbCommandLOC = db.GetStoredProcCommand("spGetLocationRecord", parametersLOC);
 
+            object[] parametersCAT = new object[] { obj.Category };
+            DbCommand dbCommandCAT = db.GetStoredProcCommand("spGetCategoryRecord", parametersCAT);
+
+
             DataSet ds = db.ExecuteDataSet(dbCommand);
             DataSet dsInv = db.ExecuteDataSet(dbCommandInv);
             DataSet dsUDNo = db.ExecuteDataSet(dbCommandUDNo);
             DataSet dsLOC = db.ExecuteDataSet(dbCommandLOC);
+            DataSet dsCAT = db.ExecuteDataSet(dbCommandCAT);
+            return true;
+        }
+        public bool DeleteAllImportExcelListById(object param, Database db, DbTransaction transaction)
+        {
+            string sql = "DELETE FROM ExcelImport WHERE ID=@Id";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "Id", DbType.String, param);
+
+            db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
         public DataTable GetAllImportExcelRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, SContract, UDNo, AMDNo, (LEFT(AMDDate, 2)+ SUBSTRING(AMDDate, 3,4)+ RIGHT(AMDDate,4)) AS AMDDate, Location, Invoice, Category, Item, QTY, Unit, CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, BENo, (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate, Passbook, Pageno, BLNo, Mode FROM ExcelImport ORDER BY Invoice ASC";
+            //string sql = "SELECT ID, SContract, UDNo, AMDNo, (LEFT(AMDDate, 2)+ SUBSTRING(AMDDate, 3,4)+ RIGHT(AMDDate,4)) AS AMDDate, Location, Invoice, Category, Item, QTY, Unit, CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, BENo, (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate, Passbook, Pageno, BLNo, Mode FROM ExcelImport ORDER BY Invoice ASC";
+            string sql = "SELECT ID, SContract, UDNo, AMDNo, (LEFT([AMDDate], 2)+ SUBSTRING([AMDDate], 3,3)+ SUBSTRING([AMDDate],6,5)) AS AMDDate, Location, Invoice, Category, Item, QTY, Unit, CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, BENo, (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,5)) AS BEDate, Passbook, Pageno, BLNo, Mode FROM ExcelImport ORDER BY Invoice ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

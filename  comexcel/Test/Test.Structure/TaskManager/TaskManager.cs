@@ -224,6 +224,10 @@ namespace Test.Structure.TaskManager
                     importexcelBLL = new ImportexcelBLL();
                     return importexcelBLL.GetAllImportExcelRecord(param);
                     break;
+                case TestTask.AG_DeleteAllImportExcelListById:
+                    importexcelBLL = new ImportexcelBLL();
+                    return importexcelBLL.DeleteAllImportExcelListById(param);
+                    break;
                 case TestTask.AG_SetPostdata:
                     importexcelBLL = new ImportexcelBLL();
                     return importexcelBLL.SetPostdata(param);

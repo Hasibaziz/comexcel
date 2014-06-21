@@ -776,6 +776,24 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        [HttpPost]
+        public JsonResult DeleteAllImportExcelList(string ID)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                bool isUpdate = false;
+                isUpdate = (bool)ExecuteDB(TestTask.AG_DeleteAllImportExcelListById, ID);
+                if (isUpdate)
+                    return Json(new { Result = "OK" });
+                else
+                    return Json(new { Result = "ERROR", Message = "Failed to Delete" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
         public JsonResult Postdata()
         {
             bool result = true;

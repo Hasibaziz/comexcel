@@ -344,6 +344,7 @@
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\Index.aspx" />
     <Content Include="Views\Report\Invoice.aspx" />
+    <Content Include="Views\Sales\Export.aspx" />
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />
     <Content Include="Views\Shared\Footer.ascx" />

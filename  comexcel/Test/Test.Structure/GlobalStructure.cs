@@ -77,6 +77,7 @@ namespace Test.Structure
         #region Auto Generated - ImportExcelRecord.
         public const string AG_SaveImportexcelRecord = "AG_SaveImportexcelRecord";
         public const string AG_GetAllImportExcelRecord = "AG_GetAllImportExcelRecord";
+        public const string AG_DeleteAllImportExcelListById = "AG_DeleteAllImportExcelListById";
         public const string AG_SetPostdata = "AG_SetPostdata";
         #endregion
 

@@ -1,0 +1,3 @@
+https://github.com/jzaefferer/jquery-validation/issues/434
+
+http://jquery-ui.googlecode.com/svn/tags/1.8.4/docs/dialog.html

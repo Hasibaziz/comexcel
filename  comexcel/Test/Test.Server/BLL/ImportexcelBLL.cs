@@ -47,6 +47,32 @@ namespace Test.Server.BLL
             retObj = (object)DAL.SaveImportexcelRecordsp(obj, param);
             return retObj;
         }
+        public object DeleteAllImportExcelListById(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    ImportexcelDAL importexcelDAL = new ImportexcelDAL();
+                    retObj = (object)importexcelDAL.DeleteAllImportExcelListById(param, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
         public object GetAllImportExcelRecord(object param)
         {
             object retObj = null;
