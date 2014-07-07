@@ -97,5 +97,20 @@ namespace Test.Server.BLL
             retObj = (object)importexcelDAL.Duplicateheckinv(param);
             return retObj;
         }
+        public object GetAllIteminfo(object param)
+        {
+            object retObj = null;
+            ImportexcelDAL importexcelDAL = new ImportexcelDAL();
+            retObj = (object)importexcelDAL.GetAllIteminfo(param);
+            return retObj;
+        }
+        public object GetItemByCategoryID(object param)
+        {
+            object retObj = null;
+            ImportexcelDAL importexcelDAL = new ImportexcelDAL();
+            retObj = (object)importexcelDAL.GetItemByCategoryID(param);
+            return retObj;
+        }
+
     }
 }

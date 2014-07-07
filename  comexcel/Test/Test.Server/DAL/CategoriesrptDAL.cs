@@ -14,7 +14,7 @@ namespace Test.Server.DAL
         public DataTable GetAllCategoriesrpt(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS [TotalValue], [Mode], [BENo], (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate FROM [Commercial].[dbo].[Importinfo] ORDER BY Invoice, Category  ASC";
+            string sql = "SELECT ID, [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS [TotalValue], [Mode], [BENo], (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,5)) AS BEDate FROM [Commercial].[dbo].[Importinfo] ORDER BY Invoice, Category  ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

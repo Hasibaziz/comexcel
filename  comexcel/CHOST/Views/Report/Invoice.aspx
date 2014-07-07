@@ -21,14 +21,16 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset>
-        <div style="float: left; width: 100%;">
-                
-                Invoice : <%: Html.TextBoxFor(m => m.Invoice, new { @class = "Control_Moni_Width_100" })%>                   
-                Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new { @readonly = "true", @class = "Width=250" })%>              
-                <%--<input type="button" value="Show" title="Save"  id="Getvalue" /> &nbsp; &nbsp;&nbsp;--%>
-                <%--<input type="button" value="Save As Excel" title="Save As Excel"   onclick="impexcel()" />--%>   
-                B/E From Date : <%: Html.TextBoxFor(m => m.StartDate, new { @class = "Control_Moni_Width_100" })%>  
-                B/E To Date : <%: Html.TextBoxFor(m => m.EndDate, new { @class = "Control_Moni_Width_100" })%>  
+        <div style="float: left; width: 100%;"> 
+                <div style="margin:5px 40px; padding:5px;">
+                    Invoice : <%: Html.TextBoxFor(m => m.Invoice, new { @class = "Control_Moni_Width_100" })%>                   
+                    Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new { @readonly = "true", @class = "Width=250" })%>              
+                    Item:  <%: Html.DropDownListFor(m => m.ID, (List<SelectListItem>)ViewData["Item"], "Items", new { @readonly = "true", @class = "Width=250" })%>  
+                </div>
+                <div>
+                    B/E From Date : <%: Html.TextBoxFor(m => m.StartDate, new { @class = "Control_Moni_Width_100" })%>  
+                    B/E To Date : <%: Html.TextBoxFor(m => m.EndDate, new { @class = "Control_Moni_Width_100" })%>  
+                </div>
               <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>              
                <div>Sum of QTY  : <span style="color:Red;" id="SumQTY" ></span> </div>   
                <div>Sum of Value: <span style="color:Red;" id="SumTotalval" ></span> </div>    
@@ -70,11 +72,11 @@
                 },
                 Item: {
                     title: 'Item Name',
-                    width: '20%'
+                    width: '25%'
                 },
                 QTY: {
                     title: 'QTY',
-                    width: '10%'
+                    width: '7%'
                 },
                 Unit: {
                     title: 'Unit',
@@ -130,11 +132,11 @@
                 },
                 Item: {
                     title: 'Item Name',
-                    width: '20%'
+                    width: '25%'
                 },
                 QTY: {
                     title: 'QTY',
-                    width: '10%'
+                    width: '7%'
                 },
                 Unit: {
                     title: 'Unit',
@@ -169,5 +171,30 @@
             $("#SumTotalval").html(data.SumTotalval);                 
         });
     });
+</script>
+<script type="text/javascript">
+
+    $('#CategoryID').change(function () {
+        $.ajaxSetup({ cache: false });
+        var selectedItem = $(this).val();
+        if (selectedItem == "" || selectedItem == 0) {
+            var items = "<option value=''></option>";
+        } else {
+            $.post('<%: ResolveUrl("~/Report/GetItemByCategoryID?CategoryName=")%>' + $("#CategoryID > option:selected").text(), function (data) {
+                var items = "";
+                var items1 = "";
+                var isSeleted = '';
+                if (data.Selected) {
+                    isSeleted = " selected='selected'";
+                }
+                $.each(data, function (i, data) {
+                    items += "<option value='" + data.Value + isSeleted + "'>" + data.Text + "</option>";
+                });
+                $("#ID").html(items);
+                $("#ID").removeAttr('disabled');
+            });
+        }
+    });
+                   
 </script>
 </asp:Content>

@@ -272,6 +272,51 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public List<SelectListItem> GetAllItemName(ImportexcelEntity item)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllIteminfo, item);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["Item"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<SelectListItem> GetItemList(string ItemName)
+        {
+            ImportexcelEntity Model = new ImportexcelEntity();          
+            Model.Category = ItemName;
+
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetItemByCategoryID, Model);
+            List<SelectListItem> Items = new List<SelectListItem>();
+            if (dt.Rows.Count > 0)
+            {
+                Items.Add(new SelectListItem { Text = "", Value = "" });
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Items.Add(new SelectListItem { Text = dr["Item"].ToString(), Value = dr["ID"].ToString() });
+                }
+            }
+            else
+            {
+                Items = new List<SelectListItem>();
+                Items.Add(new SelectListItem { Text = "", Value = "" });
+            }
+            return Items;
+        }
 
     }
 }

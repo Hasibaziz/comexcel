@@ -24,6 +24,8 @@ namespace Test.Controllers
         {
             ImportexcelEntity impEntity = new ImportexcelEntity();
             ViewData["Name"] = GetAllCategoryName(impEntity);
+            ImportexcelEntity item = new ImportexcelEntity();
+            ViewData["ID"] = GetAllItemName(item);
             return View();
         }
         [HttpPost]
@@ -204,6 +206,17 @@ namespace Test.Controllers
             }
         }
 
+        public JsonResult GetItemByCategoryID(string CategoryName)
+        {
+            try
+            {
+                return Json(GetItemList(CategoryName));
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
 
 
      }

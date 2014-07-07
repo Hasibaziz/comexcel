@@ -46,12 +46,20 @@ namespace Test.Server.DAL
             object[] parametersCAT = new object[] { obj.Category };
             DbCommand dbCommandCAT = db.GetStoredProcCommand("spGetCategoryRecord", parametersCAT);
 
+            object[] parametersSC = new object[] { obj.SContract };
+            DbCommand dbCommandSC = db.GetStoredProcCommand("spGetSalesContractRecord", parametersSC);
+
+            object[] parametersBE = new object[] { obj.BENo, obj.BEDate };
+            DbCommand dbCommandBE = db.GetStoredProcCommand("spGetBillofEntryRecord", parametersBE);
+
 
             DataSet ds = db.ExecuteDataSet(dbCommand);
             DataSet dsInv = db.ExecuteDataSet(dbCommandInv);
             DataSet dsUDNo = db.ExecuteDataSet(dbCommandUDNo);
             DataSet dsLOC = db.ExecuteDataSet(dbCommandLOC);
             DataSet dsCAT = db.ExecuteDataSet(dbCommandCAT);
+            DataSet dsSC = db.ExecuteDataSet(dbCommandSC);
+            DataSet dsBE = db.ExecuteDataSet(dbCommandBE);
             return true;
         }
         public bool DeleteAllImportExcelListById(object param, Database db, DbTransaction transaction)
@@ -92,6 +100,27 @@ namespace Test.Server.DAL
             string sql = "SELECT B.Invoice AS Invoice  FROM [Commercial].[dbo].[ExcelImport] AS A,[Commercial].[dbo].[Importinfo] AS B where B.Invoice like A.Invoice";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             //db.AddInParameter(dbCommand, "Usermail", DbType.String, UserEntity.Usermail);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
+        public DataTable GetAllIteminfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            string sql = "SELECT ID, Item  FROM [Commercial].[dbo].[Importinfo]";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql); 
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
+        public DataTable GetItemByCategoryID(object param)
+        {
+            ImportexcelEntity obj = (ImportexcelEntity)param;
+            Database db = DatabaseFactory.CreateDatabase();
+            //string sql = "SELECT ID, SContract, UDNo, AMDNo, (LEFT(AMDDate, 2)+ SUBSTRING(AMDDate, 3,4)+ RIGHT(AMDDate,4)) AS AMDDate, Location, Invoice, Category, Item, QTY, Unit, CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, BENo, (LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate, Passbook, Pageno, BLNo, Mode FROM ExcelImport ORDER BY Invoice ASC";
+            string sql = "SELECT ID, Item FROM Importinfo WHERE Category like '"+obj.Category+"'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

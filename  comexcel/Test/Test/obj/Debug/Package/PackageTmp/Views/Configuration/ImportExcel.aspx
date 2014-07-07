@@ -94,11 +94,11 @@
                 },
                 Item: {
                     title: 'Item Name',
-                    width: '20%'
+                    width: '25%'
                 },
                 QTY: {
                     title: 'QTY',
-                    width: '10%'
+                    width: '7%'
                 },
                 Unit: {
                     title: 'Unit',

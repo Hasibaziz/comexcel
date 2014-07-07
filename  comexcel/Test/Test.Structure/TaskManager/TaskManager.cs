@@ -236,6 +236,14 @@ namespace Test.Structure.TaskManager
                     importexcelBLL = new ImportexcelBLL();
                     return importexcelBLL.Duplicateheckinv(param);
                     break;
+                case TestTask.AG_GetAllIteminfo:
+                    importexcelBLL = new ImportexcelBLL();
+                    return importexcelBLL.GetAllIteminfo(param);
+                    break;
+                case TestTask.AG_GetItemByCategoryID:
+                    importexcelBLL = new ImportexcelBLL();
+                    return importexcelBLL.GetItemByCategoryID(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - InventoryList

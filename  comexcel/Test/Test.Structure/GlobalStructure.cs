@@ -85,6 +85,8 @@ namespace Test.Structure
         public const string AG_GetAllCategoriesRecord = "AG_GetAllCategoriesRecord";
         public const string AG_GetAllInvoiceBycatname = "AG_GetAllInvoiceBycatname";
         public const string AG_GetqtytotalvalueRecord = "AG_GetqtytotalvalueRecord";
+        public const string AG_GetAllIteminfo = "AG_GetAllIteminfo";
+        public const string AG_GetItemByCategoryID = "AG_GetItemByCategoryID";
         public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
         #endregion
 
