@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using Test.Domain.Model;
 using Test.Structure;
+using System.Text;
 
 namespace Test.Controllers
 {
@@ -218,6 +219,17 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult InvoiceExcelReport(string EX1 = "", string EX2 = "")
+        {
+            // DataTable dt = -- > get your data
+            ImportexcelEntity _Model = new ImportexcelEntity();
+            _Model.Invoice = EX1;
+            _Model.Category = EX2;
 
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllInvoiceBycatnameexcel, _Model);
+            Test.Utility.Excelimport.ExcelFileResult actionResult = new Test.Utility.Excelimport.ExcelFileResult(dt) { FileDownloadName = "InvoiceWithItem.xls" };
+            return actionResult;
+        }
+       
      }
 }

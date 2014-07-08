@@ -88,6 +88,7 @@ namespace Test.Structure
         public const string AG_GetAllIteminfo = "AG_GetAllIteminfo";
         public const string AG_GetItemByCategoryID = "AG_GetItemByCategoryID";
         public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        public const string AG_GetAllInvoiceBycatnameexcel = "AG_GetAllInvoiceBycatnameexcel";
         #endregion
 
         #region Auto Generated - UDInfoList.

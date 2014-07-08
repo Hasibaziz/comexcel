@@ -31,6 +31,7 @@
                     B/E From Date : <%: Html.TextBoxFor(m => m.StartDate, new { @class = "Control_Moni_Width_100" })%>  
                     B/E To Date : <%: Html.TextBoxFor(m => m.EndDate, new { @class = "Control_Moni_Width_100" })%>  
                 </div>
+                <input type="button" value="Export Excel" title="Print"   onclick="impexcel()" />
               <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>              
                <div>Sum of QTY  : <span style="color:Red;" id="SumQTY" ></span> </div>   
                <div>Sum of Value: <span style="color:Red;" id="SumTotalval" ></span> </div>    
@@ -39,6 +40,16 @@
      <fieldset><div id="RecordsContainer"></div></fieldset>
    </div>
 </div>
+<script type="text/javascript">
+    function impexcel() {
+        EX1 = $("#Invoice").val();
+        EX2 = $("#CategoryID option:selected").text();
+        EX3 = $("#CategoryID").val();
+        EX4 = $("#StartDate").val();
+        EX5 = $("#EndDate").val();
+        window.location = "/Report/InvoiceExcelReport?EX1=" + EX1 + "&EX2=" + EX2;
+    }
+</script>
 <script type="text/javascript">
 
     $(document).ready(function () {

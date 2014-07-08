@@ -35,5 +35,14 @@ namespace Test.Server.BLL
             return retObj;
         }
 
+        public object GetAllInvoiceBycatnameexcel(object param)
+        {
+            object retObj = null;
+            CategoriesrptDAL rptDAL = new CategoriesrptDAL();
+            ImportexcelEntity impEntity = (ImportexcelEntity)param;
+            retObj = (object)rptDAL.GetAllInvoiceBycatnameexcel(impEntity, param);
+            return retObj;
+        }
+
     }
 }

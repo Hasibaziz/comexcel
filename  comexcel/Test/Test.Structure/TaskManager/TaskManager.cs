@@ -260,6 +260,10 @@ namespace Test.Structure.TaskManager
                     ctrrptBLL = new CategoriesrptBLL();
                     return ctrrptBLL.GetqtytotalvalueRecord(param);
                     break;
+                case TestTask.AG_GetAllInvoiceBycatnameexcel:
+                    ctrrptBLL = new CategoriesrptBLL();
+                    return ctrrptBLL.GetAllInvoiceBycatnameexcel(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - InventoryList
