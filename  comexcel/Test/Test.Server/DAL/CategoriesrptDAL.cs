@@ -54,10 +54,28 @@ namespace Test.Server.DAL
             //return ds.Tables[0];
 
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, [Mode], [BENo],(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate FROM [Commercial].[dbo].[Importinfo] WHERE Category='"+obj.Category+"'   ORDER BY Invoice, Category  ASC";
-            DbCommand dbCommand = db.GetSqlStringCommand(sql);
-            DataSet ds = db.ExecuteDataSet(dbCommand);
-            return ds.Tables[0];
+            if (obj.Category != null && obj.Invoice=="")
+            {
+                string sql = "SELECT [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, [Mode], [BENo],(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate FROM [Commercial].[dbo].[Importinfo] WHERE Category='" + obj.Category + "'   ORDER BY Invoice, Category  ASC";
+                DbCommand dbCommand = db.GetSqlStringCommand(sql);
+                DataSet ds = db.ExecuteDataSet(dbCommand);
+                return ds.Tables[0];
+             }
+            else if (obj.Category != null && obj.Invoice != null)
+            {
+                string sql = "SELECT [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, [Mode], [BENo],(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate FROM [Commercial].[dbo].[Importinfo] WHERE Category='" + obj.Category + "' AND Invoice='" + obj.Invoice + "'  ORDER BY Invoice, Category  ASC";
+                DbCommand dbCommand = db.GetSqlStringCommand(sql);
+                DataSet ds = db.ExecuteDataSet(dbCommand);
+                return ds.Tables[0];
+            }
+            else
+            {
+                string sql = "SELECT [Invoice], [Category], [Item], [QTY], [Unit], CONVERT(decimal(10,2), [TotalValue]) AS TotalValue, [Mode], [BENo],(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6)) AS BEDate FROM [Commercial].[dbo].[Importinfo] ORDER BY Invoice, Category  ASC";
+                DbCommand dbCommand = db.GetSqlStringCommand(sql);
+                DataSet ds = db.ExecuteDataSet(dbCommand);
+                return ds.Tables[0];
+            }
+            
         }
 
     }
