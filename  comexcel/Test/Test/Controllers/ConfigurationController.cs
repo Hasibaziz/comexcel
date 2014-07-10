@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using Test.Utility;
+using System.Web.UI;
 
 namespace Test.Controllers
 {
@@ -658,6 +659,7 @@ namespace Test.Controllers
                     //Create Connection to Excel work book and add oledb namespace
                     OleDbConnection excelConnection = new OleDbConnection(excelConnectionString);
                     excelConnection.Open();
+                   
                     DataTable dt = new DataTable();
 
                     dt = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
@@ -675,14 +677,30 @@ namespace Test.Controllers
                         t++;
                     }
                     OleDbConnection excelConnection1 = new OleDbConnection(excelConnectionString);
-                    DataSet ds = new DataSet();
+                    excelConnection.Close();
+
+                    DataSet ds = new DataSet();                    
 
                     string query = string.Format("Select * from [{0}]", excelSheets[0]);
                     //string DEL = string.Format("DELETE FROM [{0}]", excelSheets[0]); //For Deleting the Data from Excel
                     using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, excelConnection1))
                     {
                         dataAdapter.Fill(ds);
-                    }                             
+                        dt = ds.Tables[0];
+                    }   
+                    
+                   ////For Validation the First Row on The Excel File-like Sales Contract.
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {               
+                       if (dt.Rows[i][0].ToString() == "")
+                        {
+                          int RowNo = i + 2;        
+                          //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "InvalidArgs", "alert('Please enter Employee ID in row " + RowNo + "');", true);
+                          //ViewBag.message = "Please check the Blank Field";                         
+                          ModelState.AddModelError("", "Please check the Blank(Sales Contract) in Row- " + RowNo + "");
+                          return View();
+                          }
+                      }
 
                     bool isUpdate = false;
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)

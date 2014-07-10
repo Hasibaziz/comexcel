@@ -1,0 +1,29 @@
+﻿
+.nGrid {   
+    width: 100%;   
+    background-color: #fff;   
+    margin: 5px 0 10px 0;   
+}  
+.nGrid td {   
+    padding: 2px;   
+    color: black;   
+}  
+.nGrid th {   
+    padding: 4px 2px;   
+    color: #fff;   
+    background-color: #2a5780;   
+    font-size: 0.9em;   
+}  
+.nGrid .pgr { background-color:#2a5780 }  
+.nGrid .pgr table { margin: 5px 0; }  
+.nGrid .pgr td {   
+    border-width: 0;   
+    padding: 0 6px;   
+    
+    font-weight: bold;   
+    color: #fff;   
+    line-height: 12px;   
+ }     
+.nGrid .pgr a { color: #666; text-decoration: none; }  
+.nGrid .pgr a:hover { color: #000; text-decoration: none; } 
+
