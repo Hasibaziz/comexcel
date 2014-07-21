@@ -43,6 +43,7 @@ namespace Test.Models
 
     public class LoginModel
     {
+        public string ID { get; set; }
         [Required]
         [Display(Name = "Usename")]
         public string UserName { get; set; }
@@ -50,6 +51,10 @@ namespace Test.Models
         [Required]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "IsActive")]
+        public string IsActive { get; set; }
 
     }
 

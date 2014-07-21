@@ -81,18 +81,55 @@ namespace Test.Controllers
 
             set { Session["UserEmail"] = value; }
         }
-
-        protected void SetLoginSessionData(SystemContact contact, bool createPersistentCookie)
+        public string CurrentUserPassword
         {
-            SetUserSessionData(contact);
+            get
+            {
+                if (Session["UserPassword"] != null)
+                {
+                    return (Session["UserPassword"].ToString());
+                }
+
+                return string.Empty;
+            }
+            set
+            {
+                Session["UserPassword"] = value;
+            }
+        }
+        public string CurrentUserIsActive
+        {
+            get
+            {
+                if (Session["IsActive"] != null)
+                {
+                    return (Session["IsActive"].ToString());
+                }
+
+                return string.Empty;
+            }
+            set
+            {
+                Session["IsActive"] = value;
+            }
+        }
+       
+        protected void SetLoginSessionData(LoginModel LoginM, bool createPersistentCookie)
+        {
+            SetUserSessionData(LoginM);
             FormsAuthentication.SetAuthCookie("1", createPersistentCookie);
+            Session.Timeout = 10;
+
         }
 
-        protected void SetUserSessionData(SystemContact contact)
+        protected void SetUserSessionData(LoginModel LoginM)
         {
-            CurrentUserName = contact.FirstName + " " + contact.LastName;
+            //CurrentUserName = LoginM.Id + " " + LoginM.Password;
+            CurrentUserPassword = LoginM.Password;
+            CurrentUserName = LoginM.UserName;
+            CurrentUserIsActive = LoginM.IsActive;
             LoginDatetime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
-            CurrentUserId = "1";
+            CurrentUserId = LoginM.ID;
         }
 
         public bool isValidField(string _val)

@@ -638,9 +638,9 @@ namespace Test.Controllers
                     string fileLocation = string.Format("{0}/{1}", Server.MapPath("~/Temp"), Request.Files["FileUpload"].FileName);
 
                     if (System.IO.File.Exists(fileLocation))
-                        System.IO.File.Delete(fileLocation);
+                            System.IO.File.Delete(fileLocation);
 
-                    Request.Files["FileUpload"].SaveAs(fileLocation);
+                    Request.Files["FileUpload"].SaveAs(fileLocation); 
                     string excelConnectionString = string.Empty;
 
                     excelConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileLocation + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
@@ -660,7 +660,7 @@ namespace Test.Controllers
                     OleDbConnection excelConnection = new OleDbConnection(excelConnectionString);
                     excelConnection.Open();
                    
-                    DataTable dt = new DataTable();
+                   DataTable dt = new DataTable();
 
                     dt = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                     if (dt == null)
@@ -668,7 +668,7 @@ namespace Test.Controllers
                         return null;
                     }
 
-                    String[] excelSheets = new String[dt.Rows.Count];
+                     String[] excelSheets = new String[dt.Rows.Count];
                     int t = 0;
                     //excel data saves in temp file here.
                     foreach (DataRow row in dt.Rows)
@@ -679,16 +679,27 @@ namespace Test.Controllers
                     OleDbConnection excelConnection1 = new OleDbConnection(excelConnectionString);
                     excelConnection.Close();
 
-                    DataSet ds = new DataSet();                    
+                    DataSet ds = new DataSet();
 
-                    string query = string.Format("Select * from [{0}]", excelSheets[0]);
+                    string query = string.Format("Select * from [{0}]", excelSheets[0]);    //Range of selection: string cmdText = "SELECT * FROM [w1$A10:B10]";
                     //string DEL = string.Format("DELETE FROM [{0}]", excelSheets[0]); //For Deleting the Data from Excel
                     using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, excelConnection1))
                     {
                         dataAdapter.Fill(ds);
                         dt = ds.Tables[0];
-                    }   
+                    }
+
+                    // Putting Status on the Status Field
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (dt.Rows[i][17].ToString() == "")
+                        {
+                            string Status = string.Format("Update  [{0}] set '" + dt.Rows[i][17].ToString() + "'='Post' where '" + dt.Rows[i][17].ToString() + "'='' ", excelSheets[0]);
+                            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(Status, excelConnection1);                            
+                        }
+                    }
                     
+
                    ////For Validation the First Row on The Excel File-like Sales Contract.
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {               

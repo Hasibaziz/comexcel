@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using Test.Models;
 using System.Data;
+using Test.DAL;
 
 namespace Test.Controllers
 {
@@ -21,43 +22,30 @@ namespace Test.Controllers
         [HttpPost]
         public ActionResult Login(string submit, LoginModel model)
         {
-            if (ModelState.IsValid)
+            User iUser = new User();
+            DataTable dt = iUser.GetUserInfo(model);
+
+            if (dt.Rows.Count > 0)
             {
-                if (model.Password == "123" && model.UserName == "Admin")
-                {
-                    SystemContact contactAd = new SystemContact();
-                    contactAd.FirstName = "Admin";
-                    contactAd.LastName = "Admin";
-                    //Guid _id = new Guid("0b39599f-1db7-4156-8ceb-1da3dce8b5bf");
-                    contactAd.Id = "1";
-                    SetLoginSessionData(contactAd, false);
-                    return RedirectToAction("Index", "Home");
+                model.IsActive = dt.Rows[0]["IsActive"].ToString();
+                if ((model.UserName == dt.Rows[0]["UserName"].ToString()) 
+                    && (model.Password == dt.Rows[0]["Password"].ToString()))
+                {                   
+                    model.UserName = dt.Rows[0]["UserName"].ToString();
+                    model.Password = dt.Rows[0]["Password"].ToString();
+                    SetLoginSessionData(model, false);
+                    return RedirectToAction("Index", "Home");                    
                 }
-
-                //DataTable dt = DAL.User.GetUserInfo(model.UserName);
-                //if (dt.Rows.Count > 0)
-                //{
-                //    if (model.Password == dt.Rows[0]["VPASSWORD"].ToString())
-                //    {
-                //        SystemContact contact = new SystemContact();
-                //        contact.FirstName = "";
-                //        contact.LastName =dt.Rows[0]["VEMPNAME"].ToString() ;
-                //        contact.Id = dt.Rows[0]["VUSERID"].ToString();
-                //        SetLoginSessionData(contact, false);
-                //        return RedirectToAction("Index", "Home");
-                //    }
-                //    else
-                //    {
-
-                //        ModelState.AddModelError("UserName", "invalid username or password.");
-                //    }
-                //}
-                //else
-                //{
-
-                //    ModelState.AddModelError("UserName", "invalid username or password.");
-                //}
+                else
+                {
+                  ModelState.AddModelError("UserName", "invalid username or password.");
+                }
             }
+            else
+            {
+              ModelState.AddModelError("UserName", "invalid username or password.");
+            }
+
             return View("Login", model);
         }
 
