@@ -88,9 +88,12 @@
     <Compile Include="BLL\CategorydetailsBLL.cs" />
     <Compile Include="BLL\CategorynameBLL.cs" />
     <Compile Include="BLL\CommonBLL.cs" />
+    <Compile Include="BLL\ConsigneeDetailsBLL.cs" />
+    <Compile Include="BLL\ExporterDetailsBLL.cs" />
     <Compile Include="BLL\ImportexcelBLL.cs" />
     <Compile Include="BLL\LocationInfoBLL.cs" />
     <Compile Include="BLL\ModeinfoBLL.cs" />
+    <Compile Include="BLL\NotifypartyDetailsBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLLPartial.cs" />
     <Compile Include="BLL\TrServicemasterBLL.cs" />
@@ -102,9 +105,12 @@
     <Compile Include="DAL\CategorydetailsDAL.cs" />
     <Compile Include="DAL\CategorynameDAL.cs" />
     <Compile Include="DAL\CommomDAL.cs" />
+    <Compile Include="DAL\ConsigneeDetailsDAL.cs" />
+    <Compile Include="DAL\ExporterDetailsDAL.cs" />
     <Compile Include="DAL\ImportexcelDAL.cs" />
     <Compile Include="DAL\LocationInfoDAL.cs" />
     <Compile Include="DAL\ModeinfoDAL.cs" />
+    <Compile Include="DAL\NotifypartyDetailsDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDALPartial.cs" />
     <Compile Include="DAL\TrServicemasterDAL.cs" />

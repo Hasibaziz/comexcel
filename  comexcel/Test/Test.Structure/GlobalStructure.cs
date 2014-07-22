@@ -98,6 +98,27 @@ namespace Test.Structure
         //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
         #endregion
 
+        #region Auto Generated - ExporterDetails.
+        public const string AG_GetAllExporterDetailsRecord = "AG_GetAllExporterDetailsRecord";
+        public const string AG_SaveExporterDetailsInfo = "AG_SaveExporterDetailsInfo";
+        public const string AG_UpdateExporterDetailsInfo = "AG_UpdateExporterDetailsInfo";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
+
+        #region Auto Generated - ConsigneeDetails.
+        public const string AG_GetAllConsigneeDetailsRecord = "AG_GetAllConsigneeDetailsRecord";
+        public const string AG_SaveConsigneeDetailsInfo = "AG_SaveConsigneeDetailsInfo";
+        public const string AG_UpdateConsigneeDetailsInfo = "AG_UpdateConsigneeDetailsInfo";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
+
+        #region Auto Generated - NotifypartyDetailsRecord.
+        public const string AG_GetAllNotifypartyDetailsRecord = "AG_GetAllNotifypartyDetailsRecord";
+        public const string AG_SaveNotifypartyDetailsInfo = "AG_SaveNotifypartyDetailsInfo";
+        public const string AG_UpdateNotifypartyDetailsInfo = "AG_UpdateNotifypartyDetailsInfo";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
+
 
     }
 }

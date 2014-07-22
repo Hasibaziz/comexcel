@@ -56,6 +56,10 @@ namespace Test.Models
         [Display(Name = "IsActive")]
         public string IsActive { get; set; }
 
+        [Required]
+        [Display(Name = "Group")]
+        public string Groups { get; set; }
+
     }
 
     public class SystemContact

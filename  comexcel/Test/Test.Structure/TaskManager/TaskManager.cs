@@ -282,6 +282,53 @@ namespace Test.Structure.TaskManager
                 //    break;
                 #endregion
 
+                #region Auto Generated - ExporterDetails
+                case TestTask.AG_GetAllExporterDetailsRecord:
+                    ExporterDetailsBLL EXBLL = null;
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.GetAllExporterDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveExporterDetailsInfo:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.SaveExporterDetailsInfo(param);
+                    break;
+                case TestTask.AG_UpdateExporterDetailsInfo:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.UpdateExporterDetailsInfo(param);
+                    break;
+                #endregion
+
+                #region Auto Generated - ConsigneeDetails
+                case TestTask.AG_GetAllConsigneeDetailsRecord:
+                    ConsigneeDetailsBLL CONBLL = null;
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.GetAllConsigneeDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveConsigneeDetailsInfo:
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.SaveConsigneeDetailsInfo(param);
+                    break;
+                case TestTask.AG_UpdateConsigneeDetailsInfo:
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.UpdateConsigneeDetailsInfo(param);
+                    break;
+                #endregion
+
+                #region Auto Generated - NotifypartyDetailsRecord
+                case TestTask.AG_GetAllNotifypartyDetailsRecord:
+                    NotifypartyDetailsBLL NOTBLL = null;
+                    NOTBLL = new NotifypartyDetailsBLL();
+                    return NOTBLL.GetAllNotifypartyDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveNotifypartyDetailsInfo:
+                    NOTBLL = new NotifypartyDetailsBLL();
+                    return NOTBLL.SaveNotifypartyDetailsInfo(param);
+                    break;
+                case TestTask.AG_UpdateNotifypartyDetailsInfo:
+                    NOTBLL = new NotifypartyDetailsBLL();
+                    return NOTBLL.UpdateNotifypartyDetailsInfo(param);
+                    break;
+                #endregion
 
                 default:
                     break;

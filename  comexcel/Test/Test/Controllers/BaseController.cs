@@ -113,7 +113,22 @@ namespace Test.Controllers
                 Session["IsActive"] = value;
             }
         }
-       
+        public string CurrentGroups
+        {
+            get
+            {
+                if (Session["Groups"] != null)
+                {
+                    return (Session["Groups"].ToString());
+                }
+
+                return string.Empty;
+            }
+            set
+            {
+                Session["Groups"] = value;
+            }
+        }
         protected void SetLoginSessionData(LoginModel LoginM, bool createPersistentCookie)
         {
             SetUserSessionData(LoginM);
@@ -128,6 +143,7 @@ namespace Test.Controllers
             CurrentUserPassword = LoginM.Password;
             CurrentUserName = LoginM.UserName;
             CurrentUserIsActive = LoginM.IsActive;
+            CurrentGroups = LoginM.Groups;
             LoginDatetime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
             CurrentUserId = LoginM.ID;
         }

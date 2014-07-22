@@ -33,8 +33,14 @@ namespace Test.Controllers
                 {                   
                     model.UserName = dt.Rows[0]["UserName"].ToString();
                     model.Password = dt.Rows[0]["Password"].ToString();
+                    model.Groups = dt.Rows[0]["Groups"].ToString();
                     SetLoginSessionData(model, false);
-                    return RedirectToAction("Index", "Home");                    
+                    if(CurrentGroups=="Admin")
+                       return RedirectToAction("Index", "Home");
+                    else if (CurrentGroups == "Private")
+                       return RedirectToAction("Index", "Private");
+                    else
+                        return RedirectToAction("Index", "Home");                    
                 }
                 else
                 {

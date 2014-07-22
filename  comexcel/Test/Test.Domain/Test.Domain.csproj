@@ -84,9 +84,12 @@
     <Compile Include="Model\CategoryEntity.cs" />
     <Compile Include="Model\CommonEntity.cs" />
     <Compile Include="Model\CompanyEntity.cs" />
+    <Compile Include="Model\ConsigneeEntity.cs" />
+    <Compile Include="Model\ExporterEntity.cs" />
     <Compile Include="Model\ImportexcelEntity.cs" />
     <Compile Include="Model\LocationEntity.cs" />
     <Compile Include="Model\ModeinfoEntity.cs" />
+    <Compile Include="Model\NotifypartyEntity.cs" />
     <Compile Include="Model\TrServicedetailsEntity.cs" />
     <Compile Include="Model\TrServicemasterEntity.cs" />
     <Compile Include="Model\UDEntity.cs" />
