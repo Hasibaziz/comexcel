@@ -296,6 +296,10 @@ namespace Test.Structure.TaskManager
                     EXBLL = new ExporterDetailsBLL();
                     return EXBLL.UpdateExporterDetailsInfo(param);
                     break;
+                case TestTask.AG_GetAllExporterInfo:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.GetAllExporterInfo(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - ConsigneeDetails
@@ -311,6 +315,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_UpdateConsigneeDetailsInfo:
                     CONBLL = new ConsigneeDetailsBLL();
                     return CONBLL.UpdateConsigneeDetailsInfo(param);
+                    break;
+                case TestTask.AG_GetAllConsigneeInfo:
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.GetAllConsigneeInfo(param);
                     break;
                 #endregion
 
@@ -328,7 +336,52 @@ namespace Test.Structure.TaskManager
                     NOTBLL = new NotifypartyDetailsBLL();
                     return NOTBLL.UpdateNotifypartyDetailsInfo(param);
                     break;
+                case TestTask.AG_GetAllNotifypartyInfo:
+                    NOTBLL = new NotifypartyDetailsBLL();
+                    return NOTBLL.GetAllNotifypartyInfo(param);
+                    break;
                 #endregion
+
+                #region Auto Generated - HSCodeDetailsRecord
+                case TestTask.AG_GetAllHSCodeDetailsRecord:
+                    HSCodeBLL HSBLL = null;
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.GetAllHSCodeDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveHSCodeDetailsInfo:
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.SaveHSCodeDetailsInfo(param);
+                    break;
+                case TestTask.AG_UpdateHSCodeDetailsInfo:
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.UpdateHSCodeDetailsInfo(param);
+                    break;
+                case TestTask.AG_GetAllHSCodeInfo:
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.GetAllHSCodeInfo(param);
+                    break;
+                #endregion
+
+                #region Auto Generated - ExportFormEntryRecord
+                case TestTask.AG_GetAllExportFormDetailsRecord:
+                    ExportFormEntryBLL ExfBLL = null;
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetAllExportFormDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveExportFormEntryRecord:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.SaveExportFormEntryRecord(param);
+                    break;
+                //case TestTask.AG_UpdateExportFormEntryRecord:
+                //    ExfBLL = new ExportFormEntryBLL();
+                //    return ExfBLL.UpdateExportFormEntryRecord(param);
+                //    break;
+                //case TestTask.AG_GetAllHSCodeInfo:
+                //    HSBLL = new HSCodeBLL();
+                //    return HSBLL.GetAllHSCodeInfo(param);
+                //    break;
+                #endregion
+
 
                 default:
                     break;
