@@ -43,5 +43,13 @@ namespace Test.Server.DAL
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
+        public DataTable GetAllConsigneeInfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, ConsigneeNo FROM ConsigneeDetails";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

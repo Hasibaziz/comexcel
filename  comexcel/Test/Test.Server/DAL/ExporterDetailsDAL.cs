@@ -42,5 +42,13 @@ namespace Test.Server.DAL
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
+        public DataTable GetAllExporterInfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID AS ExporterID, ExporterNo FROM ExporterDetails";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }
