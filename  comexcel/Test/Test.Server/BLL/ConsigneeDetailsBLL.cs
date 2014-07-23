@@ -73,5 +73,12 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+        public object GetAllConsigneeInfo(object param)
+        {
+            object retObj = null;
+            ConsigneeDetailsDAL CONDAL = new ConsigneeDetailsDAL();
+            retObj = (object)CONDAL.GetAllConsigneeInfo(param);
+            return retObj;
+        }
     }
 }

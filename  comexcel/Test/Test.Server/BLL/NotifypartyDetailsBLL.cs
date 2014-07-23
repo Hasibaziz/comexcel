@@ -15,8 +15,8 @@ namespace Test.Server.BLL
         public object GetAllNotifypartyDetailsRecord(object param)
         {
             object retObj = null;
-            NotifypartyDetailsDAL EXDAL = new NotifypartyDetailsDAL();
-            retObj = (object)EXDAL.GetAllNotifypartyDetailsRecord(param);
+            NotifypartyDetailsDAL notDAL = new NotifypartyDetailsDAL();
+            retObj = (object)notDAL.GetAllNotifypartyDetailsRecord(param);
             return retObj;
         }
         public object SaveNotifypartyDetailsInfo(object param)
@@ -71,6 +71,13 @@ namespace Test.Server.BLL
                     connection.Close();
                 }
             }
+            return retObj;
+        }
+        public object GetAllNotifypartyInfo(object param)
+        {
+            object retObj = null;
+            NotifypartyDetailsDAL notDAL = new NotifypartyDetailsDAL();
+            retObj = (object)notDAL.GetAllNotifypartyInfo(param);
             return retObj;
         }
     }

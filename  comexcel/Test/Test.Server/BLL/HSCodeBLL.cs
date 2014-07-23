@@ -10,16 +10,16 @@ using Test.Server.DAL;
 
 namespace Test.Server.BLL
 {
-    public partial class ExporterDetailsBLL
+    public partial class HSCodeBLL
     {
-        public object GetAllExporterDetailsRecord(object param)
+        public object GetAllHSCodeDetailsRecord(object param)
         {
             object retObj = null;
-            ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
-            retObj = (object)EXDAL.GetAllExporterDetailsRecord(param);
+            HSCodeDAL HSDAL = new HSCodeDAL();
+            retObj = (object)HSDAL.GetAllHSCodeDetailsRecord(param);
             return retObj;
         }
-        public object SaveExporterDetailsInfo(object param)
+        public object SaveHSCodeDetailsInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
             object retObj = null;
@@ -29,9 +29,9 @@ namespace Test.Server.BLL
                 DbTransaction transaction = connection.BeginTransaction();
                 try
                 {
-                    ExporterEntity EXEntity = (ExporterEntity)param;
-                    ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
-                    retObj = (object)EXDAL.SaveExporterDetailsInfo(EXEntity, db, transaction);
+                    HSCodeEntity HSEntity = (HSCodeEntity)param;
+                    HSCodeDAL HSDAL = new HSCodeDAL();
+                    retObj = (object)HSDAL.SaveHSCodeDetailsInfo(HSEntity, db, transaction);
                     transaction.Commit();
                 }
                 catch
@@ -46,7 +46,7 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
-        public object UpdateExporterDetailsInfo(object param)
+        public object UpdateHSCodeDetailsInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
             object retObj = null;
@@ -56,9 +56,9 @@ namespace Test.Server.BLL
                 DbTransaction transaction = connection.BeginTransaction();
                 try
                 {
-                    ExporterEntity EXEntity = (ExporterEntity)param;
-                    ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
-                    retObj = (object)EXDAL.UpdateExporterDetailsInfo(EXEntity, db, transaction);
+                    HSCodeEntity HSEntity = (HSCodeEntity)param;
+                    HSCodeDAL HSDAL = new HSCodeDAL();
+                    retObj = (object)HSDAL.UpdateHSCodeDetailsInfo(HSEntity, db, transaction);
                     transaction.Commit();
                 }
                 catch
@@ -73,11 +73,11 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
-        public object GetAllExporterInfo(object param)
+        public object GetAllHSCodeInfo(object param)
         {
             object retObj = null;
-            ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
-            retObj = (object)EXDAL.GetAllExporterInfo(param);
+            HSCodeDAL HSDAL = new HSCodeDAL();
+            retObj = (object)HSDAL.GetAllHSCodeInfo(param);
             return retObj;
         }
     }
