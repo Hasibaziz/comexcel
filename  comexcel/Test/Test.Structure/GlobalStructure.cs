@@ -102,21 +102,36 @@ namespace Test.Structure
         public const string AG_GetAllExporterDetailsRecord = "AG_GetAllExporterDetailsRecord";
         public const string AG_SaveExporterDetailsInfo = "AG_SaveExporterDetailsInfo";
         public const string AG_UpdateExporterDetailsInfo = "AG_UpdateExporterDetailsInfo";
-        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        public const string AG_GetAllExporterInfo = "AG_GetAllExporterInfo";
         #endregion
 
         #region Auto Generated - ConsigneeDetails.
         public const string AG_GetAllConsigneeDetailsRecord = "AG_GetAllConsigneeDetailsRecord";
         public const string AG_SaveConsigneeDetailsInfo = "AG_SaveConsigneeDetailsInfo";
         public const string AG_UpdateConsigneeDetailsInfo = "AG_UpdateConsigneeDetailsInfo";
-        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        public const string AG_GetAllConsigneeInfo = "AG_GetAllConsigneeInfo";
         #endregion
 
         #region Auto Generated - NotifypartyDetailsRecord.
         public const string AG_GetAllNotifypartyDetailsRecord = "AG_GetAllNotifypartyDetailsRecord";
         public const string AG_SaveNotifypartyDetailsInfo = "AG_SaveNotifypartyDetailsInfo";
         public const string AG_UpdateNotifypartyDetailsInfo = "AG_UpdateNotifypartyDetailsInfo";
-        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        public const string AG_GetAllNotifypartyInfo = "AG_GetAllNotifypartyInfo";
+        #endregion
+
+        #region Auto Generated - HSCodeDetailsRecord.
+        public const string AG_GetAllHSCodeDetailsRecord = "AG_GetAllHSCodeDetailsRecord";
+        public const string AG_SaveHSCodeDetailsInfo = "AG_SaveHSCodeDetailsInfo";
+        public const string AG_UpdateHSCodeDetailsInfo = "AG_UpdateHSCodeDetailsInfo";
+        public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
+        #endregion
+
+        #region Auto Generated - ExportFormEntryRecord.
+        public const string AG_GetAllExportFormDetailsRecord = "AG_GetAllExportFormDetailsRecord";
+        public const string AG_SaveExportFormEntryRecord = "AG_SaveExportFormEntryRecord";
+        public const string AG_UpdateExportFormEntryRecord = "AG_UpdateExportFormEntryRecord";
+        //public const string AG_UpdateHSCodeDetailsInfo = "AG_UpdateHSCodeDetailsInfo";
+        //public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
         #endregion
 
 
