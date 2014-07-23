@@ -4,9 +4,7 @@
     <a href="<%=Url.Content("~/Private/Exporter") %>">Exporter Entry</a>
     <a href="<%=Url.Content("~/Private/Consignee") %>">Consignee Entry</a>
     <a href="<%=Url.Content("~/Private/Notifyparty") %>">Notify Party Entry</a>
-    <%--<a href="<%=Url.Content("~/Private/CategoryDetails") %>">Category Details</a>
-    <a href="<%=Url.Content("~/Private/UDInfo") %>">U/D Information</a>
-    <a href="<%=Url.Content("~/Private/BEInfo") %>">B/E Information</a>--%>
-   <%-- <a href="<%=Url.Content("~/Private/ImportExcel") %>">Import Excel</a>--%>
-    
+    <a href="<%=Url.Content("~/Private/HSCode") %>">H.S. Code Entry</a>  
+    <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a> 
+    <a href="<%=Url.Content("~/Private/ExportFormEntry") %>">Export Form Entry</a>   
 </div>

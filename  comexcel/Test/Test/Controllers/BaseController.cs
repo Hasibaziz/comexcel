@@ -370,6 +370,98 @@ namespace Test.Controllers
             }
             return Items;
         }
+        public List<SelectListItem> GetAllExporterDetails(ExporterEntity Exp)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllExporterInfo, Exp);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ExporterID"].ToString(),
+                        Text = dr["ExporterNo"].ToString()
+                    });
 
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<SelectListItem> GetAllConsigneeDetails(ConsigneeEntity Con)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllConsigneeInfo, Con);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["ConsigneeNo"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<SelectListItem> GetAllNotifypartyDetails(NotifypartyEntity Not)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllNotifypartyInfo, Not);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["NotifyNo"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+         public List<SelectListItem> GetAllHSCodeDetails(HSCodeEntity hsCode)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllHSCodeInfo, hsCode);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["HSCode"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+ 
     }
 }

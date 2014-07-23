@@ -133,6 +133,13 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\SalesCarList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ExportFormEntry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportFormEntry.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExportformEntity.cs" />
     <Compile Include="Utility\BinaryFileResult.cs" />
     <Compile Include="Utility\Excelimport.cs" />
     <Compile Include="Views\Shared\Private.Master.cs">
@@ -364,6 +371,9 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Private\Consignee.aspx" />
     <Content Include="Views\Private\Exporter.aspx" />
+    <Content Include="Views\Private\ExportForm.aspx" />
+    <Content Include="Views\Private\ExportFormEntry.aspx" />
+    <Content Include="Views\Private\HSCode.aspx" />
     <Content Include="Views\Private\Index.aspx" />
     <Content Include="Views\Private\LeftMenu.ascx" />
     <Content Include="Views\Private\Notifyparty.aspx" />
@@ -403,6 +413,10 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <EmbeddedResource Include="Report\ExportFormEntry.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExportFormEntry.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
