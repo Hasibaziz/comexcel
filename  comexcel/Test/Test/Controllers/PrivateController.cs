@@ -52,7 +52,8 @@ namespace Test.Controllers
                             {
                                 ID = dr["ID"].ToString(),
                                 ExporterNo = dr["ExporterNo"].ToString(),
-                                ExporterName = dr["ExporterName"].ToString()
+                                ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString()
                             });
                         }
                         iCount += 1;
@@ -459,5 +460,131 @@ namespace Test.Controllers
             return File(stream, "application/pdf");
         }
 
+        public ActionResult Destination()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult DestinationList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllDestinationRecord, null);
+                    List<DestinationEntity> ItemList = null;
+                    ItemList = new List<DestinationEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new DestinationEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                Destination = dr["Destination"].ToString(),
+                                Port = dr["Port"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUpdateDestinationDetails(DestinationEntity _Model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                }
+
+
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveDestinationInfo, _Model);
+                else
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateDestinationInfo, _Model);
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    return Json(new { Result = "OK", Record = addedModel });
+                }
+                else
+                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+        public JsonResult AllExporterDetails()
+        {
+            try
+            {
+                ExporterEntity models = new ExporterEntity();
+                var jList = GetAllExporterDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult AllConsigneeDetails()
+        {
+            try
+            {
+                ConsigneeEntity models = new ConsigneeEntity();
+                var jList = GetAllConsigneeDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult AllNotifypartyDetails()
+        {
+            try
+            {
+                NotifypartyEntity models = new NotifypartyEntity();
+                var jList = GetAllNotifypartyDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult AllHSCodeDetails()
+        {
+            try
+            {
+                HSCodeEntity models = new HSCodeEntity();
+                var jList = GetAllHSCodeDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
     }
 }
