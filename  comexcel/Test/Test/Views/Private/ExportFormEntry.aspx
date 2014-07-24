@@ -5,7 +5,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<script type="text/javascript" >
+    $(document).ready(function () {
+        $("input#InvoiceDate").datepicker({ dateFormat: "dd-mm-yy" });
+    });
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
@@ -44,7 +48,8 @@
             <label for="ModelID">Exporter No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "Width=250" })%>           
+            <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "Width=250" })%>
             <%: Html.ValidationMessageFor(model => model.ExporterID)%>
         </div>
         <div class="editor-label01">
@@ -88,5 +93,8 @@
         </p>
     </fieldset>
 <% } %>
+<div>
+    <%: Html.ActionLink("Back to List", "ExportForm")%>
+</div>
 </div>
 </asp:Content>

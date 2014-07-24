@@ -126,6 +126,14 @@ namespace Test.Structure
         public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
         #endregion
 
+        #region Auto Generated - DestinationRecord.
+        public const string AG_GetAllDestinationRecord = "AG_GetAllDestinationRecord";
+        public const string AG_SaveDestinationInfo = "AG_SaveDestinationInfo";
+        public const string AG_UpdateDestinationInfo = "AG_UpdateDestinationInfo";
+        //public const string AG_UpdateHSCodeDetailsInfo = "AG_UpdateHSCodeDetailsInfo";
+        //public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
+        #endregion
+
         #region Auto Generated - ExportFormEntryRecord.
         public const string AG_GetAllExportFormDetailsRecord = "AG_GetAllExportFormDetailsRecord";
         public const string AG_SaveExportFormEntryRecord = "AG_SaveExportFormEntryRecord";

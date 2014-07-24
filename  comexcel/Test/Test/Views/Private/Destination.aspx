@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Private.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Exporter
+    Destination
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -24,9 +24,9 @@
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '<%=Url.Content("~/Private/ExporterDetailsList") %>',
-                    createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>'
+                    listAction: '<%=Url.Content("~/Private/DestinationList") %>',
+                    createAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>',
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>'
                     //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
                     //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
                 },
@@ -37,17 +37,13 @@
                         edit: false,
                         list: false
                     },
-                    ExporterNo: {
-                        title: 'Exporter No',
-                        width: '10%'                       
+                    Destination: {
+                        title: 'Destination',
+                        width: '10%'
                     },
-                    ExporterName: {
-                        title: 'Exporter Name',
-                        type: 'textarea'
-                    },
-                    RegDetails: {
-                        title: 'Registration Details',
-                        type: 'textarea'
+                    Port: {
+                        title: 'Port',
+                        width: '15%'
                     }
                 }
             });

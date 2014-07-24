@@ -15,7 +15,20 @@ namespace Test.Server.DAL
         public DataTable GetAllExportFormDetailsRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
+            //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
+            string sql = "SELECT A.ID, A.ContractNo, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
+            sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
+            sql = sql + " A.NotifyID, NOTI.NotifyName, ";
+            sql = sql + " A.HSCodeID, HS.HSCodeName,HS.ShortName, ";
+            sql = sql + " A.DestinationID, DC.Destination, DC.Port, ";
+            sql = sql + " A.FOBValue, A.CMValue";
+            sql = sql + " FROM ExportformDetails AS A";
+            sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
+            sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
+            sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
+            sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

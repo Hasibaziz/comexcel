@@ -85,6 +85,7 @@
     <Compile Include="Model\CommonEntity.cs" />
     <Compile Include="Model\CompanyEntity.cs" />
     <Compile Include="Model\ConsigneeEntity.cs" />
+    <Compile Include="Model\DestinationEntity.cs" />
     <Compile Include="Model\ExporterEntity.cs" />
     <Compile Include="Model\ExportformEntity.cs" />
     <Compile Include="Model\HSCodeEntity.cs" />

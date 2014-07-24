@@ -406,6 +406,8 @@ namespace Test.Controllers
                                 ExporterName = dr["ExporterName"].ToString(),
                                 ConsigneeID = dr["ConsigneeID"].ToString(),
                                 NotifyID = dr["NotifyID"].ToString(),
+                                Destination = dr["Destination"].ToString(),
+                                Port = dr["Port"].ToString(),
                                 HSCodeID = dr["HSCodeID"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
                                 CMValue = dr["CMValue"].ToString()

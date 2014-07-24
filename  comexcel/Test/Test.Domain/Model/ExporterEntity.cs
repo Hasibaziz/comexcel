@@ -10,5 +10,6 @@ namespace Test.Domain.Model
         public string ID { set; get; }
         public string ExporterNo { set; get; }
         public string ExporterName { set; get; }
+        public string RegDetails { set; get; }
     }
 }

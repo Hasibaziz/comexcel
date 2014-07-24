@@ -363,6 +363,26 @@ namespace Test.Structure.TaskManager
                 #endregion
 
                 #region Auto Generated - ExportFormEntryRecord
+                case TestTask.AG_GetAllDestinationRecord:
+                    DestinationBLL desBLL = null;
+                    desBLL = new DestinationBLL();
+                    return desBLL.GetAllDestinationRecord(param);
+                    break;
+                case TestTask.AG_SaveDestinationInfo:
+                    desBLL = new DestinationBLL();
+                    return desBLL.SaveDestinationInfo(param);
+                    break;
+                case TestTask.AG_UpdateDestinationInfo:
+                    desBLL = new DestinationBLL();
+                    return desBLL.UpdateDestinationInfo(param);
+                    break;
+                //case TestTask.AG_GetAllHSCodeInfo:
+                //    HSBLL = new HSCodeBLL();
+                //    return HSBLL.GetAllHSCodeInfo(param);
+                //    break;
+                #endregion
+
+                #region Auto Generated - ExportFormEntryRecord
                 case TestTask.AG_GetAllExportFormDetailsRecord:
                     ExportFormEntryBLL ExfBLL = null;
                     ExfBLL = new ExportFormEntryBLL();

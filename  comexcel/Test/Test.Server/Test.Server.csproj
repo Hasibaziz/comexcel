@@ -89,6 +89,7 @@
     <Compile Include="BLL\CategorynameBLL.cs" />
     <Compile Include="BLL\CommonBLL.cs" />
     <Compile Include="BLL\ConsigneeDetailsBLL.cs" />
+    <Compile Include="BLL\DestinationBLL.cs" />
     <Compile Include="BLL\ExporterDetailsBLL.cs" />
     <Compile Include="BLL\ExportFormEntryBLL.cs" />
     <Compile Include="BLL\HSCodeBLL.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="DAL\CategorynameDAL.cs" />
     <Compile Include="DAL\CommomDAL.cs" />
     <Compile Include="DAL\ConsigneeDetailsDAL.cs" />
+    <Compile Include="DAL\DestinationDAL.cs" />
     <Compile Include="DAL\ExporterDetailsDAL.cs" />
     <Compile Include="DAL\ExportFormEntryDAL.cs" />
     <Compile Include="DAL\HSCodeDAL.cs" />

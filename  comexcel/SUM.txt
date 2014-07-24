@@ -5,6 +5,21 @@ SELECT Invoice
   FROM [Commercial].[dbo].[Importinfo] GROUP BY Invoice, Category
 
 
+/**********************************************************
+SELECT A.ID, A.ContractNo, A.InvoiceNo, A.InvoiceDate, 
+A.ExporterID, EX.ExporterName, EX.RegDetails,
+A.ConsigneeID, CON.ConsigneeName,
+A.NotifyID, NOTI.NotifyName,
+A.HSCodeID, HS.HSCodeName,HS.ShortName,
+A.DestinationID, DC.Destination, DC.Port,
+A.FOBValue, A.CMValue
+
+FROM ExportformDetails AS A
+LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID
+LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID
+LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID
+LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID
+LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
 
 
 

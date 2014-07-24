@@ -19,6 +19,8 @@ namespace Test.Domain.Model
        public string NotifyName { set; get; }
        public string HSCodeID { set; get; }
        public string ShortName { set; get; }
+       public string Destination { set; get; }
+       public string Port { set; get; }
        public string FOBValue { set; get; }
        public string CMValue { set; get; }
 

@@ -14,7 +14,8 @@
      <fieldset><div id="RecordsContainer">
                  <input type="button" value="Print Report" title="Print"   onclick="printItem()" />
                </div>
-     </fieldset>
+     </fieldset>          
+        <%: Html.ActionLink("Add New Entry", "ExportFormEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>    
    </div>
 </div>
 <script type="text/javascript">
@@ -61,27 +62,35 @@
                     },
                     ExporterID: {
                         title: 'Exporter No',
-                        width: '10%'
+                        width: '10%',
+                        options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
                     },
                     ConsigneeID: {
                         title: 'Consignee No',
-                        width: '10%'
+                        width: '10%',
+                        options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                     },
                     NotifyID: {
                         title: 'Notify No',
-                        width: '10%'
+                        width: '10%',
+                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
                     },
                     HSCodeID: {
                         title: 'H.S. Code',
-                        width: '10%'
+                        width: '10%',
+                        options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+                    },
+                    Destination: {
+                        title: 'Destination',
+                        width: '5%'
                     },
                     FOBValue: {
                         title: 'FOB Value',
-                        width: '10%'
+                        width: '8%'
                     },
                     CMValue: {
                         title: 'C.M. Value',
-                        width: '10%'
+                        width: '8%'
                     }
                 }
             });
