@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript" >
     $(document).ready(function () {
-        $("input#InvoiceDate").datepicker({ dateFormat: "dd-mm-yy" });
+        $("input#InvoiceDate, #ContractDate, #TTDate").datepicker({ dateFormat: "dd-mm-yy" });
     });
 </script>
 <div class="mp_left_menu">
@@ -21,7 +21,7 @@
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
-        <legend>Export Form Entry</legend>
+        <legend>Basic Information Entry</legend>
            <%: Html.HiddenFor(model => model.ID)%>
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
@@ -29,6 +29,27 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ContractNo)%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
+        </div>
+         <div class="editor-label01">
+          <label for="ContractDate">Contract Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.ContractDate)%>
+            <%: Html.ValidationMessageFor(model => model.ContractDate)%>
+        </div>
+        <div class="editor-label01">
+          <label for="TTNo">TT No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.TTNo)%>
+            <%: Html.ValidationMessageFor(model => model.TTNo)%>
+        </div>
+         <div class="editor-label01">
+          <label for="TTDate">TT Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.TTDate)%>
+            <%: Html.ValidationMessageFor(model => model.TTDate)%>
         </div>
         <div class="editor-label01">
           <label for="InvoiceNo">Invoice No:</label>
@@ -38,7 +59,7 @@
             <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
         </div>
         <div class="editor-label01">
-          <label for="InvoiceDate">InvoiceDate:</label>
+          <label for="InvoiceDate">Invoice Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.InvoiceDate)%>

@@ -10,6 +10,10 @@ namespace Test.Domain.Model
        public string ID { set; get; }
        public string ContractNo { set; get; }
        public string ContractDate { set; get; }
+
+       public string TTNo { set; get; }
+       public string TTDate { set; get; }
+
        public string InvoiceNo { set; get; }
        public string InvoiceDate { set; get; }
        public string ExporterID { set; get; }
