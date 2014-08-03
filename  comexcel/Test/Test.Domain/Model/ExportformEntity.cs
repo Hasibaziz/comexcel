@@ -28,7 +28,33 @@ namespace Test.Domain.Model
        public string Port { set; get; }    
        public string FOBValue { set; get; }
        public string CMValue { set; get; }
+       public Sections Section { set; get; }
+       public Units Unit { set; get; }
+       public string Volume { set; get; }
+       public Currencies Currency { set; get; }
+       public Inconterms Inconterm { set; get; }
 
+       public enum Sections
+       {
+          PRIVATE,
+          PUBLIC,
+       }
+       public enum Units
+       { 
+           PCS,
+           SET,
+       }
+       public enum Currencies
+       { 
+           USDollers,
+           EUroes,
+           Pound,
+       }
+       public enum Inconterms
+       { 
+           FOB,
+           Others,
+       }
 
     }
 }
