@@ -439,7 +439,7 @@ namespace Test.Controllers
                 return null;
             }
         }
-         public List<SelectListItem> GetAllHSCodeDetails(HSCodeEntity hsCode)
+        public List<SelectListItem> GetAllHSCodeDetails(HSCodeEntity hsCode)
         {
             try
             {
@@ -452,6 +452,29 @@ namespace Test.Controllers
                     {
                         Value = dr["ID"].ToString(),
                         Text = dr["HSCode"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<SelectListItem> GetAllDestinationDetails(DestinationEntity dsCode)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllDestinationDetails, dsCode);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["CountryCode"].ToString()
                     });
 
                 }

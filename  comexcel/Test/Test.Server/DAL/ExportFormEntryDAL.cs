@@ -20,8 +20,8 @@ namespace Test.Server.DAL
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            sql = sql + " A.HSCodeID, HS.HSCodeName,HS.ShortName, ";
-            sql = sql + " A.DestinationID, DC.Destination, DC.Port, ";
+            sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
+            sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
             sql = sql + " A.FOBValue, A.CMValue";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
@@ -35,7 +35,7 @@ namespace Test.Server.DAL
         }
         public bool SaveExportFormEntryRecord(ExportformEntity exfEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @FOBValue, @CMValue )";
+            string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, DestinationID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @DestinationID, @FOBValue, @CMValue )";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
@@ -45,6 +45,7 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
             db.AddInParameter(dbCommand, "NotifyID", DbType.String, exfEntity.NotifyID);
             db.AddInParameter(dbCommand, "HSCodeID", DbType.String, exfEntity.HSCodeID);
+            db.AddInParameter(dbCommand, "DestinationID", DbType.String, exfEntity.DestinationID);
             db.AddInParameter(dbCommand, "FOBValue", DbType.String, exfEntity.FOBValue);
             db.AddInParameter(dbCommand, "CMValue", DbType.String, exfEntity.CMValue);
 

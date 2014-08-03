@@ -80,9 +80,10 @@
                         width: '10%',
                         options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
                     },
-                    Destination: {
+                    Name: {
                         title: 'Destination',
-                        width: '5%'
+                        width: '5%',
+                        options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
                     },
                     FOBValue: {
                         title: 'FOB Value',

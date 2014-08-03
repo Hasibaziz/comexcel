@@ -73,5 +73,12 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+        public object GetAllDestinationDetails(object param)
+        {
+            object retObj = null;
+            DestinationDAL destDAL = new DestinationDAL();
+            retObj = (object)destDAL.GetAllDestinationDetails(param);
+            return retObj;
+        }
     }
 }

@@ -376,10 +376,10 @@ namespace Test.Structure.TaskManager
                     desBLL = new DestinationBLL();
                     return desBLL.UpdateDestinationInfo(param);
                     break;
-                //case TestTask.AG_GetAllHSCodeInfo:
-                //    HSBLL = new HSCodeBLL();
-                //    return HSBLL.GetAllHSCodeInfo(param);
-                //    break;
+                case TestTask.AG_GetAllDestinationDetails:
+                    desBLL = new DestinationBLL();
+                    return desBLL.GetAllDestinationDetails(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - ExportFormEntryRecord

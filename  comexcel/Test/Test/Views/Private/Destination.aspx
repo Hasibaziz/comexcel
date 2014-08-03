@@ -37,8 +37,12 @@
                         edit: false,
                         list: false
                     },
-                    Destination: {
-                        title: 'Destination',
+                    CountryCode: {
+                        title: 'Country Code',
+                        width: '10%'
+                    },
+                    Name: {
+                        title: 'Name',
                         width: '10%'
                     },
                     Port: {

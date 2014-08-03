@@ -339,6 +339,8 @@ namespace Test.Controllers
             ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
             HSCodeEntity hsEntity = new HSCodeEntity();
             ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
             return View();
         }
         [HttpPost]
@@ -404,11 +406,17 @@ namespace Test.Controllers
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
                                 ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString(),
                                 ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
                                 NotifyID = dr["NotifyID"].ToString(),
-                                Destination = dr["Destination"].ToString(),
-                                Port = dr["Port"].ToString(),
+                                NotifyName = dr["NotifyName"].ToString(),
                                 HSCodeID = dr["HSCodeID"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+                                ShortName = dr["ShortName"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
+                                Port = dr["Port"].ToString(),                               
                                 FOBValue = dr["FOBValue"].ToString(),
                                 CMValue = dr["CMValue"].ToString()
                             });
@@ -451,9 +459,21 @@ namespace Test.Controllers
                 obj.InvoiceDate = dr.InvoiceDate;
                 obj.ExporterID = dr.ExporterID;
                 obj.ExporterName = dr.ExporterName;
+                obj.RegDetails = dr.RegDetails;
                 obj.ConsigneeID = dr.ConsigneeID;
+                obj.ConsigneeName = dr.ConsigneeName;
                 obj.NotifyID = dr.NotifyID;
+                obj.NotifyName = dr.NotifyName;
                 obj.HSCodeID = dr.HSCodeID;
+                obj.HSCode = dr.HSCode;
+                obj.ShortName = dr.ShortName;
+                obj.NotifyName = dr.NotifyName;
+                obj.DestinationID = dr.DestinationID;
+                obj.CountryCode = dr.CountryCode;
+                obj.Name = dr.Name;
+                obj.Port = dr.Port;
+                obj.FOBValue = dr.FOBValue;
+                obj.CMValue = dr.CMValue;
                 al.Add(obj);
             }
 
@@ -486,7 +506,8 @@ namespace Test.Controllers
                             ItemList.Add(new DestinationEntity()
                             {
                                 ID = dr["ID"].ToString(),
-                                Destination = dr["Destination"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
                                 Port = dr["Port"].ToString()
                             });
                         }
@@ -581,6 +602,19 @@ namespace Test.Controllers
             {
                 HSCodeEntity models = new HSCodeEntity();
                 var jList = GetAllHSCodeDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult AllDestinationDetails()
+        {
+            try
+            {
+                DestinationEntity models = new DestinationEntity();
+                var jList = GetAllDestinationDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
                 return Json(new { Result = "OK", Options = jList });
             }
             catch (Exception ex)

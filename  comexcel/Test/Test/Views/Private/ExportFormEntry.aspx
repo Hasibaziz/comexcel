@@ -74,6 +74,13 @@
             <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
         </div>
         <div class="editor-label01">
+            <label for="ModelID">Destination:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.ValidationMessageFor(model => model.DestinationID)%>
+        </div>
+        <div class="editor-label01">
             <label for="RDate">FOB Value:</label>
         </div>
         <div class="editor-field01">
