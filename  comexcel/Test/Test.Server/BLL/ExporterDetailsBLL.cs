@@ -80,5 +80,12 @@ namespace Test.Server.BLL
             retObj = (object)EXDAL.GetAllExporterInfo(param);
             return retObj;
         }
+        public object GetExporterDetails(object param)
+        {
+            object retObj = null;
+            ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
+            retObj = (object)EXDAL.GetExporterDetails(param);
+            return retObj;
+        }
     }
 }

@@ -32,32 +32,38 @@ namespace Test.Domain.Model
        public string Port { set; get; }    
        public string FOBValue { set; get; }
        public string CMValue { set; get; }
-       public Sections Section { set; get; }
-       public Units Unit { set; get; }
+       public string Section { set; get; }
+       /// <summary>
+       /// if use like public Units Unit { set; get; }  Units type Unit variable the it 
+       /// will pass the Content of A DropDown List But
+       /// if Pass like  public string Unit { set; get; }  then Only Value will pass from the 
+       /// DropDown List.
+       /// </summary>
+       public string Unit { set; get; }             
        public string Volume { set; get; }
-       public Currencies Currency { set; get; }
-       public Inconterms Inconterm { set; get; }
+       public string Currency { set; get; }
+       public string Inconterm { set; get; }
 
        public enum Sections
        {
-          PRIVATE,
-          PUBLIC,
+          PRIVATE = 1,
+          PUBLIC = 2,
        }
        public enum Units
        { 
-           PCS,
-           SET,
+           PCS = 1,
+           SET = 2,
        }
        public enum Currencies
        { 
-           USDollers,
-           EUroes,
-           Pound,
+           USDollers = 1,
+           EUroes = 2,
+           Pound = 3,
        }
        public enum Inconterms
        { 
-           FOB,
-           Others,
+           FOB = 1,
+           Others = 2,
        }
 
     }

@@ -300,6 +300,10 @@ namespace Test.Structure.TaskManager
                     EXBLL = new ExporterDetailsBLL();
                     return EXBLL.GetAllExporterInfo(param);
                     break;
+                case TestTask.AG_GetExporterDetails:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.GetExporterDetails(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - ConsigneeDetails
@@ -319,6 +323,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetAllConsigneeInfo:
                     CONBLL = new ConsigneeDetailsBLL();
                     return CONBLL.GetAllConsigneeInfo(param);
+                    break;
+                case TestTask.AG_GetConsigneeName:
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.GetConsigneeName(param);
                     break;
                 #endregion
 
@@ -340,6 +348,10 @@ namespace Test.Structure.TaskManager
                     NOTBLL = new NotifypartyDetailsBLL();
                     return NOTBLL.GetAllNotifypartyInfo(param);
                     break;
+                case TestTask.AG_GetNotifyName:
+                    NOTBLL = new NotifypartyDetailsBLL();
+                    return NOTBLL.GetNotifyName(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - HSCodeDetailsRecord
@@ -359,6 +371,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetAllHSCodeInfo:
                     HSBLL = new HSCodeBLL();
                     return HSBLL.GetAllHSCodeInfo(param);
+                    break;
+                case TestTask.AG_GetHSCodeName:
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.GetHSCodeName(param);
                     break;
                 #endregion
 

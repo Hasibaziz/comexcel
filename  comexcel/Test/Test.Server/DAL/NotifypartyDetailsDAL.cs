@@ -51,5 +51,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+        public DataTable GetNotifyName(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            NotifypartyEntity obj = (NotifypartyEntity)param;
+            string sql = "SELECT ID, NotifyName FROM NotifyDetails WHERE ID='"+obj.ID+"'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

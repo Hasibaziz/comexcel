@@ -9,20 +9,30 @@
     $(document).ready(function () {
         $("input#InvoiceDate, #ContractDate, #TTDate").datepicker({ dateFormat: "dd-mm-yy" });
     });
+    $(function () {
+        $("#tabs").tabs();
+    });
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
+
 <div class="mp_right_content">
    <div class="page_list_container">
-     <fieldset><div id="RecordsContainer"></div></fieldset>
+     <div id="RecordsContainer"></div>
    </div>
 
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
-    <fieldset>
+        <%: Html.HiddenFor(model => model.ID)%>
+<div id="tabs">
+        <ul>
+        <li><a href="#tabs-1">Basic Information</a></li>
+        <li><a href="#tabs-2">Quantity & Value</a></li>        
+        </ul>
+    <div id="tabs-1">
+     <fieldset>
         <legend>Basic Information Entry</legend>
-           <%: Html.HiddenFor(model => model.ID)%>
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
@@ -30,7 +40,7 @@
             <%: Html.EditorFor(model => model.ContractNo)%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
-         <div class="editor-label01">
+        <div class="editor-label01">
           <label for="ContractDate">Contract Date:</label>
         </div>
         <div class="editor-field01">
@@ -44,7 +54,7 @@
             <%: Html.EditorFor(model => model.TTNo)%>
             <%: Html.ValidationMessageFor(model => model.TTNo)%>
         </div>
-         <div class="editor-label01">
+        <div class="editor-label01">
           <label for="TTDate">TT Date:</label>
         </div>
         <div class="editor-field01">
@@ -72,6 +82,9 @@
             <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
             <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "Width=250" })%>
             <%: Html.ValidationMessageFor(model => model.ExporterID)%>
+        </div>        
+        <div class="editor-label01" style="color: Green;">       
+            <p id="Exporter" ></p>
         </div>
         <div class="editor-label01">
             <label for="ConsigneeID">Consignee No:</label>
@@ -80,6 +93,9 @@
             <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "Width=250" })%>
             <%: Html.ValidationMessageFor(model => model.ConsigneeID)%>
         </div>
+        <div class="editor-label01" style="color: Green;">       
+            <p id="ConsigneeName" ></p>
+        </div>
         <div class="editor-label01">
             <label for="NotifyID">Notify No:</label>
         </div>
@@ -87,12 +103,18 @@
             <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "Width=250" }) %>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
+        <div class="editor-label01" style="color: Green;">       
+            <p id="Notify" ></p>
+        </div>
         <div class="editor-label01">
             <label for="HSCodeID">HSCode No:</label>
         </div>
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "Width=250" }) %>  
             <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
+        </div>
+        <div class="editor-label01" style="color: Green;">       
+            <p id="HSCode" ></p>
         </div>
         <div class="editor-label01">
             <label for="DestinationID">Destination Code:</label>
@@ -105,19 +127,23 @@
             <label for="Section">Section</label>
         </div>
         <div class="editor-field01">
-            <%--<%: Html.DropDownListFor(model => model.SectionID,new SelectList("SectionID","Sections",Model.SectionID))%>--%>
-            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }),"Select")%>           
+            <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
+            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }),"Select")%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
      </fieldset>
+    </div>
+ 
+    <div id="tabs-2">
      <fieldset>
         <legend>Quantity & Value Entry</legend>
         <div class="editor-label01">
             <label for="Unit">Unit:</label>
         </div>
         <div class="editor-field01">
-           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>
-            <%: Html.ValidationMessageFor(model => model.Unit)%>
+           <%--<%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
+           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.ValidationMessageFor(model => model.Unit)%>
         </div>
         <div class="editor-label01">
           <label for="Volume">Volume:</label>
@@ -130,15 +156,17 @@
             <label for="Currency">Currency:</label>
         </div>
         <div class="editor-field01">
-           <%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>
-            <%: Html.ValidationMessageFor(model => model.Currency)%>
+           <%--<%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>  Passing DropDown Content--%>
+           <%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.ValidationMessageFor(model => model.Currency)%>
         </div>
         <div class="editor-label01">
             <label for="Inconterm">Inconterm:</label>
         </div>
         <div class="editor-field01">
-           <%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>
-            <%: Html.ValidationMessageFor(model => model.Inconterm)%>
+           <%--<%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
+           <%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.ValidationMessageFor(model => model.Inconterm)%>
         </div>
         <div class="editor-label01">
             <label for="FOBValue">FOB Value:</label>
@@ -153,14 +181,47 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CMValue)%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
-        </div>        
+        </div> 
+        </fieldset>
+    </div>  
+   </div>     
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save" />                                  
+            <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
+            <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
         </p>
-    </fieldset>
+
+    
 <% } %>
-<div>
-    <%: Html.ActionLink("Back to List", "ExportForm")%>
+
+    <div>
+        <%: Html.ActionLink("Back to List", "ExportForm")%>
+    </div>
 </div>
-</div>
+
+<script type="text/javascript">
+    $('#ExporterID').change(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetExporterNameByID?expid=")%>' + $("#ExporterID  > option:selected").attr("value"), function (data) {                
+            $("#Exporter").html(data.ExporterName);
+            //alert(data.ExporterName);
+        });
+    });
+    $('#ConsigneeID').change(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetConsigneeNameByID?conid=")%>' + $("#ConsigneeID  > option:selected").attr("value"), function (data) {          
+            $("#ConsigneeName").html(data.ConsigneeName);          
+        });
+    });
+    $('#NotifyID').change(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetNotifyNameByID?notid=")%>' + $("#NotifyID  > option:selected").attr("value"), function (data) {
+            $("#Notify").html(data.NotifyName);
+        });
+    });
+    $('#HSCodeID').change(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetHSCodeNameByID?hsid=")%>' + $("#HSCodeID  > option:selected").attr("value"), function (data) {
+            $("#HSCode").html(data.ShortName);
+        });
+    });
+</script>
+
+
 </asp:Content>

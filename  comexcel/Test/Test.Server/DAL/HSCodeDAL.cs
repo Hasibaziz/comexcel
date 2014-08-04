@@ -53,5 +53,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+        public DataTable GetHSCodeName(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            HSCodeEntity obj = (HSCodeEntity)param;
+            string sql = "SELECT ID, ShortName FROM HSCodeDetails WHERE ID='" + obj.ID + "'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

@@ -51,5 +51,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+        public DataTable GetConsigneeName(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            ConsigneeEntity obj = (ConsigneeEntity)param;
+            string sql = "SELECT ID, ConsigneeName FROM ConsigneeDetails where ID='" + obj.ID + "'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

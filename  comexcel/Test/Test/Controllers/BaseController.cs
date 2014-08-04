@@ -485,6 +485,69 @@ namespace Test.Controllers
                 return null;
             }
         }
- 
+        public object GetExporterDetails(string imodel)
+        {
+
+            ExporterEntity _Model = new ExporterEntity();
+            _Model.ID = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterDetails, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ExporterID"].ToString();
+                _Model.ExporterName = dr["ExporterName"].ToString();
+
+            }
+            return _Model;
+        }
+        public object GetConsigneeName(string imodel)
+        {
+
+            ConsigneeEntity _Model = new ConsigneeEntity();
+            _Model.ID = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetConsigneeName, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.ConsigneeName = dr["ConsigneeName"].ToString();
+
+            }
+            return _Model;
+        }
+        public object GetNotifyName(string imodel)
+        {
+
+            NotifypartyEntity _Model = new NotifypartyEntity();
+            _Model.ID = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetNotifyName, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.NotifyName = dr["NotifyName"].ToString();
+
+            }
+            return _Model;
+        }
+        public object GetHSCodeName(string imodel)
+        {
+
+            HSCodeEntity _Model = new HSCodeEntity();
+            _Model.ID = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetHSCodeName, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.ShortName = dr["ShortName"].ToString();
+
+            }
+            return _Model;
+        }
     }
 }

@@ -103,6 +103,7 @@ namespace Test.Structure
         public const string AG_SaveExporterDetailsInfo = "AG_SaveExporterDetailsInfo";
         public const string AG_UpdateExporterDetailsInfo = "AG_UpdateExporterDetailsInfo";
         public const string AG_GetAllExporterInfo = "AG_GetAllExporterInfo";
+        public const string AG_GetExporterDetails = "AG_GetExporterDetails";
         #endregion
 
         #region Auto Generated - ConsigneeDetails.
@@ -110,6 +111,7 @@ namespace Test.Structure
         public const string AG_SaveConsigneeDetailsInfo = "AG_SaveConsigneeDetailsInfo";
         public const string AG_UpdateConsigneeDetailsInfo = "AG_UpdateConsigneeDetailsInfo";
         public const string AG_GetAllConsigneeInfo = "AG_GetAllConsigneeInfo";
+        public const string AG_GetConsigneeName = "AG_GetConsigneeName";
         #endregion
 
         #region Auto Generated - NotifypartyDetailsRecord.
@@ -117,6 +119,7 @@ namespace Test.Structure
         public const string AG_SaveNotifypartyDetailsInfo = "AG_SaveNotifypartyDetailsInfo";
         public const string AG_UpdateNotifypartyDetailsInfo = "AG_UpdateNotifypartyDetailsInfo";
         public const string AG_GetAllNotifypartyInfo = "AG_GetAllNotifypartyInfo";
+        public const string AG_GetNotifyName = "AG_GetNotifyName";
         #endregion
 
         #region Auto Generated - HSCodeDetailsRecord.
@@ -124,6 +127,7 @@ namespace Test.Structure
         public const string AG_SaveHSCodeDetailsInfo = "AG_SaveHSCodeDetailsInfo";
         public const string AG_UpdateHSCodeDetailsInfo = "AG_UpdateHSCodeDetailsInfo";
         public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
+        public const string AG_GetHSCodeName = "AG_GetHSCodeName";
         #endregion
 
         #region Auto Generated - DestinationRecord.

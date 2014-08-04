@@ -80,5 +80,12 @@ namespace Test.Server.BLL
             retObj = (object)HSDAL.GetAllHSCodeInfo(param);
             return retObj;
         }
+        public object GetHSCodeName(object param)
+        {
+            object retObj = null;
+            HSCodeDAL HSDAL = new HSCodeDAL();
+            retObj = (object)HSDAL.GetHSCodeName(param);
+            return retObj;
+        }
     }
 }

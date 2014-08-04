@@ -80,5 +80,12 @@ namespace Test.Server.BLL
             retObj = (object)notDAL.GetAllNotifypartyInfo(param);
             return retObj;
         }
+        public object GetNotifyName(object param)
+        {
+            object retObj = null;
+            NotifypartyDetailsDAL notDAL = new NotifypartyDetailsDAL();
+            retObj = (object)notDAL.GetNotifyName(param);
+            return retObj;
+        }
     }
 }

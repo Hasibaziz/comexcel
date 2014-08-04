@@ -622,5 +622,85 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        public JsonResult GetExporterNameByID(string expid)
+        {
+            if (expid.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Exporter ID" });
+            }
+            else
+            {
+                try
+                {
+                    ExporterEntity obj = (ExporterEntity)GetExporterDetails(expid);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
+        public JsonResult GetConsigneeNameByID(string conid)
+        {
+            if (conid.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Consignee ID" });
+            }
+            else
+            {
+                try
+                {
+                    ConsigneeEntity obj = (ConsigneeEntity)GetConsigneeName(conid);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
+        public JsonResult GetNotifyNameByID(string notid)
+        {
+            if (notid.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Notify ID" });
+            }
+            else
+            {
+                try
+                {
+                    NotifypartyEntity obj = (NotifypartyEntity)GetNotifyName(notid);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
+        public JsonResult GetHSCodeNameByID(string hsid)
+        {
+            if (hsid.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Notify ID" });
+            }
+            else
+            {
+                try
+                {
+                    HSCodeEntity obj = (HSCodeEntity)GetHSCodeName(hsid);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
     }
 }

@@ -47,7 +47,16 @@ namespace Test.Server.DAL
         public DataTable GetAllExporterInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID AS ExporterID, ExporterNo FROM ExporterDetails";
+            string sql = "SELECT ID AS ExporterID, ExporterNo, ExporterName FROM ExporterDetails";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+        public DataTable GetExporterDetails(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            ExporterEntity obj = (ExporterEntity)param;
+            string sql = "SELECT ID AS ExporterID, ExporterNo, ExporterName FROM ExporterDetails WHERE ID='"+obj.ID+"' ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
