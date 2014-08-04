@@ -9,5 +9,6 @@ namespace Test.Domain.Model
     {
        public string ID { set; get; }
        public string Name { set; get; }
+       public string Port { set; get; }
     }
 }

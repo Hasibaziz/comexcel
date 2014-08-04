@@ -17,3 +17,21 @@ CONVERT(DATE,[AMDDate],103),
  ,(LEFT(AMDDate, 2)+ SUBSTRING(AMDDate, 3,4)+ RIGHT(AMDDate,4))
  ,(LEFT([BEDate], 2)+ SUBSTRING([BEDate], 3,3)+ SUBSTRING([BEDate],6,6))
   FROM [Commercial].[dbo].[Importinfo]
+
+
+
+
+*****************-----------------********************------------------------***************
+SELECT A.ID, A.ContractNo, A.InvoiceNo, A.InvoiceDate,  
+A.ExporterID, EX.ExporterName, EX.RegDetails,   
+A.ConsigneeID, CON.ConsigneeName,  
+A.NotifyID, NOTI.NotifyName,  A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName,  
+A.DestinationID,DC.CountryCode, DC.Name, DC.Port,  A.FOBValue, A.CMValue,
+A.TransportID, TR.Name, TR.Port 
+FROM ExportformDetails AS A 
+LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID 
+LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID 
+LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID 
+LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID 
+LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
+LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID

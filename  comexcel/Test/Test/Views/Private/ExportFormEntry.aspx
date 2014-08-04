@@ -117,6 +117,13 @@
             <p id="HSCode" ></p>
         </div>
         <div class="editor-label01">
+            <label for="TransportID">Local Transport:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.ValidationMessageFor(model => model.TransportID)%>
+        </div>
+        <div class="editor-label01">
             <label for="DestinationID">Destination Code:</label>
         </div>
         <div class="editor-field01">
@@ -146,7 +153,7 @@
            <%: Html.ValidationMessageFor(model => model.Unit)%>
         </div>
         <div class="editor-label01">
-          <label for="Volume">Volume:</label>
+          <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.Volume)%>

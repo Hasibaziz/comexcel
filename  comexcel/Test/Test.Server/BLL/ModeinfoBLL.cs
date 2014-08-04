@@ -46,5 +46,12 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+        public object GetAllModeinfoDetails(object param)
+        {
+            object retObj = null;
+            ModeinfoDAL modeDAL = new ModeinfoDAL();
+            retObj = (object)modeDAL.GetAllModeinfoDetails(param);
+            return retObj;
+        }
     }
 }

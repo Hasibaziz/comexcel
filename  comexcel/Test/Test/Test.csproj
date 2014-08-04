@@ -377,6 +377,7 @@
     <Content Include="Views\Private\HSCode.aspx" />
     <Content Include="Views\Private\Index.aspx" />
     <Content Include="Views\Private\LeftMenu.ascx" />
+    <Content Include="Views\Private\Modeinfo.aspx" />
     <Content Include="Views\Private\Notifyparty.aspx" />
     <Content Include="Views\Report\AllUDInfo.aspx" />
     <Content Include="Views\Report\Control\LeftMenu.ascx" />

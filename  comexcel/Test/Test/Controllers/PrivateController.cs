@@ -341,6 +341,8 @@ namespace Test.Controllers
             ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
             DestinationEntity dsEntity = new DestinationEntity();
             ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
             return View();
         }
         [HttpPost]
@@ -556,6 +558,80 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        public ActionResult Modeinfo()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult ModeinfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllModemasterRecord, null);
+                    List<ModeinfoEntity> ItemList = null;
+                    ItemList = new List<ModeinfoEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ModeinfoEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                Name = dr["Name"].ToString(),
+                                Port = dr["Port"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUpdateModeInfo(ModeinfoEntity _Model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                }
+
+
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveModeInfo, _Model);
+                else
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateModeInfo, _Model);
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    return Json(new { Result = "OK", Record = addedModel });
+                }
+                else
+                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
 
         public JsonResult AllExporterDetails()
         {
@@ -602,6 +678,19 @@ namespace Test.Controllers
             {
                 HSCodeEntity models = new HSCodeEntity();
                 var jList = GetAllHSCodeDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
+                return Json(new { Result = "OK", Options = jList });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult AllModeinfoDetails()
+        {
+            try
+            {
+                ModeinfoEntity models = new ModeinfoEntity();
+                var jList = GetAllModeinfoDetails(models).Select(c => new { DisplayText = c.Text, Value = c.Value });
                 return Json(new { Result = "OK", Options = jList });
             }
             catch (Exception ex)

@@ -22,13 +22,15 @@ namespace Test.Server.DAL
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
-            sql = sql + " A.FOBValue, A.CMValue";
+            sql = sql + " A.FOBValue, A.CMValue, ";
+            sql = sql + " A.TransportID, TR.Name, TR.Port ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
             sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
             sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
+            sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

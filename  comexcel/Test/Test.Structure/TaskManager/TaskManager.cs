@@ -196,21 +196,13 @@ namespace Test.Structure.TaskManager
                     modeinfoBLL = new ModeinfoBLL();
                     return modeinfoBLL.SaveModeInfo(param);
                     break;
-                //case TestTask.AG_UpdateCategorydetails:
-                //    categorydetailsBLL = new CategorydetailsBLL();
-                //    return categorydetailsBLL.UpdateCategorydetails(param);
-                //    break;
+                case TestTask.AG_GetAllModeinfoDetails:
+                    modeinfoBLL = new ModeinfoBLL();
+                    return modeinfoBLL.GetAllModeinfoDetails(param);
+                    break;
                 //case TestTask.AG_DeleteTrServicemasterInfoById:
                 //    trServicemasterBLL = new TrServicemasterBLL();
                 //    return trServicemasterBLL.DeleteTrServicemasterInfoById(param);
-                //    break;
-                //case TestTask.AG_GetAllTrServicemasterRecord:
-                //    trServicemasterBLL = new TrServicemasterBLL();
-                //    return trServicemasterBLL.GetAllTrServicemasterRecord(param);
-                //    break;
-                //case TestTask.AG_GetSingleTrServicemasterRecordById:
-                //    trServicemasterBLL = new TrServicemasterBLL();
-                //    return trServicemasterBLL.GetSingleTrServicemasterRecordById(param);
                 //    break;
                 #endregion
 

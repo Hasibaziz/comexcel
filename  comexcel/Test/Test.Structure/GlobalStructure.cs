@@ -69,7 +69,7 @@ namespace Test.Structure
         public const string AG_GetAllModemasterRecord = "AG_GetAllModemasterRecord";
         public const string AG_SaveModeInfo = "AG_SaveModeInfo";
         public const string AG_UpdateModeInfo = "AG_UpdateModeInfo";
-        //public const string AG_DeleteTrServicedetailsInfoById = "AG_DeleteTrServicedetailsInfoById";
+        public const string AG_GetAllModeinfoDetails = "AG_GetAllModeinfoDetails";
         //public const string AG_GetAllCategorynameRecord = "AG_GetAllCategorynameRecord";
         //public const string AG_GetSingleTrServicedetailsRecordById = "AG_GetSingleTrServicedetailsRecordById";
         #endregion

@@ -462,6 +462,29 @@ namespace Test.Controllers
                 return null;
             }
         }
+        public List<SelectListItem> GetAllModeinfoDetails(ModeinfoEntity tCode)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllModeinfoDetails, tCode);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["Name"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public List<SelectListItem> GetAllDestinationDetails(DestinationEntity dsCode)
         {
             try

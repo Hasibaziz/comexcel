@@ -15,7 +15,7 @@ namespace Test.Server.DAL
         public DataTable GetAllModemasterRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, Name FROM Transport";
+            string sql = "SELECT ID, Name, Port FROM Transport";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -23,14 +23,22 @@ namespace Test.Server.DAL
 
         public bool SaveModeInfo(ModeinfoEntity modeEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO Transport ( Name) VALUES (  @name )";
+            string sql = "INSERT INTO Transport ( Name, Port) VALUES (  @name, @Port )";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "Name", DbType.String, modeEntity.Name);
-
+            db.AddInParameter(dbCommand, "Port", DbType.String, modeEntity.Port);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
+        }
+        public DataTable GetAllModeinfoDetails(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, Name, Port FROM Transport";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
         }
     }
 }
