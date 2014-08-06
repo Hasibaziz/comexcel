@@ -22,7 +22,8 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Html.BeginForm()) { %>
+<% using (Html.BeginForm("ExportFormEntry", "Private"))
+   { %>
     <%: Html.ValidationSummary(true) %>
         <%: Html.HiddenFor(model => model.ID)%>
 <div id="tabs">
@@ -234,7 +235,7 @@
     </div>
    </div>     
         <p>
-            <input type="submit" id="Submit" value="Update"/>
+            <input type="submit" id="Submit" value="Update"/>            
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
         </p>

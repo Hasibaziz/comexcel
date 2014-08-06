@@ -421,12 +421,12 @@ namespace Test.Controllers
                     var addedModel = _Model;
                     return Json(new { Result = "OK", Record = addedModel });
                 }
-                //if (isUpdate)
-                // {
-                //     var addedModel = _Model;
-                //     return Json(new { Result = "OK", Record = addedModel });
-                //     //return RedirectToAction("Additemreceive", "Inventory", addedModel);
-                //    }
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("ExportForm", "Private", addedModel);
+                }
                 else
                     return Json(new { Result = "ERROR", Message = "Information failed to save" });
 

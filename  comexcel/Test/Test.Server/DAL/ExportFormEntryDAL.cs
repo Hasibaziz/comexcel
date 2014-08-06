@@ -56,9 +56,10 @@ namespace Test.Server.DAL
         }
         public bool UpdateExportFormEntryRecord(ExportformEntity exfEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, DestinationID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @DestinationID, @FOBValue, @CMValue )";
+            string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] SET ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, DestinationID=@DestinationID, FOBValue=@FOBValue, CMValue=@CMValue WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
+            db.AddInParameter(dbCommand, "ID", DbType.String, exfEntity.ID);
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, exfEntity.InvoiceNo);
             db.AddInParameter(dbCommand, "InvoiceDate", DbType.String, exfEntity.InvoiceDate);
