@@ -370,7 +370,7 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
-                #region Auto Generated - ExportFormEntryRecord
+                #region Auto Generated - DestinationRecord
                 case TestTask.AG_GetAllDestinationRecord:
                     DestinationBLL desBLL = null;
                     desBLL = new DestinationBLL();
@@ -400,14 +400,14 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.SaveExportFormEntryRecord(param);
                     break;
-                //case TestTask.AG_UpdateExportFormEntryRecord:
-                //    ExfBLL = new ExportFormEntryBLL();
-                //    return ExfBLL.UpdateExportFormEntryRecord(param);
-                //    break;
-                //case TestTask.AG_GetAllHSCodeInfo:
-                //    HSBLL = new HSCodeBLL();
-                //    return HSBLL.GetAllHSCodeInfo(param);
-                //    break;
+                case TestTask.AG_UpdateExportFormEntryRecord:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.UpdateExportFormEntryRecord(param);
+                    break;
+                case TestTask.AG_GetExporterFormUpdateByInvoiceNo:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetExporterFormUpdateByInvoiceNo(param);
+                    break;
                 #endregion
 
 

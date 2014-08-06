@@ -46,5 +46,39 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+        public object UpdateExportFormEntryRecord(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    ExportformEntity exfEntity = (ExportformEntity)param;
+                    ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+                    retObj = (object)exfDAL.UpdateExportFormEntryRecord(exfEntity, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
+        public object GetExporterFormUpdateByInvoiceNo(object param)
+        {
+            object retObj = null;
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.GetExporterFormUpdateByInvoiceNo(param);
+            return retObj;
+        }
     }
 }

@@ -54,7 +54,10 @@
                     },
                     InvoiceNo: {
                         title: 'Invoice No',
-                        width: '10%'
+                        width: '10%',
+                        display: function (data) {
+                            return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        }
                     },
                     InvoiceDate: {
                         title: 'Invoice Date',

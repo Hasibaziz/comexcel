@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Private.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.ExportformEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ExportFormEntry
+    ExporterFormUpdate
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -234,42 +234,39 @@
     </div>
    </div>     
         <p>
-            <input type="submit" value="Save" />                                  
+            <input type="submit" id="Submit" value="Update"/>
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
         </p>
 
     
-<% } %>
-
-    <div>
-        <%: Html.ActionLink("Back to List", "ExportForm")%>
-    </div>
+<% } %>   
 </div>
 
 <script type="text/javascript">
-    $('#ExporterID').change(function () {
-        var Result = $.post('<%: ResolveUrl("~/Private/GetExporterNameByID?expid=")%>' + $("#ExporterID  > option:selected").attr("value"), function (data) {                
+    $('#ExporterID').bind('focus', function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetExporterNameByID?expid=")%>' + $("#ExporterID  > option:selected").attr("value"), function (data) {
             $("#Exporter").html(data.ExporterName);
             //alert(data.ExporterName);
         });
     });
-    $('#ConsigneeID').change(function () {
-        var Result = $.post('<%: ResolveUrl("~/Private/GetConsigneeNameByID?conid=")%>' + $("#ConsigneeID  > option:selected").attr("value"), function (data) {          
-            $("#ConsigneeName").html(data.ConsigneeName);          
+    $('#ConsigneeID').bind('focus', function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetConsigneeNameByID?conid=")%>' + $("#ConsigneeID  > option:selected").attr("value"), function (data) {
+            $("#ConsigneeName").html(data.ConsigneeName);
         });
     });
-    $('#NotifyID').change(function () {
+    $('#NotifyID').bind('focus', function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetNotifyNameByID?notid=")%>' + $("#NotifyID  > option:selected").attr("value"), function (data) {
             $("#Notify").html(data.NotifyName);
         });
     });
-    $('#HSCodeID').change(function () {
+    $('#HSCodeID').bind('focus', function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetHSCodeNameByID?hsid=")%>' + $("#HSCodeID  > option:selected").attr("value"), function (data) {
             $("#HSCode").html(data.ShortName);
         });
     });
 </script>
+
 
 
 </asp:Content>

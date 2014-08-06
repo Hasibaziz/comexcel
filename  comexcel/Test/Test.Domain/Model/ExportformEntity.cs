@@ -46,6 +46,12 @@ namespace Test.Domain.Model
        public string Currency { set; get; }
        public string Inconterm { set; get; }
 
+       public string ExpNo { set; get; }
+       public string ExpDate { set; get; }
+       public string BLNo { set; get; }
+       public string BLDate { set; get; }
+       public string ExFactoryDate { set; get; }
+
        public enum Sections
        {
           PRIVATE = 1,

@@ -345,6 +345,59 @@ namespace Test.Controllers
             ViewData["Name"] = GetAllModeinfoDetails(tEntity);
             return View();
         }
+        public ActionResult ExporterFormUpdate()
+        {
+            ExporterEntity exEntity = new ExporterEntity();
+            ViewData["ExporterNo"] = GetAllExporterDetails(exEntity);
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            NotifypartyEntity notEntity = new NotifypartyEntity();
+            ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+            HSCodeEntity hsEntity = new HSCodeEntity();
+            ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ExporterFormUpdateByInvoiceNo(String ID)
+        {
+            ExportformEntity _Model=new ExportformEntity();
+
+            ExporterEntity exEntity = new ExporterEntity();
+            ViewData["ExporterNo"] = GetAllExporterDetails(exEntity);
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            NotifypartyEntity notEntity = new NotifypartyEntity();
+            ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+            HSCodeEntity hsEntity = new HSCodeEntity();
+            ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+
+            if (ID != null)
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterFormUpdateByInvoiceNo, ID);
+                List<ExportformEntity> ItemList = null;
+                ItemList = new List<ExportformEntity>();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    _Model.ID = dr["ID"].ToString();
+                    _Model.ContractNo = dr["ContractNo"].ToString();
+                    //_Model.ContractDate = dr["ContractDate"].ToString();
+                   _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+                   _Model.InvoiceDate = dr["InvoiceDate"].ToString();
+                   _Model.ExporterID = dr["ExporterID"].ToString();
+                   _Model.ExporterName = dr["ExporterName"].ToString();
+                }
+            }
+            return View("ExporterFormUpdate", _Model);
+        }
         [HttpPost]
         public ActionResult ExportFormEntry(ExportformEntity _Model)
         {
