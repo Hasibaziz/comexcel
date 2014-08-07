@@ -394,6 +394,8 @@ namespace Test.Controllers
                    _Model.InvoiceDate = dr["InvoiceDate"].ToString();
                    _Model.ExporterID = dr["ExporterID"].ToString();
                    _Model.ExporterName = dr["ExporterName"].ToString();
+
+                   _Model.Section = dr["Section"].ToString();
                 }
             }
             return View("ExporterFormUpdate", _Model);

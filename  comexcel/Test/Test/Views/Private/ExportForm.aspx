@@ -88,6 +88,10 @@
                         width: '5%',
                         options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
                     },
+                    Quantity: {
+                        title: 'Quantity',
+                        width: '8%'
+                    },
                     FOBValue: {
                         title: 'FOB Value',
                         width: '8%'

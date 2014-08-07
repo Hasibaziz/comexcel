@@ -41,10 +41,10 @@ namespace Test.Domain.Model
        /// if Pass like  public string Unit { set; get; }  then Only Value will pass from the 
        /// DropDown List.
        /// </summary>
-       public string Unit { set; get; }             
-       public string Volume { set; get; }
+       public string Unit { set; get; }
+       public string Quantity { set; get; }
        public string Currency { set; get; }
-       public string Inconterm { set; get; }
+       public string Incoterm { set; get; }
 
        public string ExpNo { set; get; }
        public string ExpDate { set; get; }

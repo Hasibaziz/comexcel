@@ -157,8 +157,8 @@
           <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Volume)%>
-            <%: Html.ValidationMessageFor(model => model.Volume)%>
+            <%: Html.EditorFor(model => model.Quantity)%>
+            <%: Html.ValidationMessageFor(model => model.Quantity)%>
         </div>
         <div class="editor-label01">
             <label for="Currency">Currency:</label>
@@ -169,12 +169,12 @@
            <%: Html.ValidationMessageFor(model => model.Currency)%>
         </div>
         <div class="editor-label01">
-            <label for="Inconterm">Inconterm:</label>
+            <label for="Inconterm">Incoterm:</label>
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
-           <%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
-           <%: Html.ValidationMessageFor(model => model.Inconterm)%>
+           <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.ValidationMessageFor(model => model.Incoterm)%>
         </div>
         <div class="editor-label01">
             <label for="FOBValue">FOB Value:</label>
