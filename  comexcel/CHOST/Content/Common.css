@@ -355,7 +355,12 @@ input[type="password"] {
 {
     min-width:300px!Important;
 }
-
+input:focus, textarea:focus 
+{
+    border: 1px solid #0066FF;    /* #880000  #783BA8 */
+    box-shadow: 0 6px 3px rgba(0, 0, 0, 0.05) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+}
+/*-------------------------------------------------------------------------------------*/
 .page_single_column_ddl
 {
     width:170px!Important;
@@ -1533,4 +1538,14 @@ input[type="submit"],input[type="button"] {
 .ui-icon-grip-diagonal-se
 {
     background-position: -80px -224px;
+}
+
+.editor-label01 
+{
+    color: black;
+    margin: 1em .5cm 0px .5cm;
+}
+.editor-field01
+{
+  margin: -1.3em 1px 5px 200px; 
 }
