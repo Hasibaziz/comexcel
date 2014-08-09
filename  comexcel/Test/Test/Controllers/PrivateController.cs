@@ -389,13 +389,39 @@ namespace Test.Controllers
                 {
                     _Model.ID = dr["ID"].ToString();
                     _Model.ContractNo = dr["ContractNo"].ToString();
-                    //_Model.ContractDate = dr["ContractDate"].ToString();
-                   _Model.InvoiceNo = dr["InvoiceNo"].ToString();
-                   _Model.InvoiceDate = dr["InvoiceDate"].ToString();
-                   _Model.ExporterID = dr["ExporterID"].ToString();
-                   _Model.ExporterName = dr["ExporterName"].ToString();
+                    _Model.ContractDate = dr["ContractDate"].ToString();
+                    _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+                    _Model.InvoiceDate = dr["InvoiceDate"].ToString();
+                    _Model.TTNo = dr["TTDate"].ToString();
+                    _Model.TTDate = dr["TTNo"].ToString();
+                    _Model.ExporterID = dr["ExporterID"].ToString();
+                    _Model.ExporterName = dr["ExporterName"].ToString();
+                    _Model.RegDetails = dr["RegDetails"].ToString();
+                    _Model.ConsigneeID = dr["ConsigneeID"].ToString();
+                    _Model.ConsigneeName = dr["ConsigneeName"].ToString();
+                    _Model.NotifyID = dr["NotifyID"].ToString();
+                    _Model.NotifyName = dr["NotifyName"].ToString();
+                    _Model.HSCodeID = dr["HSCodeID"].ToString();
+                    _Model.HSCode = dr["HSCode"].ToString();
+                    _Model.ShortName = dr["ShortName"].ToString();
+                    _Model.CountryCode = dr["CountryCode"].ToString();
+                    _Model.Name = dr["Name"].ToString();
+                    _Model.Port = dr["Port"].ToString();
+                    _Model.DestinationID = dr["DestinationID"].ToString();
+                    _Model.TransportID = dr["TransportID"].ToString();
+                    _Model.Section = dr["Section"].ToString();
+                    _Model.Unit = dr["Unit"].ToString();
+                    _Model.Quantity = dr["Quantity"].ToString();
+                    _Model.Currency = dr["Currency"].ToString();
+                    _Model.Incoterm = dr["Incoterm"].ToString();
+                    _Model.FOBValue = dr["FOBValue"].ToString();
+                    _Model.CMValue = dr["CMValue"].ToString();
 
-                   _Model.Section = dr["Section"].ToString();
+                    _Model.ExpNo = dr["ExpNo"].ToString();
+                    _Model.ExpDate = dr["ExpDate"].ToString();
+                    _Model.BLNo = dr["BLNo"].ToString();
+                    _Model.BLDate = dr["BLNo"].ToString();
+                    _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
                 }
             }
             return View("ExporterFormUpdate", _Model);
@@ -459,8 +485,11 @@ namespace Test.Controllers
                             {
                                 ID = dr["ID"].ToString(),
                                 ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
+                                TTNo = dr["TTDate"].ToString(),
+                                TTDate = dr["TTNo"].ToString(),
                                 ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
                                 RegDetails = dr["RegDetails"].ToString(),
@@ -473,9 +502,22 @@ namespace Test.Controllers
                                 ShortName = dr["ShortName"].ToString(),
                                 CountryCode = dr["CountryCode"].ToString(),
                                 Name = dr["Name"].ToString(),
-                                Port = dr["Port"].ToString(),                               
+                                Port = dr["Port"].ToString(),
+                                DestinationID = dr["DestinationID"].ToString(),
+                                TransportID = dr["TransportID"].ToString(),
+                                Section = dr["Section"].ToString(),
+                                Unit = dr["Unit"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+                                Currency = dr["Currency"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
-                                CMValue = dr["CMValue"].ToString()
+                                CMValue = dr["CMValue"].ToString(),
+
+                                ExpNo = dr["CMValue"].ToString(),
+                                ExpDate = dr["ExpDate"].ToString(),
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLNo"].ToString(),
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }
                         iCount += 1;
@@ -511,9 +553,13 @@ namespace Test.Controllers
             {
                 obj = new rptExportformEntity();
 
+                obj.ID = dr.ID;                 
                 obj.ContractNo = dr.ContractNo;
+                obj.ContractDate = dr.ContractDate;
                 obj.InvoiceNo = dr.InvoiceNo;
                 obj.InvoiceDate = dr.InvoiceDate;
+                obj.TTNo = dr.TTDate;
+                obj.TTDate = dr.TTNo;
                 obj.ExporterID = dr.ExporterID;
                 obj.ExporterName = dr.ExporterName;
                 obj.RegDetails = dr.RegDetails;
@@ -524,13 +570,24 @@ namespace Test.Controllers
                 obj.HSCodeID = dr.HSCodeID;
                 obj.HSCode = dr.HSCode;
                 obj.ShortName = dr.ShortName;
-                obj.NotifyName = dr.NotifyName;
-                obj.DestinationID = dr.DestinationID;
                 obj.CountryCode = dr.CountryCode;
                 obj.Name = dr.Name;
                 obj.Port = dr.Port;
+                obj.DestinationID = dr.DestinationID;
+                obj.TransportID = dr.TransportID;
+                obj.Section = dr.Section;
+                obj.Unit = dr.Unit;
+                obj.Quantity = dr.Quantity;
+                obj.Currency = dr.Currency;
+                obj.Incoterm = dr.Incoterm;
                 obj.FOBValue = dr.FOBValue;
                 obj.CMValue = dr.CMValue;
+
+                obj.ExpNo = dr.CMValue;
+                obj.ExpDate = dr.ExpDate;
+                obj.BLNo = dr.BLNo;
+                obj.BLDate = dr.BLNo;
+                obj.ExFactoryDate = dr.ExFactoryDate;
                 al.Add(obj);
             }
 

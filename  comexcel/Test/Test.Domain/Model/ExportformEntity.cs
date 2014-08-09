@@ -54,8 +54,8 @@ namespace Test.Domain.Model
 
        public enum Sections
        {
-          PRIVATE = 1,
-          PUBLIC = 2,
+          PUBLIC = 1,
+          PRIVATE = 2,          
        }
        public enum Units
        { 

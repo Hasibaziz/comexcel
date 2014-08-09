@@ -17,6 +17,7 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
@@ -133,6 +134,7 @@ namespace Test.Server.DAL
 
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
@@ -141,10 +143,13 @@ namespace Test.Server.DAL
             sql = sql + " A.TransportID, TR.Name, TR.Port, ";
             sql = sql + " A.Section, ";
             //sql = sql + " CASE A.Section WHEN '1' Then 'PRIVATE' ELSE 'PUBLIC' END AS Section, ";
-            sql = sql + " CASE A.Unit WHEN '1' Then 'PCS' ELSE 'SET' END AS Unit, "; 
+            sql = sql + " A.Unit, ";
+            //sql = sql + " CASE A.Unit WHEN '1' Then 'PCS' ELSE 'SET' END AS Unit, "; 
             sql = sql + " A.Quantity, ";
-            sql = sql + " CASE A.Currency WHEN '1' Then 'USDollers' ELSE 'USDollers' END AS Currency, ";
-            sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
+            //sql = sql + " CASE A.Currency WHEN '1' Then 'USDollers' ELSE 'USDollers' END AS Currency, ";
+            sql = sql + " A.Currency, ";
+            //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
+            sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";

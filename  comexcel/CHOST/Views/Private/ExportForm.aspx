@@ -83,7 +83,7 @@
                         width: '10%',
                         options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
                     },
-                    Name: {
+                    DestinationID: {
                         title: 'Destination',
                         width: '5%',
                         options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
@@ -98,6 +98,10 @@
                     },
                     CMValue: {
                         title: 'C.M. Value',
+                        width: '8%'
+                    },
+                    ExFactoryDate: {
+                        title: 'Ex-Factory',
                         width: '8%'
                     }
                 }

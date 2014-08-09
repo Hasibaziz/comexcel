@@ -1,0 +1,7 @@
+if {Test_Report_rptExportformEntity.CountryCode}='2004' then
+        "GERMANY"
+Else if {Test_Report_rptExportformEntity.CountryCode}='1226' then 
+        "INDUNASIA"
+Else
+        "None"
+
