@@ -143,7 +143,7 @@ namespace Test.Structure
         public const string AG_SaveExportFormEntryRecord = "AG_SaveExportFormEntryRecord";
         public const string AG_UpdateExportFormEntryRecord = "AG_UpdateExportFormEntryRecord";
         public const string AG_GetExporterFormUpdateByInvoiceNo = "AG_GetExporterFormUpdateByInvoiceNo";
-        //public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
+        public const string AG_GetInvoiceSearchByNo = "AG_GetInvoiceSearchByNo";
         #endregion
 
 

@@ -537,6 +537,81 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        [HttpPost]
+        public JsonResult InvoiceSearchByNo(string Invno, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    ExportformEntity _Model = new ExportformEntity();
+                    _Model.InvoiceNo = Invno;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNo, _Model);
+                    List<ExportformEntity> ItemList = null;
+                    ItemList = new List<ExportformEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ExportformEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+                                TTNo = dr["TTDate"].ToString(),
+                                TTDate = dr["TTNo"].ToString(),
+                                ExporterID = dr["ExporterID"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString(),
+                                ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                NotifyID = dr["NotifyID"].ToString(),
+                                NotifyName = dr["NotifyName"].ToString(),
+                                HSCodeID = dr["HSCodeID"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+                                ShortName = dr["ShortName"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
+                                Port = dr["Port"].ToString(),
+                                DestinationID = dr["DestinationID"].ToString(),
+                                TransportID = dr["TransportID"].ToString(),
+                                Section = dr["Section"].ToString(),
+                                Unit = dr["Unit"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+                                Currency = dr["Currency"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+                                FOBValue = dr["FOBValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),
+
+                                ExpNo = dr["CMValue"].ToString(),
+                                ExpDate = dr["ExpDate"].ToString(),
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLNo"].ToString(),
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    Session["ExpEntry"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
         public ActionResult ExportFormReport()
         {
             rptExportformEntity obj;
