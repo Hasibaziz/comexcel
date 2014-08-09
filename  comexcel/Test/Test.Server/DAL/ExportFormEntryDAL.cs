@@ -23,7 +23,7 @@ namespace Test.Server.DAL
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";            
-            sql = sql + " A.TransportID, TR.Name, TR.Port, ";
+            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port, ";
             sql = sql + " A.Section, ";
             sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, ";

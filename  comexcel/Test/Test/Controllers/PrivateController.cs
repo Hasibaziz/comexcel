@@ -505,6 +505,7 @@ namespace Test.Controllers
                                 Port = dr["Port"].ToString(),
                                 DestinationID = dr["DestinationID"].ToString(),
                                 TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
                                 Section = dr["Section"].ToString(),
                                 Unit = dr["Unit"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
@@ -650,6 +651,7 @@ namespace Test.Controllers
                 obj.Port = dr.Port;
                 obj.DestinationID = dr.DestinationID;
                 obj.TransportID = dr.TransportID;
+                obj.TName = dr.TName;
                 obj.Section = dr.Section;
                 obj.Unit = dr.Unit;
                 obj.Quantity = dr.Quantity;
