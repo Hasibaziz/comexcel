@@ -136,7 +136,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
-            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }),"Select")%>
+            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
      </fieldset>
@@ -270,6 +270,16 @@
         });
     });
 </script>
+<script type="text/javascript">
+    $('#FOBValue').change(function () {
+        var X = $(this).val();
+        //var DX = parseInt(X);
+        var DX = parseFloat(X);
+        FOB = (DX * 20) / 100;
+        //var number = Number(FOB.replace(/[^0-9\.]+/g, ""));        
+        //$("#CMValue").val("$" + FOB);
+        $("#CMValue").val(FOB);
 
-
+    });
+</script>
 </asp:Content>

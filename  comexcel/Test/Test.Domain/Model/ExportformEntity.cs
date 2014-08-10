@@ -51,10 +51,10 @@ namespace Test.Domain.Model
        public string BLNo { set; get; }
        public string BLDate { set; get; }
        public string ExFactoryDate { set; get; }
+       public string CurrentDate { set; get; }
 
        public enum Sections
        {
-          PUBLIC = 1,
           PRIVATE = 2,          
        }
        public enum Units

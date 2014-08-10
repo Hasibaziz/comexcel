@@ -46,13 +46,13 @@ namespace Test.Server.DAL
             sql = sql + "(  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
             sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue]";
-            sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate]";
+            sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate]";
             sql = sql + " )";
             sql = sql + "values ( ";
             sql = sql + " @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
             sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @TransportID, @DestinationID, @Section";
             sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue";
-            sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate ";
+            sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate ";
             sql = sql + ")";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
@@ -83,6 +83,7 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "BLNo", DbType.String, exfEntity.BLNo);
             db.AddInParameter(dbCommand, "BLDate", DbType.String, exfEntity.BLDate);
             db.AddInParameter(dbCommand, "ExFactoryDate", DbType.String, exfEntity.ExFactoryDate);
+            db.AddInParameter(dbCommand, "CurrentDate", DbType.String, exfEntity.CurrentDate);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;

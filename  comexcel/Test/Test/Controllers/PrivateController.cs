@@ -436,7 +436,7 @@ namespace Test.Controllers
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
                 }
 
-
+                _Model.CurrentDate = DateTime.Now.ToString();
                 bool isUpdate = false;
                 if (_Model.ID == null)
                 {
