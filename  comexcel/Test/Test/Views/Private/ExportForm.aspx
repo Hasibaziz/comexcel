@@ -21,7 +21,7 @@
 </div>
 <script type="text/javascript">
     function printItem() {
-        alert("Report");
+        //alert("Report");
         window.open("/Private/ExportFormReport");
     }
 </script>
