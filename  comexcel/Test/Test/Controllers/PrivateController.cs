@@ -409,6 +409,8 @@ namespace Test.Controllers
                     _Model.Port = dr["Port"].ToString();
                     _Model.DestinationID = dr["DestinationID"].ToString();
                     _Model.TransportID = dr["TransportID"].ToString();
+                    _Model.TName = dr["TName"].ToString();
+                    _Model.TPort = dr["TPort"].ToString();
                     _Model.Section = dr["Section"].ToString();
                     _Model.Unit = dr["Unit"].ToString();
                     _Model.Quantity = dr["Quantity"].ToString();
@@ -447,14 +449,15 @@ namespace Test.Controllers
                 {
                     isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateExportFormEntryRecord, _Model);
                     var addedModel = _Model;
-                    return Json(new { Result = "OK", Record = addedModel });
-                }
-                if (isUpdate)
-                {
-                    var addedModel = _Model;
                     //return Json(new { Result = "OK", Record = addedModel });
                     return RedirectToAction("ExportForm", "Private", addedModel);
                 }
+                //if (isUpdate)
+                //{
+                //    var addedModel = _Model;
+                //    //return Json(new { Result = "OK", Record = addedModel });
+                //    return RedirectToAction("ExportForm", "Private", addedModel);
+                //}
                 else
                     return Json(new { Result = "ERROR", Message = "Information failed to save" });
 
@@ -506,6 +509,7 @@ namespace Test.Controllers
                                 DestinationID = dr["DestinationID"].ToString(),
                                 TransportID = dr["TransportID"].ToString(),
                                 TName = dr["TName"].ToString(),
+                                TPort=dr["TPort"].ToString(),
                                 Section = dr["Section"].ToString(),
                                 Unit = dr["Unit"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
@@ -581,6 +585,8 @@ namespace Test.Controllers
                                 Port = dr["Port"].ToString(),
                                 DestinationID = dr["DestinationID"].ToString(),
                                 TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
+                                TPort = dr["TPort"].ToString(),
                                 Section = dr["Section"].ToString(),
                                 Unit = dr["Unit"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
@@ -652,6 +658,7 @@ namespace Test.Controllers
                 obj.DestinationID = dr.DestinationID;
                 obj.TransportID = dr.TransportID;
                 obj.TName = dr.TName;
+                obj.TPort = dr.TPort;
                 obj.Section = dr.Section;
                 obj.Unit = dr.Unit;
                 obj.Quantity = dr.Quantity;

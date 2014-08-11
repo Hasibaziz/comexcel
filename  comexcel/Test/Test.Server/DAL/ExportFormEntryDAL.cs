@@ -23,7 +23,7 @@ namespace Test.Server.DAL
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";            
-            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port, ";
+            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
             sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, ";
@@ -91,9 +91,9 @@ namespace Test.Server.DAL
         public bool UpdateExportFormEntryRecord(ExportformEntity exfEntity, Database db, DbTransaction transaction)
         {
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
-            sql = sql + " SET ContractNo=@ContractNo, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, TransportID=@TransportID, DestinationID=@DestinationID ";
-            sql = sql + ", Volume=@Volume, Currency=@Currency, Incoterm=@Incoterm, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue ";
-            sql = sql + ", ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
+            sql = sql + " SET ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, TransportID=@TransportID, DestinationID=@DestinationID, ";
+            sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, ";
+            sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, exfEntity.ID);
@@ -141,7 +141,7 @@ namespace Test.Server.DAL
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
-            sql = sql + " A.TransportID, TR.Name, TR.Port, ";
+            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
             //sql = sql + " CASE A.Section WHEN '1' Then 'PRIVATE' ELSE 'PUBLIC' END AS Section, ";
             sql = sql + " A.Unit, ";
@@ -179,7 +179,7 @@ namespace Test.Server.DAL
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
-            sql = sql + " A.TransportID, TR.Name, TR.Port, ";
+            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
             //sql = sql + " CASE A.Section WHEN '1' Then 'PRIVATE' ELSE 'PUBLIC' END AS Section, ";
             sql = sql + " A.Unit, ";

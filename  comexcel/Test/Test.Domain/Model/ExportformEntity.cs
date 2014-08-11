@@ -28,6 +28,7 @@ namespace Test.Domain.Model
        public string ShortName { set; get; }
        public string TransportID { set; get;}
        public string TName { set; get; }
+       public string TPort { set; get; }
        public string DestinationID { set; get; }
        public string CountryCode { set; get; }
        public string Name { set; get; }
