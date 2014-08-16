@@ -139,6 +139,12 @@
       <DependentUpon>ExportFormEntry.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ExportReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\rptExportformEntity.cs" />
     <Compile Include="Utility\BinaryFileResult.cs" />
     <Compile Include="Utility\Excelimport.cs" />
@@ -419,6 +425,10 @@
     <EmbeddedResource Include="Report\ExportFormEntry.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ExportFormEntry.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExportReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExportReports.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -626,56 +626,61 @@ namespace Test.Controllers
 
             ReportClass rptH = new ReportClass();
             ArrayList al = new ArrayList();
-            rptH.FileName = Server.MapPath("/Report/ExportFormEntry.rpt");
+            rptH.FileName = Server.MapPath("/Report/ExportReports.rpt");
             rptH.Load();
 
             List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntry"];
 
-            foreach (ExportformEntity dr in ItemList)
-            {
-                obj = new rptExportformEntity();
+            //foreach (ExportformEntity dr in ItemList)
+            //{
+            //    obj = new rptExportformEntity();
 
-                obj.ID = dr.ID;                 
-                obj.ContractNo = dr.ContractNo;
-                obj.ContractDate = dr.ContractDate;
-                obj.InvoiceNo = dr.InvoiceNo;
-                obj.InvoiceDate = dr.InvoiceDate;
-                obj.TTNo = dr.TTDate;
-                obj.TTDate = dr.TTNo;
-                obj.ExporterID = dr.ExporterID;
-                obj.ExporterName = dr.ExporterName;
-                obj.RegDetails = dr.RegDetails;
-                obj.ConsigneeID = dr.ConsigneeID;
-                obj.ConsigneeName = dr.ConsigneeName;
-                obj.NotifyID = dr.NotifyID;
-                obj.NotifyName = dr.NotifyName;
-                obj.HSCodeID = dr.HSCodeID;
-                obj.HSCode = dr.HSCode;
-                obj.ShortName = dr.ShortName;
-                obj.CountryCode = dr.CountryCode;
-                obj.Name = dr.Name;
-                obj.Port = dr.Port;
-                obj.DestinationID = dr.DestinationID;
-                obj.TransportID = dr.TransportID;
-                obj.TName = dr.TName;
-                obj.TPort = dr.TPort;
-                obj.Section = dr.Section;
-                obj.Unit = dr.Unit;
-                obj.Quantity = dr.Quantity;
-                obj.Currency = dr.Currency;
-                obj.Incoterm = dr.Incoterm;
-                obj.FOBValue = dr.FOBValue;
-                obj.CMValue = dr.CMValue;
+            //    obj.ID = dr.ID;                 
+            //    obj.ContractNo = dr.ContractNo;
+            //    obj.ContractDate = dr.ContractDate;
+            //    obj.InvoiceNo = dr.InvoiceNo;
+            //    obj.InvoiceDate = dr.InvoiceDate;
+            //    obj.TTNo = dr.TTDate;
+            //    obj.TTDate = dr.TTNo;
+            //    obj.ExporterID = dr.ExporterID;
+            //    obj.ExporterName = dr.ExporterName;
+            //    obj.RegDetails = dr.RegDetails;
+            //    obj.ConsigneeID = dr.ConsigneeID;
+            //    obj.ConsigneeName = dr.ConsigneeName;
+            //    obj.NotifyID = dr.NotifyID;
+            //    obj.NotifyName = dr.NotifyName;
+            //    obj.HSCodeID = dr.HSCodeID;
+            //    obj.HSCode = dr.HSCode;
+            //    obj.ShortName = dr.ShortName;
+            //    obj.CountryCode = dr.CountryCode;
+            //    obj.Name = dr.Name;
+            //    obj.Port = dr.Port;
+            //    obj.DestinationID = dr.DestinationID;
+            //    obj.TransportID = dr.TransportID;
+            //    obj.TName = dr.TName;
+            //    obj.TPort = dr.TPort;
+            //    obj.Section = dr.Section;
+            //    obj.Unit = dr.Unit;
+            //    obj.Quantity = dr.Quantity;
+            //    obj.Currency = dr.Currency;
+            //    obj.Incoterm = dr.Incoterm;
+            //    obj.FOBValue = dr.FOBValue;
+            //    obj.CMValue = dr.CMValue;
 
-                obj.ExpNo = dr.CMValue;
-                obj.ExpDate = dr.ExpDate;
-                obj.BLNo = dr.BLNo;
-                obj.BLDate = dr.BLNo;
-                obj.ExFactoryDate = dr.ExFactoryDate;
-                al.Add(obj);
-            }
+            //    obj.ExpNo = dr.CMValue;
+            //    obj.ExpDate = dr.ExpDate;
+            //    obj.BLNo = dr.BLNo;
+            //    obj.BLDate = dr.BLNo;
+            //    obj.ExFactoryDate = dr.ExFactoryDate;
 
-            rptH.SetDataSource(al);
+            //    Response.Write(obj.BLDate = dr.BLNo + "UserName:");
+            //    //    Response.Write(dr["name"] + "--------------" + dr["email"] + "--------------" + dr["pwd"]+ "<br/>");
+
+            //    al.Add(obj);
+            //}
+
+            //rptH.SetDataSource(al);
+            rptH.SetDataSource (ItemList);
             MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
             return File(stream, "application/pdf");
         }

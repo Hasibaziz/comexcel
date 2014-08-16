@@ -1,3 +1,7 @@
 https://github.com/jzaefferer/jquery-validation/issues/434
 
 http://jquery-ui.googlecode.com/svn/tags/1.8.4/docs/dialog.html
+
+http://www.devexpress.com/Support/Center/Example/Details/E4714
+https://help.devexpress.com/#XtraReports/CustomDocument9974
+https://help.devexpress.com/#XtraReports/CustomDocument9974/AddaReport
