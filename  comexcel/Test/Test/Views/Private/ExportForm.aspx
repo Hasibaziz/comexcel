@@ -14,6 +14,7 @@
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.EditorFor(model => model.InvoiceNo)%>
                  <input type="button" value="Print Preview" title="Print"   onclick="printItem()" />
+                 <input type="button" value="Print Preview" title="Print"   onclick="printPDF()" />
                </div>
      </fieldset>          
         <%: Html.ActionLink("Add New Entry", "ExportFormEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>    
@@ -25,7 +26,12 @@
         window.open("/Private/ExportFormReport");
     }
 </script>
-
+<script type="text/javascript">
+    function printPDF() {
+        //alert("Report");
+        window.open("/Private/PDFView");
+    }
+</script>
 <script type="text/javascript">
     $('input#InvoiceNo').change(function () {  
 

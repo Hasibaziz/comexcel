@@ -15,6 +15,9 @@ using CrystalDecisions.CrystalReports.Engine;
 using System.Collections;
 using Test.Report;
 using CrystalDecisions.Shared;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 
 
 namespace Test.Controllers
@@ -679,7 +682,7 @@ namespace Test.Controllers
             //    al.Add(obj);
             //}
 
-            //rptH.SetDataSource(al);
+            //rptH.SetDataSource(al);           
             rptH.SetDataSource (ItemList);
             MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
             return File(stream, "application/pdf");
@@ -992,5 +995,56 @@ namespace Test.Controllers
                 }
             }
         }
+
+        public ActionResult PDFView()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (Document d = new Document(PageSize.A4, 55, 55, 35, 20))
+                using (PdfWriter writer = PdfWriter.GetInstance(d, ms))
+                {
+                    string path = Server.MapPath("../PDF_Files");
+                    //var doc1 = new iTextSharp.text.Document();
+                    //PdfWriter.GetInstance(doc1, new FileStream(path + "/Doc1.pdf", FileMode.Create));
+                    PdfWriter.GetInstance(d, new FileStream(path + "/Doc1.pdf", FileMode.Create));
+                    List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntry"];
+
+                    writer.CompressionLevel = 0;
+                    d.Open();
+                    Rectangle r = d.PageSize;
+                    PdfContentByte c1 = writer.DirectContent;
+                    PdfContentByte c2 = writer.DirectContentUnder;
+                    d.Add(new Paragraph(new Phrase("Title Paragraph")));
+                    Paragraph heading = new Paragraph("\n");
+                    heading.SpacingAfter = 70f;
+                    //d.Add(new LineSeparator(1, 100, new ElementColor(90), Element.ALIGN_CENTER, -2));
+                    PdfPTable t0 = new PdfPTable(4);
+                    t0.HorizontalAlignment = Element.ALIGN_LEFT;
+                    t0.LockedWidth = true;
+                    t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
+                    t0.SpacingBefore = 10;
+                    t0.SpacingAfter = 25;
+                    foreach (ExportformEntity dr in ItemList)
+                    {
+                        t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceNo)));
+                        t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceDate)));
+                    }
+                    //t0.AddCell(new PdfPCell(new Phrase("Cell1")));
+                    //t0.AddCell(new PdfPCell(new Phrase("Cell2")));
+                    //t0.AddCell(new PdfPCell(new Phrase("Cell3")));
+                    //t0.AddCell(new PdfPCell(new Phrase("Cell4")));
+
+                    d.Add(t0);
+                    d.Close();
+                     }
+                    //ms.Close();
+                    //return ms.ToArray();
+                    return new EmptyResult();
+                    //MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
+                    //return File(stream, "PdfFileName.pdf");
+                    //return File(ms, "application/pdf", "Doc1.pdf");
+                }                
+            }
+
     }
 }

@@ -56,3 +56,4 @@ E:\ comexcel\Test\Test\obj\Debug\ResolveAssemblyReference.cache
 E:\ comexcel\Test\Test\obj\Debug\Test.dll
 E:\ comexcel\Test\Test\obj\Debug\Test.pdb
 E:\ comexcel\Test\Test\bin\EPPlus.dll
+E:\ comexcel\Test\Test\bin\itextsharp.dll

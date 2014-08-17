@@ -5,3 +5,8 @@ http://jquery-ui.googlecode.com/svn/tags/1.8.4/docs/dialog.html
 http://www.devexpress.com/Support/Center/Example/Details/E4714
 https://help.devexpress.com/#XtraReports/CustomDocument9974
 https://help.devexpress.com/#XtraReports/CustomDocument9974/AddaReport
+
+
+
+http://www.mikesdotnetting.com/Article/83/Lists-with-iTextSharp
+http://forums.asp.net/t/1911234.aspx?how+to+create+reports+in+Asp+net+MVC3+application
