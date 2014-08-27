@@ -408,6 +408,10 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.GetExporterFormUpdateByInvoiceNo(param);
                     break;
+                case TestTask.AG_GetExporterFormSearchByInvoiceNo:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetExporterFormSearchByInvoiceNo(param);
+                    break;
                 case TestTask.AG_GetInvoiceSearchByNo:
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.GetInvoiceSearchByNo(param);

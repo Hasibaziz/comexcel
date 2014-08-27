@@ -54,6 +54,8 @@ namespace Test.Domain.Model
        public string ExFactoryDate { set; get; }
        public string CurrentDate { set; get; }
 
+       public int HeaderSpaces { set; get; }
+
        public enum Sections
        {
           PRIVATE = 2,          

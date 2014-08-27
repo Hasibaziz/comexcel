@@ -22,7 +22,8 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Html.BeginForm()) { %>
+<% using (Html.BeginForm("ExportFormEntry", "Private"))
+   { %>
     <%: Html.ValidationSummary(true) %>
         <%: Html.HiddenFor(model => model.ID)%>
 <div id="tabs">
@@ -34,6 +35,27 @@
     <div id="tabs-1">
      <fieldset>
         <legend>Basic Information Entry</legend>
+        <div class="editor-label01">
+          <label for="InvoiceNo">Invoice No:</label>
+        </div> 
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.InvoiceNo)%>
+            <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
+            <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
+            <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
+              <span>Search</span>
+            </a>--%>
+            <a id="Invoiceno" href="#"><span>Search</span></a>
+            <%--<button id="Invoiceno">Click</button>--%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
+        </div>
+        <div class="editor-label01">
+          <label for="InvoiceDate">Invoice Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.InvoiceDate)%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
+        </div>
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
@@ -61,21 +83,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTDate)%>
             <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceNo">Invoice No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceDate">Invoice Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceDate)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
-        </div>
+        </div>       
         <div class="editor-label01">
             <label for="ExporterID">Exporter No:</label>
         </div>
@@ -279,7 +287,42 @@
         //var number = Number(FOB.replace(/[^0-9\.]+/g, ""));        
         //$("#CMValue").val("$" + FOB);
         $("#CMValue").val(FOB);
-
+    }); 
+//// To pass parameter value using the TextBox and the link.      
+//   $('#Invoiceno').click(function () {
+//        var Inv = $('#InvoiceNo').val();      
+//            window.location = '/Private/ExporterFormSearchByInvoiceNo?invoiceno=' + Inv;      
+//        });
+    $('#Invoiceno').click(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/ExporterFormSearchByInvoiceNo?invoiceno=")%>' + $('#InvoiceNo').attr("value"), function (data) {
+            $("#InvoiceNo").val(data.InvoiceNo);
+            $("#InvoiceDate").val(data.InvoiceDate);
+            $("#ContractNo").val(data.ContractNo);
+            $("#ContractDate").val(data.ContractDate);
+            $("#TTNo").val(data.TTNo);
+            $("#TTDate").val(data.TTDate);
+            $("#ExporterID").val(data.ExporterID);
+            $("#ExporterID").val(data.ExporterID);
+            $("#ConsigneeID").val(data.ConsigneeID);
+            $("#NotifyID").val(data.NotifyID);
+            $("#HSCodeID").val(data.HSCodeID);
+            $("#CountryCode").val(data.CountryCode);
+            $("#DestinationID").val(data.DestinationID);
+            $("#TransportID").val(data.TransportID);
+            $("#Section").val(data.Section);
+            $("#Unit").val(data.Unit);
+            $("#Quantity").val(data.Quantity);
+            $("#Currency").val(data.Currency);
+            $("#Incoterm").val(data.Incoterm);
+            $("#FOBValue").val(data.FOBValue);
+            $("#CMValue").val(data.CMValue);
+            $("#ExpNo").val(data.ExpNo);
+            $("#ExpDate").val(data.ExpDate);
+            $("#BLNo").val(data.BLNo);
+            $("#BLDate").val(data.BLDate);
+            $("#ExFactoryDate").val(data.ExFactoryDate);
+        });
     });
 </script>
+
 </asp:Content>

@@ -80,6 +80,13 @@ namespace Test.Server.BLL
             retObj = (object)exfDAL.GetExporterFormUpdateByInvoiceNo(param);
             return retObj;
         }
+        public object GetExporterFormSearchByInvoiceNo(object param)
+        {
+            object retObj = null;
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.GetExporterFormSearchByInvoiceNo(param);
+            return retObj;
+        }
         public object GetInvoiceSearchByNo(object param)
         {
             object retObj = null;

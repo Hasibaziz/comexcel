@@ -18,6 +18,9 @@ using CrystalDecisions.Shared;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
+using System.Text;
+using iTextSharp.text.html.simpleparser;
+
 
 
 namespace Test.Controllers
@@ -332,6 +335,11 @@ namespace Test.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Exporter Form Details View, New Add, Edit and Update
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ExportFormEntry()
         {
             ExporterEntity exEntity = new ExporterEntity();
@@ -395,8 +403,8 @@ namespace Test.Controllers
                     _Model.ContractDate = dr["ContractDate"].ToString();
                     _Model.InvoiceNo = dr["InvoiceNo"].ToString();
                     _Model.InvoiceDate = dr["InvoiceDate"].ToString();
-                    _Model.TTNo = dr["TTDate"].ToString();
-                    _Model.TTDate = dr["TTNo"].ToString();
+                    _Model.TTNo = dr["TTNo"].ToString();
+                    _Model.TTDate = dr["TTDate"].ToString();
                     _Model.ExporterID = dr["ExporterID"].ToString();
                     _Model.ExporterName = dr["ExporterName"].ToString();
                     _Model.RegDetails = dr["RegDetails"].ToString();
@@ -427,7 +435,12 @@ namespace Test.Controllers
                     _Model.BLNo = dr["BLNo"].ToString();
                     _Model.BLDate = dr["BLNo"].ToString();
                     _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
-                }
+                }                
+            }
+            else
+            {
+                return View("ExportFormEntry", _Model);
+               //return Json(new { Result = "ERROR", Message = "Information failed to Open" });
             }
             return View("ExporterFormUpdate", _Model);
         }
@@ -470,6 +483,157 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+       
+        /// 
+        /// Searching using the Invoice No, passing Model with values. for only update.
+        ///
+        
+        //[HttpGet]
+        //public ActionResult ExporterFormSearchByInvoiceNo(String invoiceno)
+        //{
+        //    ExportformEntity _Model = new ExportformEntity();
+
+        //    ExporterEntity exEntity = new ExporterEntity();
+        //    ViewData["ExporterNo"] = GetAllExporterDetails(exEntity);
+        //    ConsigneeEntity conEntity = new ConsigneeEntity();
+        //    ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+        //    NotifypartyEntity notEntity = new NotifypartyEntity();
+        //    ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+        //    HSCodeEntity hsEntity = new HSCodeEntity();
+        //    ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+        //    DestinationEntity dsEntity = new DestinationEntity();
+        //    ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+        //    ModeinfoEntity tEntity = new ModeinfoEntity();
+        //    ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+
+        //    if (invoiceno != null)
+        //    {
+        //        DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterFormSearchByInvoiceNo, invoiceno);      
+
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            _Model.ID = dr["ID"].ToString();
+        //            _Model.ContractNo = dr["ContractNo"].ToString();
+        //            _Model.ContractDate = dr["ContractDate"].ToString();
+        //            _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+        //            _Model.InvoiceDate = dr["InvoiceDate"].ToString();
+        //            _Model.TTNo = dr["TTDate"].ToString();
+        //            _Model.TTDate = dr["TTNo"].ToString();
+        //            _Model.ExporterID = dr["ExporterID"].ToString();
+        //            _Model.ExporterName = dr["ExporterName"].ToString();
+        //            _Model.RegDetails = dr["RegDetails"].ToString();
+        //            _Model.ConsigneeID = dr["ConsigneeID"].ToString();
+        //            _Model.ConsigneeName = dr["ConsigneeName"].ToString();
+        //            _Model.NotifyID = dr["NotifyID"].ToString();
+        //            _Model.NotifyName = dr["NotifyName"].ToString();
+        //            _Model.HSCodeID = dr["HSCodeID"].ToString();
+        //            _Model.HSCode = dr["HSCode"].ToString();
+        //            _Model.ShortName = dr["ShortName"].ToString();
+        //            _Model.CountryCode = dr["CountryCode"].ToString();
+        //            _Model.Name = dr["Name"].ToString();
+        //            _Model.Port = dr["Port"].ToString();
+        //            _Model.DestinationID = dr["DestinationID"].ToString();
+        //            _Model.TransportID = dr["TransportID"].ToString();
+        //            _Model.TName = dr["TName"].ToString();
+        //            _Model.TPort = dr["TPort"].ToString();
+        //            _Model.Section = dr["Section"].ToString();
+        //            _Model.Unit = dr["Unit"].ToString();
+        //            _Model.Quantity = dr["Quantity"].ToString();
+        //            _Model.Currency = dr["Currency"].ToString();
+        //            _Model.Incoterm = dr["Incoterm"].ToString();
+        //            _Model.FOBValue = dr["FOBValue"].ToString();
+        //            _Model.CMValue = dr["CMValue"].ToString();
+
+        //            _Model.ExpNo = dr["ExpNo"].ToString();
+        //            _Model.ExpDate = dr["ExpDate"].ToString();
+        //            _Model.BLNo = dr["BLNo"].ToString();
+        //            _Model.BLDate = dr["BLNo"].ToString();
+        //            _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return View("ExportFormEntry", _Model);
+        //        //return Json(new { Result = "ERROR", Message = "Information failed to Open" });
+        //    }
+        //    return View("ExportFormEntry", _Model);
+        //}
+
+        /// <summary>
+        /// Searching using the Invoice No, passing only the values for different Invoice with same information.
+        /// </summary>
+        /// <param name="invoiceno"></param>
+        /// <returns></returns>
+        public JsonResult ExporterFormSearchByInvoiceNo(string invoiceno)
+        {
+            try
+            {
+                ExportformEntity obj = (ExportformEntity)SearchByInvoiceNo(invoiceno);
+
+                return Json(obj);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public object SearchByInvoiceNo(string invoice)
+        {
+            ExportformEntity _Model = new ExportformEntity();
+            //_Model.InvoiceNo = invoiceno;
+
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterFormSearchByInvoiceNo, invoice);
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ContractNo = dr["ContractNo"].ToString();
+                _Model.ContractDate = dr["ContractDate"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+                _Model.InvoiceDate = dr["InvoiceDate"].ToString();
+                _Model.TTNo = dr["TTNo"].ToString();
+                _Model.TTDate = dr["TTDate"].ToString();
+                _Model.ExporterID = dr["ExporterID"].ToString();
+                _Model.ExporterName = dr["ExporterName"].ToString();
+                _Model.RegDetails = dr["RegDetails"].ToString();
+                _Model.ConsigneeID = dr["ConsigneeID"].ToString();
+                _Model.ConsigneeName = dr["ConsigneeName"].ToString();
+                _Model.NotifyID = dr["NotifyID"].ToString();
+                _Model.NotifyName = dr["NotifyName"].ToString();
+                _Model.HSCodeID = dr["HSCodeID"].ToString();
+                _Model.HSCode = dr["HSCode"].ToString();
+                _Model.ShortName = dr["ShortName"].ToString();
+                _Model.CountryCode = dr["CountryCode"].ToString();
+                _Model.Name = dr["Name"].ToString();
+                _Model.Port = dr["Port"].ToString();
+                _Model.DestinationID = dr["DestinationID"].ToString();
+                _Model.TransportID = dr["TransportID"].ToString();
+                _Model.TName = dr["TName"].ToString();
+                _Model.TPort = dr["TPort"].ToString();
+                _Model.Section = dr["Section"].ToString();
+                _Model.Unit = dr["Unit"].ToString();
+                _Model.Quantity = dr["Quantity"].ToString();
+                _Model.Currency = dr["Currency"].ToString();
+                _Model.Incoterm = dr["Incoterm"].ToString();
+                _Model.FOBValue = dr["FOBValue"].ToString();
+                _Model.CMValue = dr["CMValue"].ToString();
+
+                _Model.ExpNo = dr["ExpNo"].ToString();
+                _Model.ExpDate = dr["ExpDate"].ToString();
+                _Model.BLNo = dr["BLNo"].ToString();
+                _Model.BLDate = dr["BLDate"].ToString();
+                _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
+
+            }
+            return _Model;
+        }
+
+        /// <summary>
+        /// To display the Information on Grid using the Jquery.
+        /// </summary>
+        /// <param name="jtStartIndex"></param>
+        /// <param name="jtPageSize"></param>
+        /// <param name="jtSorting"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult ExportFormDetailsList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
@@ -494,8 +658,8 @@ namespace Test.Controllers
                                 ContractDate = dr["ContractDate"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
-                                TTNo = dr["TTDate"].ToString(),
-                                TTDate = dr["TTNo"].ToString(),
+                                TTNo = dr["TTNo"].ToString(),
+                                TTDate = dr["TTDate"].ToString(),
                                 ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
                                 RegDetails = dr["RegDetails"].ToString(),
@@ -545,6 +709,15 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
+        /// <summary>
+        /// Searching the Value using Jquery.
+        /// </summary>
+        /// <param name="Invno"></param>
+        /// <param name="jtStartIndex"></param>
+        /// <param name="jtPageSize"></param>
+        /// <param name="jtSorting"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult InvoiceSearchByNo(string Invno, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
@@ -571,8 +744,8 @@ namespace Test.Controllers
                                 ContractDate = dr["ContractDate"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
-                                TTNo = dr["TTDate"].ToString(),
-                                TTDate = dr["TTNo"].ToString(),
+                                TTNo = dr["TTNo"].ToString(),
+                                TTDate = dr["TTDate"].ToString(),
                                 ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
                                 RegDetails = dr["RegDetails"].ToString(),
@@ -622,6 +795,11 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
+        /// <summary>
+        /// ItemList pass using the ExpEntry for creating the SAP Crystal Reporting.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ExportFormReport()
         {
             rptExportformEntity obj;
@@ -688,6 +866,10 @@ namespace Test.Controllers
             return File(stream, "application/pdf");
         }
 
+        /// <summary>
+        /// Destination Details view, add, Update.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Destination()
         {
             return View();
@@ -762,6 +944,11 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        
+        /// <summary>
+        /// Mode Detaisl View, Add, Update.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Modeinfo()
         {
             return View();
@@ -836,7 +1023,10 @@ namespace Test.Controllers
             }
         }
 
-
+        /// <summary>
+        ///  To Collect all ExporterDetails 
+        /// </summary>
+        /// <returns></returns>
         public JsonResult AllExporterDetails()
         {
             try
@@ -915,6 +1105,12 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
+        /// <summary>
+        /// To Collect Exporter Name with ID.
+        /// </summary>
+        /// <param name="expid"></param>
+        /// <returns></returns>
         public JsonResult GetExporterNameByID(string expid)
         {
             if (expid.ToString().Trim() == "")
@@ -996,55 +1192,142 @@ namespace Test.Controllers
             }
         }
 
-        public ActionResult PDFView()
+        /// <summary>
+        /// Report Generate in PDF
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PDFView(int headspc)
         {
-            using (MemoryStream ms = new MemoryStream())
+            using(MemoryStream ms = new MemoryStream())
             {
-                using (Document d = new Document(PageSize.A4, 55, 55, 35, 20))
-                using (PdfWriter writer = PdfWriter.GetInstance(d, ms))
-                {
-                    string path = Server.MapPath("../PDF_Files");
-                    //var doc1 = new iTextSharp.text.Document();
-                    //PdfWriter.GetInstance(doc1, new FileStream(path + "/Doc1.pdf", FileMode.Create));
-                    PdfWriter.GetInstance(d, new FileStream(path + "/Doc1.pdf", FileMode.Create));
-                    List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntry"];
+                using (Document d = new Document(PageSize.LEGAL, 20, 1, 10, 1))      //using( Document d = new Document(PageSize.A4, 55, 55, 35, 20))
+               {
+                   PdfWriter writer = PdfWriter.GetInstance(d, ms);
+                   string path = Server.MapPath("../PDF_Files");
+                   //int headspc = 22;    //22f
+                   //var doc1 = new iTextSharp.text.Document();
+                   //PdfWriter.GetInstance(doc1, new FileStream(path + "/Doc1.pdf", FileMode.Create));
+                   PdfWriter.GetInstance(d, new FileStream(path + "/PDFDoc.pdf", FileMode.Create));
+                   List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntry"];
+                   writer.CompressionLevel = 0;
+                   d.Open();
+                   Rectangle r = d.PageSize;
+                   PdfContentByte c1 = writer.DirectContent;
+                   PdfContentByte c2 = writer.DirectContentUnder;
+                   d.Add(new Paragraph(new Phrase("Page Header")));
+                   Paragraph heading = new Paragraph("\n");
+                   heading.ExtraParagraphSpace = 100f;
+                   heading.SetLeading(5.0f, headspc);    ///20.0f means the Header Spaces..                                 
 
-                    writer.CompressionLevel = 0;
-                    d.Open();
-                    Rectangle r = d.PageSize;
-                    PdfContentByte c1 = writer.DirectContent;
-                    PdfContentByte c2 = writer.DirectContentUnder;
-                    d.Add(new Paragraph(new Phrase("Title Paragraph")));
-                    Paragraph heading = new Paragraph("\n");
-                    heading.SpacingAfter = 70f;
-                    //d.Add(new LineSeparator(1, 100, new ElementColor(90), Element.ALIGN_CENTER, -2));
-                    PdfPTable t0 = new PdfPTable(4);
-                    t0.HorizontalAlignment = Element.ALIGN_LEFT;
-                    t0.LockedWidth = true;
-                    t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                    t0.SpacingBefore = 10;
-                    t0.SpacingAfter = 25;
-                    foreach (ExportformEntity dr in ItemList)
-                    {
-                        t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceNo)));
-                        t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceDate)));
-                    }
-                    //t0.AddCell(new PdfPCell(new Phrase("Cell1")));
-                    //t0.AddCell(new PdfPCell(new Phrase("Cell2")));
-                    //t0.AddCell(new PdfPCell(new Phrase("Cell3")));
-                    //t0.AddCell(new PdfPCell(new Phrase("Cell4")));
+                   //d.Add(new LineSeparator(1, 100, new ElementColor(90), Element.ALIGN_CENTER, -2));
+                   heading.Add("");
+                   d.Add(heading);
+                   //heading.Add(("Date:" + DateTime.Now.ToString("dd/MM/yyyy")).Replace('-', '/'));
+                   //StringBuilder builder = new StringBuilder();
+                   //builder.Append("<html>");
+                   //builder.Append("<head>");
+                   //builder.Append("</head>");
+                   //var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(builder.ToString()), null);
+                   //foreach (var htmlElement in parsedHtmlElements)
+                   //    d.Add(htmlElement as IElement);
 
-                    d.Add(t0);
-                    d.Close();
-                     }
-                    //ms.Close();
-                    //return ms.ToArray();
-                    return new EmptyResult();
-                    //MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
-                    //return File(stream, "PdfFileName.pdf");
-                    //return File(ms, "application/pdf", "Doc1.pdf");
-                }                
-            }
+                    
+                   //PdfPTable t0 = new PdfPTable(4);
+                   PdfPTable t0 = new PdfPTable(3);
+                   t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right
+                   t0.LockedWidth = true;
+                   //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
+                   t0.SetTotalWidth(new[] {245f, 200f, 90f});
+                   t0.SpacingBefore = 10;
+                   t0.SpacingAfter = 25;                  
+                   foreach (ExportformEntity dr in ItemList)
+                   {
+                        //string strname = dr.ShortName;
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.ShortName, new Font(Font.FontFamily.COURIER, 8f, Font.BOLD))));
+                       t0.AddCell(new PdfPCell(new Phrase(dr.HSCode, new Font())));                       
+
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Name, new Font())));
+                       t0.AddCell(new PdfPCell(new Phrase(dr.CountryCode, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Port, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Unit, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Quantity, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Currency, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.Incoterm, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.FOBValue, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.CMValue, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.ContractNo, new Font())));
+                       t0.AddCell(new PdfPCell(new Phrase(dr.ContractDate, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.TTNo, new Font(Font.FontFamily.COURIER, 8f, Font.BOLD))));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.TTDate, new Font(Font.FontFamily.COURIER, 8f, Font.BOLD))));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.ConsigneeName, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase("                  INVOICE NO:")));
+                       t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceNo, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase("                  DATE:")));
+                       t0.AddCell(new PdfPCell(new Phrase(dr.InvoiceDate, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.TName, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.TPort, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.ExporterName, new Font())));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell(new Phrase(dr.RegDetails, new Font(Font.FontFamily.COURIER, 8f, Font.BOLD))));
+                       t0.AddCell(new PdfPCell());
+                       t0.AddCell(new PdfPCell());
+                       if (dr.Section == "2")
+                       {
+                           string pev = "PRIVATE";
+                           t0.AddCell(new PdfPCell(new Phrase(pev, new Font())));
+                           t0.AddCell(new PdfPCell(new Phrase(dr.Section, new Font())));
+                       }
+                       t0.AddCell(new PdfPCell());
+                   }
+                   //t0.AddCell(new PdfPCell(new Phrase("Cell1")));
+                   //t0.AddCell(new PdfPCell(new Phrase("Cell2")));
+                   //t0.AddCell(new PdfPCell(new Phrase("Cell3")));
+                   //t0.AddCell(new PdfPCell(new Phrase("Cell4")));                                      
+                   d.Add(t0);
+                   d.Add(heading);
+                   d.Close();
+                   
+               }
+                //ms.Close();
+                //return ms.ToArray();
+                return new EmptyResult();
+                //MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
+                //return File(stream, "PdfFileName.pdf");
+                //return File(ms, "application/pdf", "Doc1.pdf");
+                //return File(ms, "application/pdf");
+            }               
+           }
 
     }
 }

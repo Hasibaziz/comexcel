@@ -13,6 +13,7 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.EditorFor(model => model.InvoiceNo)%>
+                 Header Spaces:  <%: Html.EditorFor(model => model.HeaderSpaces)%>
                  <input type="button" value="Print Preview" title="Print"   onclick="printItem()" />
                  <input type="button" value="Print Preview" title="Print"   onclick="printPDF()" />
                </div>
@@ -27,10 +28,23 @@
     }
 </script>
 <script type="text/javascript">
+//    function printPDF() {
+//        //alert("Report");
+//        //window.open("/Private/PDFView");
+//        var headspaces = $('#HeaderSpaces').val();        
+//        //window.location = '/Private/PDFView?headspc=' + headspaces;
+//        window.open =("/Private/PDFView?headspc=" + headspaces); 
+//        //var win = window.location = '/Private/PDFView?headspc=' + headspaces; 
+//        //window.open = (win);  
+//    }
     function printPDF() {
-        //alert("Report");
-        window.open("/Private/PDFView");
-    }
+        var headspaces = $('#HeaderSpaces').val();
+        var url = "/Private/PDFView?headspc=" + headspaces;
+        var win = window.open('', '', 'left=0px, top=0px, width=320px, height=270px, scrollbars=no, status =no, resizable=no');
+        win.location.href = url;
+        win = null;
+        return false;
+    } 
 </script>
 <script type="text/javascript">
     $('input#InvoiceNo').change(function () {  
