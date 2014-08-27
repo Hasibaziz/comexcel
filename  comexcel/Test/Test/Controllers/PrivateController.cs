@@ -1321,11 +1321,17 @@ namespace Test.Controllers
                }
                 //ms.Close();
                 //return ms.ToArray();
-                return new EmptyResult();
+             //return new EmptyResult();     ///Main Retun
                 //MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
                 //return File(stream, "PdfFileName.pdf");
                 //return File(ms, "application/pdf", "Doc1.pdf");
                 //return File(ms, "application/pdf");
+                var fileStream = new FileStream("E:/ comexcel/Test/Test/PDF_Files/" + "PDFDoc.pdf",
+                                    FileMode.Open,
+                                    FileAccess.Read
+                                  );
+                var fsResult = new FileStreamResult(fileStream, "application/pdf");
+                return fsResult;
             }               
            }
 
