@@ -62,14 +62,14 @@ namespace Test.Domain.Model
        }
        public enum Units
        { 
-           PCS = 1,
-           SET = 2,
+           PCS = 55,
+           SET = 56,
        }
        public enum Currencies
        { 
-           USDollers = 1,
-           EUroes = 2,
-           Pound = 3,
+           USDollars = 01,
+           EUroes = 02,
+           Pound = 03,
        }
        public enum Inconterms
        { 

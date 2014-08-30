@@ -40,14 +40,16 @@ E:\ comexcel\Test\Test\bin\hibernate.cfg.xml
 E:\ comexcel\Test\Test\bin\Test.dll
 E:\ comexcel\Test\Test\bin\Test.pdb
 E:\ comexcel\Test\Test\bin\EntityFramework.dll
+E:\ comexcel\Test\Test\bin\EPPlus.dll
 E:\ comexcel\Test\Test\bin\Iesi.Collections.dll
+E:\ comexcel\Test\Test\bin\itextsharp.dll
+E:\ comexcel\Test\Test\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\ comexcel\Test\Test\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\ comexcel\Test\Test\bin\Microsoft.Practices.ObjectBuilder.dll
 E:\ comexcel\Test\Test\bin\NHibernate.dll
 E:\ comexcel\Test\Test\bin\Test.Domain.dll
 E:\ comexcel\Test\Test\bin\Test.Server.dll
 E:\ comexcel\Test\Test\bin\Test.Structure.dll
-E:\ comexcel\Test\Test\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
-E:\ comexcel\Test\Test\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
-E:\ comexcel\Test\Test\bin\Microsoft.Practices.ObjectBuilder.dll
 E:\ comexcel\Test\Test\bin\Test.Domain.pdb
 E:\ comexcel\Test\Test\bin\Test.Server.pdb
 E:\ comexcel\Test\Test\bin\Test.Structure.pdb
@@ -55,5 +57,3 @@ E:\ comexcel\Test\Test\bin\EntityFramework.xml
 E:\ comexcel\Test\Test\obj\Debug\ResolveAssemblyReference.cache
 E:\ comexcel\Test\Test\obj\Debug\Test.dll
 E:\ comexcel\Test\Test\obj\Debug\Test.pdb
-E:\ comexcel\Test\Test\bin\EPPlus.dll
-E:\ comexcel\Test\Test\bin\itextsharp.dll

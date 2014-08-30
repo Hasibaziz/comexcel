@@ -78,8 +78,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLL\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\DLL\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.5.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
@@ -97,6 +98,7 @@
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -150,6 +152,7 @@
     </Compile>
     <Compile Include="Report\rptExportformEntity.cs" />
     <Compile Include="Utility\BinaryFileResult.cs" />
+    <Compile Include="Utility\ConstantApp.cs" />
     <Compile Include="Utility\Excelimport.cs" />
     <Compile Include="Views\Shared\Private.Master.cs">
       <DependentUpon>Private.Master</DependentUpon>
@@ -437,6 +440,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="PDFFiles\" />
     <Folder Include="Temp\" />
   </ItemGroup>
   <ItemGroup>
