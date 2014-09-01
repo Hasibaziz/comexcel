@@ -94,5 +94,14 @@ namespace Test.Server.BLL
             retObj = (object)exfDAL.GetInvoiceSearchByNo(param);
             return retObj;
         }
+        public object GetDuplicateInvoiceno(object param)
+        {
+            object retObj = null;
+            string Dupinv = param.ToString();
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.GetDuplicateInvoiceno(param, Dupinv);
+            return retObj;
+        }
+
     }
 }

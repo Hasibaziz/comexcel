@@ -12,6 +12,14 @@
     $(function () {
         $("#tabs").tabs();
     });
+    function formSuccess(data) {
+        alert("Test");
+        if (data.isSuccess) {
+            alert("Success! " + data.message);
+        } else {
+            alert("Failed! " + data.message);
+        }
+    }
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -22,9 +30,9 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Html.BeginForm("ExportFormEntry", "Private"))
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess" }))
    { %>
-    <%: Html.ValidationSummary(true) %>
+    <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>
 <div id="tabs">
         <ul>
@@ -109,7 +117,7 @@
             <label for="NotifyID">Notify No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "Width=250" }) %>  
+            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "Width=250" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -119,7 +127,7 @@
             <label for="HSCodeID">HSCode No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "Width=250" }) %>  
+            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "Width=250" })%>  
             <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -144,7 +152,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
-            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }))%>
+            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
      </fieldset>
@@ -322,7 +330,7 @@
             $("#BLDate").val(data.BLDate);
             $("#ExFactoryDate").val(data.ExFactoryDate);
         });
-    });
+    });   
 </script>
 
 </asp:Content>

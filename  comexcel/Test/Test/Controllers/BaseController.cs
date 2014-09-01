@@ -572,5 +572,18 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDuplicateInvoiceno(string invoice)
+        {
+            ExportformEntity _Model = new ExportformEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicateInvoiceno, invoice);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
     }
 }

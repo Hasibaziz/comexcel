@@ -145,6 +145,7 @@ namespace Test.Structure
         public const string AG_GetExporterFormUpdateByInvoiceNo = "AG_GetExporterFormUpdateByInvoiceNo";
         public const string AG_GetExporterFormSearchByInvoiceNo = "AG_GetExporterFormSearchByInvoiceNo";
         public const string AG_GetInvoiceSearchByNo = "AG_GetInvoiceSearchByNo";
+        public const string AG_GetDuplicateInvoiceno = "GetDuplicateInvoiceno";
         #endregion
 
 

@@ -244,5 +244,13 @@ namespace Test.Server.DAL
             return ds.Tables[0];
         }
 
+        public DataTable GetDuplicateInvoiceno(object para, string Dupinv)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, InvoiceNo  FROM [Commercial].[dbo].[ExportformDetails] where InvoiceNo like '%" + Dupinv + "%'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);           
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

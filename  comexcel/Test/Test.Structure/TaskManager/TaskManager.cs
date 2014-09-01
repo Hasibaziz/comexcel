@@ -416,6 +416,10 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.GetInvoiceSearchByNo(param);
                     break;
+                case TestTask.AG_GetDuplicateInvoiceno:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetDuplicateInvoiceno(param);
+                    break;
                 #endregion
 
 

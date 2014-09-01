@@ -447,8 +447,10 @@ namespace Test.Controllers
         [HttpPost]
         public ActionResult ExportFormEntry(ExportformEntity _Model)
         {
+            var isSuccess = false;
+            var message = "";
             try
-            {
+            {               
                 if (!ModelState.IsValid)
                 {
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
@@ -458,8 +460,20 @@ namespace Test.Controllers
                 bool isUpdate = false;
                 if (_Model.ID == null)
                 {
-                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveExportFormEntryRecord, _Model);
-                    return RedirectToAction("ExportFormEntry", "Private");
+                    if (DuplicateInvoiceNo(_Model.InvoiceNo) != false)
+                    {
+                        //return Json(new { Result = "ERROR", Message = "The Invoice Number is already taken. Please choose another." });
+                        //return Json(new { result }, JsonRequestBehavior.AllowGet);
+                         isSuccess = true;
+                         message = "The Invoice Number is already taken. Please choose another.";
+                         var jsonData = new { isSuccess, message };
+                         return Json(jsonData);
+                       }
+                    else
+                    {
+                        isUpdate = (bool)ExecuteDB(TestTask.AG_SaveExportFormEntryRecord, _Model);
+                        return RedirectToAction("ExportFormEntry", "Private");
+                    }
                 }
                 else if (_Model.ID != null)
                 {
@@ -480,14 +494,37 @@ namespace Test.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new { Result = "ERROR", Message = ex.Message });
+               return Json(new { Result = "ERROR", Message = ex.Message });
+               
             }
         }
        
+        /// <summary>
+        /// Dupliate Invoice value checking.
+        /// </summary>
+        /// <param name="invoiceno"></param>
+        /// <returns></returns>
+        public bool DuplicateInvoiceNo(string invoiceno)
+        {
+            try
+            {
+                ExportformEntity obj = (ExportformEntity)GetDuplicateInvoiceno(invoiceno);
+                //var obj1 = GetDupMail(UserID);                
+                if (obj.InvoiceNo == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         /// 
         /// Searching using the Invoice No, passing Model with values. for only update.
         ///
-        
+
         //[HttpGet]
         //public ActionResult ExporterFormSearchByInvoiceNo(String invoiceno)
         //{
@@ -1211,31 +1248,25 @@ namespace Test.Controllers
                    List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntry"];
                    writer.CompressionLevel = 0;
                    d.Open();
-                   Rectangle r = d.PageSize;
-                   PdfContentByte c1 = writer.DirectContent;
-                   PdfContentByte c2 = writer.DirectContentUnder;
+                  
                    d.Add(new Paragraph(new Phrase("---")));
                    Paragraph heading = new Paragraph("\n");
                    heading.ExtraParagraphSpace = 100f;
-                   heading.SetLeading(0.0f, headspc);    ///20.0f means the Header Spaces..                                 
-                   
+                   heading.SetLeading(0.0f, headspc);   ///20.0f means the Header Spaces..                                                    
                    heading.Add("");
-                   d.Add(heading);
-                   
+                   d.Add(heading);                   
                    PdfPTable t0 = new PdfPTable(3);
                    t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right                  
                    t0.LockedWidth = true;
                    t0.DefaultCell.Border = Rectangle.NO_BORDER;
                    //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                   t0.SetTotalWidth(new[] {245f, 170f, 95f});                  
+                   t0.SetTotalWidth(new[] {245f, 170f, 95f});         //Table cell spaceing
+         
                    PdfPCell cell = new PdfPCell(new Paragraph());
                               
                    //t0.DefaultCell.FixedHeight = 100f;      //Table Cell Fix Height.
                    //cell = ConstantApp.PhraseCell(new Phrase(), PdfPCell.ALIGN_CENTER);
                    //cell = ConstantApp.PhraseCell(new Phrase("Hello World", FontFactory.GetFont("Arial", 12, Font.UNDERLINE)), PdfPCell.ALIGN_CENTER);
-
-                   
-
                    foreach (ExportformEntity dr in ItemList)
                    {
                        //string strname = dr.ShortName;
@@ -1273,6 +1304,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
+
                        cell=new PdfPCell(new Phrase(" "));  ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);                                   ///
@@ -1309,13 +1341,13 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       if (dr.Currency == "01")
+                       if (dr.Currency == "1")
                        {
                            string usd = "U.S.DOLLAR";
                            cell = new PdfPCell(new Phrase(usd, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
-                           cell = new PdfPCell(new Phrase(dr.Currency, new Font()));
+                           cell = new PdfPCell(new Phrase("0"+dr.Currency, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                          }
@@ -1562,7 +1594,7 @@ namespace Test.Controllers
                 return fsResult;
             }               
            }   
-     
+          
 
     }
 }
