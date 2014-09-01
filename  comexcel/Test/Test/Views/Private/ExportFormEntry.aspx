@@ -12,12 +12,32 @@
     $(function () {
         $("#tabs").tabs();
     });
-    function formSuccess(data) {
-        alert("Test");
+    function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
         if (data.isSuccess) {
-            alert("Success! " + data.message);
+            alert("Check! " + data.message);
         } else {
-            alert("Failed! " + data.message);
+            alert("Save Successful");
+            //window.location.href = window.location.href;
+            $("#InvoiceNo").val(" ");
+            $("#InvoiceDate").val(" ");
+            $("#ContractNo").val(" ");
+            $("#ContractDate").val(" ");
+            $("#TTNo").val(" ");
+            $("#TTDate").val(" ");
+
+            $("#ExporterID").val(" ");
+            $("#ConsigneeID").val(" ");
+            $("#NotifyID").val(" ");
+            $("#HSCodeID").val(" ");
+            $("#TransportID").val(" ");
+            $("#DestinationID").val(" ");
+            $("#Section").val(" ");
+            $("#CMValue").val(" ");
+            $("#FOBValue").val(" ");
+            $("#Unit").val(" ");
+            $("#Quantity").val(" ");
+            $("#Currency").val(" ");
+            $("#Incoterm").val(" ");
         }
     }
 </script>
@@ -30,7 +50,7 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "formSuccess" }))
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }))
    { %>
     <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>

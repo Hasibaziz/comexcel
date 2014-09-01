@@ -6,6 +6,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<link href="~/Scripts/validationEngine/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js") %>" type="text/javascript"></script>
 
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -46,6 +49,19 @@
                         title: 'Consignee Name',
                         type: 'textarea'
                     }
+                },
+                formCreated: function (event, data) {
+                    data.form.find('input[name="ConsigneeNo"]').addClass('validate[required]');
+                    data.form.validationEngine();
+                },
+                //Validate form when it is being submitted
+                formSubmitting: function (event, data) {
+                    return data.form.validationEngine('validate');
+                },
+                //Dispose validation logic when form is closed
+                formClosed: function (event, data) {
+                    data.form.validationEngine('hide');
+                    data.form.validationEngine('detach');
                 }
             });
             $('#RecordsContainer').jtable('load');

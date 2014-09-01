@@ -16,3 +16,7 @@ http://aspforums.net/Threads/151175/How-to-add-border-to-PDF-page-using-iTextSha
 
 json Messages:
 http://forums.asp.net/t/1888705.aspx?how+to+pass+json+value+into+jquery+function+and+show+that+in+alert+message+in+mvc+3+razor+
+http://www.blackbeltcoder.com/Articles/script/using-ajax-beginform-with-asp-net-mvc
+http://stackoverflow.com/questions/20746784/how-can-i-return-a-json-result-to-a-ajax-beginform
+http://forums.asp.net/t/1978940.aspx?ASP+NET+MVC5+AJAX+BeginForm+AjaxOptions+OnSuccess+not+called
+
