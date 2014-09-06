@@ -14,7 +14,19 @@
     });
     function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
         if (data.isSuccess) {
-            alert("Check! " + data.message);
+            //$('<div></div>').html('Check! ').dialog('open');
+            //$('<div></div>').html('Check! ' + data.message).dialog('open');
+//            $('<div></div>').html('Check! ').dialog({
+//                autoOpen: false,
+//                width: 400,
+//                buttons: {
+//                    "OK": function () {
+//                        //closeDialog($(this))
+//                        $(this).dialog("close");
+//                    }
+//                }
+//            });  
+         alert("Check! " + data.message);
         } else {
             alert("Save Successful");
             //window.location.href = window.location.href;
