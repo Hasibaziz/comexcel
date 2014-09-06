@@ -489,7 +489,11 @@ namespace Test.Controllers
                 //    return RedirectToAction("ExportForm", "Private", addedModel);
                 //}
                 else
-                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+                    isSuccess = true;
+                    message = "ERROR! Information failed to save";
+                    var ERRORMSG = new { isSuccess, message };
+                    return Json(ERRORMSG);
+                    //return Json(new { Result = "ERROR", Message = "Information failed to save" });
 
             }
             catch (Exception ex)

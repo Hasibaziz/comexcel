@@ -13,43 +13,58 @@
         $("#tabs").tabs();
     });
     function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
-        if (data.isSuccess) {
-            //$('<div></div>').html('Check! ').dialog('open');
-            //$('<div></div>').html('Check! ' + data.message).dialog('open');
-//            $('<div></div>').html('Check! ').dialog({
-//                autoOpen: false,
-//                width: 400,
-//                buttons: {
-//                    "OK": function () {
-//                        //closeDialog($(this))
-//                        $(this).dialog("close");
-//                    }
-//                }
-//            });  
-         alert("Check! " + data.message);
+        if (data.isSuccess) {       
+            $('<div></div>').html('Check! ' + data.message).dialog({
+                modal: true,
+                resizable: false,
+                title:"Alert",
+                dataType: "json",
+                width: 400,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                    }
+                }
+                        });
+         //alert("Check! " + data.message);
         } else {
-            alert("Save Successful");
+            //alert("Save Successful");
             //window.location.href = window.location.href;
-            $("#InvoiceNo").val(" ");
-            $("#InvoiceDate").val(" ");
-            $("#ContractNo").val(" ");
-            $("#ContractDate").val(" ");
-            $("#TTNo").val(" ");
-            $("#TTDate").val(" ");
+            $('<div></div>').html('Save Successful').dialog({
+                modal: true,
+                resizable: false,
+                title: "Success",
+                dataType: "json",
+                width: 200,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $("#InvoiceNo").val(" ");
+                        $("#InvoiceDate").val(" ");
+                        $("#ContractNo").val(" ");
+                        $("#ContractDate").val(" ");
+                        $("#TTNo").val(" ");
+                        $("#TTDate").val(" ");
+                        $("#ExporterID").val(" ");
+                        $("#ConsigneeID").val(" ");
+                        $("#NotifyID").val(" ");
+                        $("#HSCodeID").val(" ");
+                        $("#TransportID").val(" ");
+                        $("#DestinationID").val(" ");
+                        $("#Section").val(" ");
+                        $("#CMValue").val(" ");
+                        $("#FOBValue").val(" ");
+                        $("#Unit").val(" ");
+                        $("#Quantity").val(" ");
+                        $("#Currency").val(" ");
+                        $("#Incoterm").val(" ");
+                        $(this).dialog("close");
+                    }
+                }
+            });
 
-            $("#ExporterID").val(" ");
-            $("#ConsigneeID").val(" ");
-            $("#NotifyID").val(" ");
-            $("#HSCodeID").val(" ");
-            $("#TransportID").val(" ");
-            $("#DestinationID").val(" ");
-            $("#Section").val(" ");
-            $("#CMValue").val(" ");
-            $("#FOBValue").val(" ");
-            $("#Unit").val(" ");
-            $("#Quantity").val(" ");
-            $("#Currency").val(" ");
-            $("#Incoterm").val(" ");
         }
     }
 </script>
@@ -280,7 +295,8 @@
         </div>
       </fieldset>
     </div>
-   </div>     
+   </div>
+   <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
             <input type="submit" value="Save" />                                  
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
