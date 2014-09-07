@@ -5,6 +5,19 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<%--************-----------------For Client Side Validation-------------********************--%>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
+          <%--**************--------------------------**************************--%>
+
+ <%--*************---------For Making Baloon Validation Check---------------******************--%>
+ <link href="<%: Url.Content("~/Content/validationEngine/validationEngine.jquery.css") %>" rel="stylesheet" type="text/css" />
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
+          <%--**************--------------------------**************************--%>
+
+
 <script type="text/javascript" >
     $(document).ready(function () {
         $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
@@ -67,6 +80,20 @@
 
         }
     }
+
+    $(document).ready(function () {
+        // Define a custom validation function.
+//        $.validationEngineLanguage.allRules['test_value'] = {
+//            "func": function (field, rules, i, options) {
+//                return (field.val() == 'test');
+//            },
+//            "alertText": "* Value must be 'test'."
+//        };
+
+        // Initiate the validation engine.
+        $('#frmID').validationEngine();
+    });
+
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -77,7 +104,7 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }))
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new {@id = "frmID" }))
    { %>
     <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>
@@ -94,7 +121,8 @@
           <label for="InvoiceNo">Invoice No:</label>
         </div> 
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceNo)%>
+            <%--<%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required, custom[test_value]]" })%>--%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
@@ -108,7 +136,7 @@
           <label for="InvoiceDate">Invoice Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceDate)%>
+            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
         </div>
         <div class="editor-label01">

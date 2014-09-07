@@ -454,6 +454,7 @@ namespace Test.Controllers
                 if (!ModelState.IsValid)
                 {
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    //return View(_Model);
                 }
 
                 _Model.CurrentDate = DateTime.Now.ToString();
