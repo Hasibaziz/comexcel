@@ -11,7 +11,7 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
           <%--**************--------------------------**************************--%>
 
- <%--*************---------For Making Baloon Validation Check---------------******************--%>
+ <%--*************---------For Making Balloon Validation Check---------------******************--%>
  <link href="<%: Url.Content("~/Content/validationEngine/validationEngine.jquery.css") %>" rel="stylesheet" type="text/css" />
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
@@ -172,7 +172,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "Width=250" })%>
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ExporterID)%>
         </div>        
         <div class="editor-label01" style="color: Green;">       
@@ -182,7 +182,7 @@
             <label for="ConsigneeID">Consignee No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "Width=250" })%>
+            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ConsigneeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -192,7 +192,7 @@
             <label for="NotifyID">Notify No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -202,7 +202,7 @@
             <label for="HSCodeID">HSCode No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -212,14 +212,14 @@
             <label for="TransportID">Local Transport:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
             <label for="DestinationID">Destination Code:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
         <div class="editor-label01">
@@ -330,7 +330,6 @@
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
         </p>
-
     
 <% } %>
 

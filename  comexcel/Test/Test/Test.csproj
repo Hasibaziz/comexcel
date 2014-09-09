@@ -167,6 +167,7 @@
     <Content Include="Content\ControlStyle.css" />
     <Content Include="Content\DashboardStyle.css" />
     <Content Include="Content\highlight.css" />
+    <Content Include="Content\hoplun.css" />
     <Content Include="Content\images\1pix.gif" />
     <Content Include="Content\images\admin-gvw-bg.gif" />
     <Content Include="Content\images\admin-header-bg.gif" />
@@ -181,6 +182,8 @@
     <Content Include="Content\images\GoogleMaps.gif" />
     <Content Include="Content\images\grey_button_bg.gif" />
     <Content Include="Content\images\grid_header_back.png" />
+    <Content Include="Content\images\home-bg.png" />
+    <Content Include="Content\images\home.png" />
     <Content Include="Content\images\ico-blacklist.png" />
     <Content Include="Content\images\ico-catalog.png" />
     <Content Include="Content\images\ico-configuration.png" />
@@ -197,12 +200,14 @@
     <Content Include="Content\images\ico-warnings.gif" />
     <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.gif" />
+    <Content Include="Content\images\Logo.png" />
     <Content Include="Content\images\menu-item-left.png" />
     <Content Include="Content\images\menu-item-right.png" />
     <Content Include="Content\images\menu_bg.jpg" />
     <Content Include="Content\images\Menu_bg.png" />
     <Content Include="Content\images\Misc\note.png" />
     <Content Include="Content\images\Misc\phone.png" />
+    <Content Include="Content\images\search.png" />
     <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\images\SuccessMessage.gif" />
     <Content Include="Content\images\tab-line.png" />
