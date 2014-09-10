@@ -25,6 +25,7 @@
 
     <script src="<%: Url.Content("~/Scripts/syntaxhighligher/shCore.js") %>" type="text/javascript"></script>
 
+    <script src="<%: Url.Content("~/Scripts/jquery.unobtrusive-ajax.js") %>" type="text/javascript"></script>
 
     <%--<script src="<%: Url.Content("~/Scripts/syntaxhighligher/shBrushJScript.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/syntaxhighligher/shBrushXml.js") %>" type="text/javascript"></script>

@@ -5,6 +5,19 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<%--************-----------------For Client Side Validation-------------********************--%>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
+          <%--**************--------------------------**************************--%>
+
+ <%--*************---------For Making Balloon Validation Check---------------******************--%>
+ <link href="<%: Url.Content("~/Content/validationEngine/validationEngine.jquery.css") %>" rel="stylesheet" type="text/css" />
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
+          <%--**************--------------------------**************************--%>
+
+
 <script type="text/javascript" >
     $(document).ready(function () {
         $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
@@ -12,6 +25,75 @@
     $(function () {
         $("#tabs").tabs();
     });
+    function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
+        if (data.isSuccess) {       
+            $('<div></div>').html('Check! ' + data.message).dialog({
+                modal: true,
+                resizable: false,
+                title:"Alert",
+                dataType: "json",
+                width: 400,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                    }
+                }
+                        });
+         //alert("Check! " + data.message);
+        } else {
+            //alert("Save Successful");
+            //window.location.href = window.location.href;
+            $('<div></div>').html('Save Successful').dialog({
+                modal: true,
+                resizable: false,
+                title: "Success",
+                dataType: "json",
+                width: 200,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $("#InvoiceNo").val(" ");
+                        $("#InvoiceDate").val(" ");
+                        $("#ContractNo").val(" ");
+                        $("#ContractDate").val(" ");
+                        $("#TTNo").val(" ");
+                        $("#TTDate").val(" ");
+                        $("#ExporterID").val(" ");
+                        $("#ConsigneeID").val(" ");
+                        $("#NotifyID").val(" ");
+                        $("#HSCodeID").val(" ");
+                        $("#TransportID").val(" ");
+                        $("#DestinationID").val(" ");
+                        $("#Section").val(" ");
+                        $("#CMValue").val(" ");
+                        $("#FOBValue").val(" ");
+                        $("#Unit").val(" ");
+                        $("#Quantity").val(" ");
+                        $("#Currency").val(" ");
+                        $("#Incoterm").val(" ");
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+        }
+    }
+
+    $(document).ready(function () {
+        // Define a custom validation function.
+//        $.validationEngineLanguage.allRules['test_value'] = {
+//            "func": function (field, rules, i, options) {
+//                return (field.val() == 'test');
+//            },
+//            "alertText": "* Value must be 'test'."
+//        };
+
+        // Initiate the validation engine.
+        $('#frmID').validationEngine();
+    });
+
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -22,8 +104,9 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Html.BeginForm()) { %>
-    <%: Html.ValidationSummary(true) %>
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new {@id = "frmID" }))
+   { %>
+    <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>
 <div id="tabs">
         <ul>
@@ -34,6 +117,28 @@
     <div id="tabs-1">
      <fieldset>
         <legend>Basic Information Entry</legend>
+        <div class="editor-label01">
+          <label for="InvoiceNo">Invoice No:</label>
+        </div> 
+        <div class="editor-field01">
+            <%--<%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required, custom[test_value]]" })%>--%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>
+            <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
+            <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
+            <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
+              <span>Search</span>
+            </a>--%>
+            <a id="Invoiceno" href="#"><span>Search</span></a>
+            <%--<button id="Invoiceno">Click</button>--%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
+        </div>
+        <div class="editor-label01">
+          <label for="InvoiceDate">Invoice Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
+        </div>
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
@@ -61,27 +166,13 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTDate)%>
             <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceNo">Invoice No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceDate">Invoice Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceDate)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
-        </div>
+        </div>       
         <div class="editor-label01">
             <label for="ExporterID">Exporter No:</label>
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "Width=250" })%>
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ExporterID)%>
         </div>        
         <div class="editor-label01" style="color: Green;">       
@@ -91,7 +182,7 @@
             <label for="ConsigneeID">Consignee No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "Width=250" })%>
+            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ConsigneeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -101,7 +192,7 @@
             <label for="NotifyID">Notify No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "Width=250" }) %>  
+            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -111,7 +202,7 @@
             <label for="HSCodeID">HSCode No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "Width=250" }) %>  
+            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -121,14 +212,14 @@
             <label for="TransportID">Local Transport:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
             <label for="DestinationID">Destination Code:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "Width=250" })%>  
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
         <div class="editor-label01">
@@ -136,7 +227,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
-            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }),"Select")%>
+            <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
      </fieldset>
@@ -232,13 +323,13 @@
         </div>
       </fieldset>
     </div>
-   </div>     
+   </div>
+   <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
             <input type="submit" value="Save" />                                  
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
         </p>
-
     
 <% } %>
 
@@ -270,6 +361,52 @@
         });
     });
 </script>
-
+<script type="text/javascript">
+    $('#FOBValue').change(function () {
+        var X = $(this).val();
+        //var DX = parseInt(X);
+        var FOB = parseFloat(X).toFixed(2);
+        CM = (FOB * 20) / 100;
+        var cmvalue = parseFloat(CM).toFixed(2);
+        var fbvalue = parseFloat(FOB).toFixed(2);
+        $("#CMValue").val(cmvalue);
+        $("#FOBValue").val(fbvalue);
+    }); 
+//// To pass parameter value using the TextBox and the link.      
+//   $('#Invoiceno').click(function () {
+//        var Inv = $('#InvoiceNo').val();      
+//            window.location = '/Private/ExporterFormSearchByInvoiceNo?invoiceno=' + Inv;      
+//        });
+    $('#Invoiceno').click(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/ExporterFormSearchByInvoiceNo?invoiceno=")%>' + $('#InvoiceNo').attr("value"), function (data) {
+            $("#InvoiceNo").val(data.InvoiceNo);
+            $("#InvoiceDate").val(data.InvoiceDate);
+            $("#ContractNo").val(data.ContractNo);
+            $("#ContractDate").val(data.ContractDate);
+            $("#TTNo").val(data.TTNo);
+            $("#TTDate").val(data.TTDate);
+            $("#ExporterID").val(data.ExporterID);
+            $("#ExporterID").val(data.ExporterID);
+            $("#ConsigneeID").val(data.ConsigneeID);
+            $("#NotifyID").val(data.NotifyID);
+            $("#HSCodeID").val(data.HSCodeID);
+            $("#CountryCode").val(data.CountryCode);
+            $("#DestinationID").val(data.DestinationID);
+            $("#TransportID").val(data.TransportID);
+            $("#Section").val(data.Section);
+            $("#Unit").val(data.Unit);
+            $("#Quantity").val(data.Quantity);
+            $("#Currency").val(data.Currency);
+            $("#Incoterm").val(data.Incoterm);
+            $("#FOBValue").val(data.FOBValue);
+            $("#CMValue").val(data.CMValue);
+            $("#ExpNo").val(data.ExpNo);
+            $("#ExpDate").val(data.ExpDate);
+            $("#BLNo").val(data.BLNo);
+            $("#BLDate").val(data.BLDate);
+            $("#ExFactoryDate").val(data.ExFactoryDate);
+        });
+    });   
+</script>
 
 </asp:Content>

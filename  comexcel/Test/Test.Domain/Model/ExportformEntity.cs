@@ -106,7 +106,8 @@ namespace Test.Domain.Model
        public enum Inconterms
        { 
            FOB = 1,
-           Others = 2,
+           CTP = 2,
+           Others = 3,
        }
 
     }

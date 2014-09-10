@@ -365,11 +365,12 @@
     $('#FOBValue').change(function () {
         var X = $(this).val();
         //var DX = parseInt(X);
-        var DX = parseFloat(X);
-        FOB = (DX * 20) / 100;
-        //var number = Number(FOB.replace(/[^0-9\.]+/g, ""));        
-        //$("#CMValue").val("$" + FOB);
-        $("#CMValue").val(FOB);
+        var FOB = parseFloat(X).toFixed(2);
+        CM = (FOB * 20) / 100;
+        var cmvalue = parseFloat(CM).toFixed(2);
+        var fbvalue = parseFloat(FOB).toFixed(2);
+        $("#CMValue").val(cmvalue);
+        $("#FOBValue").val(fbvalue);
     }); 
 //// To pass parameter value using the TextBox and the link.      
 //   $('#Invoiceno').click(function () {

@@ -35,6 +35,20 @@
     <div id="tabs-1">
      <fieldset>
         <legend>Basic Information Entry</legend>
+         <div class="editor-label01">
+          <label for="InvoiceNo">Invoice No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.InvoiceNo)%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
+        </div>
+        <div class="editor-label01">
+          <label for="InvoiceDate">Invoice Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.InvoiceDate)%>
+            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
+        </div>
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
@@ -62,21 +76,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTDate)%>
             <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceNo">Invoice No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
-        </div>
-        <div class="editor-label01">
-          <label for="InvoiceDate">Invoice Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceDate)%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
-        </div>
+        </div>       
         <div class="editor-label01">
             <label for="ExporterID">Exporter No:</label>
         </div>
