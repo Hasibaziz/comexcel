@@ -46,7 +46,7 @@
     <div id="container">
     <% using (Html.BeginForm())%> 
     <%{%>
-    <div style="width: 380px; margin: 200px auto 200px auto; border: 1px solid gray;">
+    <div style="width: 300px; margin: 45px auto 120px auto; border: 1px solid gray;">
         <div style="background-color: #c5c5c5; padding: 10px">
             Login</div>
         <div class="page_single_column">

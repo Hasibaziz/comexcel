@@ -451,7 +451,30 @@ namespace Test.Controllers
                     ItemList.Add(new SelectListItem()
                     {
                         Value = dr["ID"].ToString(),
-                        Text = dr["HSCode"].ToString()
+                        Text = dr["HSCode"].ToString()                        
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<SelectListItem> GetAllHSCodeDetailssecond(HSCodeEntity hsCode)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllHSCodeInfosecond, hsCode);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["HSs"].ToString()
                     });
 
                 }

@@ -64,6 +64,7 @@
                         $("#ConsigneeID").val(" ");
                         $("#NotifyID").val(" ");
                         $("#HSCodeID").val(" ");
+                        $("#HSCodesecond").val(" ");
                         $("#TransportID").val(" ");
                         $("#DestinationID").val(" ");
                         $("#Section").val(" ");
@@ -207,6 +208,13 @@
         </div>
         <div class="editor-label01" style="color: Green;">       
             <p id="HSCode" ></p>
+        </div>
+        <div class="editor-label01">
+            <label for="HSCodeID">HSCode No2:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  
+           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
         </div>
         <div class="editor-label01">
             <label for="TransportID">Local Transport:</label>
@@ -390,6 +398,7 @@
             $("#ConsigneeID").val(data.ConsigneeID);
             $("#NotifyID").val(data.NotifyID);
             $("#HSCodeID").val(data.HSCodeID);
+            $("#HSCodesecond").val(data.HSCodesecond);
             $("#CountryCode").val(data.CountryCode);
             $("#DestinationID").val(data.DestinationID);
             $("#TransportID").val(data.TransportID);

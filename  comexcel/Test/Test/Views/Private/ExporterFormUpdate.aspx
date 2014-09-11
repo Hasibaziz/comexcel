@@ -118,6 +118,13 @@
         <div class="editor-label01" style="color: Green;">       
             <p id="HSCode" ></p>
         </div>
+         <div class="editor-label01">
+            <label for="HSCodeID">HSCode No2:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  
+           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
+        </div>
         <div class="editor-label01">
             <label for="TransportID">Local Transport:</label>
         </div>

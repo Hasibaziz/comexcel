@@ -48,7 +48,15 @@ namespace Test.Server.DAL
         public DataTable GetAllHSCodeInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, HSCode FROM HSCodeDetails";
+            string sql = "SELECT ID, HSCode, HSCode AS HSCodesecond FROM HSCodeDetails";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+        public DataTable GetAllHSCodeInfosecond(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, HSCode AS HSs FROM HSCodeDetails";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

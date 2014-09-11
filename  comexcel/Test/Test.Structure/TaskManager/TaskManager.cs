@@ -364,6 +364,10 @@ namespace Test.Structure.TaskManager
                     HSBLL = new HSCodeBLL();
                     return HSBLL.GetAllHSCodeInfo(param);
                     break;
+                case TestTask.AG_GetAllHSCodeInfosecond:
+                    HSBLL = new HSCodeBLL();
+                    return HSBLL.GetAllHSCodeInfosecond(param);
+                    break;
                 case TestTask.AG_GetHSCodeName:
                     HSBLL = new HSCodeBLL();
                     return HSBLL.GetHSCodeName(param);

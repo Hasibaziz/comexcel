@@ -127,6 +127,7 @@ namespace Test.Structure
         public const string AG_SaveHSCodeDetailsInfo = "AG_SaveHSCodeDetailsInfo";
         public const string AG_UpdateHSCodeDetailsInfo = "AG_UpdateHSCodeDetailsInfo";
         public const string AG_GetAllHSCodeInfo = "AG_GetAllHSCodeInfo";
+        public const string AG_GetAllHSCodeInfosecond = "AG_GetAllHSCodeInfosecond";
         public const string AG_GetHSCodeName = "AG_GetHSCodeName";
         #endregion
 

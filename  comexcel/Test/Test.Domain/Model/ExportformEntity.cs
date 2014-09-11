@@ -42,6 +42,8 @@ namespace Test.Domain.Model
        public string HSCodeID { set; get; }
        public string HSCode { set; get; }
        public string ShortName { set; get; }
+       public string HSCodesecond { set; get; }
+       public string HSs { set; get; }
        [Display(Name = "Transport Name")]
        [Required(ErrorMessage = "{0} is required!")]
        public string TransportID { set; get;}
@@ -106,7 +108,7 @@ namespace Test.Domain.Model
        public enum Inconterms
        { 
            FOB = 1,
-           CTP = 2,
+           CPT = 2,
            Others = 3,
        }
 
