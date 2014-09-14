@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Private.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    HSCode
+    Destination
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -9,8 +9,6 @@
 <link href="~/Scripts/validationEngine/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
 <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js") %>" type="text/javascript"></script>
-<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
-<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -30,9 +28,9 @@
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '<%=Url.Content("~/Private/HSCodeDetailsList") %>',
-                    createAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>'
+                    listAction: '<%=Url.Content("~/Private/DestinationList") %>',
+                    createAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>',
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>'
                     //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
                     //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
                 },
@@ -43,23 +41,21 @@
                         edit: false,
                         list: false
                     },
-                    HSCode: {
-                        title: 'H.S. Code',
+                    CountryCode: {
+                        title: 'Country Code',
                         width: '10%'
                     },
-                    HSCodeName: {
-                        title: 'HSCode Details',
-                        type: 'textarea',
-                        inputClass: 'validate[optional,maxSize[150]]'
+                    Name: {
+                        title: 'Name',
+                        width: '10%'
                     },
-                    ShortName: {
-                        title: 'Short Name',
-                        width: '25%'
+                    Port: {
+                        title: 'Port',
+                        width: '15%'
                     }
                 },
                 formCreated: function (event, data) {
-                    data.form.find('input[name="HSCode"]').addClass('validate[required]');
-                    data.form.find('input[name="HSCodeName"]').addClass('validate[required]'); 
+                    data.form.find('input[name="CountryCode"]').addClass('validate[required]');
                     data.form.validationEngine();
                 },
                 //Validate form when it is being submitted

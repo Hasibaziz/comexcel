@@ -20,3 +20,7 @@ http://www.blackbeltcoder.com/Articles/script/using-ajax-beginform-with-asp-net-
 http://stackoverflow.com/questions/20746784/how-can-i-return-a-json-result-to-a-ajax-beginform
 http://forums.asp.net/t/1978940.aspx?ASP+NET+MVC5+AJAX+BeginForm+AjaxOptions+OnSuccess+not+called
 
+
+Validation
+http://www.position-relative.net/creation/formValidator/
+

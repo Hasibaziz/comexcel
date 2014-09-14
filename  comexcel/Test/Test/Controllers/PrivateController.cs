@@ -406,6 +406,7 @@ namespace Test.Controllers
                 foreach (DataRow dr in dt.Rows)
                 {
                     _Model.ID = dr["ID"].ToString();
+                    _Model.ItemName = dr["ItemName"].ToString();
                     _Model.ContractNo = dr["ContractNo"].ToString();
                     _Model.ContractDate = dr["ContractDate"].ToString();
                     _Model.InvoiceNo = dr["InvoiceNo"].ToString();
@@ -636,7 +637,7 @@ namespace Test.Controllers
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterFormSearchByInvoiceNo, invoice);
             foreach (DataRow dr in dt.Rows)
             {
-
+                _Model.ItemName = dr["ItemName"].ToString();
                 _Model.ContractNo = dr["ContractNo"].ToString();
                 _Model.ContractDate = dr["ContractDate"].ToString();
                 _Model.InvoiceNo = dr["InvoiceNo"].ToString();
@@ -707,6 +708,7 @@ namespace Test.Controllers
                             ItemList.Add(new ExportformEntity()
                             {
                                 ID = dr["ID"].ToString(),
+                                ItemName = dr["ItemName"].ToString(),
                                 ContractNo = dr["ContractNo"].ToString(),
                                 ContractDate = dr["ContractDate"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
@@ -795,6 +797,7 @@ namespace Test.Controllers
                             ItemList.Add(new ExportformEntity()
                             {
                                 ID = dr["ID"].ToString(),
+                                ItemName = dr["ItemName"].ToString(),
                                 ContractNo = dr["ContractNo"].ToString(),
                                 ContractDate = dr["ContractDate"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
@@ -1299,7 +1302,7 @@ namespace Test.Controllers
                        cell=new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
                        t0.AddCell(cell);
-                       cell= new PdfPCell(new Phrase(dr.ShortName, new Font(Font.COURIER, 8f, Font.BOLD)));
+                       cell= new PdfPCell(new Phrase(dr.ItemName, new Font(Font.COURIER, 8f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
                        t0.AddCell(cell);
                        if (dr.HSs == "")
@@ -1542,7 +1545,7 @@ namespace Test.Controllers
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //t0.AddCell(cell);
 
-                       cell = new PdfPCell(new Phrase(dr.NotifyName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
+                       cell = new PdfPCell(new Phrase(dr.ConsigneeName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.Colspan = 2;
                        cell.PaddingBottom = 8f;

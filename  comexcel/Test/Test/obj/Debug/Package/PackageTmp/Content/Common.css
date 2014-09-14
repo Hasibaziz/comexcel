@@ -574,12 +574,6 @@ input[type="submit"],input[type="button"] {
     color: Blue;
 }
 
-
-
-
-
-
-
 /* menu start*/
 
 .nav_group_header
@@ -1548,4 +1542,8 @@ input[type="submit"],input[type="button"] {
 .editor-field01
 {
   margin: -1.3em 1px 5px 200px; 
+}
+textarea01 
+{
+    margin: -1.3em 1px 5px 200px;   
 }

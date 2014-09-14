@@ -10,7 +10,10 @@ namespace Test.Domain.Model
     {
        public string ID { set; get; }
        public string ContractNo { set; get; }
-      
+
+       [Required(ErrorMessage = "* [Item Name] is required")]
+       [StringLength(50, ErrorMessage = "Max length 50 characters")]       
+       public string ItemName { set; get; }
        [Display(Name = "Contract Date")]
        [Required(ErrorMessage = "{0} is required!")]
        public string ContractDate { set; get; }

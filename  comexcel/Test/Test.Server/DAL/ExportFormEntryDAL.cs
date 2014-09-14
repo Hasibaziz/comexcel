@@ -17,6 +17,7 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
@@ -46,19 +47,20 @@ namespace Test.Server.DAL
         {
             //string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, DestinationID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @DestinationID, @FOBValue, @CMValue )";
             string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ";
-            sql = sql + "(  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
+            sql = sql + "( [ItemName],  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
             sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue]";
             sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate]";
             sql = sql + " )";
             sql = sql + "values ( ";
-            sql = sql + " @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
+            sql = sql + "  @ItemName, @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
             sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue";
             sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate ";
             sql = sql + ")";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
+            db.AddInParameter(dbCommand, "ItemName", DbType.String, exfEntity.ItemName);
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
             db.AddInParameter(dbCommand, "ContractDate", DbType.String, exfEntity.ContractDate);
             db.AddInParameter(dbCommand, "TTNo", DbType.String, exfEntity.TTNo);
@@ -95,12 +97,13 @@ namespace Test.Server.DAL
         public bool UpdateExportFormEntryRecord(ExportformEntity exfEntity, Database db, DbTransaction transaction)
         {
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
-            sql = sql + " SET ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
+            sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, ";
             sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, exfEntity.ID);
+            db.AddInParameter(dbCommand, "ItemName", DbType.String, exfEntity.ItemName);
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
             db.AddInParameter(dbCommand, "ContractDate", DbType.String, exfEntity.ContractDate);
             db.AddInParameter(dbCommand, "TTNo", DbType.String, exfEntity.TTNo);
@@ -140,6 +143,7 @@ namespace Test.Server.DAL
 
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
@@ -180,6 +184,7 @@ namespace Test.Server.DAL
 
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
@@ -220,6 +225,7 @@ namespace Test.Server.DAL
 
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
