@@ -9,7 +9,8 @@ namespace Test.Domain.Model
     {
         public string ID { set; get; }
         public string HSCode { set; get; }
+        public string HSCodesecond { set; get; }
         public string HSCodeName { set; get; }
-        public string ShortName { set; get; }
+       
     }
 }

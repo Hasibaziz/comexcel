@@ -282,8 +282,9 @@ namespace Test.Controllers
                             {
                                 ID = dr["ID"].ToString(),
                                 HSCode = dr["HSCode"].ToString(),
-                                HSCodeName = dr["HSCodeName"].ToString(),
-                                ShortName = dr["ShortName"].ToString()
+                                 HSCodesecond = dr["HSCodesecond"].ToString(),
+                                HSCodeName = dr["HSCodeName"].ToString()
+                               
                             });
                         }
                         iCount += 1;
@@ -349,10 +350,10 @@ namespace Test.Controllers
             ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
             NotifypartyEntity notEntity = new NotifypartyEntity();
             ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
-            HSCodeEntity hsEntity = new HSCodeEntity();
-            ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
-            HSCodeEntity hssEntity = new HSCodeEntity();
-            ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
             DestinationEntity dsEntity = new DestinationEntity();
             ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
             ModeinfoEntity tEntity = new ModeinfoEntity();
@@ -367,10 +368,10 @@ namespace Test.Controllers
             ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
             NotifypartyEntity notEntity = new NotifypartyEntity();
             ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
-            HSCodeEntity hsEntity = new HSCodeEntity();
-            ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
-            HSCodeEntity hssEntity = new HSCodeEntity();
-            ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
             DestinationEntity dsEntity = new DestinationEntity();
             ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
             ModeinfoEntity tEntity = new ModeinfoEntity();
@@ -388,10 +389,10 @@ namespace Test.Controllers
             ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
             NotifypartyEntity notEntity = new NotifypartyEntity();
             ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
-            HSCodeEntity hsEntity = new HSCodeEntity();
-            ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
-            HSCodeEntity hssEntity = new HSCodeEntity();
-            ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
             DestinationEntity dsEntity = new DestinationEntity();
             ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
             ModeinfoEntity tEntity = new ModeinfoEntity();
@@ -420,11 +421,11 @@ namespace Test.Controllers
                     _Model.ConsigneeName = dr["ConsigneeName"].ToString();
                     _Model.NotifyID = dr["NotifyID"].ToString();
                     _Model.NotifyName = dr["NotifyName"].ToString();
-                    _Model.HSCodeID = dr["HSCodeID"].ToString();
+                    //_Model.HSCodeID = dr["HSCodeID"].ToString();
                     _Model.HSCode = dr["HSCode"].ToString();
-                    _Model.ShortName = dr["ShortName"].ToString();
+                    //_Model.ShortName = dr["ShortName"].ToString();
                     _Model.HSCodesecond = dr["HSCodesecond"].ToString();
-                    _Model.HSs = dr["HSs"].ToString();
+                    //_Model.HSs = dr["HSs"].ToString();
                     _Model.CountryCode = dr["CountryCode"].ToString();
                     _Model.Name = dr["Name"].ToString();
                     _Model.Port = dr["Port"].ToString();
@@ -651,11 +652,11 @@ namespace Test.Controllers
                 _Model.ConsigneeName = dr["ConsigneeName"].ToString();
                 _Model.NotifyID = dr["NotifyID"].ToString();
                 _Model.NotifyName = dr["NotifyName"].ToString();
-                _Model.HSCodeID = dr["HSCodeID"].ToString();
+                //_Model.HSCodeID = dr["HSCodeID"].ToString();
                 _Model.HSCode = dr["HSCode"].ToString();
                 _Model.HSCodesecond = dr["HSCodesecond"].ToString();
-                _Model.HSs = dr["HSs"].ToString();
-                _Model.ShortName = dr["ShortName"].ToString();
+                //_Model.HSs = dr["HSs"].ToString();
+                //_Model.ShortName = dr["ShortName"].ToString();
                 _Model.CountryCode = dr["CountryCode"].ToString();
                 _Model.Name = dr["Name"].ToString();
                 _Model.Port = dr["Port"].ToString();
@@ -722,11 +723,11 @@ namespace Test.Controllers
                                 ConsigneeName = dr["ConsigneeName"].ToString(),
                                 NotifyID = dr["NotifyID"].ToString(),
                                 NotifyName = dr["NotifyName"].ToString(),
-                                HSCodeID = dr["HSCodeID"].ToString(),
+                                //HSCodeID = dr["HSCodeID"].ToString(),
                                 HSCode = dr["HSCode"].ToString(),
-                                ShortName = dr["ShortName"].ToString(),
+                                //ShortName = dr["ShortName"].ToString(),
                                 HSCodesecond = dr["HSCodesecond"].ToString(),
-                                HSs = dr["HSs"].ToString(),
+                                //HSs = dr["HSs"].ToString(),
                                 CountryCode = dr["CountryCode"].ToString(),
                                 Name = dr["Name"].ToString(),
                                 Port = dr["Port"].ToString(),
@@ -811,11 +812,11 @@ namespace Test.Controllers
                                 ConsigneeName = dr["ConsigneeName"].ToString(),
                                 NotifyID = dr["NotifyID"].ToString(),
                                 NotifyName = dr["NotifyName"].ToString(),
-                                HSCodeID = dr["HSCodeID"].ToString(),
+                                //HSCodeID = dr["HSCodeID"].ToString(),
                                 HSCode = dr["HSCode"].ToString(),
                                 HSCodesecond = dr["HSCodesecond"].ToString(),
-                                HSs = dr["HSs"].ToString(),
-                                ShortName = dr["ShortName"].ToString(),
+                                //HSs = dr["HSs"].ToString(),
+                                //ShortName = dr["ShortName"].ToString(),
                                 CountryCode = dr["CountryCode"].ToString(),
                                 Name = dr["Name"].ToString(),
                                 Port = dr["Port"].ToString(),
@@ -1303,18 +1304,18 @@ namespace Test.Controllers
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
                        t0.AddCell(cell);
                        cell= new PdfPCell(new Phrase(dr.ItemName, new Font(Font.COURIER, 8f, Font.BOLD)));
-                       //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 20f;
                        t0.AddCell(cell);
                        if (dr.HSs == "")
                        {
                            string hscode = dr.HSCode;
                            string finalStr = Regex.Replace(hscode, @"(.{1})", "$1  ");    /// For Making space between characters in a String.                      
-                           cell = new PdfPCell(new Phrase(finalStr, new Font()));
+                           cell = new PdfPCell(new Phrase(finalStr, new Font(Font.TIMES_ROMAN, 12f, Font.NORMAL)));
                            //cell = new PdfPCell(new Phrase(dr.HSCode, new Font()));
                            //cell = new PdfPCell(new Phrase(dr.HSCode + "\n" + dr.HSCode, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                           cell.PaddingBottom = 12f;
+                           cell.PaddingTop = 5f;
                            t0.AddCell(cell);
                        }
                        else 
@@ -1322,7 +1323,7 @@ namespace Test.Controllers
                            string hscode = dr.HSCode;
                            string finalStr = Regex.Replace(hscode, @"(.{1})", "$1  ");    /// For Making space between characters in a String.                      
                            cell = new PdfPCell(new Phrase(finalStr, new Font()));
-                           string hssecond = dr.HSs;
+                           string hssecond = dr.HSCodesecond;
                            string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1  ");
                            cell = new PdfPCell(new Phrase(finalStr + "\n" + secondStr, new Font(Font.TIMES_ROMAN, 11f, Font.NORMAL)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                           
@@ -1419,7 +1420,7 @@ namespace Test.Controllers
                            string fob = "FOB";
                            cell = new PdfPCell(new Phrase(fob, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                           cell.PaddingBottom = 14f;
+                           cell.PaddingBottom = 16f;
                            t0.AddCell(cell);
                            //cell = new PdfPCell(new Phrase(dr.Incoterm, new Font()));
                            //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
@@ -1455,7 +1456,7 @@ namespace Test.Controllers
                            string cpt = "CPT";
                            cell = new PdfPCell(new Phrase(cpt, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                           cell.PaddingBottom = 14f;
+                           cell.PaddingBottom = 16f;
                            t0.AddCell(cell);
                            //cell = new PdfPCell(new Phrase(dr.Incoterm, new Font()));
                            //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
@@ -1491,7 +1492,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell=new PdfPCell(new Phrase("$"+dr.CMValue, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 8f;
+                       //cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
@@ -1503,7 +1504,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell=new PdfPCell(new Phrase(dr.ContractNo, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 8f;
+                      // cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
                        cell=new PdfPCell(new Phrase(dr.ContractDate, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
@@ -1529,7 +1530,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell=new PdfPCell(new Phrase(dr.TTDate, new Font(Font.COURIER, 8f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 5f;
+                       //cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
 
 

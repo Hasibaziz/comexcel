@@ -22,8 +22,9 @@ namespace Test.Server.DAL
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
-            sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            //sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";            
+            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            sql = sql + " A.HSCode, A.HSCodesecond,  ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";            
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
@@ -34,8 +35,8 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
             sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " ORDER BY CurrentDate DESC";
@@ -48,17 +49,20 @@ namespace Test.Server.DAL
             //string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, DestinationID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @DestinationID, @FOBValue, @CMValue )";
             string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ";
             sql = sql + "( [ItemName],  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
-            sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
+            //sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
+            sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue]";
             sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate]";
             sql = sql + " )";
             sql = sql + "values ( ";
             sql = sql + "  @ItemName, @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
-            sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
+            //sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
+            sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCode, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue";
             sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate ";
             sql = sql + ")";
-            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);           
 
             db.AddInParameter(dbCommand, "ItemName", DbType.String, exfEntity.ItemName);
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
@@ -71,7 +75,8 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "ExporterID", DbType.String, exfEntity.ExporterID);
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
             db.AddInParameter(dbCommand, "NotifyID", DbType.String, exfEntity.NotifyID);
-            db.AddInParameter(dbCommand, "HSCodeID", DbType.String, exfEntity.HSCodeID);
+            //db.AddInParameter(dbCommand, "HSCodeID", DbType.String, exfEntity.HSCodeID);
+            db.AddInParameter(dbCommand, "HSCode", DbType.String, exfEntity.HSCode);
             db.AddInParameter(dbCommand, "HSCodesecond", DbType.String, exfEntity.HSCodesecond);
             db.AddInParameter(dbCommand, "TransportID", DbType.String, exfEntity.TransportID);
             db.AddInParameter(dbCommand, "DestinationID", DbType.String, exfEntity.DestinationID);
@@ -92,12 +97,26 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "CurrentDate", DbType.String, exfEntity.CurrentDate);
 
             db.ExecuteNonQuery(dbCommand, transaction);
+
+
+            string sqlhs = "INSERT INTO [Commercial].[dbo].[HSCodeDetails] ( HSCode, HSCodesecond, HSCodeName ) VALUES ( @HSCode, @HSCodesecond, @ItemName )";
+            DbCommand dbCommandhs = db.GetSqlStringCommand(sqlhs);
+
+
+            db.AddInParameter(dbCommandhs, "HSCode", DbType.String, exfEntity.HSCode);
+            db.AddInParameter(dbCommandhs, "HSCodesecond", DbType.String, exfEntity.HSCodesecond);
+            db.AddInParameter(dbCommandhs, "ItemName", DbType.String, exfEntity.ItemName);           
+
+            db.ExecuteNonQuery(dbCommandhs, transaction);         
+           
+
             return true;
         }
         public bool UpdateExportFormEntryRecord(ExportformEntity exfEntity, Database db, DbTransaction transaction)
         {
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
-            sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
+            //sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
+            sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, ";
             sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
@@ -114,7 +133,8 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "ExporterID", DbType.String, exfEntity.ExporterID);
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
             db.AddInParameter(dbCommand, "NotifyID", DbType.String, exfEntity.NotifyID);
-            db.AddInParameter(dbCommand, "HSCodeID", DbType.String, exfEntity.HSCodeID);
+            //db.AddInParameter(dbCommand, "HSCodeID", DbType.String, exfEntity.HSCodeID);
+            db.AddInParameter(dbCommand, "HSCode", DbType.String, exfEntity.HSCode);
             db.AddInParameter(dbCommand, "HSCodesecond", DbType.String, exfEntity.HSCodesecond);
             db.AddInParameter(dbCommand, "TransportID", DbType.String, exfEntity.TransportID);
             db.AddInParameter(dbCommand, "DestinationID", DbType.String, exfEntity.DestinationID);
@@ -148,8 +168,9 @@ namespace Test.Server.DAL
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
-            sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            //sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
+            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            sql = sql + " A.HSCode, A.HSCodesecond, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
@@ -167,8 +188,8 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
             sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " WHERE A.ID=@id";
@@ -189,8 +210,9 @@ namespace Test.Server.DAL
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
-            sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            //sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
+            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            sql = sql + " A.HSCode, A.HSCodesecond, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
@@ -208,8 +230,8 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
             sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " WHERE A.InvoiceNo=@invoiceNo";
@@ -230,8 +252,9 @@ namespace Test.Server.DAL
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
-            sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            //sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
+            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            sql = sql + " A.HSCode, A.HSCodesecond, ";
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
@@ -249,8 +272,8 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
             sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
-            sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " WHERE A.InvoiceNo='"+obj.InvoiceNo+"'";

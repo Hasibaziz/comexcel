@@ -95,10 +95,14 @@
                     width: '10%',
                     options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
                 },
-                HSCodeID: {
-                    title: 'H.S. Code',
-                    width: '10%',
-                    options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+//                HSCodeID: {
+//                    title: 'H.S. Code',
+//                    width: '10%',
+//                    options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+//                },
+                HSCode: {
+                    title: 'H.S.Code',
+                    width: '8%'
                 },
                 DestinationID: {
                     title: 'Destination',
@@ -126,14 +130,7 @@
         $('#RecordsContainer').jtable('load');
     });
 
-
-
-
-
-
-
-
-        $(document).ready(function () {
+$(document).ready(function () {
 
             $('#RecordsContainer').jtable({
                 paging: true,
@@ -184,10 +181,14 @@
                         width: '10%',
                         options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
                     },
-                    HSCodeID: {
+//                    HSCodeID: {
+//                        title: 'H.S. Code',
+//                        width: '10%',
+//                        options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+//                    },
+                    HSCode: {
                         title: 'H.S. Code',
-                        width: '10%',
-                        options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+                        width: '10%'
                     },
                     DestinationID: {
                         title: 'Destination',

@@ -40,10 +40,11 @@ namespace Test.Domain.Model
        [Required(ErrorMessage = "{0} is required!")]
        public string NotifyID { set; get; }
        public string NotifyName { set; get; }
-       [Display(Name = "H.S. Code")]
-       [Required(ErrorMessage = "{0} is required!")]
-       public string HSCodeID { set; get; }
+       //[Display(Name = "H.S. Code")]
+       //[Required(ErrorMessage = "{0} is required!")]
+       //public string HSCodeID { set; get; }
        public string HSCode { set; get; }
+       public string HSCodeName { set; get; }
        public string ShortName { set; get; }
        public string HSCodesecond { set; get; }
        public string HSs { set; get; }
@@ -58,6 +59,7 @@ namespace Test.Domain.Model
        public string CountryCode { set; get; }
        public string Name { set; get; }
        public string Port { set; get; }
+       public string CPTValue { set; get; }
        [Display(Name = "FOB Value")]
        [Required(ErrorMessage = "{0} is required!")]
        public string FOBValue { set; get; }
@@ -65,6 +67,7 @@ namespace Test.Domain.Model
        [Required(ErrorMessage = "{0} is required!")]
        public string CMValue { set; get; }
        public string Section { set; get; }
+
        /// <summary>
        /// if use like public Units Unit { set; get; }  Units type Unit variable the it 
        /// will pass the Content of A DropDown List But

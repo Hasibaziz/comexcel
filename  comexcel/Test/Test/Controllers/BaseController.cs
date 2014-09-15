@@ -590,7 +590,7 @@ namespace Test.Controllers
             {
 
                 _Model.ID = dr["ID"].ToString();
-                _Model.ShortName = dr["ShortName"].ToString();
+                _Model.HSCodeName = dr["HSCodeName"].ToString();
 
             }
             return _Model;

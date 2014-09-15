@@ -31,8 +31,8 @@
                 defaultSorting: 'Name ASC',
                 actions: {
                     listAction: '<%=Url.Content("~/Private/HSCodeDetailsList") %>',
-                    createAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>'
+                    //createAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>',
+                    //updateAction: '<%=Url.Content("~/Private/AddUpdateHSCodeDetails") %>'
                     //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
                     //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
                 },
@@ -52,9 +52,9 @@
                         type: 'textarea',
                         inputClass: 'validate[optional,maxSize[150]]'
                     },
-                    ShortName: {
-                        title: 'Short Name',
-                        width: '25%'
+                    HSCodesecond: {
+                        title: 'H.S.Codesecond',
+                        width: '8%'
                     }
                 },
                 formCreated: function (event, data) {
