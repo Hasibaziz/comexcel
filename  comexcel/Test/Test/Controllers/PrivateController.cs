@@ -1289,7 +1289,7 @@ namespace Test.Controllers
                    
                    t0.SpacingBefore = 20f;
                    //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                   t0.SetTotalWidth(new[] {245f, 160f, 110f});         //Table cell spaceing
+                   t0.SetTotalWidth(new[] {245f, 150f, 110f});         //Table cell spaceing
          
                    PdfPCell cell = new PdfPCell(new Paragraph());
                               
@@ -1303,7 +1303,8 @@ namespace Test.Controllers
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
                        t0.AddCell(cell);
                        cell= new PdfPCell(new Phrase(dr.ItemName, new Font(Font.COURIER, 8f, Font.BOLD)));
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
+                       //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.FixedHeight = 20f;
                        t0.AddCell(cell);
                        if (dr.HSs == "")
                        {
@@ -1323,7 +1324,7 @@ namespace Test.Controllers
                            cell = new PdfPCell(new Phrase(finalStr, new Font()));
                            string hssecond = dr.HSs;
                            string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1  ");
-                           cell = new PdfPCell(new Phrase(finalStr + "\n" + secondStr, new Font(Font.TIMES_ROMAN, 8f, Font.NORMAL)));
+                           cell = new PdfPCell(new Phrase(finalStr + "\n" + secondStr, new Font(Font.TIMES_ROMAN, 11f, Font.NORMAL)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                           
                            t0.AddCell(cell);
                        }
@@ -1547,7 +1548,8 @@ namespace Test.Controllers
 
                        cell = new PdfPCell(new Phrase(dr.ConsigneeName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.Colspan = 2;
+                       cell.FixedHeight = 50f;      //For Make a cell Exact Height.
+                       cell.Colspan = 2;            //Remove seperation between two Column.
                        cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
 
@@ -1585,6 +1587,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell=new PdfPCell(new Phrase(dr.InvoiceDate, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
 
                        //cell = new PdfPCell();
@@ -1634,6 +1637,7 @@ namespace Test.Controllers
 
                        cell = new PdfPCell(new Phrase(dr.ExporterName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));                       
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.FixedHeight = 55f;      //For Make a cell Exact Height.
                        cell.Colspan = 2;
                        cell.PaddingBottom = 12f;
                        t0.AddCell(cell);
