@@ -43,6 +43,22 @@
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
          <div class="editor-label01">
+            <label for="HSCodeID">HSCode No:</label>
+        </div>
+        <div class="editor-field01">
+            <%--<%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  --%>
+            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.HSCode)%>
+        </div>       
+        <div class="editor-label01">
+            <label for="HSCodeID">HSCode No2:</label>
+        </div>
+        <div class="editor-field01">
+           <%--<%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  --%>
+           <%: Html.TextBoxFor(model => model.HSCodesecond)%>
+           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
+        </div>
+         <div class="editor-label01">
           <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
@@ -115,7 +131,7 @@
         <div class="editor-label01" style="color: Green;">       
             <p id="Notify" ></p>
         </div>
-        <div class="editor-label01">
+       <%-- <div class="editor-label01">
             <label for="HSCodeID">HSCode No:</label>
         </div>
         <div class="editor-field01">
@@ -130,8 +146,8 @@
         </div>
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  
-           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
-        </div>
+            <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
+        </div>--%>
         <div class="editor-label01">
             <label for="TransportID">Local Transport:</label>
         </div>

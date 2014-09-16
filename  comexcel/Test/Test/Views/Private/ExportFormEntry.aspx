@@ -281,13 +281,20 @@
            <%--<%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
            <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
-        <div style="margin:1em 0.5cm 1px -80px; " >       
-        <p id="Sub" >
-           CPT Value:  <%: Html.EditorFor(model => model.CPTValue)%>           
+        <div style="margin:1em 0.5cm 1px -80px;">                
+        <p id="CPT" >    
+           CPT Value: <%: Html.EditorFor(model => model.CPTValue)%>
+           CM  Value: <%: Html.EditorFor(model => model.CPTCMValue)%> 
+           Freight Value:  <%: Html.EditorFor(model => model.Freight)%>                     
         </p>
+        <p id="FOB" >    
+           FOB Value: <%: Html.EditorFor(model => model.FOBValue)%>
+           CM  Value: <%: Html.EditorFor(model => model.CMValue)%>                              
+        </p>
+
         </div> 
         </div>
-        <div class="editor-label01">
+        <%--<div class="editor-label01">
             <label for="FOBValue">FOB Value:</label>
         </div>
         <div class="editor-field01">
@@ -300,7 +307,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CMValue)%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
-        </div> 
+        </div> --%>
         </fieldset>
     </div>  
     <div id="tabs-3">
@@ -430,13 +437,21 @@
         });
     });
 
-    $("#Sub").hide();
+    $("#CPT").hide();
+    //$("#FOB").hide();
     $("#Incoterm").change(function () {
-        var cpt = $(this).val();       
+        var cpt = $(this).val();
         if (cpt == 2) {
-            $("#Sub").show();
-        } else {
-            $("#Sub").hide();
+            $("#FOB").hide();
+            $("#CPT").show();
+        }
+        else if (cpt == 1) {
+            $("#FOB").show();
+            $("#CPT").hide();
+        }
+        else {
+            $("#CPT").hide();
+            $("#FOB").hide();
         }
     });   
      

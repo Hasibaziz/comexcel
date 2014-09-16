@@ -58,14 +58,16 @@ namespace Test.Domain.Model
        public string DestinationID { set; get; }
        public string CountryCode { set; get; }
        public string Name { set; get; }
-       public string Port { set; get; }
-       public string CPTValue { set; get; }
+       public string Port { set; get; }      
        [Display(Name = "FOB Value")]
        [Required(ErrorMessage = "{0} is required!")]
        public string FOBValue { set; get; }
        [Display(Name = "CM Value")]
        [Required(ErrorMessage = "{0} is required!")]
        public string CMValue { set; get; }
+       public string CPTValue { set; get; }
+       public string CPTCMValue { set; get; }
+       public string Freight { set; get; }
        public string Section { set; get; }
 
        /// <summary>
@@ -115,7 +117,9 @@ namespace Test.Domain.Model
        { 
            FOB = 1,
            CPT = 2,
-           Others = 3,
+           CFR = 3,
+           DDP = 4,
+           FCA = 5,
        }
 
     }

@@ -64,7 +64,7 @@
                     $("#ExporterID").val(" ");
                     $("#ConsigneeID").val(" ");
                     $("#NotifyID").val(" ");
-                    $("#HSCodeID").val(" ");
+                    $("#HSCode").val(" ");
                     $("#HSCodesecond").val(" ");
                     $("#TransportID").val(" ");
                     $("#DestinationID").val(" ");
@@ -125,6 +125,22 @@
         <div class="editor-field01">
             <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
+        </div>
+        <div class="editor-label01">
+            <label for="HSCodeID">HSCode No:</label>
+        </div>
+        <div class="editor-field01">
+            <%--<%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  --%>
+            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.HSCode)%>
+        </div>       
+        <div class="editor-label01">
+            <label for="HSCodeID">HSCode No2:</label>
+        </div>
+        <div class="editor-field01">
+           <%--<%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  --%>
+           <%: Html.TextBoxFor(model => model.HSCodesecond)%>
+           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
         </div>
         <div class="editor-label01">
           <label for="InvoiceNo">Invoice No:</label>
@@ -206,24 +222,7 @@
         </div>
         <div class="editor-label01" style="color: Green;">       
             <p id="Notify" ></p>
-        </div>
-        <div class="editor-label01">
-            <label for="HSCodeID">HSCode No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  
-            <%: Html.ValidationMessageFor(model => model.HSCodeID)%>
-        </div>
-        <div class="editor-label01" style="color: Green;">       
-            <p id="HSCode" ></p>
-        </div>
-        <div class="editor-label01">
-            <label for="HSCodeID">HSCode No2:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  
-           <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
-        </div>
+        </div>        
         <div class="editor-label01">
             <label for="TransportID">Local Transport:</label>
         </div>
@@ -257,7 +256,7 @@
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
-           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
            <%: Html.ValidationMessageFor(model => model.Unit)%>
         </div>
         <div class="editor-label01">
@@ -272,7 +271,7 @@
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>  Passing DropDown Content--%>
-           <%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.DropDownListFor(model => model.Currency, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Currencies)).Cast<Test.Domain.Model.ExportformEntity.Currencies>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
            <%: Html.ValidationMessageFor(model => model.Currency)%>
         </div>
         <div class="editor-label01">
@@ -280,10 +279,22 @@
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
-           <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
+           <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
+        <div style="margin:1em 0.5cm 1px -80px;">                
+        <p id="CPT" >    
+           CPT Value: <%: Html.EditorFor(model => model.CPTValue)%>
+           CM  Value: <%: Html.EditorFor(model => model.CPTCMValue)%> 
+           Freight Value:  <%: Html.EditorFor(model => model.Freight)%>                     
+        </p>
+        <p id="FOB" >    
+           FOB Value: <%: Html.EditorFor(model => model.FOBValue)%>
+           CM  Value: <%: Html.EditorFor(model => model.CMValue)%>                              
+        </p>
+
+        </div> 
         </div>
-        <div class="editor-label01">
+        <%--<div class="editor-label01">
             <label for="FOBValue">FOB Value:</label>
         </div>
         <div class="editor-field01">
@@ -296,7 +307,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CMValue)%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
-        </div> 
+        </div> --%>
         </fieldset>
     </div>  
     <div id="tabs-3">
@@ -406,7 +417,7 @@
             $("#ExporterID").val(data.ExporterID);
             $("#ConsigneeID").val(data.ConsigneeID);
             $("#NotifyID").val(data.NotifyID);
-            $("#HSCodeID").val(data.HSCodeID);
+            $("#HSCode").val(data.HSCode);
             $("#HSCodesecond").val(data.HSCodesecond);
             $("#CountryCode").val(data.CountryCode);
             $("#DestinationID").val(data.DestinationID);
@@ -424,7 +435,26 @@
             $("#BLDate").val(data.BLDate);
             $("#ExFactoryDate").val(data.ExFactoryDate);
         });
+    });
+
+    $("#CPT").hide();
+    //$("#FOB").hide();
+    $("#Incoterm").change(function () {
+        var cpt = $(this).val();
+        if (cpt == 2) {
+            $("#FOB").hide();
+            $("#CPT").show();
+        }
+        else if (cpt == 1) {
+            $("#FOB").show();
+            $("#CPT").hide();
+        }
+        else {
+            $("#CPT").hide();
+            $("#FOB").hide();
+        }
     });   
+     
 </script>
 
 </asp:Content>

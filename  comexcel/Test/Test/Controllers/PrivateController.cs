@@ -1264,7 +1264,7 @@ namespace Test.Controllers
                //Document d = new Document(PageSize.LEGAL, 40f, 1f, 0f, 0f);      //using( Document d = new Document(PageSize.A4, 55, 55, 35, 20))
 
                 Document d = new Document(PageSize.LEGAL);
-                d = new Document(new Rectangle(600f, 1044f));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
+                d = new Document(new Rectangle(615f, 1044f));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
 
                    PdfWriter writer = PdfWriter.GetInstance(d, ms);               //using (Document d = new Document(PageSize.Legal, 40, 1, 1, 1))
                    string path = Server.MapPath("~/PDFFiles/");
@@ -1283,7 +1283,7 @@ namespace Test.Controllers
                    heading.Add("");
                    d.Add(heading);                   
                    PdfPTable t0 = new PdfPTable(3);
-                   t0.TotalWidth = 500f;
+                   t0.TotalWidth = 550f;
                    t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right                  
                    t0.LockedWidth = true;
                    t0.DefaultCell.Border = Rectangle.NO_BORDER;
@@ -1307,7 +1307,7 @@ namespace Test.Controllers
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 20f;
                        t0.AddCell(cell);
-                       if (dr.HSs == "")
+                       if (dr.HSCodesecond == "")
                        {
                            string hscode = dr.HSCode;
                            string finalStr = Regex.Replace(hscode, @"(.{1})", "$1  ");    /// For Making space between characters in a String.                      
@@ -1483,7 +1483,7 @@ namespace Test.Controllers
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            cell.PaddingBottom = 20f;
                            t0.AddCell(cell);
-                           cell = new PdfPCell(new Phrase("FOB=CPT-Freight", new Font(Font.COURIER, 8f, Font.BOLD)));
+                           cell = new PdfPCell(new Phrase("FOB=CPT-Freight", new Font(Font.COURIER, 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }
