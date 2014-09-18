@@ -320,6 +320,8 @@
             var fbvalue = parseFloat(FOB).toFixed(2);
             $("#CMValue").val(cmvalue);
             $("#FOBValue").val(fbvalue);
+            $("#CMValue").attr("disabled", true);
+            $("#CPTFOBValue").attr("disabled", true);
             $("#Freight").focus();
         });
         $('#Freight').change(function () {

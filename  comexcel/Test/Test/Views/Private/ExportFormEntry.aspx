@@ -399,6 +399,7 @@
         var fbvalue = parseFloat(FOB).toFixed(2);
         $("#CMValue").val(cmvalue);
         $("#FOBValue").val(fbvalue);
+        $("#FOBValue").attr("disabled", true);
     });
     $(document).ready(function () {
         $('#CPTValue').change(function () {
@@ -408,6 +409,8 @@
             var cmcp = parseFloat(cmcpt).toFixed(2);
             $('#CPTCMValue').val(cmcp);
             $('#CPTValue').val(cptfob);
+            $('#CPTCMValue').attr("disabled", true);
+            $('#CPTFOBValue').attr("disabled", true);
             $("#Freight").focus();
         });
         $('#Freight').change(function () {
@@ -416,7 +419,7 @@
             //var DX = parseInt(X);
             var fre = parseFloat(Y).toFixed(2);
             cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);           
+            var cf = parseFloat(cptfob).toFixed(2);
             $("#CPTFOBValue").val(cf);
             $("#Freight").val(fre);
         });
