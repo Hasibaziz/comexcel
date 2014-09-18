@@ -440,6 +440,8 @@ namespace Test.Controllers
                     _Model.Incoterm = dr["Incoterm"].ToString();
                     _Model.FOBValue = dr["FOBValue"].ToString();
                     _Model.CMValue = dr["CMValue"].ToString();
+                    _Model.CPTFOBValue = dr["CPTFOBValue"].ToString();
+                    _Model.Freight = dr["Freight"].ToString();
 
                     _Model.ExpNo = dr["ExpNo"].ToString();
                     _Model.ExpDate = dr["ExpDate"].ToString();
@@ -460,6 +462,11 @@ namespace Test.Controllers
         {
             var isSuccess = false;
             var message = "";
+            if (_Model.CPTValue != null)
+            {
+                _Model.FOBValue = _Model.CPTValue;
+                _Model.CMValue = _Model.CPTCMValue;
+            }
             try
             {               
                 if (!ModelState.IsValid)
@@ -671,6 +678,8 @@ namespace Test.Controllers
                 _Model.Incoterm = dr["Incoterm"].ToString();
                 _Model.FOBValue = dr["FOBValue"].ToString();
                 _Model.CMValue = dr["CMValue"].ToString();
+                _Model.CPTFOBValue = dr["CPTFOBValue"].ToString();
+                _Model.Freight = dr["Freight"].ToString();
 
                 _Model.ExpNo = dr["ExpNo"].ToString();
                 _Model.ExpDate = dr["ExpDate"].ToString();
@@ -742,6 +751,8 @@ namespace Test.Controllers
                                 Incoterm = dr["Incoterm"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
                                 CMValue = dr["CMValue"].ToString(),
+                                CPTFOBValue = dr["CPTFOBValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
 
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
@@ -831,6 +842,8 @@ namespace Test.Controllers
                                 Incoterm = dr["Incoterm"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
                                 CMValue = dr["CMValue"].ToString(),
+                                CPTFOBValue = dr["CPTFOBValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
 
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
@@ -1483,7 +1496,7 @@ namespace Test.Controllers
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            cell.PaddingBottom = 20f;
                            t0.AddCell(cell);
-                           cell = new PdfPCell(new Phrase("FOB=CPT-Freight", new Font(Font.COURIER, 10f, Font.BOLD)));
+                           cell = new PdfPCell(new Phrase(dr.CPTFOBValue+"  "+dr.Freight, new Font(Font.COURIER, 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }

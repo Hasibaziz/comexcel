@@ -29,7 +29,7 @@ namespace Test.Server.DAL
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
             sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
-            sql = sql + " A.FOBValue, A.CMValue, ";
+            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
@@ -51,14 +51,14 @@ namespace Test.Server.DAL
             sql = sql + "( [ItemName],  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
             //sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section]";
-            sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue]";
+            sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight] ";
             sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate]";
             sql = sql + " )";
             sql = sql + "values ( ";
             sql = sql + "  @ItemName, @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
             //sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCode, @HSCodesecond, @TransportID, @DestinationID, @Section";
-            sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue";
+            sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue, @CPTFOBValue, @Freight";
             sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate ";
             sql = sql + ")";
 
@@ -88,6 +88,8 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "Incoterm", DbType.String, exfEntity.Incoterm);
             db.AddInParameter(dbCommand, "FOBValue", DbType.String, exfEntity.FOBValue);
             db.AddInParameter(dbCommand, "CMValue", DbType.String, exfEntity.CMValue);
+            db.AddInParameter(dbCommand, "CPTFOBValue", DbType.String, exfEntity.CPTFOBValue);
+            db.AddInParameter(dbCommand, "Freight", DbType.String, exfEntity.Freight);
 
             db.AddInParameter(dbCommand, "ExpNo", DbType.String, exfEntity.ExpNo);
             db.AddInParameter(dbCommand, "ExpDate", DbType.String, exfEntity.ExpDate);
@@ -117,7 +119,7 @@ namespace Test.Server.DAL
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
             //sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
-            sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, ";
+            sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, CPTFOBValue=@CPTFOBValue, Freight=@Freight ";
             sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
@@ -146,6 +148,8 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "Incoterm", DbType.String, exfEntity.Incoterm);
             db.AddInParameter(dbCommand, "FOBValue", DbType.String, exfEntity.FOBValue);
             db.AddInParameter(dbCommand, "CMValue", DbType.String, exfEntity.CMValue);
+            db.AddInParameter(dbCommand, "CPTFOBValue", DbType.String, exfEntity.CPTFOBValue);
+            db.AddInParameter(dbCommand, "Freight", DbType.String, exfEntity.Freight);
 
             db.AddInParameter(dbCommand, "ExpNo", DbType.String, exfEntity.ExpNo);
             db.AddInParameter(dbCommand, "ExpDate", DbType.String, exfEntity.ExpDate);
@@ -182,7 +186,7 @@ namespace Test.Server.DAL
             sql = sql + " A.Currency, ";
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
-            sql = sql + " A.FOBValue, A.CMValue, ";
+            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
@@ -224,7 +228,7 @@ namespace Test.Server.DAL
             sql = sql + " A.Currency, ";
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
-            sql = sql + " A.FOBValue, A.CMValue, ";
+            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
@@ -266,7 +270,7 @@ namespace Test.Server.DAL
             sql = sql + " A.Currency, ";
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
-            sql = sql + " A.FOBValue, A.CMValue, ";
+            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";

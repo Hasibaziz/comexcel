@@ -208,7 +208,7 @@
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
         </div>
         <div class="editor-label01">
-            <label for="FOBValue">FOB Value:</label>
+            <label for="FOBValue">FOB/CPT Value:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.FOBValue)%>
@@ -220,6 +220,20 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CMValue)%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
+        </div> 
+        <div class="editor-label01">
+            <label for="FOBValue">CPT-Freight Value:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.CPTFOBValue)%>
+            <%: Html.ValidationMessageFor(model => model.CPTFOBValue)%>
+        </div>
+        <div class="editor-label01">
+            <label for="CMValue">Freight:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.Freight)%>
+            <%: Html.ValidationMessageFor(model => model.Freight)%>
         </div> 
         </fieldset>
     </div>  
@@ -296,8 +310,29 @@
             $("#HSCode").html(data.ShortName);
         });
     });
+    $(document).ready(function () {
+        $('#FOBValue').change(function () {
+            var X = $(this).val();
+            //var DX = parseInt(X);
+            var FOB = parseFloat(X).toFixed(2);
+            CM = (FOB * 20) / 100;
+            var cmvalue = parseFloat(CM).toFixed(2);
+            var fbvalue = parseFloat(FOB).toFixed(2);
+            $("#CMValue").val(cmvalue);
+            $("#FOBValue").val(fbvalue);
+            $("#Freight").focus();
+        });
+        $('#Freight').change(function () {
+            var Y = $(this).val();
+            var X = $('#FOBValue').val();
+            //var DX = parseInt(X);
+            var fre = parseFloat(Y).toFixed(2);
+            cptfob = (X - Y);
+            var cf = parseFloat(cptfob).toFixed(2);           
+            $("#CPTFOBValue").val(cf);
+            $("#Freight").val(fre);
+        });
+    });
+
 </script>
-
-
-
 </asp:Content>

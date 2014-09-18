@@ -67,6 +67,7 @@ namespace Test.Domain.Model
        public string CMValue { set; get; }
        public string CPTValue { set; get; }
        public string CPTCMValue { set; get; }
+       public string CPTFOBValue { set; get; }
        public string Freight { set; get; }
        public string Section { set; get; }
 

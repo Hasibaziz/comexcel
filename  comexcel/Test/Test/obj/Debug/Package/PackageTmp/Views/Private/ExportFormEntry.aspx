@@ -283,13 +283,14 @@
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
         <div style="margin:1em 0.5cm 1px -80px;">                
         <p id="CPT" >    
-           CPT Value: <%: Html.EditorFor(model => model.CPTValue)%>
-           CM  Value: <%: Html.EditorFor(model => model.CPTCMValue)%> 
-           Freight Value:  <%: Html.EditorFor(model => model.Freight)%>                     
+           CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;" })%>
+           CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;" })%> 
+           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;" })%> 
+           Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>                     
         </p>
         <p id="FOB" >    
-           FOB Value: <%: Html.EditorFor(model => model.FOBValue)%>
-           CM  Value: <%: Html.EditorFor(model => model.CMValue)%>                              
+           FOB Value: <%: Html.TextBoxFor(model => model.FOBValue)%>
+           CM  Value: <%: Html.TextBoxFor(model => model.CMValue)%>                              
         </p>
 
         </div> 
@@ -398,7 +399,30 @@
         var fbvalue = parseFloat(FOB).toFixed(2);
         $("#CMValue").val(cmvalue);
         $("#FOBValue").val(fbvalue);
-    }); 
+    });
+    $(document).ready(function () {
+        $('#CPTValue').change(function () {
+            var cptval = $(this).val();
+            var cptfob = parseFloat(cptval).toFixed(2);
+            cmcpt = (cptfob * 20) / 100;
+            var cmcp = parseFloat(cmcpt).toFixed(2);
+            $('#CPTCMValue').val(cmcp);
+            $('#CPTValue').val(cptfob);
+            $("#Freight").focus();
+        });
+        $('#Freight').change(function () {
+            var Y = $('#Freight').val();
+            var X = $('#CPTValue').val();
+            //var DX = parseInt(X);
+            var fre = parseFloat(Y).toFixed(2);
+            cptfob = (X - Y);
+            var cf = parseFloat(cptfob).toFixed(2);           
+            $("#CPTFOBValue").val(cf);
+            $("#Freight").val(fre);
+        });
+
+    });
+
 //// To pass parameter value using the TextBox and the link.      
 //   $('#Invoiceno').click(function () {
 //        var Inv = $('#InvoiceNo').val();      
@@ -427,6 +451,14 @@
             $("#Quantity").val(data.Quantity);
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
+            if (data.Incoterm == 2 || data.Incoterm == 4) {
+                $("#FOB").hide();
+                $("#CPT").show();
+                $("#CPTValue").val(data.FOBValue);
+                $("#CPTCMValue").val(data.CMValue);
+                $("#CPTFOBValue").val(data.CPTFOBValue);
+                $("#Freight").val(data.Freight);
+            }
             $("#FOBValue").val(data.FOBValue);
             $("#CMValue").val(data.CMValue);
             $("#ExpNo").val(data.ExpNo);
@@ -441,13 +473,13 @@
     //$("#FOB").hide();
     $("#Incoterm").change(function () {
         var cpt = $(this).val();
-        if (cpt == 2) {
-            $("#FOB").hide();
-            $("#CPT").show();
+        if (cpt == 2||cpt==4) {
+            $("#FOB").hide("scale", 500);
+            $("#CPT").show("scale", 500);
         }
         else if (cpt == 1) {
-            $("#FOB").show();
-            $("#CPT").hide();
+            $("#FOB").show("scale", 500);
+            $("#CPT").hide("scale", 500);
         }
         else {
             $("#CPT").hide();
