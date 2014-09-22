@@ -154,13 +154,6 @@
     <Compile Include="Utility\BinaryFileResult.cs" />
     <Compile Include="Utility\ConstantApp.cs" />
     <Compile Include="Utility\Excelimport.cs" />
-    <Compile Include="Views\Shared\Private.Master.cs">
-      <DependentUpon>Private.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Private.Master.designer.cs">
-      <DependentUpon>Private.Master</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />

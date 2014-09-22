@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
-<div class="page_header" style="float:left;width:99%">Import</div>
+<%--<div class="page_header" style="float:left;width:99%">Import</div>--%>
+<div class="page_header" style="float:left;width:110%">Import</div>
 <div class="clear nav_sub_menu">
     <a href="<%=Url.Content("~/Configuration/ExcelFormat") %>">Excel Format</a>
    <%-- <a href="<%=Url.Content("~/Configuration/Modeinfo") %>">Mode Entry</a>
