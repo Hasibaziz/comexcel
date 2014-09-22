@@ -218,14 +218,14 @@
             <label for="CMValue">CM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CMValue)%>
+            <%: Html.EditorFor(model => model.CMValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
         </div> 
         <div class="editor-label01">
             <label for="FOBValue">CPT-Freight Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CPTFOBValue)%>
+            <%: Html.EditorFor(model => model.CPTFOBValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CPTFOBValue)%>
         </div>
         <div class="editor-label01">
@@ -245,43 +245,43 @@
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ExpNo)%>
-            <%: Html.ValidationMessageFor(model => model.ExpNo)%>
+           <%-- <%: Html.ValidationMessageFor(model => model.ExpNo)%>--%>
         </div>
         <div class="editor-label01">
           <label for="ExpDate">Exp Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ExpDate)%>
-            <%: Html.ValidationMessageFor(model => model.ExpDate)%>
+           <%-- <%: Html.ValidationMessageFor(model => model.ExpDate)%>--%>
         </div>
         <div class="editor-label01">
           <label for="BLNo">B/L No:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.BLNo)%>
-            <%: Html.ValidationMessageFor(model => model.BLNo)%>
+            <%--<%: Html.ValidationMessageFor(model => model.BLNo)%>--%>
         </div>
         <div class="editor-label01">
           <label for="BLDate">B/L Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.BLDate)%>
-            <%: Html.ValidationMessageFor(model => model.BLDate)%>
+            <%--<%: Html.ValidationMessageFor(model => model.BLDate)%>--%>
         </div>
         <div class="editor-label01">
           <label for="ExFactoryDate">Ex-Factory Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ExFactoryDate)%>
-            <%: Html.ValidationMessageFor(model => model.ExFactoryDate)%>
+            <%--<%: Html.ValidationMessageFor(model => model.ExFactoryDate)%>--%>
         </div>
       </fieldset>
     </div>
    </div>     
         <p>
-            <input type="submit" id="Submit" value="Update"/>            
+            <input type="submit" id="Submit" class="btn btn-primary btn-lg active" value="Update"/>            
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
-            <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
+            <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
         </p>
 
     
@@ -311,6 +311,18 @@
         });
     });
     $(document).ready(function () {
+        // $("#Incoterm").bind('focus', function () {
+        $("#Incoterm").live("focusout", function () {
+            var x = $(this).val();
+            if (x == 1) {
+                $("#CPTFOBValue").attr("disabled", true);
+                $("#Freight").attr("disabled", true);
+            }
+            else {
+                $("#CPTFOBValue").prop('disabled', false);
+                $("#Freight").prop('disabled', false);
+            }
+        });
         $('#FOBValue').change(function () {
             var X = $(this).val();
             //var DX = parseInt(X);
@@ -320,8 +332,8 @@
             var fbvalue = parseFloat(FOB).toFixed(2);
             $("#CMValue").val(cmvalue);
             $("#FOBValue").val(fbvalue);
-            $("#CMValue").attr("disabled", true);
-            $("#CPTFOBValue").attr("disabled", true);
+            //            $("#CMValue").attr("disabled", true);
+            //            $("#CPTFOBValue").attr("disabled", true);
             $("#Freight").focus();
         });
         $('#Freight').change(function () {
@@ -330,7 +342,7 @@
             //var DX = parseInt(X);
             var fre = parseFloat(Y).toFixed(2);
             cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);           
+            var cf = parseFloat(cptfob).toFixed(2);
             $("#CPTFOBValue").val(cf);
             $("#Freight").val(fre);
         });

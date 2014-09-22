@@ -75,6 +75,12 @@
                     $("#Quantity").val(" ");
                     $("#Currency").val(" ");
                     $("#Incoterm").val(" ");
+                    $("#FOBValue").val(" ");
+                    $("#CMValue").val(" ");
+                    $("#CPTValue").val(" ");
+                    $("#CPTCMValue").val(" ");
+                    $("#CPTFOBValue").val(" ");
+                    $("#Freight").val(" ");
                     $(this).dialog("close");
                 }
             }
@@ -197,7 +203,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @readonly = "true", @class = "validate[required]" })%>
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ExporterID)%>
         </div>        
         <div class="editor-label01" style="color: Green;">       
@@ -207,7 +213,7 @@
             <label for="ConsigneeID">Consignee No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @readonly = "true", @class = "validate[required]" })%>
+            <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ConsigneeID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -217,7 +223,7 @@
             <label for="NotifyID">Notify No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @readonly = "true", @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -227,14 +233,14 @@
             <label for="TransportID">Local Transport:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @readonly = "true", @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
             <label for="DestinationID">Destination Code:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @readonly = "true", @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
         <div class="editor-label01">
@@ -284,13 +290,13 @@
         <div style="margin:1em 0.5cm 1px -80px;">                
         <p id="CPT" >    
            CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;" })%>
-           CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;" })%> 
-           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;" })%> 
+           CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
+           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
            Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>                     
         </p>
         <p id="FOB" >    
            FOB Value: <%: Html.TextBoxFor(model => model.FOBValue)%>
-           CM  Value: <%: Html.TextBoxFor(model => model.CMValue)%>                              
+           CM  Value: <%: Html.TextBoxFor(model => model.CMValue, new { @readonly = "readonly" })%>                              
         </p>
 
         </div> 
@@ -354,9 +360,10 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" value="Save" />                                  
+            <input type="submit" class="btn btn-primary btn-lg active" value="Save" />     
+           <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
-            <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'"  value="Cancel" />
+            <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
         </p>
     
 <% } %>
@@ -399,7 +406,7 @@
         var fbvalue = parseFloat(FOB).toFixed(2);
         $("#CMValue").val(cmvalue);
         $("#FOBValue").val(fbvalue);
-        $("#FOBValue").attr("disabled", true);
+//        $("#FOBValue").attr("disabled", true);
     });
     $(document).ready(function () {
         $('#CPTValue').change(function () {
@@ -409,8 +416,8 @@
             var cmcp = parseFloat(cmcpt).toFixed(2);
             $('#CPTCMValue').val(cmcp);
             $('#CPTValue').val(cptfob);
-            $('#CPTCMValue').attr("disabled", true);
-            $('#CPTFOBValue').attr("disabled", true);
+//            $('#CPTCMValue').attr("disabled", true);
+//            $('#CPTFOBValue').attr("disabled", true);
             $("#Freight").focus();
         });
         $('#Freight').change(function () {
@@ -461,6 +468,10 @@
                 $("#CPTCMValue").val(data.CMValue);
                 $("#CPTFOBValue").val(data.CPTFOBValue);
                 $("#Freight").val(data.Freight);
+            }
+            else {
+                $("#CPT").hide();
+                $("#FOB").show();
             }
             $("#FOBValue").val(data.FOBValue);
             $("#CMValue").val(data.CMValue);

@@ -78,9 +78,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLL\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.4.1.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
@@ -163,6 +163,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\Customized\css\bootstrap.css" />
+    <Content Include="Content\Bootstrap\Customized\css\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\Customized\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Bootstrap\Customized\img\glyphicons-halflings.png" />
+    <Content Include="Content\Bootstrap\Customized\js\bootstrap.js" />
+    <Content Include="Content\Bootstrap\Customized\js\bootstrap.min.js" />
+    <Content Include="Content\Bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\Bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\Bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Common.css" />
     <Content Include="Content\ControlStyle.css" />
     <Content Include="Content\DashboardStyle.css" />

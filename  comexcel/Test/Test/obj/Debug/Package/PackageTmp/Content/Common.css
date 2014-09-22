@@ -118,7 +118,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 .mp_right_content
 {
     float: right;
-    width: 90%;
+    width: 89%;          /* 90%   */
     padding: 0px 0%;
     margin: 0px 0% 0px 0px;
     min-height: 490px;
@@ -176,7 +176,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 {
     float:right;
     text-indent: 10px;
-    width: 90%;
+    width: 89%;                 /*  90%   */
     padding: 2px 0px;
     margin-left: 0%; 
     font-size: 14px;
@@ -394,7 +394,7 @@ select {
 input[type="submit"],input[type="button"] {
     font-size: 1.2em;
     padding: 2px 10px;
-    margin:15px 0px;
+    margin:15px 0px 24px;        /*  margin:15px 0px;  */
     /*background-color:#009fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 7px 7px 7px 7px;
@@ -618,7 +618,7 @@ input[type="submit"],input[type="button"] {
     height: 100%;
     background-color:White;
     padding: 5px 0px;
-    margin-left:10px;
+    margin-left:15px;
     overflow: hidden;
 }
 

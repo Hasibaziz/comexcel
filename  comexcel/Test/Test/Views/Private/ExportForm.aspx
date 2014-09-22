@@ -15,7 +15,7 @@
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
                  Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "18.8" })%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
-                 <input type="button" value="Print Preview" title="Print"   onclick="printPDF()" />
+                 <input type="button" value="Print Preview" title="Print" class="btn btn-primary btn-lg active"  onclick="printPDF()" />
                </div>
      </fieldset>          
         <%: Html.ActionLink("Add New Entry", "ExportFormEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>    
