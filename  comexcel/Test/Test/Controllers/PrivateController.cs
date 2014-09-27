@@ -1277,7 +1277,7 @@ namespace Test.Controllers
                //Document d = new Document(PageSize.LEGAL, 40f, 1f, 0f, 0f);      //using( Document d = new Document(PageSize.A4, 55, 55, 35, 20))
 
                 Document d = new Document(PageSize.LEGAL);
-                d = new Document(new Rectangle(650f, 1044f));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
+                d = new Document(new Rectangle(650f, 1044));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
 
                    PdfWriter writer = PdfWriter.GetInstance(d, ms);               //using (Document d = new Document(PageSize.Legal, 40, 1, 1, 1))
                    string path = Server.MapPath("~/PDFFiles/");
@@ -1290,33 +1290,41 @@ namespace Test.Controllers
                    d.Open();
                   
                    d.Add(new Paragraph(new Phrase("---")));
-                   Paragraph heading = new Paragraph("\n");
-                   heading.ExtraParagraphSpace = 100f;
-                   heading.SetLeading(0.0f, headspc);   ///20.0f means the Header Spaces..                                                    
-                   heading.Add("");
-                   d.Add(heading);                   
-                   PdfPTable t0 = new PdfPTable(3);
-                   //t0.TotalWidth = 650f;
-                   t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right                  
-                   t0.LockedWidth = true;
-                   t0.DefaultCell.Border = Rectangle.NO_BORDER;
-                   
-                   t0.SpacingBefore = 20f;
-                   //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                   t0.SetTotalWidth(new[] {245f, 150f, 210f});         //Table cell spaceing
-         
-                   PdfPCell cell = new PdfPCell(new Paragraph());
-                              
-                   //t0.DefaultCell.FixedHeight = 100f;      //Table Cell Fix Height.
-                   //cell = ConstantApp.PhraseCell(new Phrase(), PdfPCell.ALIGN_CENTER);
-                   //cell = ConstantApp.PhraseCell(new Phrase("Hello World", FontFactory.GetFont("Arial", 12, Font.UNDERLINE)), PdfPCell.ALIGN_CENTER);
+                   //// ****Header Part *****
+                   //Paragraph heading = new Paragraph("\n");
+                   //heading.ExtraParagraphSpace = 100f;
+                   //heading.SetLeading(0.0f, headspc);   ///20.0f means the Header Spaces..                                                    
+                   //heading.Add("");
+                   //d.Add(heading); 
+                   //d.Add(Header(headspc));
                    foreach (ExportformEntity dr in ItemList)
                    {
+                       d.Add(Header(headspc));
+
+                       PdfPTable t0 = new PdfPTable(3);
+                       //t0.TotalWidth = 650f;
+                       t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right                  
+                       t0.LockedWidth = true;
+                       t0.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                       t0.SpacingBefore = 20f;
+                       //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
+                       t0.SetTotalWidth(new[] { 245f, 150f, 210f });         //Table cell spaceing
+
+                       PdfPCell cell = new PdfPCell(new Paragraph());
+
+                       //t0.DefaultCell.FixedHeight = 100f;      //Table Cell Fix Height.
+                       //cell = ConstantApp.PhraseCell(new Phrase(), PdfPCell.ALIGN_CENTER);
+                       //cell = ConstantApp.PhraseCell(new Phrase("Hello World", FontFactory.GetFont("Arial", 12, Font.UNDERLINE)), PdfPCell.ALIGN_CENTER);
+
+                       //foreach (ExportformEntity dr in ItemList)
+                       //{
+                       // d.Add(Header(headspc));
                        //string strname = dr.ShortName;
-                       cell=new PdfPCell();
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
+                       cell = new PdfPCell();
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell= new PdfPCell(new Phrase(dr.ItemName, new Font(Font.COURIER, 8f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.COURIER, 8f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 20f;
                        t0.AddCell(cell);
@@ -1331,7 +1339,7 @@ namespace Test.Controllers
                            cell.PaddingBottom = 5f;
                            t0.AddCell(cell);
                        }
-                       else 
+                       else
                        {
                            string hscode = dr.HSCode;
                            string finalStr = Regex.Replace(hscode, @"(.{1})", "$1   ");    /// For Making space between characters in a String.                      
@@ -1339,7 +1347,7 @@ namespace Test.Controllers
                            string hssecond = dr.HSCodesecond;
                            string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1   ");
                            cell = new PdfPCell(new Phrase(finalStr + "\n" + secondStr, new Font(Font.TIMES_ROMAN, 11f, Font.NORMAL)));
-                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                           
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }
                        cell = new PdfPCell();
@@ -1348,12 +1356,12 @@ namespace Test.Controllers
                        cell = new PdfPCell(new Phrase(dr.Name, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.CountryCode, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.CountryCode, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
 
-                       cell=new PdfPCell();
+                       cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(dr.Port, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
@@ -1376,12 +1384,12 @@ namespace Test.Controllers
                        //cell=new PdfPCell(new Phrase(" "));  ///For a Blank Row
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //t0.AddCell(cell);      
-                       
+
                        if (dr.Unit == "55")
                        {
                            string pcs = "PCS";
                            cell = new PdfPCell(new Phrase(pcs, new Font(Font.TIMES_ROMAN, 12f, Font.NORMAL)));
-                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                          
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                            string unit = dr.Unit;
                            string spcunit = Regex.Replace(unit, @"(.{1})", "$1  ");
@@ -1390,15 +1398,15 @@ namespace Test.Controllers
                            cell.Colspan = 2;
                            cell.PaddingBottom = 10f;
                            t0.AddCell(cell);
-                         }
+                       }
 
                        //cell = new PdfPCell();
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //t0.AddCell(cell);
                        cell = new PdfPCell();
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                      
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.Quantity, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.Quantity, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //cell.Colspan = 2;
                        cell.PaddingBottom = 8f;
@@ -1416,11 +1424,11 @@ namespace Test.Controllers
                            cell = new PdfPCell(new Phrase(usd, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
-                           cell = new PdfPCell(new Phrase("0  "+dr.Currency, new Font()));
+                           cell = new PdfPCell(new Phrase("0  " + dr.Currency, new Font()));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            cell.PaddingBottom = 10f;
                            t0.AddCell(cell);
-                         }
+                       }
 
                        //cell = new PdfPCell();
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
@@ -1465,7 +1473,7 @@ namespace Test.Controllers
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }
-                       else 
+                       else
                        {
                            string cpt = "CPT";
                            cell = new PdfPCell(new Phrase(cpt, new Font(Font.TIMES_ROMAN, 12f, Font.NORMAL)));
@@ -1497,14 +1505,14 @@ namespace Test.Controllers
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            cell.PaddingBottom = 20f;
                            t0.AddCell(cell);
-                           cell = new PdfPCell(new Phrase("FOB:$"+dr.CPTFOBValue+"   "+"Freight:$"+dr.Freight, new Font(Font.COURIER, 10f, Font.BOLD)));
+                           cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.COURIER, 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase("$"+dr.CMValue, new Font()));
+                       cell = new PdfPCell(new Phrase("$" + dr.CMValue, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
@@ -1516,23 +1524,23 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.ContractNo, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.ContractNo, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                      // cell.PaddingBottom = 8f;
+                       // cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.ContractDate, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.ContractDate, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
 
-                       cell = new PdfPCell();       
+                       cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell = new PdfPCell();      
+                       cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       t0.AddCell(cell);            
+                       t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(dr.TTNo, new Font(Font.COURIER, 8f, Font.BOLD)));
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                      
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
 
@@ -1542,7 +1550,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.TTDate, new Font(Font.COURIER, 8f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase(dr.TTDate, new Font(Font.COURIER, 8f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
@@ -1576,21 +1584,21 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       
-                       cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+
+                       cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                       cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(" "));   ///For a Balnk Row
+                       cell = new PdfPCell(new Phrase(" "));   ///For a Balnk Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
                        cell = new PdfPCell(new Phrase("                INVOICE NO:", new Font(Font.TIMES_ROMAN, 12f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.InvoiceNo, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.InvoiceNo, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
@@ -1600,7 +1608,7 @@ namespace Test.Controllers
                        cell = new PdfPCell(new Phrase(dr.TName + "                  DATE:", new Font(Font.TIMES_ROMAN, 12f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.InvoiceDate, new Font()));
+                       cell = new PdfPCell(new Phrase(dr.InvoiceDate, new Font()));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.PaddingBottom = 8f;
                        t0.AddCell(cell);
@@ -1630,7 +1638,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
 
 
-                       cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                       cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
@@ -1650,7 +1658,7 @@ namespace Test.Controllers
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //t0.AddCell(cell);
 
-                       cell = new PdfPCell(new Phrase(dr.ExporterName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));                       
+                       cell = new PdfPCell(new Phrase(dr.ExporterName, new Font(Font.TIMES_ROMAN, 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 55f;      //For Make a cell Exact Height.
                        cell.Colspan = 2;
@@ -1664,7 +1672,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell=new PdfPCell(new Phrase(dr.RegDetails, new Font(Font.COURIER, 8f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase(dr.RegDetails, new Font(Font.COURIER, 8f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.Colspan = 2;
                        cell.PaddingBottom = 10f;
@@ -1690,25 +1698,26 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                   }
-                   //t0.AddCell(new PdfPCell(new Phrase("Cell1")));
-                   //t0.AddCell(new PdfPCell(new Phrase("Cell2")));
-                   //t0.AddCell(new PdfPCell(new Phrase("Cell3")));
+                       //}
+                       //t0.AddCell(new PdfPCell(new Phrase("Cell1")));
+                       //t0.AddCell(new PdfPCell(new Phrase("Cell2")));
+                       //t0.AddCell(new PdfPCell(new Phrase("Cell3")));
 
-                   //cell=new PdfPCell(new Phrase("Cell1"));
-                   //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
-                   //t0.AddCell(cell);
-                   //cell=new PdfPCell(new Phrase("Cell2"));
-                   //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                   //t0.AddCell(cell);
-                   //cell=new PdfPCell(new Phrase("Cell3"));                                    
-                   //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);     //For text.color itextSharp Version-4.1.6.0 is needed
-                   //t0.AddCell(cell);
-                  
-                
-                
-                   d.Add(t0);                   
-                   d.Add(heading);
+                       //cell=new PdfPCell(new Phrase("Cell1"));
+                       //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
+                       //t0.AddCell(cell);
+                       //cell=new PdfPCell(new Phrase("Cell2"));
+                       //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       //t0.AddCell(cell);
+                       //cell=new PdfPCell(new Phrase("Cell3"));                                    
+                       //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);     //For text.color itextSharp Version-4.1.6.0 is needed
+                       //t0.AddCell(cell);
+
+
+
+                       d.Add(t0);
+                   }
+                   //d.Add(heading);                  
                    d.Close();                   
                               
                 //return new EmptyResult();     ///Main Retun               
@@ -1717,8 +1726,15 @@ namespace Test.Controllers
                 var fsResult = new FileStreamResult(fileStream, "application/pdf");
                 return fsResult;
             }               
-           }   
-          
+           }
+        public Paragraph Header(float headspc)
+        {
+            Paragraph heading = new Paragraph("\n");
+            heading.ExtraParagraphSpace = 100f;
+            heading.SetLeading(0.0f, headspc);   ///20.0f means the Header Spaces..                                                    
+            heading.Add(" ");
+            return heading;
+        }
 
     }
 }
