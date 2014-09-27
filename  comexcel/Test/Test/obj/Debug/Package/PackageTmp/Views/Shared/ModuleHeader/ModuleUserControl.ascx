@@ -18,7 +18,7 @@
 
 
 <div class="current_user">
-   
+    <div style="font-size: 11px; color:White; padding-bottom: 2px;">Developed By: Hasib, HopLun IT Dept.</div>
     <div style="font-size: 11px; font-weight: bold; color:White; padding-bottom: 2px;">
         Log in Time : 
          <%if (Session["LoginDatetime"] != null)

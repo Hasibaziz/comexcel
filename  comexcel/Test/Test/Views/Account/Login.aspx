@@ -46,9 +46,8 @@
     <div id="container">
     <% using (Html.BeginForm())%> 
     <%{%>
-    <div style="width: 300px; margin: 45px auto 120px auto; border: 1px solid gray;">
-        <div style="background-color: #c5c5c5; padding: 10px">
-            Login</div>
+    <div style="width: 300px; margin: 45px auto 120px auto; border: 0px solid gray;">
+        <div style="background-color: #c5c5c5; padding: 10px">Login</div>
         <div class="page_single_column">
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.UserName )%>
@@ -67,10 +66,10 @@
                 <%: Html.ValidationMessageFor(model => model.Password)%>
             </div>
         </div>
-        <div class="page_single_column">
-            <input type="submit" value="Submit" title="Submit" />
-        </div>
-    </div>
+          <div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-lg active" title="Submit" />
+          </div> 
+      </div>        
     <%} %>
 </div> <!--! end container -->
 <footer class="group">

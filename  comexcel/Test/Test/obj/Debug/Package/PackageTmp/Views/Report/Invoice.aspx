@@ -24,14 +24,14 @@
         <div style="float: left; width: 100%;"> 
                 <div style="margin:5px 40px; padding:5px;">
                     Invoice : <%: Html.TextBoxFor(m => m.Invoice, new { @class = "Control_Moni_Width_100" })%>                   
-                    Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new { @readonly = "true", @class = "Width=250" })%>              
-                    Item:  <%: Html.DropDownListFor(m => m.ID, (List<SelectListItem>)ViewData["Item"], "Items", new { @readonly = "true", @class = "Width=250" })%>  
+                    Category: <%: Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewData["Name"], "Please Select", new {  @class = "Width=250" })%>              
+                    Item:  <%: Html.DropDownListFor(m => m.ID, (List<SelectListItem>)ViewData["Item"], "Items", new { @class = "Width=250" })%>  
                 </div>
                 <div>
                     B/E From Date : <%: Html.TextBoxFor(m => m.StartDate, new { @class = "Control_Moni_Width_100" })%>  
                     B/E To Date : <%: Html.TextBoxFor(m => m.EndDate, new { @class = "Control_Moni_Width_100" })%>  
                 </div>
-                <input type="button" value="Export Excel" title="Print"   onclick="impexcel()" />
+                <input type="button" value="Export Excel" title="Print" class="btn btn-primary btn-lg active"  onclick="impexcel()" />
               <%-- <span>Sum of QTY: <p id="Results" ></p></span>--%>              
                <div>Sum of QTY  : <span style="color:Red;" id="SumQTY" ></span> </div>   
                <div>Sum of Value: <span style="color:Red;" id="SumTotalval" ></span> </div>    
