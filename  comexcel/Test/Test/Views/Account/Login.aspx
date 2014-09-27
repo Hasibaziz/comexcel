@@ -5,9 +5,11 @@
 <head id="Head1" runat="server">
     <title>Login</title>
    <%-- <link href="<%: Url.Content("~/Content/Common.css")%>" rel="stylesheet" type="text/css" />--%>
+    <link href="<%: Url.Content("~/Content/hoplun.css")%>" rel="stylesheet" type="text/css" />   
+
     <script src="<%: Url.Content("~/Scripts/jquery-1.5.1.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/slides.min.jquery.js") %>" type="text/javascript"></script>
-    <link href="<%: Url.Content("~/Content/hoplun.css")%>" rel="stylesheet" type="text/css" />
+   
 
     <script type="text/javascript">
 		$(function(){
@@ -21,7 +23,7 @@
 <body>
 <div id="header-wrap">
 		<header class="group">
-			<h2><a href="index.html" title="burstudio">HopLunbd</a></h2>
+			<h2><a href="index.html" title="HopLun(bd)Ltd.">HopLunbd</a></h2>
 			<div id="call">
 				<h3>+(880 2) 8933 841-2, 8958 657</h3>
                 <h1>Fax: +(880 2) 8933 843</h1>
@@ -67,7 +69,7 @@
             </div>
         </div>
           <div>
-            <input type="submit" value="Submit" class="btn btn-primary btn-lg active" title="Submit" />
+            <input type="submit" value="Submit" class="btn btn-primary btn-lg active" data-toggle="button" title="Submit" />
           </div> 
       </div>        
     <%} %>

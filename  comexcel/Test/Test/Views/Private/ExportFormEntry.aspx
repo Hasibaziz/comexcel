@@ -102,6 +102,12 @@
         $('#frmID').validationEngine();
     });
 
+    $(function () {
+        $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
+            $(this).attr({ 'title': $(this).html() });
+        });
+    });
+
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -360,7 +366,7 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" class="btn btn-primary btn-lg active" value="Save" />     
+            <input type="submit" class="btn btn-primary btn-lg active" data-toggle="button" value="Save" />     
            <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
