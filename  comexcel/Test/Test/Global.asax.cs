@@ -45,12 +45,7 @@ namespace Test
         {
             base.Init();
             //WireUpSessionLifecycle();
-        }
-
-        
-
-       
-
+        }       
         
     }
 }

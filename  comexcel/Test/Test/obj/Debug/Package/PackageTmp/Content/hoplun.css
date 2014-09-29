@@ -281,7 +281,7 @@ nav ul li div input[type=submit]{
 {
   margin: -1.3em 1px 5px 200px; 
 }
-/*
+
 .btn-primary:hover, 
 .btn-primary:focus, 
 .btn-primary:active, 
@@ -291,7 +291,6 @@ nav ul li div input[type=submit]{
     background-color: #3399cc;
     color: #ffffff;
 }
-*/
 .btn:hover, 
 .btn:focus, 
 .btn:active, 
@@ -338,6 +337,16 @@ nav ul li div input[type=submit]{
     text-align: center;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     vertical-align: middle;
+}
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
 }
 
 /* FOOTER */
