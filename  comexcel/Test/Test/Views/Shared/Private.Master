@@ -47,9 +47,9 @@
         }      
         $(document).ready(function () {
             $(document).idleTimeout({
-                inactivity: 30000,
+                inactivity: 300000,    //5 Minutes
                 noconfirm: 10000,
-                sessionAlive: 10000,
+                sessionAlive: 3000,     //One Minutes
                 redirect_url: 'javascript:logout()'
             });         
         });
