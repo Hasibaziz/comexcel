@@ -415,8 +415,10 @@
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />
     <Content Include="Views\Shared\Footer.ascx" />
+    <Content Include="Views\Shared\ModuleHeader\BootstrapHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\DashBordHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\ModuleUserControl.ascx" />
+    <Content Include="Views\Shared\ModuleMenu\BootstrapMenu.ascx" />
     <Content Include="Views\Shared\ModuleMenu\Menu.ascx" />
     <Content Include="Views\Shared\ModuleMenu\PrivateMenu.ascx" />
     <Content Include="Web.config">

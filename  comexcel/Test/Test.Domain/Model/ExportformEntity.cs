@@ -99,6 +99,8 @@ namespace Test.Domain.Model
 
        public int HeaderSpaces { set; get; }
 
+       public string UserName { set; get; }
+
        public enum Sections
        {
           PRIVATE = 2,          

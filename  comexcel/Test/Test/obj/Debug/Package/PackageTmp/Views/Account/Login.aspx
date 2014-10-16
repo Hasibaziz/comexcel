@@ -5,7 +5,8 @@
 <head id="Head1" runat="server">
     <title>Login</title>
    <%-- <link href="<%: Url.Content("~/Content/Common.css")%>" rel="stylesheet" type="text/css" />--%>
-    <link href="<%: Url.Content("~/Content/hoplun.css")%>" rel="stylesheet" type="text/css" />   
+    <link href="<%: Url.Content("~/Content/hoplun.css")%>" rel="stylesheet" type="text/css" />  
+    <link href="<%: Url.Content("~/Content/Bootstrap/css/bootstrap.min.css") %>" rel="stylesheet" type="text/css" /> 
 
     <script src="<%: Url.Content("~/Scripts/jquery-1.5.1.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/slides.min.jquery.js") %>" type="text/javascript"></script>
@@ -25,7 +26,7 @@
 			<h2><a href="index.html" title="HopLun(bd)Ltd.">HopLunbd</a></h2>
 			<div id="call">
 				<h3>+(880 2) 8933 841-2, 8958 657</h3>
-                <h1>Fax: +(880 2) 8933 843</h1>
+                <h4>Fax: +(880 2) 8933 843</h1>
 				<h4 class="green">Call us <strong>now</strong></h4>
 			</div><!-- end call -->
 			<nav class="group">
@@ -48,27 +49,27 @@
     <% using (Html.BeginForm())%> 
     <%{%>
     <div style="width: 300px; margin: 45px auto 120px auto; border: 0px solid gray;">
-        <div style="background-color: #c5c5c5; padding: 10px">Login</div>
+        <div style="background-color: #c5c5c5; padding: 10px">Please sign in</div>
         <div class="page_single_column">
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.UserName )%>
+            <div class="editor-label form-control">
+                <%: Html.LabelFor(model => model.UserName)%>
             </div>
-            <div class="editor-field">
-                <%: Html.EditorFor(model => model.UserName)%>
+            <div class="editor-field form-control">
+                <%: Html.TextBoxFor(model => model.UserName, new { @placeholder = "User Name" })%>
                 <%: Html.ValidationMessageFor(model => model.UserName)%>
             </div>
         </div>
         <div class="page_single_column">
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.Password )%>
+                <%: Html.LabelFor(model => model.Password)%>
             </div>
             <div class="editor-field">
-                <%: Html.PasswordFor(model => model.Password)%>
+                <%: Html.PasswordFor(model => model.Password, new { @placeholder = "Password" })%>
                 <%: Html.ValidationMessageFor(model => model.Password)%>
             </div>
         </div>
           <div>
-            <input type="submit" value="Submit" class="btn btn-primary btn-lg active" data-toggle="button" title="Submit" />
+            <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block" data-toggle="button" title="Submit" />
           </div> 
       </div>        
     <%} %>

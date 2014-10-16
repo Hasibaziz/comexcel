@@ -497,7 +497,7 @@
             $("#FOB").hide("scale", 500);
             $("#CPT").show("scale", 500);
         }
-        else if (cpt == 1) {
+        else if (cpt == 1 || cpt == 3 || cpt == 5) {
             $("#FOB").show("scale", 500);
             $("#CPT").hide("scale", 500);
         }
