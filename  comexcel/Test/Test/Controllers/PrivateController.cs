@@ -1298,7 +1298,7 @@ namespace Test.Controllers
                //Document d = new Document(PageSize.LEGAL, 40f, 1f, 0f, 0f);      //using( Document d = new Document(PageSize.A4, 55, 55, 35, 20))
 
                 Document d = new Document(PageSize.LEGAL);
-                d = new Document(new Rectangle(650f, 1044));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
+                d = new Document(new Rectangle(680f, 1044));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
 
                    PdfWriter writer = PdfWriter.GetInstance(d, ms);               //using (Document d = new Document(PageSize.Legal, 40, 1, 1, 1))
                    string path = Server.MapPath("~/PDFFiles/");

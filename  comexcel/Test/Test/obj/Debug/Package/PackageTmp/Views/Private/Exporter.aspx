@@ -56,12 +56,14 @@
                     },
                     RegDetails: {
                         title: 'Registration Details',
-                        type: 'textarea'
+                        type: 'textarea',
+                        inputClass: 'validate[optional,maxSize[150]]'
                     }
                 },
                 formCreated: function (event, data) {
                     data.form.find('input[name="ExporterNo"]').addClass('validate[required]');
-                    data.form.find('input[name="ExporterName"]').addClass('validate[required]');                                       
+                    data.form.find('input[name="ExporterName"]').addClass('validate[required]');
+                    data.form.find('input[name="RegDetails"]').addClass('validate[required]');                                     
                     data.form.validationEngine();
                 },
                 //Validate form when it is being submitted
