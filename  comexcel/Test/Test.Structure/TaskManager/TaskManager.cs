@@ -392,6 +392,10 @@ namespace Test.Structure.TaskManager
                     desBLL = new DestinationBLL();
                     return desBLL.GetAllDestinationDetails(param);
                     break;
+                case TestTask.AG_GetDestinationName:
+                    desBLL = new DestinationBLL();
+                    return desBLL.GetDestinationName(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - ExportFormEntryRecord

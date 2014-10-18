@@ -595,6 +595,22 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDestinationName(string imodel)
+        {
+
+            DestinationEntity _Model = new DestinationEntity();
+            _Model.ID = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDestinationName, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.Name = dr["Name"].ToString();
+
+            }
+            return _Model;
+        }
         public object GetDuplicateInvoiceno(string invoice)
         {
             ExportformEntity _Model = new ExportformEntity();

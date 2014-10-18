@@ -1266,6 +1266,26 @@ namespace Test.Controllers
                 }
             }
         }
+        public JsonResult GetDestinationID(string dsid)
+        {
+            if (dsid.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
+            }
+            else
+            {
+                try
+                {
+                    DestinationEntity obj = (DestinationEntity)GetDestinationName(dsid);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
 
         /// <summary>
         /// Report Generate in PDF

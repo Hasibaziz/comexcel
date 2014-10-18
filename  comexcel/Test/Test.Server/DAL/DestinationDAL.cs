@@ -57,6 +57,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
-
+        public DataTable GetDestinationName(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            DestinationEntity obj = (DestinationEntity)param;
+            string sql = "SELECT [ID], [CountryCode], [Name], [Port] FROM [Commercial].[dbo].[DestCountry] WHERE ID='" + obj.ID + "'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }
