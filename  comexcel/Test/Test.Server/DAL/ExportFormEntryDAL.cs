@@ -52,14 +52,14 @@ namespace Test.Server.DAL
             //sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight] ";
-            sql = sql + "  , [ExpNo], [ExpDate], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]";
+            sql = sql + "  , [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]";
             sql = sql + " )";
             sql = sql + "values ( ";
             sql = sql + "  @ItemName, @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
             //sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCode, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue, @CPTFOBValue, @Freight";
-            sql = sql + ", @ExpNo, @ExpDate, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate, @UserName ";
+            sql = sql + ", @ExpNo, @ExpDate, @EPNo, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate, @UserName ";
             sql = sql + ")";
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);           
@@ -93,6 +93,7 @@ namespace Test.Server.DAL
 
             db.AddInParameter(dbCommand, "ExpNo", DbType.String, exfEntity.ExpNo);
             db.AddInParameter(dbCommand, "ExpDate", DbType.String, exfEntity.ExpDate);
+            db.AddInParameter(dbCommand, "EPNo", DbType.String, exfEntity.EPNo);
             db.AddInParameter(dbCommand, "BLNo", DbType.String, exfEntity.BLNo);
             db.AddInParameter(dbCommand, "BLDate", DbType.String, exfEntity.BLDate);
             db.AddInParameter(dbCommand, "ExFactoryDate", DbType.String, exfEntity.ExFactoryDate);

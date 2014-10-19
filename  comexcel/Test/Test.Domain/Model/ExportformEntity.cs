@@ -92,6 +92,7 @@ namespace Test.Domain.Model
 
        public string ExpNo { set; get; }
        public string ExpDate { set; get; }
+       public string EPNo { set; get; }      //Export Permit Number
        public string BLNo { set; get; }
        public string BLDate { set; get; }
        public string ExFactoryDate { set; get; }

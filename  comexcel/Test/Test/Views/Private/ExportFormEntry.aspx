@@ -343,6 +343,13 @@
             <%: Html.EditorFor(model => model.ExpDate)%>
             <%: Html.ValidationMessageFor(model => model.ExpDate)%>
         </div>
+         <div class="editor-label01">
+          <label for="BLNo">Export Permit No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.EPNo)%>
+            <%: Html.ValidationMessageFor(model => model.EPNo)%>
+        </div>
         <div class="editor-label01">
           <label for="BLNo">B/L No:</label>
         </div>
@@ -369,7 +376,7 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" class="btn btn-primary btn-lg active" data-toggle="button" value="Save" />     
+            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
            <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
