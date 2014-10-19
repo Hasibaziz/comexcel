@@ -520,7 +520,8 @@ namespace Test.Controllers
                     ItemList.Add(new SelectListItem()
                     {
                         Value = dr["ID"].ToString(),
-                        Text = dr["CountryCode"].ToString()
+                        //Text = dr["CCODE"].ToString()
+                        Text = dr["CCode"].ToString()
                     });
 
                 }
@@ -607,7 +608,7 @@ namespace Test.Controllers
 
                 _Model.ID = dr["ID"].ToString();
                 _Model.Name = dr["Name"].ToString();
-
+                _Model.CountryCode = dr["CountryCode"].ToString();
             }
             return _Model;
         }

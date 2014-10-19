@@ -246,7 +246,7 @@
             <label for="DestinationID">Destination Code:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination", new { @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
         <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
@@ -406,7 +406,7 @@
     });
     $('#DestinationID').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetDestinationID?dsid=")%>' + $("#DestinationID  > option:selected").attr("value"), function (data) {
-            $("#Destination").html(data.Name);
+            $("#Destination").html(data.CountryCode);
         });
     });
 </script>

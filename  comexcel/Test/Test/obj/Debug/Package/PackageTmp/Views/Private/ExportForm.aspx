@@ -13,7 +13,7 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
-                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.5" })%>
+                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7" })%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
                  <input type="button" value="Print Preview" title="Print" class="btn btn-primary btn-lg active"  onclick="printPDF()" />
                </div>

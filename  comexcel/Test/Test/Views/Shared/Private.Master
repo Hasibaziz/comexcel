@@ -20,7 +20,7 @@
     <link href="<%: Url.Content("~/Scripts/syntaxhighligher/styles/shCore.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%: Url.Content("~/Scripts/syntaxhighligher/styles/shThemeDefault.css") %>" rel="stylesheet" type="text/css" />
 
-     <link href="<%: Url.Content("~/Content/Bootstrap/css/bootstrap.css") %>" rel="stylesheet" type="text/css" />
+     <%--<link href="<%: Url.Content("~/Content/Bootstrap/css/bootstrap.css") %>" rel="stylesheet" type="text/css" />--%>
      <link href="<%: Url.Content("~/Content/Bootstrap/css/bootstrap.min.css") %>" rel="stylesheet" type="text/css" />
      <link href="<%: Url.Content("~/Content/Bootstrap/css/bootstrap-responsive.css") %>" rel="stylesheet" type="text/css" />  
 
@@ -48,9 +48,9 @@
         }      
         $(document).ready(function () {
             $(document).idleTimeout({
-                inactivity: 300000,    //5 Minutes
+                inactivity: 600000,    //5 Minutes=300000
                 noconfirm: 10000,
-                sessionAlive: 3000,     //One Minutes
+                sessionAlive: 6000,     //One Minutes=3000
                 redirect_url: 'javascript:logout()'
             });         
         });

@@ -75,7 +75,8 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
     width: 100%;
     background-image: URL('/Content/images/admin-header-bg.gif');
     background-repeat: repeat-x;
-    height:70px;
+    height:75px;
+    /*margin: -60px 0 0 0 ;  */
 }
 
 .main_Footer
