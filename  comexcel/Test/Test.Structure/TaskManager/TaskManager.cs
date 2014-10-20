@@ -296,6 +296,10 @@ namespace Test.Structure.TaskManager
                     EXBLL = new ExporterDetailsBLL();
                     return EXBLL.GetExporterDetails(param);
                     break;
+                case TestTask.AG_DeleteExporterdeatilsById:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.DeleteExporterdeatilsById(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - ConsigneeDetails
@@ -319,6 +323,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetConsigneeName:
                     CONBLL = new ConsigneeDetailsBLL();
                     return CONBLL.GetConsigneeName(param);
+                    break;
+                case TestTask.AG_DeleteConsigneedeatilsById:
+                    CONBLL = new ConsigneeDetailsBLL();
+                    return CONBLL.DeleteConsigneedeatilsById(param);
                     break;
                 #endregion
 
@@ -395,6 +403,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetDestinationName:
                     desBLL = new DestinationBLL();
                     return desBLL.GetDestinationName(param);
+                    break;
+                case TestTask.AG_DeleteDestinationdeatilsById:
+                    desBLL = new DestinationBLL();
+                    return desBLL.DeleteDestinationdeatilsById(param);
                     break;
                 #endregion
 

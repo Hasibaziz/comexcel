@@ -87,5 +87,31 @@ namespace Test.Server.BLL
             retObj = (object)EXDAL.GetExporterDetails(param);
             return retObj;
         }
+        public object DeleteExporterdeatilsById(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    ExporterDetailsDAL EXDAL = new ExporterDetailsDAL();
+                    retObj = (object)EXDAL.DeleteExporterdeatilsById(param, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
     }
 }

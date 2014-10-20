@@ -90,11 +90,11 @@
                     width: '10%',
                     options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                 },
-                NotifyID: {
-                    title: 'Notify No',
-                    width: '10%',
-                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                },
+//                NotifyID: {
+//                    title: 'Notify No',
+//                    width: '10%',
+//                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
+//                },
 //                HSCodeID: {
 //                    title: 'H.S. Code',
 //                    width: '10%',
@@ -108,6 +108,10 @@
                     title: 'Destination',
                     width: '5%',
                     options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+                },
+                Port: {
+                    title: 'Port',
+                    width: '12%'
                 },
                 Quantity: {
                     title: 'Quantity',
@@ -176,11 +180,11 @@ $(document).ready(function () {
                         width: '10%',
                         options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                     },
-                    NotifyID: {
-                        title: 'Notify No',
-                        width: '10%',
-                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                    },
+//                    NotifyID: {
+//                        title: 'Notify No',
+//                        width: '10%',
+//                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
+//                    },
 //                    HSCodeID: {
 //                        title: 'H.S. Code',
 //                        width: '10%',
@@ -194,6 +198,10 @@ $(document).ready(function () {
                         title: 'Destination',
                         width: '5%',
                         options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+                    },
+                    Port: {
+                        title: 'Port',
+                        width: '12%'
                     },
                     Quantity: {
                         title: 'Quantity',

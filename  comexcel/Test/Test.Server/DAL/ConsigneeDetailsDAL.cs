@@ -60,5 +60,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+        public bool DeleteConsigneedeatilsById(object param, Database db, DbTransaction transaction)
+        {
+            string sql = "DELETE FROM [ConsigneeDetails] WHERE ID=@Id";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "Id", DbType.String, param);
+
+            db.ExecuteNonQuery(dbCommand, transaction);
+            return true;
+        }
     }
 }

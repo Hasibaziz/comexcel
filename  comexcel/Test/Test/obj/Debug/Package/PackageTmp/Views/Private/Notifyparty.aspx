@@ -44,11 +44,11 @@
                         list: false
                     },
                     NotifyNo: {
-                        title: 'Notify No',
+                        title: 'Notify Name',
                         width: '10%'
                     },
                     NotifyName: {
-                        title: 'Notify Name',
+                        title: 'Notify Address',
                         type: 'textarea',
                         inputClass: 'validate[optional,maxSize[150]]'
                     }

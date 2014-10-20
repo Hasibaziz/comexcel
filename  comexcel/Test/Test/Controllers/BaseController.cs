@@ -609,6 +609,7 @@ namespace Test.Controllers
                 _Model.ID = dr["ID"].ToString();
                 _Model.Name = dr["Name"].ToString();
                 _Model.CountryCode = dr["CountryCode"].ToString();
+                _Model.Port = dr["Port"].ToString();
             }
             return _Model;
         }

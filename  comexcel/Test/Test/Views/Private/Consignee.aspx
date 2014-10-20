@@ -32,9 +32,8 @@
                 actions: {
                     listAction: '<%=Url.Content("~/Private/ConsigneeDetailsList") %>',
                     createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>'
-                    //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
-                    //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
+                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
                 },
                 fields: {
                     ID: {
@@ -44,11 +43,11 @@
                         list: false
                     },
                     ConsigneeNo: {
-                        title: 'Consignee No',
+                        title: 'Consignee Name',
                         width: '10%'
                     },
                     ConsigneeName: {
-                        title: 'Consignee Name',
+                        title: 'Consignee Address',
                         type: 'textarea',
                         inputClass: 'validate[optional,maxSize[150]]'
                     }

@@ -104,6 +104,7 @@ namespace Test.Structure
         public const string AG_UpdateExporterDetailsInfo = "AG_UpdateExporterDetailsInfo";
         public const string AG_GetAllExporterInfo = "AG_GetAllExporterInfo";
         public const string AG_GetExporterDetails = "AG_GetExporterDetails";
+        public const string AG_DeleteExporterdeatilsById = "AG_DeleteExporterdeatilsById";
         #endregion
 
         #region Auto Generated - ConsigneeDetails.
@@ -112,6 +113,7 @@ namespace Test.Structure
         public const string AG_UpdateConsigneeDetailsInfo = "AG_UpdateConsigneeDetailsInfo";
         public const string AG_GetAllConsigneeInfo = "AG_GetAllConsigneeInfo";
         public const string AG_GetConsigneeName = "AG_GetConsigneeName";
+        public const string AG_DeleteConsigneedeatilsById = "AG_DeleteConsigneedeatilsById";
         #endregion
 
         #region Auto Generated - NotifypartyDetailsRecord.
@@ -137,6 +139,7 @@ namespace Test.Structure
         public const string AG_UpdateDestinationInfo = "AG_UpdateDestinationInfo";
         public const string AG_GetAllDestinationDetails = "AG_GetAllDestinationDetails";
         public const string AG_GetDestinationName = "AG_GetDestinationName";
+        public const string AG_DeleteDestinationdeatilsById = "AG_DeleteDestinationdeatilsById";
         #endregion
 
         #region Auto Generated - ExportFormEntryRecord.

@@ -30,9 +30,9 @@
                 actions: {
                     listAction: '<%=Url.Content("~/Private/DestinationList") %>',
                     createAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>'
-                    //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
-                    //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateDestinationDetails") %>',
+                    deleteAction: '<%=Url.Content("~/Private/DeleteDestinationdeatils") %>'                
+                   
                 },
                 fields: {
                     ID: {

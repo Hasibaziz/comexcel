@@ -81,6 +81,13 @@
                     $("#CPTCMValue").val(" ");
                     $("#CPTFOBValue").val(" ");
                     $("#Freight").val(" ");
+
+                    $("#EPNo").val(data.EPNo);
+                    $("#ExpNo").val(data.ExpNo);
+                    $("#ExpDate").val(data.ExpDate);
+                    $("#BLNo").val(data.BLNo);
+                    $("#BLDate").val(data.BLDate);
+                    $("#ExFactoryDate").val(data.ExFactoryDate);
                     $(this).dialog("close");
                 }
             }
@@ -243,7 +250,7 @@
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
-            <label for="DestinationID">Destination Code:</label>
+            <label for="DestinationID">Destination:</label>
         </div>
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
@@ -251,6 +258,9 @@
         </div>
         <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
+        </div>
+        <div style="color: Green; margin: -2.0em 1px 5px 250px;">
+            <p id="Port" ></p>
         </div>
         <div class="editor-label01">
             <label for="Section">Section</label>
@@ -414,6 +424,7 @@
     $('#DestinationID').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetDestinationID?dsid=")%>' + $("#DestinationID  > option:selected").attr("value"), function (data) {
             $("#Destination").html(data.CountryCode);
+            $("#Port").html(data.Port);
         });
     });
 </script>
@@ -496,6 +507,7 @@
             }
             $("#FOBValue").val(data.FOBValue);
             $("#CMValue").val(data.CMValue);
+            $("#EPNo").val(data.EPNo);
             $("#ExpNo").val(data.ExpNo);
             $("#ExpDate").val(data.ExpDate);
             $("#BLNo").val(data.BLNo);

@@ -108,6 +108,25 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        [HttpPost]
+        public JsonResult DeleteExporterdeatils(string ID)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                bool isUpdate = false;
+                isUpdate = (bool)ExecuteDB(TestTask.AG_DeleteExporterdeatilsById, ID);
+                if (isUpdate)
+                    return Json(new { Result = "OK" });
+                else
+                    return Json(new { Result = "ERROR", Message = "Failed to Delete" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
 
         public ActionResult Consignee()
         {
@@ -182,6 +201,26 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        [HttpPost]
+        public JsonResult DeleteConsigneedeatils(string ID)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                bool isUpdate = false;
+                isUpdate = (bool)ExecuteDB(TestTask.AG_DeleteConsigneedeatilsById, ID);
+                if (isUpdate)
+                    return Json(new { Result = "OK" });
+                else
+                    return Json(new { Result = "ERROR", Message = "Failed to Delete" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+
 
         public ActionResult Notifyparty()
         {
@@ -373,7 +412,7 @@ namespace Test.Controllers
             //HSCodeEntity hssEntity = new HSCodeEntity();
             //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
             DestinationEntity dsEntity = new DestinationEntity();
-            ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+            ViewData["CCode"] = GetAllDestinationDetails(dsEntity);
             ModeinfoEntity tEntity = new ModeinfoEntity();
             ViewData["Name"] = GetAllModeinfoDetails(tEntity);
             return View();
@@ -394,7 +433,7 @@ namespace Test.Controllers
             //HSCodeEntity hssEntity = new HSCodeEntity();
             //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
             DestinationEntity dsEntity = new DestinationEntity();
-            ViewData["CountryCode"] = GetAllDestinationDetails(dsEntity);
+            ViewData["CCode"] = GetAllDestinationDetails(dsEntity);
             ModeinfoEntity tEntity = new ModeinfoEntity();
             ViewData["Name"] = GetAllModeinfoDetails(tEntity);
 
@@ -445,6 +484,7 @@ namespace Test.Controllers
 
                     _Model.ExpNo = dr["ExpNo"].ToString();
                     _Model.ExpDate = dr["ExpDate"].ToString();
+                    _Model.EPNo = dr["EPNo"].ToString();
                     _Model.BLNo = dr["BLNo"].ToString();
                     _Model.BLDate = dr["BLNo"].ToString();
                     _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
@@ -684,6 +724,7 @@ namespace Test.Controllers
 
                 _Model.ExpNo = dr["ExpNo"].ToString();
                 _Model.ExpDate = dr["ExpDate"].ToString();
+                _Model.EPNo = dr["EPNo"].ToString();
                 _Model.BLNo = dr["BLNo"].ToString();
                 _Model.BLDate = dr["BLDate"].ToString();
                 _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
@@ -757,6 +798,7 @@ namespace Test.Controllers
 
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
+                                EPNo=dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
@@ -848,6 +890,7 @@ namespace Test.Controllers
 
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
+                                EPNo=dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
@@ -1013,6 +1056,24 @@ namespace Test.Controllers
                 }
                 else
                     return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult DeleteDestinationdeatils(string ID)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                bool isUpdate = false;
+                isUpdate = (bool)ExecuteDB(TestTask.AG_DeleteDestinationdeatilsById, ID);
+                if (isUpdate)
+                    return Json(new { Result = "OK" });
+                else
+                    return Json(new { Result = "ERROR", Message = "Failed to Delete" });
             }
             catch (Exception ex)
             {
@@ -1333,7 +1394,7 @@ namespace Test.Controllers
 
                        t0.SpacingBefore = 20f;
                        //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                       t0.SetTotalWidth(new[] { 275f, 182f, 220f });         //Table cell spaceing
+                       t0.SetTotalWidth(new[] { 280f, 175f, 215f });         //Table cell spaceing
 
                        PdfPCell cell = new PdfPCell(new Paragraph());
 
@@ -1350,7 +1411,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.FixedHeight = 20f;
+                       cell.FixedHeight = 30f;
                        t0.AddCell(cell);
                        if (dr.HSCodesecond == "")
                        {
@@ -1603,7 +1664,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell = new PdfPCell(new Phrase("TT NO: "+dr.TTNo, new Font(Font.COURIER, 8f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase("TT NO: "+dr.TTNo, new Font(Font.COURIER, 10f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
 
@@ -1614,7 +1675,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell = new PdfPCell(new Phrase("DATE: "+dr.TTDate, new Font(Font.GetFamilyIndex("Arial"), 8f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase("DATE: "+dr.TTDate, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
@@ -1635,7 +1696,7 @@ namespace Test.Controllers
 
                        cell = new PdfPCell(new Phrase(dr.ConsigneeName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.FixedHeight = 58f;      //For Make a cell Exact Height.
+                       cell.FixedHeight = 55f;      //For Make a cell Exact Height.
                        cell.Colspan = 2;            //Remove seperation between two Column.
                        //cell.PaddingBottom = 20f;     //8f
                        t0.AddCell(cell);
@@ -1651,15 +1712,15 @@ namespace Test.Controllers
 
                        cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 10f;
+                       cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 10f;
+                       cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(" "));   ///For a Balnk Row
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.PaddingBottom = 10f;
+                       cell.PaddingBottom = 5f;
                        t0.AddCell(cell);
 
                        cell = new PdfPCell(new Phrase("                      INVOICE NO:", new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));

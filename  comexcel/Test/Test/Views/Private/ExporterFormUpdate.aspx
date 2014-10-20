@@ -156,11 +156,17 @@
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
-            <label for="DestinationID">Destination Code:</label>
+            <label for="DestinationID">Destination:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CountryCode"], "Destination")%>  
+            <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
+        </div>
+         <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
+            <p id="Destination" ></p>
+        </div>
+        <div style="color: Green; margin: -2.0em 1px 5px 250px;">
+            <p id="Port" ></p>
         </div>
         <div class="editor-label01">
             <label for="Section">Section</label>
@@ -315,6 +321,12 @@
     $('#HSCodeID').bind('focus', function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetHSCodeNameByID?hsid=")%>' + $("#HSCodeID  > option:selected").attr("value"), function (data) {
             $("#HSCode").html(data.ShortName);
+        });
+    });
+    $('#DestinationID').bind('focus', function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetDestinationID?dsid=")%>' + $("#DestinationID  > option:selected").attr("value"), function (data) {
+            $("#Destination").html(data.CountryCode);
+            $("#Port").html(data.Port);
         });
     });
     $(document).ready(function () {

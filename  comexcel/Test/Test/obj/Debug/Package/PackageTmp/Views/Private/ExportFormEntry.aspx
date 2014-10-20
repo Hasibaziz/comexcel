@@ -81,6 +81,13 @@
                     $("#CPTCMValue").val(" ");
                     $("#CPTFOBValue").val(" ");
                     $("#Freight").val(" ");
+
+                    $("#EPNo").val(data.EPNo);
+                    $("#ExpNo").val(data.ExpNo);
+                    $("#ExpDate").val(data.ExpDate);
+                    $("#BLNo").val(data.BLNo);
+                    $("#BLDate").val(data.BLDate);
+                    $("#ExFactoryDate").val(data.ExFactoryDate);
                     $(this).dialog("close");
                 }
             }
@@ -243,7 +250,7 @@
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
-            <label for="DestinationID">Destination Code:</label>
+            <label for="DestinationID">Destination:</label>
         </div>
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
@@ -251,6 +258,9 @@
         </div>
         <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
+        </div>
+        <div style="color: Green; margin: -2.0em 1px 5px 250px;">
+            <p id="Port" ></p>
         </div>
         <div class="editor-label01">
             <label for="Section">Section</label>
@@ -343,6 +353,13 @@
             <%: Html.EditorFor(model => model.ExpDate)%>
             <%: Html.ValidationMessageFor(model => model.ExpDate)%>
         </div>
+         <div class="editor-label01">
+          <label for="BLNo">Export Permit No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.EPNo)%>
+            <%: Html.ValidationMessageFor(model => model.EPNo)%>
+        </div>
         <div class="editor-label01">
           <label for="BLNo">B/L No:</label>
         </div>
@@ -369,7 +386,7 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" class="btn btn-primary btn-lg active" data-toggle="button" value="Save" />     
+            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
            <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
@@ -407,6 +424,7 @@
     $('#DestinationID').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetDestinationID?dsid=")%>' + $("#DestinationID  > option:selected").attr("value"), function (data) {
             $("#Destination").html(data.CountryCode);
+            $("#Port").html(data.Port);
         });
     });
 </script>
@@ -489,6 +507,7 @@
             }
             $("#FOBValue").val(data.FOBValue);
             $("#CMValue").val(data.CMValue);
+            $("#EPNo").val(data.EPNo);
             $("#ExpNo").val(data.ExpNo);
             $("#ExpDate").val(data.ExpDate);
             $("#BLNo").val(data.BLNo);

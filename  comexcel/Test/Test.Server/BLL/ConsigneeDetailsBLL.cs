@@ -87,5 +87,31 @@ namespace Test.Server.BLL
             retObj = (object)CONDAL.GetConsigneeName(param);
             return retObj;
         }
+        public object DeleteConsigneedeatilsById(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    ConsigneeDetailsDAL CONDAL = new ConsigneeDetailsDAL();
+                    retObj = (object)CONDAL.DeleteConsigneedeatilsById(param, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
     }
 }

@@ -15,7 +15,7 @@
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
                  Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7" })%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
-                 <input type="button" value="Print Preview" title="Print" class="btn btn-primary btn-lg active"  onclick="printPDF()" />
+                 <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />
                </div>
      </fieldset>          
         <%: Html.ActionLink("Add New Entry", "ExportFormEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>    
@@ -90,11 +90,11 @@
                     width: '10%',
                     options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                 },
-                NotifyID: {
-                    title: 'Notify No',
-                    width: '10%',
-                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                },
+//                NotifyID: {
+//                    title: 'Notify No',
+//                    width: '10%',
+//                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
+//                },
 //                HSCodeID: {
 //                    title: 'H.S. Code',
 //                    width: '10%',
@@ -108,6 +108,10 @@
                     title: 'Destination',
                     width: '5%',
                     options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+                },
+                Port: {
+                    title: 'Port',
+                    width: '12%'
                 },
                 Quantity: {
                     title: 'Quantity',
@@ -176,11 +180,11 @@ $(document).ready(function () {
                         width: '10%',
                         options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                     },
-                    NotifyID: {
-                        title: 'Notify No',
-                        width: '10%',
-                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                    },
+//                    NotifyID: {
+//                        title: 'Notify No',
+//                        width: '10%',
+//                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
+//                    },
 //                    HSCodeID: {
 //                        title: 'H.S. Code',
 //                        width: '10%',
@@ -194,6 +198,10 @@ $(document).ready(function () {
                         title: 'Destination',
                         width: '5%',
                         options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+                    },
+                    Port: {
+                        title: 'Port',
+                        width: '12%'
                     },
                     Quantity: {
                         title: 'Quantity',

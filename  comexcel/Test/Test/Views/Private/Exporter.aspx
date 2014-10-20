@@ -33,9 +33,8 @@
                 actions: {
                     listAction: '<%=Url.Content("~/Private/ExporterDetailsList") %>',
                     createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>'
-                    //                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
-                    //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
+                    deleteAction: '<%=Url.Content("~/Private/DeleteExporterdeatils") %>'
                 },
                 fields: {
                     ID: {
@@ -49,7 +48,7 @@
                         width: '10%'                       
                     },
                     ExporterName: {
-                        title: 'Exporter Name',
+                        title: 'Exporter Address',
                         type: 'textarea',
                         //inputClass: 'validate[required,minSize[6]]' ---For Interger Value----validate[required,custom[integer],max[50]]
                         inputClass: 'validate[optional,maxSize[150]]'

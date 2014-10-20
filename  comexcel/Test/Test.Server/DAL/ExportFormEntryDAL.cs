@@ -30,7 +30,7 @@ namespace Test.Server.DAL
             sql = sql + " A.Section, ";
             sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -122,7 +122,7 @@ namespace Test.Server.DAL
             //sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, CPTFOBValue=@CPTFOBValue, Freight=@Freight, ";
-            sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
+            sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, EPNo=@EPNo, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, exfEntity.ID);
@@ -155,6 +155,7 @@ namespace Test.Server.DAL
 
             db.AddInParameter(dbCommand, "ExpNo", DbType.String, exfEntity.ExpNo);
             db.AddInParameter(dbCommand, "ExpDate", DbType.String, exfEntity.ExpDate);
+            db.AddInParameter(dbCommand, "EPNo", DbType.String, exfEntity.EPNo);
             db.AddInParameter(dbCommand, "BLNo", DbType.String, exfEntity.BLNo);
             db.AddInParameter(dbCommand, "BLDate", DbType.String, exfEntity.BLDate);
             db.AddInParameter(dbCommand, "ExFactoryDate", DbType.String, exfEntity.ExFactoryDate);
@@ -189,7 +190,7 @@ namespace Test.Server.DAL
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -231,7 +232,7 @@ namespace Test.Server.DAL
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -273,7 +274,7 @@ namespace Test.Server.DAL
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";

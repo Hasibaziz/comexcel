@@ -57,6 +57,7 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
         public DataTable GetDestinationName(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
@@ -65,6 +66,16 @@ namespace Test.Server.DAL
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
+        }
+
+        public bool DeleteDestinationdeatilsById(object param, Database db, DbTransaction transaction)
+        {
+            string sql = "DELETE FROM [DestCountry] WHERE Id=@Id";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "Id", DbType.String, param);
+
+            db.ExecuteNonQuery(dbCommand, transaction);
+            return true;
         }
     }
 }

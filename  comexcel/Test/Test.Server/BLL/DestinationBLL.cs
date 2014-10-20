@@ -87,5 +87,31 @@ namespace Test.Server.BLL
             retObj = (object)destDAL.GetDestinationName(param);
             return retObj;
         }
+        public object DeleteDestinationdeatilsById(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    DestinationDAL destDAL = new DestinationDAL();
+                    retObj = (object)destDAL.DeleteDestinationdeatilsById(param, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
     }
 }
