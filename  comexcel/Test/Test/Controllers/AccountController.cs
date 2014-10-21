@@ -8,6 +8,7 @@ using System.Web.Security;
 using Test.Models;
 using System.Data;
 using Test.DAL;
+using System.Collections;
 
 namespace Test.Controllers
 {
@@ -51,7 +52,6 @@ namespace Test.Controllers
             {
               ModelState.AddModelError("UserName", "invalid username or password.");
             }
-
             return View("Login", model);
         }
 

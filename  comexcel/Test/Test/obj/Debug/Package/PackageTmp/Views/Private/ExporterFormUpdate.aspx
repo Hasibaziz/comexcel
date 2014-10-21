@@ -5,12 +5,33 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<%--************-----------------For Client Side Validation-------------********************--%>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
+          <%--**************--------------------------**************************--%>
+
+<%--*************---------For Making Balloon Validation Check---------------******************--%>
+ <link href="<%: Url.Content("~/Content/validationEngine/validationEngine.jquery.css") %>" rel="stylesheet" type="text/css" />
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
+ <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
+          <%--**************--------------------------**************************--%>
+
 <script type="text/javascript" >
     $(document).ready(function () {
         $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
     });
     $(function () {
         $("#tabs").tabs();
+    });
+    $(document).ready(function () {       
+        // Initiate the validation engine.
+        $('#frmID').validationEngine();
+    });
+
+    $(function () {
+        $("#ItemName option, #ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
+            $(this).attr({ 'title': $(this).html() });
+        });
     });
 </script>
 <div class="mp_left_menu">
@@ -22,7 +43,7 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Html.BeginForm("ExportFormEntry", "Private"))
+<% using (Html.BeginForm("ExportFormEntry", "Private", new { @id = "frmID" }))
    { %>
     <%: Html.ValidationSummary(true) %>
         <%: Html.HiddenFor(model => model.ID)%>
@@ -76,7 +97,8 @@
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ContractNo)%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 250px; height:30px;", @class = "validate[required]" })%>
+            <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
         <div class="editor-label01">
@@ -217,7 +239,7 @@
             <label for="FOBValue">FOB/CPT Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.FOBValue)%>
+            <%: Html.EditorFor(model => model.FOBValue, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.FOBValue)%>
         </div>
         <div class="editor-label01">

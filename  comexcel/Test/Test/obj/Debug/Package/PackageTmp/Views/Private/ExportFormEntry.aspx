@@ -187,7 +187,8 @@
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ContractNo)%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 250px; height:30px;", @class = "validate[required]" })%>
+            <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
         <div class="editor-label01">
@@ -308,13 +309,13 @@
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
         <div style="margin:1em 0.5cm 1px -80px;">                
         <p id="CPT" >    
-           CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;" })%>
+           CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;", @class = "validate[required]" })%>
            CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
            FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
            Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>                     
         </p>
         <p id="FOB" >    
-           FOB Value: <%: Html.TextBoxFor(model => model.FOBValue)%>
+           FOB Value: <%: Html.TextBoxFor(model => model.FOBValue, new { @class = "validate[required]" })%>
            CM  Value: <%: Html.TextBoxFor(model => model.CMValue, new { @readonly = "readonly" })%>                              
         </p>
 
