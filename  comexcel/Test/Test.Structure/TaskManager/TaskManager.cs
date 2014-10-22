@@ -440,6 +440,10 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.GetDuplicateInvoiceno(param);
                     break;
+                case TestTask.AG_DeleteExportFormEntryDetailsById:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.DeleteExportFormEntryDetailsById(param);
+                    break;
                 #endregion
 
 

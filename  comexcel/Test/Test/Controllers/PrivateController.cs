@@ -821,15 +821,33 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-
+        
         /// <summary>
-        /// Searching the Value using Jquery.
-        /// </summary>
+        /// Delete Export Form Detail List.
+        /// </summary> 
         /// <param name="Invno"></param>
         /// <param name="jtStartIndex"></param>
         /// <param name="jtPageSize"></param>
         /// <param name="jtSorting"></param>
         /// <returns></returns>
+        [HttpPost]
+        public JsonResult DeleteExportFormEntryDetails(string ID)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                bool isUpdate = false;
+                isUpdate = (bool)ExecuteDB(TestTask.AG_DeleteExportFormEntryDetailsById, ID);
+                if (isUpdate)
+                    return Json(new { Result = "OK" });
+                else
+                    return Json(new { Result = "ERROR", Message = "Failed to Delete" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
         [HttpPost]
         public JsonResult InvoiceSearchByNo(string Invno, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
@@ -1414,7 +1432,7 @@ namespace Test.Controllers
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                       cell.FixedHeight = 30f;
+                       cell.FixedHeight = 25f;
                        t0.AddCell(cell);
                        if (dr.HSCodesecond == "")
                        {

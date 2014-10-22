@@ -59,11 +59,11 @@ namespace Test.Domain.Model
        public string CountryCode { set; get; }
        public string Name { set; get; }
        public string Port { set; get; }      
-       [Display(Name = "FOB Value")]
-       [Required(ErrorMessage = "{0} is required!")]
+       //[Display(Name = "FOB Value")]
+       //[Required(ErrorMessage = "{0} is required!")]
        public string FOBValue { set; get; }
-       [Display(Name = "CM Value")]
-       [Required(ErrorMessage = "{0} is required!")]
+       //[Display(Name = "CM Value")]
+       //[Required(ErrorMessage = "{0} is required!")]
        public string CMValue { set; get; }
        public string CPTValue { set; get; }
        public string CPTCMValue { set; get; }

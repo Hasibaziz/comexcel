@@ -89,11 +89,11 @@
                     $("#BLDate").val(data.BLDate);
                     $("#ExFactoryDate").val(data.ExFactoryDate);
                     $(this).dialog("close");
+                    $("#InvoiceNo").focu();
                 }
             }
         });
-
-        }
+      }    
     }
 
     $(document).ready(function () {
@@ -257,12 +257,14 @@
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
-        <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
+        
+        <div class="editor-label01" style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
         </div>
-        <div style="color: Green; margin: -2.0em 1px 5px 250px;">
+        <div class="editor-label01" style="color: Green; margin: -2.0em 1px 5px 250px;">
             <p id="Port" ></p>
         </div>
+        
         <div class="editor-label01">
             <label for="Section">Section</label>
         </div>

@@ -59,8 +59,8 @@
             sorting: false,
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val()
-                
+                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val(),
+                deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {
                 ID: {
@@ -146,10 +146,10 @@ $(document).ready(function () {
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '<%=Url.Content("~/Private/ExportFormDetailsList") %>'
+                    listAction: '<%=Url.Content("~/Private/ExportFormDetailsList") %>',
+                    deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
 //                    createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-//                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>'
-//                    deleteAction: '<%=Url.Content("~/Configuration/DeleteServiceNameDetils") %>',                   
+//                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>' 
 //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
                 },
                 fields: {

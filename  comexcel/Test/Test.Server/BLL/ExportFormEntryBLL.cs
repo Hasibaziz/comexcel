@@ -102,6 +102,31 @@ namespace Test.Server.BLL
             retObj = (object)exfDAL.GetDuplicateInvoiceno(param, Dupinv);
             return retObj;
         }
-
+        public object DeleteExportFormEntryDetailsById(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+                    retObj = (object)exfDAL.DeleteExportFormEntryDetailsById(param, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
     }
 }

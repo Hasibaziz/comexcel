@@ -150,6 +150,7 @@ namespace Test.Structure
         public const string AG_GetExporterFormSearchByInvoiceNo = "AG_GetExporterFormSearchByInvoiceNo";
         public const string AG_GetInvoiceSearchByNo = "AG_GetInvoiceSearchByNo";
         public const string AG_GetDuplicateInvoiceno = "GetDuplicateInvoiceno";
+        public const string AG_DeleteExportFormEntryDetailsById = "AG_DeleteExportFormEntryDetailsById";
         #endregion
 
 
