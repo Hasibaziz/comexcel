@@ -20,8 +20,31 @@
 
 <script type="text/javascript" >
     $(document).ready(function () {
-        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
+        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
+        $.datepicker.setDefaults($.extend({},
+            {
+                 changeMonth: true,
+                 changeYear: true,
+                 showStatus: true,
+                 dateFormat: 'dd/mm/yy',
+                 duration: 'fast',
+                 yearRange: '1890:2100'
+            }
+            )
+        );
+        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ 
+                   onSelect: function(){
+                            document.all ? $(this).get(0).fireEevent("onChange"):
+                            $(this).change();
+                            this.focus();
+                            },
+                   onClose: function(dateText, inst){
+                            if(!document.all)
+                              this.select();
+                   }
+          });                  
     });
+
     $(function () {
         $("#tabs").tabs();
     });
@@ -132,7 +155,7 @@
 <div id="tabs">
         <ul>
         <li><a href="#tabs-1">Basic Information</a></li>
-        <li><a href="#tabs-2">Quantity & Value</a></li>  
+       <%-- <li><a href="#tabs-2">Quantity & Value</a></li>  --%>
         <li><a href="#tabs-3">Ex-Factory Information</a></li>      
         </ul>
     <div id="tabs-1">
@@ -182,7 +205,7 @@
         <div class="editor-field01">
             <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
-        </div>
+        </div> 
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
@@ -198,6 +221,7 @@
             <%: Html.EditorFor(model => model.ContractDate)%>
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
+<div class="New_Right_Begin"> 
         <div class="editor-label01">
           <label for="TTNo">TT No:</label>
         </div>
@@ -211,7 +235,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTDate)%>
             <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>       
+        </div>     
         <div class="editor-label01">
             <label for="ExporterID">Exporter No:</label>
         </div>
@@ -257,13 +281,17 @@
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
+         <div class="editor-label01" style="color: Green;">       
+            <p id="Destination" ></p>
+            <p id="Port" ></p>
+        </div>
         
-        <div class="editor-label01" style="color: Green; margin: 0.3em 1px 5px 200px;">       
+       <%-- <div class="editor-label01" style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
         </div>
         <div class="editor-label01" style="color: Green; margin: -2.0em 1px 5px 250px;">
             <p id="Port" ></p>
-        </div>
+        </div>--%>
         
         <div class="editor-label01">
             <label for="Section">Section</label>
@@ -273,10 +301,11 @@
             <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
+  </div>
      </fieldset>
-    </div>
+ <%--   </div>
  
-    <div id="tabs-2">
+    <div id="tabs-2">--%>
      <fieldset>
         <legend>Quantity & Value Entry</legend>
         <div class="editor-label01">
@@ -338,7 +367,7 @@
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
         </div> --%>
         </fieldset>
-    </div>  
+   </div>  
     <div id="tabs-3">
       <fieldset>
         <legend>Ex-Factory Information Entry</legend>

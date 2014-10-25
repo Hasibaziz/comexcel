@@ -19,6 +19,7 @@
 <script type="text/javascript" >
     $(document).ready(function () {
         $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
+        $(this).focus();
     });
     $(function () {
         $("#tabs").tabs();
@@ -50,7 +51,7 @@
 <div id="tabs">
         <ul>
         <li><a href="#tabs-1">Basic Information</a></li>
-        <li><a href="#tabs-2">Quantity & Value</a></li>  
+       <%-- <li><a href="#tabs-2">Quantity & Value</a></li>  --%>
         <li><a href="#tabs-3">Ex-Factory Information</a></li>      
         </ul>
     <div id="tabs-1">
@@ -108,6 +109,7 @@
             <%: Html.EditorFor(model => model.ContractDate)%>
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
+<div class="New_Right_Begin"> 
         <div class="editor-label01">
           <label for="TTNo">TT No:</label>
         </div>
@@ -184,12 +186,16 @@
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
         </div>
-         <div style="color: Green; margin: 0.3em 1px 5px 200px;">       
+        <div class="editor-label01" style="color: Green;">       
+            <p id="Destination" ></p>
+            <p id="Port" ></p>
+        </div>
+        <%--<div style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
         </div>
         <div style="color: Green; margin: -2.0em 1px 5px 250px;">
             <p id="Port" ></p>
-        </div>
+        </div>--%>
         <div class="editor-label01">
             <label for="Section">Section</label>
         </div>
@@ -198,10 +204,11 @@
             <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem {  Value = ((int)x).ToString(), Text = x.ToString() }),"Select")%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
         </div>
+ </div>
      </fieldset>
-    </div>
+  <%--  </div>
  
-    <div id="tabs-2">
+    <div id="tabs-2">--%>
      <fieldset>
         <legend>Quantity & Value Entry</legend>
         <div class="editor-label01">
@@ -235,6 +242,7 @@
            <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }), "Select")%>
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
         </div>
+<div class="New_Right_BeginQ"> 
         <div class="editor-label01">
             <label for="FOBValue">FOB/CPT Value:</label>
         </div>
@@ -262,9 +270,10 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.Freight)%>
             <%: Html.ValidationMessageFor(model => model.Freight)%>
-        </div> 
+        </div>
+ </div> 
         </fieldset>
-    </div>  
+   </div>  
     <div id="tabs-3">
       <fieldset>
         <legend>Ex-Factory Information Entry</legend>

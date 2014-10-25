@@ -1534,7 +1534,16 @@ input[type="submit"],input[type="button"] {
 {
     background-position: -80px -224px;
 }
-
+.New_Right_Begin
+{
+    margin: -27em 50cm 0px .5cm;
+    padding: 0em 0cm 0px 15cm;
+ }
+ .New_Right_BeginQ
+{
+    margin: -13em 50cm 0px .5cm;
+    padding: 0em 0cm 0px 15cm;
+ }
 .editor-label01 
 {
     color: black;
