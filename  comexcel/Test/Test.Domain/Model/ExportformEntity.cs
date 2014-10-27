@@ -119,11 +119,11 @@ namespace Test.Domain.Model
        }
        public enum Inconterms
        { 
-           FOB = 1,
+           FOB = 1,    //sea
            CPT = 2,
            CFR = 3,
            DDP = 4,
-           FCA = 5,
+           FCA = 5,    //sea
        }
 
     }

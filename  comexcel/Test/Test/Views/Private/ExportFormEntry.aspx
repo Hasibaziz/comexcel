@@ -26,7 +26,7 @@
                  changeMonth: true,
                  changeYear: true,
                  showStatus: true,
-                 dateFormat: 'dd/mm/yy',
+                 dateFormat: 'dd-mm-yy',
                  duration: 'fast',
                  yearRange: '1890:2100'
             }
@@ -552,7 +552,7 @@
     //$("#FOB").hide();
     $("#Incoterm").change(function () {
         var cpt = $(this).val();
-        if (cpt == 2||cpt==4) {
+        if (cpt == 2||cpt == 4) {
             $("#FOB").hide("scale", 500);
             $("#CPT").show("scale", 500);
         }
