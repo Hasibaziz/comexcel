@@ -1417,7 +1417,7 @@ namespace Test.Controllers
                        PdfPCell cell = new PdfPCell(new Paragraph());
                        
                        PdfPTable SubTable = new PdfPTable(1);
-                       PdfPCell SubCell = new PdfPCell(SubTable);
+                       //PdfPCell SubCell = new PdfPCell(SubTable);
 
                        //t0.DefaultCell.FixedHeight = 100f;      //Table Cell Fix Height.
                        //cell = ConstantApp.PhraseCell(new Phrase(), PdfPCell.ALIGN_CENTER);
@@ -1428,9 +1428,9 @@ namespace Test.Controllers
                        // d.Add(Header(headspc));
                        //string strname = dr.ShortName;
                        cell = new PdfPCell();
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                      
                        t0.AddCell(cell);
-                       cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 8f, Font.NORMAL)));
+                       cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 9f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 25f;
                        t0.AddCell(cell);
@@ -1447,29 +1447,29 @@ namespace Test.Controllers
                        }
                        else
                        {
-                           cell.PaddingTop = 12f;
-                           //PdfPTable nested = new PdfPTable(1);
-                           //PdfPCell nesthousing = new PdfPCell(nested);
+                           cell.PaddingTop = 12f;                          
                            Phrase Firststr = new Phrase();
                            Phrase Second = new Phrase();                          
                            string hscode = dr.HSCode;
                            string finalStr = Regex.Replace(hscode, @"(.{1})", "$1   ");    /// For Making space between characters in a String.                      
-                           cell = new PdfPCell(new Phrase(finalStr, new Font()));
-                           string hssecond = dr.HSCodesecond;
-                           string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1   ");
-                           //cell = new PdfPCell(new Phrase((new Phrase(finalStr, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)) + "\n" + (new Phrase(secondStr, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)) ) )  ));
-                           Font ftnFirst = FontFactory.GetFont(FontFactory.HELVETICA,12f, Font.BOLD);
-                           Firststr = new Phrase(finalStr,ftnFirst);
-                           Font ftnSecond = FontFactory.GetFont(FontFactory.HELVETICA, 8f, Font.NORMAL);                          
-                           Second = new Phrase(secondStr, ftnFirst);
+                           //cell = new PdfPCell(new Phrase(finalStr, new Font()));
+                           string hssecond = dr.HSCodesecond; 
+                           string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1     ");                          
                            //cell = new PdfPCell(new Phrase(finalStr + "\n" + secondStr, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));                         
-                           cell = new PdfPCell(Firststr);                           
-                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                           
-                           //SubTable.AddCell(new PdfPCell(new Phrase(secondStr, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL))));
-                           //SubTable.AddCell(new PdfPCell(new Phrase(finalStr, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL))));
-                           //SubCell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
-                           //SubCell.Padding = 0f;
-                           //t0.AddCell(SubCell);  
+                           var FirstTextFont = FontFactory.GetFont("Arial", 12f, Color.BLACK);
+                           var SecondTextFont = FontFactory.GetFont("Arial", 8f, Color.BLACK);
+
+                           var FirstChunk = new Chunk(finalStr, FirstTextFont);
+                           var SecondChunk = new Chunk(secondStr, SecondTextFont);
+                           
+                           var phrase = new Phrase(SecondChunk);
+                           phrase.Add("\n");
+                           phrase.Add(FirstChunk);
+
+                           cell = new PdfPCell(phrase);
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                                                      
+                           //cell = new PdfPCell(phrase);
+                           //t0.AddCell(new PdfPCell(phrase));
                            t0.AddCell(cell);                           
                        }
                        cell = new PdfPCell();
@@ -1807,7 +1807,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
-                       cell = new PdfPCell(new Phrase(dr.TName + "             DATE:", new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                       cell = new PdfPCell(new Phrase(dr.TName + "          DATE:", new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.PaddingBottom = 14f;
                        t0.AddCell(cell);

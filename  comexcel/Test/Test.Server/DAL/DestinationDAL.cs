@@ -15,7 +15,7 @@ namespace Test.Server.DAL
         public DataTable GetAllDestinationRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [CountryCode], [Name], [Port] FROM [Commercial].[dbo].[DestCountry]";
+            string sql = "SELECT [ID], [CountryCode], [Name], [Port] FROM [Commercial].[dbo].[DestCountry] ORDER BY Name ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -52,7 +52,7 @@ namespace Test.Server.DAL
         public DataTable GetAllDestinationDetails(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [CountryCode], [Name] AS CCODE, [Port] FROM [Commercial].[dbo].[DestCountry]";
+            string sql = "SELECT [ID], [CountryCode], [Name] AS CCODE, [Port] FROM [Commercial].[dbo].[DestCountry] ORDER BY Name ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

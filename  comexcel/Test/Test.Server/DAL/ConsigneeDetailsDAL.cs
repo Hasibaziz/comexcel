@@ -15,7 +15,7 @@ namespace Test.Server.DAL
         public DataTable GetAllConsigneeDetailsRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [ConsigneeNo], [ConsigneeName] FROM [Commercial].[dbo].[ConsigneeDetails]";
+            string sql = "SELECT [ID], [ConsigneeNo], [ConsigneeName] FROM [Commercial].[dbo].[ConsigneeDetails] ORDER BY ConsigneeNo ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -46,7 +46,7 @@ namespace Test.Server.DAL
         public DataTable GetAllConsigneeInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, ConsigneeNo FROM ConsigneeDetails";
+            string sql = "SELECT ID, ConsigneeNo FROM ConsigneeDetails ORDER BY ConsigneeNo ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

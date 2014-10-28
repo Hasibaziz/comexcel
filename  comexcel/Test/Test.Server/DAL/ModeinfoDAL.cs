@@ -15,7 +15,7 @@ namespace Test.Server.DAL
         public DataTable GetAllModemasterRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, Name, Port FROM Transport";
+            string sql = "SELECT ID, Name, Port FROM Transport ORDER BY Name DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
