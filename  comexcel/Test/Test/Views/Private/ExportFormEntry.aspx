@@ -112,7 +112,7 @@
                     $("#BLDate").val(data.BLDate);
                     $("#ExFactoryDate").val(data.ExFactoryDate);
                     $(this).dialog("close");
-                    $("#InvoiceNo").focu();
+                    $("#InvoiceNo").focus();
                 }
             }
         });
@@ -568,33 +568,44 @@
             $("#ExFactoryDate").val(data.ExFactoryDate);
         });
     });
+    $(function() // Shorthand for $(document).ready(function() {
+    {
+        $("#FOBValue").prop("disabled", false);
+        $("#CMValue").prop("disabled", false);
 
-    $("#Incoterm").change(function () {
-        var cpt = $(this).val();
-        if (cpt == 2 || cpt == 4) {
-            $("#CPTValue").prop("disabled", false);
-            $("#CPTCMValue").prop("disabled", false);
-            $("#CPTFOBValue").prop("disabled", false);
-            $("#Freight").prop("disabled", false);
+        $("#CPTValue").prop("disabled", true);
+        $("#CPTCMValue").prop("disabled", true);
+        $("#CPTFOBValue").prop("disabled", true);
+        $("#Freight").prop("disabled", true);
 
-            $("#FOBValue").prop("disabled", true);
-            $("#CMValue").prop("disabled", true);
-        }
-        else if (cpt == 1 || cpt == 3 || cpt == 5) {
-            $("#FOBValue").prop("disabled", false);
-            $("#CMValue").prop("disabled", false);
-            
-            $("#CPTValue").prop("disabled", true);
-            $("#CPTCMValue").prop("disabled", true);
-            $("#CPTFOBValue").prop("disabled", true);
-            $("#Freight").prop("disabled", true);
-        }
-        else {
-            $("#CPT").hide();
-            $("#FOB").hide();
-        }
-    });   
-     
+        $("#Incoterm").change(function () {
+            // var value = $("#Incoterm option:selected").val();
+            //alert($(this).val());
+            var cpt = $(this).val();
+            if (cpt == 2 || cpt == 4 ) {
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTCMValue").prop("disabled", false);
+                $("#CPTFOBValue").prop("disabled", false);
+                $("#Freight").prop("disabled", false);
+
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
+            }
+            else if (cpt == 1 || cpt == 3 || cpt == 5 ) {
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
+            }
+            else {
+                $("#CPT").hide();
+                $("#FOB").hide();
+            }
+        });
+    });  
 </script>
 
 </asp:Content>

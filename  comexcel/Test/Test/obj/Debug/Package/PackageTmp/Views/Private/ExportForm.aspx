@@ -69,13 +69,21 @@
                     edit: false,
                     list: false
                 },
+                ItemName: {
+                    title: 'Item Name',
+                    width: '25%'
+                },
                 ContractNo: {
                     title: 'Contract No',
                     width: '10%'
                 },
+                ContractDate: {
+                    title: 'Contract Date',
+                    width: '10%'
+                },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '10%',
+                    width: '8%',
                     display: function (data) {
                         return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
@@ -85,8 +93,8 @@
                     width: '10%'
                 },
                 ExporterID: {
-                    title: 'Exporter No',
-                    width: '10%',
+                    title: 'Exporter',
+                    width: '6%',
                     options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
                 },
                 ConsigneeID: {
@@ -106,7 +114,7 @@
 //                },
                 HSCode: {
                     title: 'H.S.Code',
-                    width: '8%'
+                    width: '6%'
                 },
                 DestinationID: {
                     title: 'Destination',
@@ -118,15 +126,15 @@
                     width: '12%'
                 },
                 Quantity: {
-                    title: 'Quantity',
-                    width: '8%'
+                    title: 'Qty',
+                    width: '5%'
                 },
                 FOBValue: {
-                    title: 'FOB Value',
+                    title: 'FOB',
                     width: '8%'
                 },
                 CMValue: {
-                    title: 'C.M. Value',
+                    title: 'C.M.',
                     width: '8%'
                 },
                 ExFactoryDate: {
@@ -159,13 +167,21 @@ $(document).ready(function () {
                         edit: false,
                         list: false
                     },
+                    ItemName: {
+                        title: 'Item Name',
+                        width: '25%'
+                    },
                     ContractNo: {
                         title: 'Contract No',
                         width: '10%'
                     },
+                    ContractDate: {
+                        title: 'Contract Date',
+                        width: '10%'
+                    },
                     InvoiceNo: {
                         title: 'Invoice No',
-                        width: '10%',
+                        width: '8%',
                         display: function (data) {
                             return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                         }
@@ -175,8 +191,8 @@ $(document).ready(function () {
                         width: '10%'
                     },
                     ExporterID: {
-                        title: 'Exporter No',
-                        width: '10%',
+                        title: 'Exporter',
+                        width: '6%',
                         options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
                     },
                     ConsigneeID: {
@@ -196,7 +212,7 @@ $(document).ready(function () {
 //                    },
                     HSCode: {
                         title: 'H.S. Code',
-                        width: '10%'
+                        width: '6%'
                     },
                     DestinationID: {
                         title: 'Destination',
@@ -208,15 +224,15 @@ $(document).ready(function () {
                         width: '12%'
                     },
                     Quantity: {
-                        title: 'Quantity',
-                        width: '8%'
+                        title: 'Qty',
+                        width: '5%'
                     },
                     FOBValue: {
-                        title: 'FOB Value',
+                        title: 'FOB',
                         width: '8%'
                     },
                     CMValue: {
-                        title: 'C.M. Value',
+                        title: 'C.M.',
                         width: '8%'
                     },
                     ExFactoryDate: {

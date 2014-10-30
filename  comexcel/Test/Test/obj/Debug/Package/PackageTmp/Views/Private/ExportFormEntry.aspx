@@ -26,7 +26,7 @@
                  changeMonth: true,
                  changeYear: true,
                  showStatus: true,
-                 dateFormat: 'dd/mm/yy',
+                 dateFormat: 'dd-mm-yy',
                  duration: 'fast',
                  yearRange: '1890:2100'
             }
@@ -112,7 +112,7 @@
                     $("#BLDate").val(data.BLDate);
                     $("#ExFactoryDate").val(data.ExFactoryDate);
                     $(this).dialog("close");
-                    $("#InvoiceNo").focu();
+                    $("#InvoiceNo").focus();
                 }
             }
         });
@@ -261,7 +261,7 @@
             <label for="NotifyID">Notify No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], "Select Notify", new { @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
         <div class="editor-label01" style="color: Green;">       
@@ -271,7 +271,7 @@
             <label for="TransportID">Local Transport:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], "Transport", new { @class = "validate[required]" })%>  
+            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.TransportID)%>
         </div>
         <div class="editor-label01">
@@ -338,7 +338,7 @@
            <%--<%: Html.DropDownListFor(model => model.Inconterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
            <%: Html.DropDownListFor(model => model.Incoterm, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Inconterms)).Cast<Test.Domain.Model.ExportformEntity.Inconterms>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
            <%: Html.ValidationMessageFor(model => model.Incoterm)%>
-        <div style="margin:1em 0.5cm 1px -80px;">                
+       <%-- <div style="margin:1em 0.5cm 1px -80px;">                
         <p id="CPT" >    
            CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;", @class = "validate[required]" })%>
            CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
@@ -350,23 +350,38 @@
            CM  Value: <%: Html.TextBoxFor(model => model.CMValue, new { @readonly = "readonly" })%>                              
         </p>
 
-        </div> 
+        </div> --%>
         </div>
-        <%--<div class="editor-label01">
-            <label for="FOBValue">FOB Value:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.FOBValue)%>
-            <%: Html.ValidationMessageFor(model => model.FOBValue)%>
-        </div>
+         <fieldset> 
+          <legend>FOB/CFR/FCA Value</legend>       
+            <div class="editor-field01">
+                <%: Html.EditorFor(model => model.FOBValue)%>
+                <%: Html.ValidationMessageFor(model => model.FOBValue)%>
+            </div>
+        </fieldset>
         <div class="editor-label01">
             <label for="CMValue">CM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CMValue)%>
+            <%: Html.EditorFor(model => model.CMValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
-        </div> --%>
-        </fieldset>
+        </div>          
+
+        <fieldset> 
+          <legend>CPT/DDP Value</legend>       
+            <div class="editor-field01">
+                <%: Html.EditorFor(model => model.CPTValue)%>
+                <%: Html.ValidationMessageFor(model => model.CPTValue)%>
+            </div>
+        </fieldset>       
+        <div style="margin:1em 0.5cm 1px 0px;">
+          <%-- CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;", @class = "validate[required]" })%>--%>
+           CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
+           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
+           Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>      
+        </div>
+
+      </fieldset>
    </div>  
     <div id="tabs-3">
       <fieldset>
@@ -526,16 +541,22 @@
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
             if (data.Incoterm == 2 || data.Incoterm == 4) {
-                $("#FOB").hide();
-                $("#CPT").show();
-                $("#CPTValue").val(data.FOBValue);
-                $("#CPTCMValue").val(data.CMValue);
-                $("#CPTFOBValue").val(data.CPTFOBValue);
-                $("#Freight").val(data.Freight);
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTCMValue").prop("disabled", false);
+                $("#CPTFOBValue").prop("disabled", false);
+                $("#Freight").prop("disabled", false);
+
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
             }
             else {
-                $("#CPT").hide();
-                $("#FOB").show();
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
             }
             $("#FOBValue").val(data.FOBValue);
             $("#CMValue").val(data.CMValue);
@@ -547,25 +568,44 @@
             $("#ExFactoryDate").val(data.ExFactoryDate);
         });
     });
+    $(function() // Shorthand for $(document).ready(function() {
+    {
+        $("#FOBValue").prop("disabled", false);
+        $("#CMValue").prop("disabled", false);
 
-    $("#CPT").hide();
-    //$("#FOB").hide();
-    $("#Incoterm").change(function () {
-        var cpt = $(this).val();
-        if (cpt == 2||cpt==4) {
-            $("#FOB").hide("scale", 500);
-            $("#CPT").show("scale", 500);
-        }
-        else if (cpt == 1 || cpt == 3 || cpt == 5) {
-            $("#FOB").show("scale", 500);
-            $("#CPT").hide("scale", 500);
-        }
-        else {
-            $("#CPT").hide();
-            $("#FOB").hide();
-        }
-    });   
-     
+        $("#CPTValue").prop("disabled", true);
+        $("#CPTCMValue").prop("disabled", true);
+        $("#CPTFOBValue").prop("disabled", true);
+        $("#Freight").prop("disabled", true);
+
+        $("#Incoterm").change(function () {
+            // var value = $("#Incoterm option:selected").val();
+            //alert($(this).val());
+            var cpt = $(this).val();
+            if (cpt == 2 || cpt == 4 ) {
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTCMValue").prop("disabled", false);
+                $("#CPTFOBValue").prop("disabled", false);
+                $("#Freight").prop("disabled", false);
+
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
+            }
+            else if (cpt == 1 || cpt == 3 || cpt == 5 ) {
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
+            }
+            else {
+                $("#CPT").hide();
+                $("#FOB").hide();
+            }
+        });
+    });  
 </script>
 
 </asp:Content>
