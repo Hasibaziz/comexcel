@@ -1937,6 +1937,11 @@ namespace Test.Controllers
             return heading;
         }
 
+        public ActionResult GSPItemInfo()
+        {
+            return View();
+        }
+
         public ActionResult GSPItemEntry()
         {
             return View();

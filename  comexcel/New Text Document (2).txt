@@ -24,3 +24,6 @@ http://forums.asp.net/t/1978940.aspx?ASP+NET+MVC5+AJAX+BeginForm+AjaxOptions+OnS
 Validation
 http://www.position-relative.net/creation/formValidator/
 
+Autofill TextArea:
+http://getlazarus.com/download
+

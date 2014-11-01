@@ -402,6 +402,8 @@
     <Content Include="Views\Private\ExporterFormUpdate.aspx" />
     <Content Include="Views\Private\ExportForm.aspx" />
     <Content Include="Views\Private\ExportFormEntry.aspx" />
+    <Content Include="Views\Private\GSPItemEntry.aspx" />
+    <Content Include="Views\Private\GSPItemInfo.aspx" />
     <Content Include="Views\Private\HSCode.aspx" />
     <Content Include="Views\Private\Index.aspx" />
     <Content Include="Views\Private\LeftMenu.ascx" />

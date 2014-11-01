@@ -1,0 +1,38 @@
+USE [Commercial]
+GO
+
+/****** Object:  Table [dbo].[GSPItemInfo]    Script Date: 11/01/2014 09:54:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[GSPItemInfo](
+	[ID]          [uniqueidentifier]    NOT NULL,
+	[InvoiceNo]   [nvarchar](MAX)       NOT NULL,
+	[OrderNo]     [nvarchar](150)       NOT NULL,
+	[ItemDetails] [nvarchar](MAX)       NOT NULL,
+	[StyleNo]     [nvarchar](150)           NULL,
+	[TAGIDNo]     [nvarchar](100)			NULL,
+	[OurID]       [nvarchar](100)			NULL,
+	[ARTNo]       [nvarchar](150)			NULL,
+	[CustomerPO]  [nvarchar](150)			NULL,
+	[Delivery]    [nvarchar](50)			NULL,
+	[Category]    [nvarchar](50)		NOT	NULL,
+	[Origion]     [nvarchar](50)		NOT	NULL,
+	[Quantity]    [nvarchar](150)		NOT	NULL,
+	
+	
+ CONSTRAINT [PK_GSPItemInfo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[GSPItemInfo] ADD  CONSTRAINT [DF_GSPItemInfo_ID]  DEFAULT (newid()) FOR [ID]
+GO
+
+

@@ -88,6 +88,7 @@
     <Compile Include="Model\DestinationEntity.cs" />
     <Compile Include="Model\ExporterEntity.cs" />
     <Compile Include="Model\ExportformEntity.cs" />
+    <Compile Include="Model\GSPItemInfoEntity.cs" />
     <Compile Include="Model\HSCodeEntity.cs" />
     <Compile Include="Model\ImportexcelEntity.cs" />
     <Compile Include="Model\LocationEntity.cs" />
