@@ -446,6 +446,21 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                #region Auto Generated - GSPItemInfoRecord
+                case TestTask.AG_GetAllGSPItemInfoRecord:
+                    GSPItemInfoRecordBLL GSPItem = null;
+                    GSPItem = new GSPItemInfoRecordBLL();
+                    return GSPItem.GetAllGSPItemInfoRecord(param);
+                    break;
+                case TestTask.AG_SaveGSPItemInfoRecord:
+                    GSPItem = new GSPItemInfoRecordBLL();
+                    return GSPItem.SaveGSPItemInfoRecord(param);
+                    break;
+                case TestTask.AG_UpdateGSPItemInfoRecord:
+                    GSPItem = new GSPItemInfoRecordBLL();
+                    return GSPItem.UpdateGSPItemInfoRecord(param);
+                    break;               
+                #endregion
 
                 default:
                     break;

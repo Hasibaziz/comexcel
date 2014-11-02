@@ -153,6 +153,12 @@ namespace Test.Structure
         public const string AG_DeleteExportFormEntryDetailsById = "AG_DeleteExportFormEntryDetailsById";
         #endregion
 
+        #region Auto Generated - GSPItemInfoRecord.
+        public const string AG_GetAllGSPItemInfoRecord = "AG_GetAllGSPItemInfoRecord";
+        public const string AG_SaveGSPItemInfoRecord = "AG_SaveGSPItemInfoRecord";
+        public const string AG_UpdateGSPItemInfoRecord = "AG_UpdateGSPItemInfoRecord";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
 
     }
 }

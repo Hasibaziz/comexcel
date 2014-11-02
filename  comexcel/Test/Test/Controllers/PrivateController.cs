@@ -1937,15 +1937,119 @@ namespace Test.Controllers
             return heading;
         }
 
+        /// <summary>
+        /// Generalized System of Preferences Certificate of Origin(GSP) Information and New Entry/Update.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GSPItemInfo()
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult GSPItemInfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllGSPItemInfoRecord, null);
+                    List<GSPItemInfoEntity> ItemList = null;
+                    ItemList = new List<GSPItemInfoEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new GSPItemInfoEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                OrderNo = dr["OrderNo"].ToString(),
+                                ItemDetails = dr["ItemDetails"].ToString(),
+                                StyleNo = dr["StyleNo"].ToString(),
+                                TAGIDNo = dr["TAGIDNo"].ToString(),
+                                OurID = dr["OurID"].ToString(),
+                                ARTNo = dr["ARTNo"].ToString(),
+                                CustomerPO = dr["CustomerPO"].ToString(),
+                                Delivery = dr["Delivery"].ToString(),
+                                Category = dr["Category"].ToString(),
+                                Origion = dr["Origion"].ToString(),
+                                Quantity = dr["Quantity"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }       
 
         public ActionResult GSPItemEntry()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult GSPItemEntry(GSPItemInfoEntity _Model)
+        {
+            var isSuccess = false;
+            var message = "";
+            _Model.UserName = CurrentUserName;           
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    //return View(_Model);
+                }
+                _Model.CurrentDate = DateTime.Now.ToString();
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveGSPItemInfoRecord, _Model);
+                    return RedirectToAction("GSPItemEntry", "Private");
+                }
+                else
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateGSPItemInfoRecord, _Model);
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("GSPItemInfo", "Private", addedModel);
+                }
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("GSPItemInfo", "Private", addedModel);
+                }
+                else
+                {
+                    isSuccess = true;
+                    message = "ERROR! Information failed to save";
+                    var ERRORMSG = new { isSuccess, message };
+                    return Json(ERRORMSG);
+                    //return Json(new { Result = "ERROR", Message = "Information failed to save" });
+                   }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+
+            }
+        }
+
+
 
     }
 }

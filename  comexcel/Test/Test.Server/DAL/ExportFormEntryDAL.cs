@@ -120,20 +120,20 @@ namespace Test.Server.DAL
         {
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
             //sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
-            sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
+            sql = sql + " SET ItemName=@ItemName, InvoiceDate=@InvoiceDate, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, CPTFOBValue=@CPTFOBValue, Freight=@Freight, ";
             sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, EPNo=@EPNo, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, exfEntity.ID);
             db.AddInParameter(dbCommand, "ItemName", DbType.String, exfEntity.ItemName);
+            db.AddInParameter(dbCommand, "InvoiceDate", DbType.String, exfEntity.InvoiceDate);
             db.AddInParameter(dbCommand, "ContractNo", DbType.String, exfEntity.ContractNo);
             db.AddInParameter(dbCommand, "ContractDate", DbType.String, exfEntity.ContractDate);
             db.AddInParameter(dbCommand, "TTNo", DbType.String, exfEntity.TTNo);
             db.AddInParameter(dbCommand, "TTDate", DbType.String, exfEntity.TTDate);
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, exfEntity.InvoiceNo);
-            db.AddInParameter(dbCommand, "InvoiceDate", DbType.String, exfEntity.InvoiceDate);
-
+           
             db.AddInParameter(dbCommand, "ExporterID", DbType.String, exfEntity.ExporterID);
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
             db.AddInParameter(dbCommand, "NotifyID", DbType.String, exfEntity.NotifyID);

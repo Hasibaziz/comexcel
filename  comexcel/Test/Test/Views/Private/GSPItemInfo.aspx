@@ -31,10 +31,10 @@
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '<%=Url.Content("~/Private/ConsigneeDetailsList") %>',
-                    createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
-                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
+                    listAction: '<%=Url.Content("~/Private/GSPItemInfoList") %>'
+//                    createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
+//                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
+//                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
                 },
                 fields: {
                     ID: {
@@ -45,27 +45,27 @@
                     },
                     InvoiceNo: {
                         title: 'Invoice No',
-                        width: '10%'
+                        width: '6%'
                     },
                     OrderNo: {
                         title: 'Order No',
-                        width: '10%'
+                        width: '8%'
                     },
                     StyleNo: {
                         title: 'Style No',
-                        width: '10%'
+                        width: '20%'
                     },
                     Category: {
                         title: 'Category',
-                        width: '10%'
+                        width: '5%'
                     },
                     Origion: {
                         title: 'Origion',
-                        width: '10%'
+                        width: '5%'
                     },
                     Quantity: {
                         title: 'Quantity',
-                        width: '10%'                       
+                        width: '8%'                       
                     }
                 }               
             });

@@ -92,6 +92,7 @@
     <Compile Include="BLL\DestinationBLL.cs" />
     <Compile Include="BLL\ExporterDetailsBLL.cs" />
     <Compile Include="BLL\ExportFormEntryBLL.cs" />
+    <Compile Include="BLL\GSPItemInfoRecordBLL.cs" />
     <Compile Include="BLL\HSCodeBLL.cs" />
     <Compile Include="BLL\ImportexcelBLL.cs" />
     <Compile Include="BLL\LocationInfoBLL.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="DAL\DestinationDAL.cs" />
     <Compile Include="DAL\ExporterDetailsDAL.cs" />
     <Compile Include="DAL\ExportFormEntryDAL.cs" />
+    <Compile Include="DAL\GSPItemInfoRecordDAL.cs" />
     <Compile Include="DAL\HSCodeDAL.cs" />
     <Compile Include="DAL\ImportexcelDAL.cs" />
     <Compile Include="DAL\LocationInfoDAL.cs" />
