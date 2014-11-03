@@ -1943,7 +1943,7 @@ namespace Test.Controllers
         /// <returns></returns>
         public ActionResult GSPItemInfo()
         {
-            return View();
+           return View();
         }
         [HttpPost]
         public JsonResult GSPItemInfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
@@ -1998,6 +1998,8 @@ namespace Test.Controllers
 
         public ActionResult GSPItemEntry()
         {
+            TranshipmentEntity tnsEntity = new TranshipmentEntity();
+            ViewData["CountryName"] = GetAllTranshipmentDetails(tnsEntity);
             return View();
         }
         [HttpPost]
@@ -2049,7 +2051,86 @@ namespace Test.Controllers
             }
         }
 
+        /// <summary>
+        /// The Transhipment Deatils Here.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Transhipment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult TranshipmentDetailsList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllTranshipmentDetailsRecord, null);
+                    List<TranshipmentEntity> ItemList = null;
+                    ItemList = new List<TranshipmentEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new TranshipmentEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                CountryName = dr["CountryName"].ToString(),
+                                Details = dr["Details"].ToString()
 
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUpdateTranshipmentDetails(TranshipmentEntity _Model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                }
+
+
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveTranshipmentDetailsRecord, _Model);
+                else
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateTranshipmentDetailsRecord, _Model);
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    return Json(new { Result = "OK", Record = addedModel });
+                }
+                else
+                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+               
 
     }
 }

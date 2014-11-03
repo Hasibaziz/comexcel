@@ -21,6 +21,8 @@ namespace Test.Domain.Model
         public string Category { set; get; }
         public string Origion { set; get; }
         public string Quantity { set; get; }
+        public string TranshipmentID { set; get; }
+
 
         public string UserName { set; get; }
         public string CurrentDate { set; get; }

@@ -127,6 +127,15 @@
             <%: Html.EditorFor(model => model.Quantity) %>
             <%: Html.ValidationMessageFor(model => model.Quantity) %>
         </div>
+
+         <div class="editor-label01">           
+             <label for="Quantity">Transhipment:</label>
+        </div>
+        <div class="editor-field01">
+            <%--<%: Html.EditorFor(model => model.Quantity) %>--%>
+            <%: Html.DropDownListFor(model => model.TranshipmentID, (List<SelectListItem>)ViewData["CountryName"], "Transhipment")%>
+            <%: Html.ValidationMessageFor(model => model.TranshipmentID)%>
+        </div>
     </fieldset>
         <p>
            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     

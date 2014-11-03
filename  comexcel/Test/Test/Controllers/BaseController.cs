@@ -532,6 +532,29 @@ namespace Test.Controllers
                 return null;
             }
         }
+        public List<SelectListItem> GetAllTranshipmentDetails(TranshipmentEntity tnsEntity)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllTranshipmentDetails, tnsEntity);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),                       
+                        Text = dr["CountryName"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public object GetExporterDetails(string imodel)
         {
 

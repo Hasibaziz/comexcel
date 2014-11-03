@@ -160,5 +160,12 @@ namespace Test.Structure
         //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
         #endregion
 
+        #region Auto Generated - Transhipment.
+        public const string AG_GetAllTranshipmentDetailsRecord = "AG_GetAllTranshipmentDetailsRecord";
+        public const string AG_SaveTranshipmentDetailsRecord = "AG_SaveTranshipmentDetailsRecord";
+        public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
+        public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        #endregion
+
     }
 }

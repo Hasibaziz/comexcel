@@ -98,6 +98,7 @@
     <Compile Include="BLL\LocationInfoBLL.cs" />
     <Compile Include="BLL\ModeinfoBLL.cs" />
     <Compile Include="BLL\NotifypartyDetailsBLL.cs" />
+    <Compile Include="BLL\TranshipmentDetailsBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLL.cs" />
     <Compile Include="BLL\TrServicedetailsBLLPartial.cs" />
     <Compile Include="BLL\TrServicemasterBLL.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="DAL\LocationInfoDAL.cs" />
     <Compile Include="DAL\ModeinfoDAL.cs" />
     <Compile Include="DAL\NotifypartyDetailsDAL.cs" />
+    <Compile Include="DAL\TranshipmentDetailsDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDAL.cs" />
     <Compile Include="DAL\TrServicedetailsDALPartial.cs" />
     <Compile Include="DAL\TrServicemasterDAL.cs" />

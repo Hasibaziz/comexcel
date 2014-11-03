@@ -210,7 +210,7 @@
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 250px; height:30px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]" })%>
             <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>

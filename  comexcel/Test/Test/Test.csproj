@@ -409,6 +409,7 @@
     <Content Include="Views\Private\LeftMenu.ascx" />
     <Content Include="Views\Private\Modeinfo.aspx" />
     <Content Include="Views\Private\Notifyparty.aspx" />
+    <Content Include="Views\Private\Transhipment.aspx" />
     <Content Include="Views\Report\AllUDInfo.aspx" />
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\Index.aspx" />

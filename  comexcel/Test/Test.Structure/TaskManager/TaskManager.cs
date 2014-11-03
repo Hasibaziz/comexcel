@@ -462,6 +462,26 @@ namespace Test.Structure.TaskManager
                     break;               
                 #endregion
 
+                #region Auto Generated - TranshipmentDetailsRecord
+                case TestTask.AG_GetAllTranshipmentDetailsRecord:
+                    TranshipmentDetailsBLL tnsBLL = null;
+                    tnsBLL = new TranshipmentDetailsBLL();
+                    return tnsBLL.GetAllTranshipmentDetailsRecord(param);
+                    break;
+                case TestTask.AG_SaveTranshipmentDetailsRecord:
+                    tnsBLL = new TranshipmentDetailsBLL();
+                    return tnsBLL.SaveTranshipmentDetailsRecord(param);
+                    break;
+                //case TestTask.AG_UpdateTranshipmentDetailsRecord:
+                //    tnsBLL = new TranshipmentDetailsBLL();
+                //    return tnsBLL.UpdateTranshipmentDetailsRecord(param);
+                //    break;
+                case TestTask.AG_GetAllTranshipmentDetails:
+                    tnsBLL = new TranshipmentDetailsBLL();
+                    return tnsBLL.GetAllTranshipmentDetails(param);
+                    break;
+                #endregion
+
                 default:
                     break;
             }
