@@ -167,5 +167,12 @@ namespace Test.Structure
         public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
         #endregion
 
+        #region Auto Generated - GSPFormDetailsRecord.
+        public const string AG_GetAllGSPFormInfoRecord = "AG_GetAllGSPFormInfoRecord";
+        public const string AG_SaveGSPFormDetailsRecord = "AG_SaveGSPFormDetailsRecord";
+        public const string AG_UpdateGSPFormDetailsRecord = "AG_UpdateGSPFormDetailsRecord";
+        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        #endregion
+
     }
 }

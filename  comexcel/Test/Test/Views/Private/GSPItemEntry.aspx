@@ -10,6 +10,7 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
 
+
 <div class="mp_right_content">
    <div class="page_list_container">
      <div id="RecordsContainer"></div>
@@ -25,7 +26,8 @@
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.InvoiceNo) %>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
+            <a id="Invoiceno" href="#"><span>Search</span></a>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>            
         </div>
 
         <div class="editor-label01">
@@ -149,5 +151,17 @@
         </div>
 </div>
 
+<script type="text/javascript">
+    $('#Invoiceno').click(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/ExporterFormSearchByInvoiceNo?invoiceno=")%>' + $('#InvoiceNo').attr("value"), function (data) {
+            $("#ItemDetails").val(data.ItemName);
+            $("#InvoiceNo").val(data.InvoiceNo);
+            // $("#InvoiceDate").val(data.InvoiceDate); 
+            $("#Quantity").val(data.Quantity);          
+           
+        });
+    });
+
+</script>
 
 </asp:Content>

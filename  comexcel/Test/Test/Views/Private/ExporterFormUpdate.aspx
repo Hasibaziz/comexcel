@@ -254,14 +254,14 @@
             <label for="CMValue">CM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CMValue, new { @readonly = "readonly" })%>
+            <%: Html.TextBoxFor(model => model.CMValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
         </div> 
         <div class="editor-label01">
             <label for="FOBValue">CPT-Freight Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CPTFOBValue, new { @readonly = "readonly" })%>
+            <%: Html.TextBoxFor(model => model.CPTFOBValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CPTFOBValue)%>
         </div>
         <div class="editor-label01">

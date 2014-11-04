@@ -526,7 +526,7 @@
             $("#ContractDate").val(data.ContractDate);
             $("#TTNo").val(data.TTNo);
             $("#TTDate").val(data.TTDate);
-            $("#ExporterID").val(data.ExporterID);
+           
             $("#ExporterID").val(data.ExporterID);
             $("#ConsigneeID").val(data.ConsigneeID);
             $("#NotifyID").val(data.NotifyID);

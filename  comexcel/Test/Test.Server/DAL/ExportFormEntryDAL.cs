@@ -243,7 +243,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " WHERE A.InvoiceNo=@invoiceNo";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
-            db.AddInParameter(dbCommand, "invoiceNo", DbType.String, param.ToString());
+            db.AddInParameter(dbCommand, "invoiceNo", DbType.String, param.ToString());           
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
@@ -257,7 +257,7 @@ namespace Test.Server.DAL
             sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
-            sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
+            sql = sql + " A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
             //sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
             //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
@@ -283,9 +283,12 @@ namespace Test.Server.DAL
             //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
-            sql = sql + " WHERE A.InvoiceNo='"+obj.InvoiceNo+"'";
+            sql = sql + " WHERE A.InvoiceNo='" + obj.InvoiceNo + "' OR CON.ConsigneeNo like '%" + obj.ConsigneeID + "%' ";
+            //OR A.ConsigneeName='" + obj.ConsigneeID + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
-            //db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, param.ToString());
+            //db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, param.ToString());  
+            db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, param.ToString()); 
+            //db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, obj.ConsigneeID);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

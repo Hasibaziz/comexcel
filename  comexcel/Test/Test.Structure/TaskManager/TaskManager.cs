@@ -482,6 +482,26 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                #region Auto Generated - GSPFormInfoRecord
+                case TestTask.AG_GetAllGSPFormInfoRecord:
+                    GSPFormInfoRecordBLL gspfDAL = null;
+                    gspfDAL = new GSPFormInfoRecordBLL();
+                    return gspfDAL.GetAllGSPFormInfoRecord(param);
+                    break;
+                case TestTask.AG_SaveGSPFormDetailsRecord:
+                    gspfDAL = new GSPFormInfoRecordBLL();
+                    return gspfDAL.SaveGSPFormDetailsRecord(param);
+                    break;
+                case TestTask.AG_UpdateTranshipmentDetailsRecord:
+                    gspfDAL = new GSPFormInfoRecordBLL();
+                    return gspfDAL.UpdateGSPFormDetailsRecord(param);
+                    break;
+                //case TestTask.AG_UpdateGSPFormDetailsRecord:
+                //    gspfDAL = new GSPFormInfoRecordBLL();
+                //    return gspfDAL.UpdateGSPFormDetailsRecord(param);
+                //    break;
+                #endregion
+
                 default:
                     break;
             }

@@ -13,7 +13,8 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
-                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7" })%>
+                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7", style = "width: 100px;" })%>
+                 Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @class = "validate[required]" })%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
                  <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />
                   <div>
@@ -51,15 +52,15 @@
     } 
 </script>
 <script type="text/javascript">
-    $('input#InvoiceNo').change(function () {  
+    $('input#InvoiceNo, #ConsigneeID').change(function () {  
 
         $('#RecordsContainer').jtable({
             paging: true,
             pageSize: 15,
             sorting: false,
-            defaultSorting: 'Name ASC',
+            defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val(),
+                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID option:selected").text(),                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
                 deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {

@@ -374,6 +374,8 @@ namespace Test.Controllers
 
         public ActionResult ExportForm()
         {
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
             return View();
         }
 
@@ -849,7 +851,7 @@ namespace Test.Controllers
             }
         }
         [HttpPost]
-        public JsonResult InvoiceSearchByNo(string Invno, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult InvoiceSearchByNo(string Invno, string consigneeid, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
@@ -857,6 +859,7 @@ namespace Test.Controllers
                 {
                     ExportformEntity _Model = new ExportformEntity();
                     _Model.InvoiceNo = Invno;
+                    _Model.ConsigneeID = consigneeid;
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNo, _Model);
                     List<ExportformEntity> ItemList = null;
                     ItemList = new List<ExportformEntity>();
@@ -1412,7 +1415,7 @@ namespace Test.Controllers
 
                        t0.SpacingBefore = 20f;
                        //t0.SetTotalWidth(new[] { 90f, 55f, 74f, 35f });
-                       t0.SetTotalWidth(new[] { 280f, 175f, 215f });         //Table cell spaceing
+                       t0.SetTotalWidth(new[] { 282f, 175f, 215f });         //Table cell spaceing  " 280 to 282 on 2/11/2014 "
 
                        PdfPCell cell = new PdfPCell(new Paragraph());
                        
@@ -2043,6 +2046,123 @@ namespace Test.Controllers
                     return Json(ERRORMSG);
                     //return Json(new { Result = "ERROR", Message = "Information failed to save" });
                    }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+
+            }
+        }
+
+        /// <summary>
+        /// GSP Form Information and Entry Details Here.
+        /// </summary>
+        /// <returns></returns>
+        
+        public ActionResult GSPFormInfo()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult GSPFormInfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllGSPFormInfoRecord, null);
+                    List<GSPformDetailsEntity> ItemList = null;
+                    ItemList = new List<GSPformDetailsEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new GSPformDetailsEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+                                MasterContractNo = dr["MasterContractNo"].ToString(),
+                                MasterContractDate = dr["MasterContractDate"].ToString(),
+                                BuyerContractNo = dr["BuyerContractNo"].ToString(),
+                                BuyerContractDate = dr["BuyerContractDate"].ToString(),
+                                BKMEANo = dr["BKMEANo"].ToString(),
+                                BINNo = dr["BINNo"].ToString(),
+                                SBNo = dr["SBNo"].ToString(),
+                                SBDate = dr["SBDate"].ToString(),
+                                VesselNo = dr["VesselNo"].ToString(),
+                                VesselContractNo = dr["VesselContractNo"].ToString(),
+                                CartonNo = dr["CartonNo"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }       
+
+        public ActionResult GSPFormDetails()
+        {
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GSPFormDetails(GSPformDetailsEntity _Model)
+        {
+            var isSuccess = false;
+            var message = "";
+            _Model.UserName = CurrentUserName;
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    //return View(_Model);
+                }
+                _Model.CurrentDate = DateTime.Now.ToString();
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveGSPFormDetailsRecord, _Model);
+                    return RedirectToAction("GSPFormDetails", "Private");
+                }
+                else
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateGSPFormDetailsRecord, _Model);
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("GSPFormInfo", "Private", addedModel);
+                }
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("GSPFormDetails", "Private", addedModel);
+                }
+                else
+                {
+                    isSuccess = true;
+                    message = "ERROR! Information failed to save";
+                    var ERRORMSG = new { isSuccess, message };
+                    return Json(ERRORMSG);
+                    //return Json(new { Result = "ERROR", Message = "Information failed to save" });
+                }
             }
             catch (Exception ex)
             {
