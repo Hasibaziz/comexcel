@@ -165,7 +165,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -210,7 +210,7 @@
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 250px; height:30px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]" })%>
             <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
@@ -526,7 +526,7 @@
             $("#ContractDate").val(data.ContractDate);
             $("#TTNo").val(data.TTNo);
             $("#TTDate").val(data.TTDate);
-            $("#ExporterID").val(data.ExporterID);
+           
             $("#ExporterID").val(data.ExporterID);
             $("#ConsigneeID").val(data.ConsigneeID);
             $("#NotifyID").val(data.NotifyID);

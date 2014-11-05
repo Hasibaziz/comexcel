@@ -13,10 +13,11 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
-                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7", style = "width: 100px;" })%>
-                 Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @class = "validate[required]" })%>
+                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7", style = "width: 50px;" })%>
+                 <%--Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>--%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
                  <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />
+                 Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>
                   <div>
                    <%: Html.ActionLink("Add New Entry", "ExportFormEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>
                   </div>
@@ -60,7 +61,7 @@
             sorting: false,
             defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID option:selected").text(),                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
+                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID" ).val(),                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
                 deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {

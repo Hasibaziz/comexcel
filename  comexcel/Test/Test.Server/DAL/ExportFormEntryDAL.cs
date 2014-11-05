@@ -253,44 +253,53 @@ namespace Test.Server.DAL
             ExportformEntity obj = (ExportformEntity)param;
 
             //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
-            string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
-            sql = sql + " A.ItemName,  ";
-            sql = sql + " A.TTNo, A.TTDate,  ";
-            sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
-            sql = sql + " A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName, ";
-            sql = sql + " A.NotifyID, NOTI.NotifyName, ";
-            //sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
-            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
-            sql = sql + " A.HSCode, A.HSCodesecond, ";
-            sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
-            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
-            sql = sql + " A.Section, ";
-            //sql = sql + " CASE A.Section WHEN '1' Then 'PRIVATE' ELSE 'PUBLIC' END AS Section, ";
-            sql = sql + " A.Unit, ";
-            //sql = sql + " CASE A.Unit WHEN '1' Then 'PCS' ELSE 'SET' END AS Unit, "; 
-            sql = sql + " A.Quantity, ";
-            //sql = sql + " CASE A.Currency WHEN '1' Then 'USDollers' ELSE 'USDollers' END AS Currency, ";
-            sql = sql + " A.Currency, ";
-            //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
-            sql = sql + " A.Incoterm, ";
-            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
-            sql = sql + " FROM ExportformDetails AS A";
-            sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
-            sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
-            sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
-            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
-            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
-            sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
-            sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
-            sql = sql + " WHERE A.InvoiceNo='" + obj.InvoiceNo + "' OR CON.ConsigneeNo like '%" + obj.ConsigneeID + "%' ";
-            //OR A.ConsigneeName='" + obj.ConsigneeID + "'";
-            DbCommand dbCommand = db.GetSqlStringCommand(sql);
-            //db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, param.ToString());  
-            db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, param.ToString()); 
+            //string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            //sql = sql + " A.ItemName,  ";
+            //sql = sql + " A.TTNo, A.TTDate,  ";
+            //sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
+            //sql = sql + " A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName, ";
+            //sql = sql + " A.NotifyID, NOTI.NotifyName, ";
+            ////sql = sql + " A.HSCodeID, A.HSCodesecond, HS.HSCode, HS.HSCodeName,HS.ShortName, ";
+            ////sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            //sql = sql + " A.HSCode, A.HSCodesecond, ";
+            //sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
+            //sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
+            //sql = sql + " A.Section, ";
+            ////sql = sql + " CASE A.Section WHEN '1' Then 'PRIVATE' ELSE 'PUBLIC' END AS Section, ";
+            //sql = sql + " A.Unit, ";
+            ////sql = sql + " CASE A.Unit WHEN '1' Then 'PCS' ELSE 'SET' END AS Unit, "; 
+            //sql = sql + " A.Quantity, ";
+            ////sql = sql + " CASE A.Currency WHEN '1' Then 'USDollers' ELSE 'USDollers' END AS Currency, ";
+            //sql = sql + " A.Currency, ";
+            ////sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
+            //sql = sql + " A.Incoterm, ";
+            //sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
+            //sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            //sql = sql + " FROM ExportformDetails AS A";
+            //sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
+            //sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
+            //sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
+            ////sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            ////sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            //sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
+            //sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
+            //sql = sql + " WHERE A.InvoiceNo='" + obj.InvoiceNo + "' OR A.ConsigneeID=@ConsigneeID ";
+            
+            ////OR CON.ConsigneeNo like '%" + obj.ConsigneeID + "%' ";
+            ////OR A.ConsigneeID='" + obj.ConsigneeID + "'";
+            //DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            ////db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, param.ToString());  
+            ////db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, param.ToString()); 
             //db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, obj.ConsigneeID);
+            //DataSet ds = db.ExecuteDataSet(dbCommand);
+            //return ds.Tables[0];
+
+            object[] parameters = new object[] { obj.InvoiceNo, obj.ConsigneeID };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetInvoiceSearchByNo", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
+
+
         }
 
         public DataTable GetDuplicateInvoiceno(object para, string Dupinv)

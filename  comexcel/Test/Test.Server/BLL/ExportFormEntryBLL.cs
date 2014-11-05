@@ -82,7 +82,7 @@ namespace Test.Server.BLL
         }
         public object GetExporterFormSearchByInvoiceNo(object param)
         {
-            object retObj = null;
+            object retObj = null;           
             ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
             retObj = (object)exfDAL.GetExporterFormSearchByInvoiceNo(param);
             return retObj;
@@ -90,8 +90,9 @@ namespace Test.Server.BLL
         public object GetInvoiceSearchByNo(object param)
         {
             object retObj = null;
+            //ExportformEntity obj = new ExportformEntity();
             ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
-            retObj = (object)exfDAL.GetInvoiceSearchByNo(param);
+            retObj = (object)exfDAL.GetInvoiceSearchByNo( param);
             return retObj;
         }
         public object GetDuplicateInvoiceno(object param)
