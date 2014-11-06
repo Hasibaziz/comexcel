@@ -1006,6 +1006,192 @@ namespace Test.Controllers
         }
 
         /// <summary>
+        /// Export Form for Apparel Ltd.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ExportFormApp()
+        {
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            return View();
+        }
+        /// <summary>
+        /// To display the Information on Grid using the Jquery.
+        /// </summary>
+        /// <param name="jtStartIndex"></param>
+        /// <param name="jtPageSize"></param>
+        /// <param name="jtSorting"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult ExportFormDetailsAppList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllExportFormDetailsAppRecord, null);
+                    List<ExportformEntity> ItemList = null;
+                    ItemList = new List<ExportformEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ExportformEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                ItemName = dr["ItemName"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+                                TTNo = dr["TTNo"].ToString(),
+                                TTDate = dr["TTDate"].ToString(),
+                                ExporterID = dr["ExporterID"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString(),
+                                ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                NotifyID = dr["NotifyID"].ToString(),
+                                NotifyName = dr["NotifyName"].ToString(),
+                                //HSCodeID = dr["HSCodeID"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+                                //ShortName = dr["ShortName"].ToString(),
+                                HSCodesecond = dr["HSCodesecond"].ToString(),
+                                //HSs = dr["HSs"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
+                                Port = dr["Port"].ToString(),
+                                DestinationID = dr["DestinationID"].ToString(),
+                                TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
+                                TPort = dr["TPort"].ToString(),
+                                Section = dr["Section"].ToString(),
+                                Unit = dr["Unit"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+                                Currency = dr["Currency"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+                                FOBValue = dr["FOBValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),
+                                CPTFOBValue = dr["CPTFOBValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
+
+                                ExpNo = dr["CMValue"].ToString(),
+                                ExpDate = dr["ExpDate"].ToString(),
+                                EPNo = dr["EPNo"].ToString(),
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLNo"].ToString(),
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    Session["ExpEntryApp"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        /// <summary>
+        /// Export Form Entry for Apparel Ltd.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ExportFormEntryApp()
+        {
+            ExporterEntity exEntity = new ExporterEntity();
+            ViewData["ExporterNo"] = GetAllExporterDetailsApp(exEntity);
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            NotifypartyEntity notEntity = new NotifypartyEntity();
+            ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ExportFormEntryApp(ExportformEntity _Model)
+        {
+            var isSuccess = false;
+            var message = "";
+            _Model.UserName = CurrentUserName;
+            if (_Model.CPTValue != null)
+            {
+                _Model.FOBValue = _Model.CPTValue;
+                _Model.CMValue = _Model.CPTCMValue;
+            }
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    //return View(_Model);
+                }
+
+                _Model.CurrentDate = DateTime.Now.ToString();
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                {
+                    if (DuplicateInvoiceNo(_Model.InvoiceNo) != false)
+                    {
+                        //return Json(new { Result = "ERROR", Message = "The Invoice Number is already taken. Please choose another." });
+                        //return Json(new { result }, JsonRequestBehavior.AllowGet);
+                        isSuccess = true;
+                        message = "The Invoice Number is already taken. Please choose another.";
+                        var jsonData = new { isSuccess, message };
+                        return Json(jsonData);
+                    }
+                    else
+                    {
+                        isUpdate = (bool)ExecuteDB(TestTask.AG_SaveExportFormEntryRecord, _Model);
+                        return RedirectToAction("ExportFormEntryApp", "Private");
+                    }
+                }
+                else if (_Model.ID != null)
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateExportFormEntryRecord, _Model);
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("ExportFormApp", "Private", addedModel);
+                }
+                //if (isUpdate)
+                //{
+                //    var addedModel = _Model;
+                //    //return Json(new { Result = "OK", Record = addedModel });
+                //    return RedirectToAction("ExportForm", "Private", addedModel);
+                //}
+                else
+                    isSuccess = true;
+                message = "ERROR! Information failed to save";
+                var ERRORMSG = new { isSuccess, message };
+                return Json(ERRORMSG);
+                //return Json(new { Result = "ERROR", Message = "Information failed to save" });
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+
+            }
+        }
+
+        /// <summary>
         /// Destination Details view, add, Update.
         /// </summary>
         /// <returns></returns>
@@ -1931,6 +2117,389 @@ namespace Test.Controllers
                 return fsResult;
             }               
            }
+        /// <summary>
+        /// Report Generate in PDF for Apparel Ltd.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PDFViewApp(float headspc)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Document d = new Document(PageSize.LEGAL);
+                d = new Document(new Rectangle(680f, 1044));        //Width-8.3*72=597.6; Height-14.5*72=1044  ** 72 points to an inch
+
+                PdfWriter writer = PdfWriter.GetInstance(d, ms);               //using (Document d = new Document(PageSize.Legal, 40, 1, 1, 1))
+                string path = Server.MapPath("~/PDFFiles/");
+               
+                PdfWriter.GetInstance(d, new FileStream(path + "PDFDoc.pdf", FileMode.Create));
+                List<ExportformEntity> ItemList = (List<ExportformEntity>)Session["ExpEntryApp"];               
+                d.Open();
+
+                d.Add(new Paragraph(new Phrase("---")));               
+                foreach (ExportformEntity dr in ItemList)
+                {
+                    d.Add(Header(headspc));
+
+                    PdfPTable t0 = new PdfPTable(3);                   
+                    t0.HorizontalAlignment = Element.ALIGN_LEFT;    //0=Left, 1=Centre, 2=Right                  
+                    t0.LockedWidth = true;
+                    t0.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                    t0.SpacingBefore = 20f;                    
+                    t0.SetTotalWidth(new[] { 310f, 165f, 210f });         //Table cell spaceing  " 280, 175, 215 "
+
+                    PdfPCell cell = new PdfPCell(new Paragraph());
+
+                    PdfPTable SubTable = new PdfPTable(1);                    
+                    
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 9f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.FixedHeight = 25f;
+                    t0.AddCell(cell);
+                    if (dr.HSCodesecond == "")
+                    {
+                        string hscode = dr.HSCode;
+                        string finalStr = Regex.Replace(hscode, @"(.{1})", "$1    ");    /// For Making space between characters in a String.                      
+                        cell = new PdfPCell(new Phrase(finalStr, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));                        
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 5f;
+                        t0.AddCell(cell);
+                    }
+                    else
+                    {
+                        cell.PaddingTop = 12f;
+                        Phrase Firststr = new Phrase();
+                        Phrase Second = new Phrase();
+                        string hscode = dr.HSCode;
+                        string finalStr = Regex.Replace(hscode, @"(.{1})", "$1   ");    /// For Making space between characters in a String.                                             
+                        string hssecond = dr.HSCodesecond;
+                        string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1     ");                        
+                        var FirstTextFont = FontFactory.GetFont("Arial", 12f, Color.BLACK);
+                        var SecondTextFont = FontFactory.GetFont("Arial", 8f, Color.BLACK);
+
+                        var FirstChunk = new Chunk(finalStr, FirstTextFont);
+                        var SecondChunk = new Chunk(secondStr, SecondTextFont);
+
+                        var phrase = new Phrase(SecondChunk);
+                        phrase.Add("\n");
+                        phrase.Add(FirstChunk);
+
+                        cell = new PdfPCell(phrase);
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                        
+                        t0.AddCell(cell);
+                    }
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.Name, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    string CC = dr.CountryCode;
+                    string CCODE = Regex.Replace(CC, @"(.{1})", "$1   ");
+                    cell = new PdfPCell(new Phrase(CCODE, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.Port, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.PaddingTop = 6f;
+                   // cell.PaddingBottom = 12;
+                    t0.AddCell(cell);
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                   
+                    if (dr.Unit == "55")
+                    {
+                        string pcs = "PCS";
+                        cell = new PdfPCell(new Phrase(pcs, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        string unit = dr.Unit;
+                        string spcunit = Regex.Replace(unit, @"(.{1})", "$1   ");
+                        cell = new PdfPCell(new Phrase(spcunit, new Font()));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.Colspan = 2;
+                        cell.PaddingBottom = 10f;     //10f
+                        t0.AddCell(cell);
+                    }
+               
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.Quantity, new Font()));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                    
+                    //cell.PaddingBottom = 8f;
+                    t0.AddCell(cell);
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    if (dr.Currency == "1")
+                    {
+                        string usd = "U.S.DOLLAR";
+                        cell = new PdfPCell(new Phrase(usd, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("0   " + dr.Currency, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 10f;
+                        t0.AddCell(cell);
+                    }                   
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+
+                    if (dr.Incoterm == "1")
+                    {
+                        string fob = "FOB";
+                        cell = new PdfPCell(new Phrase(fob, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);
+
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                      
+                        cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 10f;     //20f
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                    }
+                    else if (dr.Incoterm == "5")
+                    {
+                        string fob = "FCA";
+                        cell = new PdfPCell(new Phrase(fob, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);
+                      
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                       
+                        cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 10f;     //20f
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+
+                    }
+                    else if (dr.Incoterm == "4")
+                    {
+                        string cpt = "DDP";
+                        cell = new PdfPCell(new Phrase(cpt, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);
+
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                
+                        cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 10f;      //20f
+                        t0.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                    }
+                    else
+                    {
+                        string cpt = "CPT";
+                        cell = new PdfPCell(new Phrase(cpt, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);                
+
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                  
+                        cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 10f;     //20f
+                        t0.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                    }
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase("$" + dr.CMValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.PaddingBottom = 5f;    ////PaddingBottom=8f
+                    t0.AddCell(cell);
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase("CONT NO: " + dr.ContractNo, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    // cell.PaddingBottom = 8f;
+                    cell.FixedHeight = 48f;
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase("DATE: " + dr.ContractDate + "\n\n" + "TT NO: " + dr.TTNo + "\n" + "DATE: " + dr.TTDate, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                   
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    
+
+                    cell = new PdfPCell(new Phrase(dr.ConsigneeName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.FixedHeight = 60f;      //For Make a cell Exact Height.   //55f
+                    cell.Colspan = 2;            //Remove seperation between two Column.
+                    //cell.PaddingBottom = 20f;     //8f
+                    cell.PaddingLeft = 50f;
+                    t0.AddCell(cell);
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+
+                    //cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //cell.PaddingBottom = 5f;
+                    //t0.AddCell(cell);
+                    //cell = new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //cell.PaddingBottom = 5f;
+                    //t0.AddCell(cell);
+                    //cell = new PdfPCell(new Phrase(" "));   ///For a Balnk Row
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //cell.PaddingBottom = 5f;
+                    //t0.AddCell(cell);
+
+                    cell = new PdfPCell(new Phrase(dr.TName+"            INVOICE NO:", new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.InvoiceNo, new Font()));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.TPort + "              DATE:", new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.PaddingBottom = 14f;
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.InvoiceDate, new Font()));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.PaddingBottom = 15f;
+                    t0.AddCell(cell);
+                  
+
+                    //cell = new PdfPCell();   ///For a Blank Row   Right Side
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //t0.AddCell(cell);
+                    //cell = new PdfPCell(new Phrase(dr.TPort, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //t0.AddCell(cell);
+
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    //cell = new PdfPCell();
+                    cell = new PdfPCell(new Phrase(dr.ExporterName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White); 
+                    //cell.PaddingTop = 20f;
+                    cell.FixedHeight = 60f;      //For Make a cell Exact Height.
+                    cell.Colspan = 2;
+                    cell.PaddingBottom = 8f;
+                    t0.AddCell(cell);
+
+                     //cell = new PdfPCell(new Phrase(dr.ExporterName, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    //cell.PaddingTop = 20f;
+                    //cell.FixedHeight = 60f;      //For Make a cell Exact Height.
+                    //cell.Colspan = 2;
+                    //cell.PaddingBottom = 12f;
+                    //t0.AddCell(cell);
+                 
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    cell = new PdfPCell(new Phrase(dr.RegDetails, new Font(Font.GetFamilyIndex("Arial"), 8f, Font.BOLD)));
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    cell.Colspan = 2;
+                    cell.PaddingBottom = 10f;
+                    t0.AddCell(cell);
+                 
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);
+                    if (dr.Section == "2")
+                    {
+                        string pev = "PRIVATE";
+                        cell = new PdfPCell(new Phrase(pev, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell(new Phrase(dr.Section, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                    }
+                    cell = new PdfPCell();
+                    cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                    t0.AddCell(cell);                  
+
+                    d.Add(t0);
+                }
+                //d.Add(heading);                  
+                d.Close();
+
+                //return new EmptyResult();     ///Main Retun               
+                string Sourcefile = Server.MapPath("~/PDFFiles/");
+                var fileStream = new FileStream(Sourcefile + "PDFDoc.pdf", FileMode.Open, FileAccess.Read);
+                var fsResult = new FileStreamResult(fileStream, "application/pdf");
+                return fsResult;
+            }
+        }
+        /// <summary>
+        /// Report Header For PDF Both HY AND APP Ltd.
+        /// </summary>
+        /// <returns></returns>
         public Paragraph Header(float headspc)
         {
             Paragraph heading = new Paragraph("\n");

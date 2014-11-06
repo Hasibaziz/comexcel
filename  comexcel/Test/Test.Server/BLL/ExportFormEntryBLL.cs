@@ -129,5 +129,16 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+
+        ///
+        /// Export Form for Apparel Ltd.
+        /// 
+        public object GetAllExportFormDetailsAppRecord(object param)
+        {
+            object retObj = null;
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.GetAllExportFormDetailsAppRecord(param);
+            return retObj;
+        }
     }
 }

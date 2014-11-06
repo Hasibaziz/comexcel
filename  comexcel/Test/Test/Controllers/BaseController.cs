@@ -393,6 +393,29 @@ namespace Test.Controllers
                 return null;
             }
         }
+        public List<SelectListItem> GetAllExporterDetailsApp(ExporterEntity Exp)
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllExporterAppInfo, Exp);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ExporterID"].ToString(),
+                        Text = dr["ExporterNo"].ToString()
+                    });
+
+                }
+                return ItemList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public List<SelectListItem> GetAllConsigneeDetails(ConsigneeEntity Con)
         {
             try

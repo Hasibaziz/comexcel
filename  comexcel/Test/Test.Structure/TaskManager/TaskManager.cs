@@ -300,6 +300,11 @@ namespace Test.Structure.TaskManager
                     EXBLL = new ExporterDetailsBLL();
                     return EXBLL.DeleteExporterdeatilsById(param);
                     break;
+                case TestTask.AG_GetAllExporterAppInfo:
+                    EXBLL = new ExporterDetailsBLL();
+                    return EXBLL.GetAllExporterAppInfo(param);
+                    break;
+
                 #endregion
 
                 #region Auto Generated - ConsigneeDetails
@@ -444,6 +449,14 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.DeleteExportFormEntryDetailsById(param);
                     break;
+                 ///
+                 /// Export Form for Apparel Ltd.
+                 ///
+                case TestTask.AG_GetAllExportFormDetailsAppRecord:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetAllExportFormDetailsAppRecord(param);
+                    break;
+
                 #endregion
 
                 #region Auto Generated - GSPItemInfoRecord

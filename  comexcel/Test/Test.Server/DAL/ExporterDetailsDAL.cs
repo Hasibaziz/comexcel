@@ -70,5 +70,19 @@ namespace Test.Server.DAL
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
+
+        /// <summary>
+        /// Export Form for Apparel Ltd.
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public DataTable GetAllExporterAppInfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID AS ExporterID, ExporterNo, ExporterName FROM ExporterDetails WHERE ExporterNo='APP001'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

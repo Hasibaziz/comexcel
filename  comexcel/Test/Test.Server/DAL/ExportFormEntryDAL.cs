@@ -320,5 +320,46 @@ namespace Test.Server.DAL
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
+
+        /// <summary>
+        /// Exporter Form for Apparel Ltd.
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public DataTable GetAllExportFormDetailsAppRecord(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            //string sql = "SELECT A.[ID], A.[ContractNo], A.[InvoiceNo], A.[InvoiceDate], A.[ExporterID], B.[ExporterName], A.[ConsigneeID], A.[NotifyID], A.[HSCodeID], A.[FOBValue], A.[CMValue] FROM [Commercial].[dbo].[ExportformDetails] AS A, [Commercial].[dbo].[ExporterDetails] AS B WHERE A.[ExporterID]=B.[ID]";
+            string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
+            sql = sql + " A.ItemName,  ";
+            sql = sql + " A.TTNo, A.TTDate,  ";
+            sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
+            sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
+            sql = sql + " A.NotifyID, NOTI.NotifyName, ";
+            //sql = sql + " A.HSCodeID, HS.HSCode, HS.HSCodeName,HS.ShortName, ";            
+            //sql = sql + " A.HSCodesecond, HSs.HSCode AS HSs, ";
+            sql = sql + " A.HSCode, A.HSCodesecond,  ";
+            sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
+            sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
+            sql = sql + " A.Section, ";
+            sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
+            sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " FROM ExportformDetails AS A";
+            sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
+            sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
+            sql = sql + " LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HS ON HS.ID=A.HSCodeID";
+            //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
+            sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
+            sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID ";
+            sql = sql + " WHERE  EX.ExporterNo='APP001'";
+            sql = sql + " ORDER BY CurrentDate DESC";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);           
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
+
     }
 }

@@ -105,6 +105,7 @@ namespace Test.Structure
         public const string AG_GetAllExporterInfo = "AG_GetAllExporterInfo";
         public const string AG_GetExporterDetails = "AG_GetExporterDetails";
         public const string AG_DeleteExporterdeatilsById = "AG_DeleteExporterdeatilsById";
+        public const string AG_GetAllExporterAppInfo = "AG_GetAllExporterAppInfo";
         #endregion
 
         #region Auto Generated - ConsigneeDetails.
@@ -151,6 +152,13 @@ namespace Test.Structure
         public const string AG_GetInvoiceSearchByNo = "AG_GetInvoiceSearchByNo";
         public const string AG_GetDuplicateInvoiceno = "GetDuplicateInvoiceno";
         public const string AG_DeleteExportFormEntryDetailsById = "AG_DeleteExportFormEntryDetailsById";
+        /// <summary>
+        /// Export Form for Apparel Ltd.
+        /// </summary>
+        /// 
+        public const string AG_GetAllExportFormDetailsAppRecord = "AG_GetAllExportFormDetailsAppRecord";
+
+
         #endregion
 
         #region Auto Generated - GSPItemInfoRecord.
