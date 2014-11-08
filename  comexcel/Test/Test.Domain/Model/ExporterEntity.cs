@@ -15,5 +15,6 @@ namespace Test.Domain.Model
         //[Range(0, 150)]
         public string ExporterName { set; get; }
         public string RegDetails { set; get; }
+        public string EPBReg { set; get; }
     }
 }

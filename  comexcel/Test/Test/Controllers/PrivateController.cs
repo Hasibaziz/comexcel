@@ -60,7 +60,8 @@ namespace Test.Controllers
                                 ID = dr["ID"].ToString(),
                                 ExporterNo = dr["ExporterNo"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
-                                RegDetails = dr["RegDetails"].ToString()
+                                RegDetails = dr["RegDetails"].ToString(),
+                                EPBReg = dr["EPBReg"].ToString()
                             });
                         }
                         iCount += 1;
@@ -153,7 +154,9 @@ namespace Test.Controllers
                             {
                                 ID = dr["ID"].ToString(),
                                 ConsigneeNo = dr["ConsigneeNo"].ToString(),
-                                ConsigneeName = dr["ConsigneeName"].ToString()
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                Country = dr["Country"].ToString()
+                                
                             });
                         }
                         iCount += 1;
@@ -1125,6 +1128,24 @@ namespace Test.Controllers
             ViewData["Name"] = GetAllModeinfoDetails(tEntity);
             return View();
         }
+        public ActionResult ExporterFormUpdateApp()
+        {
+            ExporterEntity exEntity = new ExporterEntity();
+            ViewData["ExporterNo"] = GetAllExporterDetails(exEntity);
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            NotifypartyEntity notEntity = new NotifypartyEntity();
+            ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+            return View();
+        }
         [HttpPost]
         public ActionResult ExportFormEntryApp(ExportformEntity _Model)
         {
@@ -1189,6 +1210,86 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
 
             }
+        }
+        [HttpGet]
+        public ActionResult ExporterFormUpdateByInvoiceNoApp(String ID)
+        {
+            ExportformEntity _Model = new ExportformEntity();
+
+            ExporterEntity exEntity = new ExporterEntity();
+            ViewData["ExporterNo"] = GetAllExporterDetails(exEntity);
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            NotifypartyEntity notEntity = new NotifypartyEntity();
+            ViewData["NotifyNo"] = GetAllNotifypartyDetails(notEntity);
+            //HSCodeEntity hsEntity = new HSCodeEntity();
+            //ViewData["HSCode"] = GetAllHSCodeDetails(hsEntity);
+            //HSCodeEntity hssEntity = new HSCodeEntity();
+            //ViewData["HSs"] = GetAllHSCodeDetailssecond(hssEntity);
+            DestinationEntity dsEntity = new DestinationEntity();
+            ViewData["CCode"] = GetAllDestinationDetails(dsEntity);
+            ModeinfoEntity tEntity = new ModeinfoEntity();
+            ViewData["Name"] = GetAllModeinfoDetails(tEntity);
+
+            if (ID != null)
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetExporterFormUpdateByInvoiceNo, ID);
+                List<ExportformEntity> ItemList = null;
+                ItemList = new List<ExportformEntity>();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    _Model.ID = dr["ID"].ToString();
+                    _Model.ItemName = dr["ItemName"].ToString();
+                    _Model.ContractNo = dr["ContractNo"].ToString();
+                    _Model.ContractDate = dr["ContractDate"].ToString();
+                    _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+                    _Model.InvoiceDate = dr["InvoiceDate"].ToString();
+                    _Model.TTNo = dr["TTNo"].ToString();
+                    _Model.TTDate = dr["TTDate"].ToString();
+                    _Model.ExporterID = dr["ExporterID"].ToString();
+                    _Model.ExporterName = dr["ExporterName"].ToString();
+                    _Model.RegDetails = dr["RegDetails"].ToString();
+                    _Model.ConsigneeID = dr["ConsigneeID"].ToString();
+                    _Model.ConsigneeName = dr["ConsigneeName"].ToString();
+                    _Model.NotifyID = dr["NotifyID"].ToString();
+                    _Model.NotifyName = dr["NotifyName"].ToString();
+                    //_Model.HSCodeID = dr["HSCodeID"].ToString();
+                    _Model.HSCode = dr["HSCode"].ToString();
+                    //_Model.ShortName = dr["ShortName"].ToString();
+                    _Model.HSCodesecond = dr["HSCodesecond"].ToString();
+                    //_Model.HSs = dr["HSs"].ToString();
+                    _Model.CountryCode = dr["CountryCode"].ToString();
+                    _Model.Name = dr["Name"].ToString();
+                    _Model.Port = dr["Port"].ToString();
+                    _Model.DestinationID = dr["DestinationID"].ToString();
+                    _Model.TransportID = dr["TransportID"].ToString();
+                    _Model.TName = dr["TName"].ToString();
+                    _Model.TPort = dr["TPort"].ToString();
+                    _Model.Section = dr["Section"].ToString();
+                    _Model.Unit = dr["Unit"].ToString();
+                    _Model.Quantity = dr["Quantity"].ToString();
+                    _Model.Currency = dr["Currency"].ToString();
+                    _Model.Incoterm = dr["Incoterm"].ToString();
+                    _Model.FOBValue = dr["FOBValue"].ToString();
+                    _Model.CMValue = dr["CMValue"].ToString();
+                    _Model.CPTFOBValue = dr["CPTFOBValue"].ToString();
+                    _Model.Freight = dr["Freight"].ToString();
+
+                    _Model.ExpNo = dr["ExpNo"].ToString();
+                    _Model.ExpDate = dr["ExpDate"].ToString();
+                    _Model.EPNo = dr["EPNo"].ToString();
+                    _Model.BLNo = dr["BLNo"].ToString();
+                    _Model.BLDate = dr["BLNo"].ToString();
+                    _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
+                }
+            }
+            else
+            {
+                return View("ExportFormApp", _Model);
+                //return Json(new { Result = "ERROR", Message = "Information failed to Open" });
+            }
+            return View("ExporterFormUpdateApp", _Model);
         }
 
         /// <summary>
@@ -2654,19 +2755,43 @@ namespace Test.Controllers
                             {
                                 ID = dr["ID"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+                                ExporterNo = dr["ExporterNo"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                EPBReg = dr["EPBReg"].ToString(),
+
+                                ConsigneeNo = dr["ConsigneeNo"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                Country = dr["Country"].ToString(),
+
+                                TName = dr["TName"].ToString(),
+                                VesselNo = dr["VesselNo"].ToString(),
+                                VesselContractNo = dr["VesselContractNo"].ToString(),
+
+                                CartonNo = dr["CartonNo"].ToString(),
+                                ItemDetails = dr["ItemDetails"].ToString(),
                                 ContractNo = dr["ContractNo"].ToString(),
                                 ContractDate = dr["ContractDate"].ToString(),
                                 MasterContractNo = dr["MasterContractNo"].ToString(),
                                 MasterContractDate = dr["MasterContractDate"].ToString(),
                                 BuyerContractNo = dr["BuyerContractNo"].ToString(),
                                 BuyerContractDate = dr["BuyerContractDate"].ToString(),
+                                StyleNo = dr["StyleNo"].ToString(),
+                                TAGIDNo = dr["TAGIDNo"].ToString(),
+                                OurID = dr["OurID"].ToString(),
+                                ARTNo = dr["ARTNo"].ToString(),
+                                CustomerPO = dr["CustomerPO"].ToString(),
+                                Delivery = dr["Delivery"].ToString(),
+
+
+                                Category = dr["Category"].ToString(),
+
                                 BKMEANo = dr["BKMEANo"].ToString(),
                                 BINNo = dr["BINNo"].ToString(),
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
-                                VesselNo = dr["VesselNo"].ToString(),
-                                VesselContractNo = dr["VesselContractNo"].ToString(),
-                                CartonNo = dr["CartonNo"].ToString()
+                                Origion = dr["Origion"].ToString(),
+                                Quantity = dr["Quantity"].ToString()
                             });
                         }
                         iCount += 1;

@@ -45,15 +45,23 @@
                     },
                     InvoiceNo: {
                         title: 'Invoice No',
+                        width: '4%'
+                    },
+                    ExporterNo: {
+                        title: 'Exporter No',
                         width: '6%'
+                    },
+                    ConsigneeNo: {
+                        title: 'Consignee No',
+                        width: '8%'
                     },
                     ContractNo: {
                         title: 'Contract No',
-                        width: '8%'
+                        width: '10%'
                     },
                     StyleNo: {
                         title: 'Style No',
-                        width: '20%'
+                        width: '12%'
                     },
                     Category: {
                         title: 'Category',
@@ -65,10 +73,10 @@
                     },
                     Quantity: {
                         title: 'Quantity',
-                        width: '8%'                       
+                        width: '5%'                       
                     },
-                    TranshipmentID{
-                         title: 'Transhipment',
+                    TranshipmentID: {
+                        title: 'Transhipment',
                         width: '10%'  
                     }
                 }               

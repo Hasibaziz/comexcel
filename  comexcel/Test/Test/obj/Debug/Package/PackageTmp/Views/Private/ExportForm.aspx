@@ -46,7 +46,7 @@
     function printPDF() {
         var headspaces = $('#HeaderSpaces').val();
         var url = "/Private/PDFView?headspc=" + headspaces;
-        var win = window.open('', '', 'left=0px, top=0px, width=600px, height=620px, scrollbars=no, status =no, resizable=no');
+        var win = window.open('', '', 'left=0px, top=0px, width=600px, height=650px, scrollbars=no, status =no, resizable=no');
         win.location.href = url;
         win = null;
         return false;
@@ -61,8 +61,8 @@
             sorting: false,
             defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID" ).val(),                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
-                deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
+                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID" ).val()                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
+                //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {
                 ID: {
@@ -156,8 +156,8 @@ $(document).ready(function () {
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '<%=Url.Content("~/Private/ExportFormDetailsList") %>',
-                    deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
+                    listAction: '<%=Url.Content("~/Private/ExportFormDetailsList") %>'
+                   // deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
 //                    createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
 //                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>' 
 //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'

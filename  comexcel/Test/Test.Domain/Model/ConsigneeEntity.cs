@@ -13,5 +13,6 @@ namespace Test.Domain.Model
         [Required(ErrorMessage = "* [Consignee Name] is required")]
         [StringLength(150, ErrorMessage = "Max length 150 characters")] 
         public string ConsigneeName { set; get; }
+        public string Country { set; get; }
     }
 }

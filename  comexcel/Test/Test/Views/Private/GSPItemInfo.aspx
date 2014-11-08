@@ -67,7 +67,7 @@
                         title: 'Quantity',
                         width: '8%'                       
                     },
-                    TranshipmentID{
+                    TranshipmentID: {
                          title: 'Transhipment',
                         width: '10%'  
                     }

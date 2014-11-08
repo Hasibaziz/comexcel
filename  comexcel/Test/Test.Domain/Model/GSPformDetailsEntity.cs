@@ -9,19 +9,47 @@ namespace Test.Domain.Model
     {
         public string ID { set; get; }       
         public string InvoiceNo { set; get; }
+        public string InvoiceDate { set; get; }
+
+        public string ExporterNo { set; get; }
+        public string ExporterName { set; get; }
+        public string EPBReg { set; get; }
+
+        public string ConsigneeNo { set; get; }
+        public string ConsigneeName { set; get; }
+        public string Country { set; get; }
+
+        public string TName { set; get; }
+        public string VesselNo { set; get; }
+        public string VesselContractNo { set; get; }
+
+        public string CartonNo { set; get; }
+        public string ItemDetails { set; get; }
         public string ContractNo { set; get; }
         public string ContractDate { set; get; }
         public string MasterContractNo { set; get; }
         public string MasterContractDate { set; get; }
         public string BuyerContractNo { set; get; }
         public string BuyerContractDate { set; get; }
+
+        public string StyleNo { set; get; }
+        public string TAGIDNo { set; get; }
+        //public string BuyerStyle { set; get; }
+        public string OurID { set; get; }
+        public string ARTNo { set; get; }
+        public string CustomerPO { set; get; }
+        public string Delivery { set; get; }
+        public string Category { set; get; }
+        public string Origion { set; get; }
+        public string Quantity { set; get; }
+        public string TranshipmentID { set; get; }
+        
         public string BKMEANo { set; get; }
         public string BINNo { set; get; }
         public string SBNo { set; get; }
         public string SBDate { set; get; }
-        public string VesselNo { set; get; }
-        public string VesselContractNo { set; get; }
-        public string CartonNo { set; get; }
+       
+       
         public string TransportID { set; get; }
 
 

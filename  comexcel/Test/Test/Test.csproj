@@ -400,6 +400,7 @@
     <Content Include="Views\Private\Destination.aspx" />
     <Content Include="Views\Private\Exporter.aspx" />
     <Content Include="Views\Private\ExporterFormUpdate.aspx" />
+    <Content Include="Views\Private\ExporterFormUpdateApp.aspx" />
     <Content Include="Views\Private\ExportForm.aspx" />
     <Content Include="Views\Private\ExportFormApp.aspx" />
     <Content Include="Views\Private\ExportFormEntry.aspx" />

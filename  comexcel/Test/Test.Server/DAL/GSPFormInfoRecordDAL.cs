@@ -15,7 +15,29 @@ namespace Test.Server.DAL
         public DataTable GetAllGSPFormInfoRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID],[InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo]  FROM [Commercial].[dbo].[GSPformDetails]";
+            //string sql = "SELECT [ID],[InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo]  FROM [Commercial].[dbo].[GSPformDetails]";
+            string sql = "SELECT A.InvoiceNo, EXPF.InvoiceDate, ";
+            sql = sql + " EXPTR.ID, EXPTR.ExporterNo, EXPTR.ExporterName, EXPTR.EPBReg, ";
+            sql = sql + " CON.ID, CON.ConsigneeNo, CON.ConsigneeName, CON.Country, ";
+            sql = sql + " TNS.ID, TNS.Name AS TName, ";
+            sql = sql + " EXPF.BLNo, EXPF.BLDate, ";
+            sql = sql + " A.VesselNo, A.VesselContractNo, A.CartonNo, ";            
+            sql = sql + " GSPI.ItemDetails, ";
+            sql = sql + " GSPI.OrderNo, GSPI.StyleNo, ";
+            sql = sql + " GSPI.TAGIDNo, GSPI.OurID, GSPI.ARTNo, GSPI.CustomerPO, GSPI.Delivery, ";
+            sql = sql + " GSPI.Category, "; 
+            sql = sql + " A.MasterContractNo, A.MasterContractDate, ";
+            sql = sql + " EXPF.ExpNo, EXPF.ExpDate, EXPF.ContractNo, EXPF.ContractDate, ";            
+            sql = sql + " A.BuyerContractNo,  A.BuyerContractDate, A.BKMEANo,  A.BINNo, A.SBNo, A.SBDate, A.SBNo, A.SBDate, ";
+            sql = sql + " GSPI.Origion, GSPI.Quantity "; 
+
+            sql = sql + " FROM GSPformDetails AS A";
+            sql = sql + " INNER JOIN GSPItemInfo AS GSPI ON GSPI.InvoiceNo=A.InvoiceNo ";
+            sql = sql + " INNER JOIN ExportformDetails AS EXPF ON EXPF.InvoiceNo=A.InvoiceNo ";
+            sql = sql + " INNER JOIN ExporterDetails AS EXPTR ON EXPTR.ID=EXPF.ExporterID ";
+            sql = sql + " INNER JOIN ConsigneeDetails AS CON ON CON.ID=EXPF.ConsigneeID ";
+            sql = sql + " INNER JOIN Transport AS TNS ON TNS.ID=EXPF.TransportID ";
+            sql = sql + " INNER JOIN DestCountry AS DES ON DES.ID=EXPF.DestinationID ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

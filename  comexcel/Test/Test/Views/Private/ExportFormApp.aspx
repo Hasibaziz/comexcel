@@ -88,7 +88,7 @@
                     title: 'Invoice No',
                     width: '8%',
                     display: function (data) {
-                        return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        return '<a href="/Private/ExporterFormUpdateByInvoiceNoApp/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
                 InvoiceDate: {
@@ -186,7 +186,7 @@
                     title: 'Invoice No',
                     width: '8%',
                     display: function (data) {
-                        return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        return '<a href="/Private/ExporterFormUpdateByInvoiceNoApp/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
                 InvoiceDate: {

@@ -50,11 +50,17 @@
                         title: 'Consignee Address',
                         type: 'textarea',
                         inputClass: 'validate[optional,maxSize[150]]'
+                    },
+                    Country: {
+                        title: 'Country',
+                        width: '15%',
+                        inputClass: 'validate[optional,maxSize[100]]'
                     }
                 },
                 formCreated: function (event, data) {
                     data.form.find('input[name="ConsigneeNo"]').addClass('validate[required]');
-                    data.form.find('input[name="ConsigneeName"]').addClass('validate[required]'); 
+                    data.form.find('input[name="ConsigneeName"]').addClass('validate[required]');
+                    data.form.find('input[name="Country"]').addClass('validate[required]'); 
                     data.form.validationEngine();
                 },
                 //Validate form when it is being submitted

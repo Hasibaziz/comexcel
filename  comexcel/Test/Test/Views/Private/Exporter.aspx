@@ -57,12 +57,18 @@
                         title: 'Registration Details',
                         type: 'textarea',
                         inputClass: 'validate[optional,maxSize[150]]'
+                    },
+                    EPBReg: {
+                        title: 'EPB.REG',
+                        width: '15%', 
+                        inputClass: 'validate[optional,maxSize[100]]'
                     }
                 },
                 formCreated: function (event, data) {
                     data.form.find('input[name="ExporterNo"]').addClass('validate[required]');
                     data.form.find('input[name="ExporterName"]').addClass('validate[required]');
-                    data.form.find('input[name="RegDetails"]').addClass('validate[required]');                                     
+                    data.form.find('input[name="RegDetails"]').addClass('validate[required]');
+                    data.form.find('input[name="EPBReg"]').addClass('validate[required]');                                        
                     data.form.validationEngine();
                 },
                 //Validate form when it is being submitted
