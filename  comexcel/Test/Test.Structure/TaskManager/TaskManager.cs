@@ -456,6 +456,10 @@ namespace Test.Structure.TaskManager
                     ExfBLL = new ExportFormEntryBLL();
                     return ExfBLL.GetAllExportFormDetailsAppRecord(param);
                     break;
+                case TestTask.AG_GetInvoiceSearchByNoAPP:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.GetInvoiceSearchByNoAPP(param);
+                    break;
 
                 #endregion
 

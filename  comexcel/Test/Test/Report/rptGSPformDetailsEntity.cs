@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
-namespace Test.Domain.Model
+namespace Test.Report
 {
-    public class GSPformDetailsEntity
+    public class rptGSPformDetailsEntity
     {
-        public string ID { set; get; }       
+        public string ID { set; get; }
         public string InvoiceNo { set; get; }
         public string InvoiceDate { set; get; }
 
@@ -44,13 +44,13 @@ namespace Test.Domain.Model
         public string Origion { set; get; }
         public string Quantity { set; get; }
         public string TranshipmentID { set; get; }
-        
+
         public string BKMEANo { set; get; }
         public string BINNo { set; get; }
         public string SBNo { set; get; }
         public string SBDate { set; get; }
-       
-       
+
+
         public string TransportID { set; get; }
 
 

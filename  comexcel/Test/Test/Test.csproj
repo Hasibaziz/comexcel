@@ -138,6 +138,12 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\SalesCarList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CommonGSPformReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonGSPformReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\ExportFormEntry.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +157,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rptExportformEntity.cs" />
+    <Compile Include="Report\rptGSPformDetailsEntity.cs" />
     <Compile Include="Utility\BinaryFileResult.cs" />
     <Compile Include="Utility\ConstantApp.cs" />
     <Compile Include="Utility\Excelimport.cs" />
@@ -453,6 +460,10 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <EmbeddedResource Include="Report\CommonGSPformReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CommonGSPformReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\ExportFormEntry.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ExportFormEntry.cs</LastGenOutput>

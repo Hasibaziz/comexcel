@@ -157,7 +157,7 @@ namespace Test.Structure
         /// </summary>
         /// 
         public const string AG_GetAllExportFormDetailsAppRecord = "AG_GetAllExportFormDetailsAppRecord";
-
+        public const string AG_GetInvoiceSearchByNoAPP = "AG_GetInvoiceSearchByNoAPP";
 
         #endregion
 

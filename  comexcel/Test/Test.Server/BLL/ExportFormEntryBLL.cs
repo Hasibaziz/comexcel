@@ -140,5 +140,13 @@ namespace Test.Server.BLL
             retObj = (object)exfDAL.GetAllExportFormDetailsAppRecord(param);
             return retObj;
         }
+        public object GetInvoiceSearchByNoAPP(object param)
+        {
+            object retObj = null;
+            //ExportformEntity obj = new ExportformEntity();
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.GetInvoiceSearchByNoAPP(param);
+            return retObj;
+        }
     }
 }

@@ -14,7 +14,8 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
-                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "14.6", style = "width: 50px;" })%>
+                 Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "14.6", style = "width: 30px;" })%>
+                 Item Font Size:  <%: Html.TextBoxFor(model => model.iFontSize, new { @Value = "10", style = "width: 20px;" })%>
                  <%--Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>--%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
                  <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />
@@ -46,7 +47,8 @@
     //    }
     function printPDF() {
         var headspaces = $('#HeaderSpaces').val();
-        var url = "/Private/PDFViewApp?headspc=" + headspaces;
+        var iFSize = $('#iFontSize').val();
+        var url = "/Private/PDFViewApp?headspc=" + headspaces + "&iFontSize=" + iFSize;
         var win = window.open('', '', 'left=0px, top=0px, width=600px, height=650px, scrollbars=no, status =no, resizable=no');
         win.location.href = url;
         win = null;
@@ -62,7 +64,7 @@
             sorting: false,
             defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID").val()                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
+                listAction: '/Private/InvoiceSearchByNoApp?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID").val()                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
                 //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {

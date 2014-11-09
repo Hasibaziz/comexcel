@@ -1,6 +1,6 @@
 USE [Commercial]
 GO
-/****** Object:  Table [dbo].[Invoice]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Invoice]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -48,7 +48,7 @@ INSERT [dbo].[Invoice] ([ID], [Invoice]) VALUES (N'da8d10e1-136b-407d-be0c-e343b
 INSERT [dbo].[Invoice] ([ID], [Invoice]) VALUES (N'38f8296b-ab7d-4264-a49d-e91c73ecadc3', N'HA0527.14S(A,B)')
 INSERT [dbo].[Invoice] ([ID], [Invoice]) VALUES (N'a2a9527c-fc7b-4017-9adc-f09a261d92f0', N'HA0610.14A')
 INSERT [dbo].[Invoice] ([ID], [Invoice]) VALUES (N'c0255bfd-f31f-42a6-ad10-fddcc99c7964', N'HA0522.14S(C)')
-/****** Object:  Table [dbo].[Importinfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Importinfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[Importinfo](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Importinfo] ([ID], [SContract], [UDNo], [AMDNo], [AMDDate], [Location], [Invoice], [Category], [Item], [QTY], [Unit], [TotalValue], [BENo], [BEDate], [Passbook], [Pageno], [BLNo], [Mode], [ImportDate]) VALUES (N'25531b7d-f1f7-44f1-b2aa-b233e7ae9b5a', N'HLAP-14-HK-01', N'2014/02', N'AMD-010', N'17/05/2014 1', N'HLAP', N'BAMS0401.14S', N'ACCESSORIES', N'Sticker', N'13575', N'PCS', N'317.4', N'C79514', N'22/04/2014 1', N'B-001037', N'28', N'2014/02', N'SEA', N'14/07/2014 12:00:00 AM')
-/****** Object:  Table [dbo].[HSCodeDetails]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[HSCodeDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -114,6 +114,7 @@ INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALU
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'86dea7d2-b326-4ec9-ab04-91ba4f7b177c', N'62121010', N'1520107173', N'LADIES KNITTED PUSH UP BRA')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'b514d3b3-1e32-45a3-9c0d-9485ea81f60b', N'61082200', NULL, N'LADIES KNITTED BRIEF')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'6703adc5-7267-47be-bbfc-97863897a562', N'61082200', NULL, N'LADIES KNITTED BRIEF')
+INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'5aa6d5f3-c349-464c-a3e1-9b1671f6074c', N'62121010', NULL, N'LADIES KNITTED BRA, BRIEF')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'a1e9de87-4e7c-42aa-8bf1-a006855aa764', N'61082200', N'61082200', N'LADIES KNITTED TANGAAAA')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'b6fa310b-b038-4d89-bcc6-a2e859c0e96f', N'62121010', N'1520107173', N'LADIES KNITTED PUSH UP BRA')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'36e26890-0379-4758-ba57-b5345b32788f', N'61082200', N'61082200', N'LADIES KNITTED TANGAAAA')
@@ -126,7 +127,7 @@ INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALU
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'c36e63c0-4401-42ac-a891-dcb9227e5fbb', N'62121010', NULL, N'LADIES KNITTED PUSH UP BRA')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'f12400c2-46c4-47fa-a7fa-f165eac10812', N'62121010', N'1520107173', N'LADIES KNITTED PUSH UP BRA')
 INSERT [dbo].[HSCodeDetails] ([ID], [HSCode], [HSCodesecond], [HSCodeName]) VALUES (N'7ade7229-8b25-43e1-b3af-fda6e17145e4', N'62121010', NULL, N'LADIES KNITTED BRA, BRIEF')
-/****** Object:  Table [dbo].[GSPItemInfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[GSPItemInfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +153,9 @@ CREATE TABLE [dbo].[GSPItemInfo](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GSPformDetails]    Script Date: 11/05/2014 16:31:59 ******/
+INSERT [dbo].[GSPItemInfo] ([ID], [TranshipmentID], [InvoiceNo], [OrderNo], [ItemDetails], [StyleNo], [TAGIDNo], [OurID], [ARTNo], [CustomerPO], [Delivery], [Category], [Origion], [Quantity]) VALUES (N'd2ac6232-5c17-468f-b6d1-5419e9718ebd', NULL, N'23BDO-04851', N'33048', N'LADIES KNITTED TANGAAAA', N'481783', NULL, NULL, NULL, NULL, NULL, N'31', N'62.12', N'500')
+INSERT [dbo].[GSPItemInfo] ([ID], [TranshipmentID], [InvoiceNo], [OrderNo], [ItemDetails], [StyleNo], [TAGIDNo], [OurID], [ARTNo], [CustomerPO], [Delivery], [Category], [Origion], [Quantity]) VALUES (N'0e52891d-96a6-4088-b323-d0ffee32107f', NULL, N'23BDO-04851', N'20718', N'LADIES KNITTED TANGAAAA', N'830-1163-5545-200', NULL, NULL, NULL, NULL, NULL, N'13', N'61.08', N'2620')
+/****** Object:  Table [dbo].[GSPformDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -180,7 +183,7 @@ CREATE TABLE [dbo].[GSPformDetails](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[GSPformDetails] ([ID], [InvoiceNo], [ContractNo], [ContractDate], [MasterContractNo], [MasterContractDate], [BuyerContractNo], [BuyerContractDate], [BKMEANo], [BINNo], [SBNo], [SBDate], [VesselNo], [VesselContractNo], [CartonNo]) VALUES (N'aa07bdf9-ce40-4965-b696-c06cad22cf18', N'23BDO-04851', N'199-P-112', N'09-04-2014', N'HLAP-14-BR-01A', N'22-05-2014', N'HB-01P01933', N'25-03-2014', N'1026-C/2006', N'18051009200', N'C 740013', N'07-09-2014', N'MADELEINE RICKMERS V-134S', N'CBHU9068512', N'254')
-/****** Object:  Table [dbo].[Group]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Group]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -196,14 +199,14 @@ CREATE TABLE [dbo].[Group](
 GO
 INSERT [dbo].[Group] ([ID], [Name]) VALUES (N'86b7b37f-da63-474d-a714-34584b70e7b2', N'Private')
 INSERT [dbo].[Group] ([ID], [Name]) VALUES (N'4df62498-2bad-4172-ae7c-57ed7ef2629b', N'Admin')
-/****** Object:  Table [dbo].[ExportformDetails]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[ExportformDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ExportformDetails](
 	[ID] [uniqueidentifier] NOT NULL,
-	[ItemName] [nvarchar](100) NULL,
+	[ItemName] [nvarchar](max) NULL,
 	[ContractNo] [nvarchar](max) NOT NULL,
 	[ContractDate] [nvarchar](20) NOT NULL,
 	[TTNo] [nvarchar](50) NOT NULL,
@@ -246,16 +249,17 @@ INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate]
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'b8371141-77ca-4f90-8024-2c7c3adfafa3', N'LADIES KNITTED BRIEF', N'199-P-111', N'09-04-2014', N'IT06591406110030', N'12-06-2014', N'23bdo-05052', N'21-10-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'61082200', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'2748', N'1', N'1', N'1101.00', N'220.20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/22/2014 3:25:48 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'356edf4a-6246-4cd1-b520-3274ccb47baa', N'LADIES KNITTED TANGAAAA', N'199-P-112', N'09-04-2014', N'IT06591405310006', N'01-06-2014', N'23BDO-04848', N'14-10-2014', N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'61082200', N'61082200', N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'900', N'1', N'5', N'1890.00', N'378.00', NULL, NULL, N'BD2510201401', N'25-10-2014', NULL, NULL, NULL, N'25-10-2014', N'10/25/2014 12:56:15 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'3f969593-7151-426a-b89e-4687e178e85e', N'LADIES KNITTED BRA, BRIEF', N'008-P-0143', N'07-04-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02435', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121010', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'110', N'1', N'5', N'1051.00', N'210.20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/21/2014 2:54:39 PM', N'PVT')
+INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'70209447-4f17-468b-882e-53c3163c7383', N'LADIES KNITTED T-SHIRT, WIRE, PUSH UP, BALCONY, BANDEAU BRA, DEEP PLUNGE, CROP TOP, BRAZILIAN, BRIEF, CHEEKY HIPSTER, STRING', N'008-P-0143', N'07-04-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02450', N'07-04-2014', N'265d1ddd-483c-4433-86ea-1758e7c4f7f6', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121010', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'110', N'1', N'5', N'1051.00', N'210.20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'11/6/2014 3:38:44 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'05355839-8e50-4e83-ae62-56d8132b2a55', N'LADIES KNITTED BRA, BRIEF', N'044-Q-003', N'07-04-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02438', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121010', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'778', N'1', N'1', N'1017.00', N'203.40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/22/2014 12:48:45 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'bf64ea74-c20b-4e52-bbaa-68a80c7cd25f', N'LADIES KNITTED BRIEF', N'199-P-111', N'09-04-2014', N'IT06591406110030', N'12-06-2014', N'23bdo-05051', N'21-10-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'61082200', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'2748', N'1', N'5', N'5770.80', N'1154.16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/22/2014 3:21:07 PM', N'PVT')
-INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'5616ad22-a6c0-4962-9175-6b2aa5284606', N'LADIES KNITTED BRA', N'199-P-105', N'11-04-2014', N'IT06591405310006', N'01-06-2014', N'23BDO-04837', N'14-10-2014', N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'd353c1fa-9d21-435c-baf3-f98357069fc5', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121090', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'c6885a57-bcc5-4434-adf7-5157a9b7c17c', N'2', N'55', N'3480', N'1', N'5', N'12528.00', N'2505.60', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/16/2014 1:55:49 PM', N'PVT')
+INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'5616ad22-a6c0-4962-9175-6b2aa5284606', N'LADIES KNITTED BRAAAA', N'199-P-105', N'11-04-2014', N'IT06591405310006', N'01-06-2014', N'23BDO-04837', N'14-10-2014', N'265d1ddd-483c-4433-86ea-1758e7c4f7f6', N'd353c1fa-9d21-435c-baf3-f98357069fc5', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121090', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'3480', N'1', N'5', N'12528.00', N'2505.60', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/16/2014 1:55:49 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'37e41fcf-d289-4344-a43c-7c2eeb7e4479', N'LADIES KNITTED TANGAa', N'199-P-112', N'09-04-2014', N'IT06591405310006', N'01-06-2014', N'23BDO-04847', N'14-10-2014', N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'61082200', NULL, N'26570731-7900-417b-9534-5cf7ad1b1a42', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'900', N'1', N'5', N'1890.00', N'378.00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/16/2014 11:14:59 AM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'10acf977-c329-4efd-b6a4-8fb002134440', N'LADIES KNITTED TANGAAAA', N'199-P-112', N'09-04-2014', N'IT06591405310006', N'01-06-2014', N'23BDO-04851', N'04-10-2014', N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'61082200', N'61082200', N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'900', N'1', N'5', N'1890.00', N'378.00', NULL, NULL, N'BD2510201401', N'25-10-2014', N'EXP1104201401', N'BL220920141', N'22-09-2014', N'25-10-2014', N'11/1/2014 2:15:35 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'5da55620-0916-4913-b58d-9b05eda2ea98', N'LADIES KNITTED BRA, BRIEF', N'008-P-0143', N'07-04-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02436', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121010', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'110', N'1', N'5', N'1051.00', N'210.20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/22/2014 11:27:54 AM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'448cba2b-c955-442f-8803-e41cb67c239a', N'LADIES KNITTED PUSH UP BRA', N'008-P-0143, 0144, 0145, 0146, 0147', N'01-09-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02434', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'3b9ed6fa-3bb5-45ed-bf19-7709e2ed453d', N'62121010', NULL, N'9768c254-dd5c-47f5-ba6d-f6a4d22276c2', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'19528', N'1', N'5', N'85539.80', N'17107.96', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/21/2014 1:56:37 PM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'75434962-4c90-4caa-86a2-f2976b7c9fc2', N'LADIES KNITTED PUSH UP BRA', N'008-P-0143, 0144, 0145, 0146, 0147', N'01-09-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02433', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'3b9ed6fa-3bb5-45ed-bf19-7709e2ed453d', N'62121010', NULL, N'9768c254-dd5c-47f5-ba6d-f6a4d22276c2', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'19528', N'1', N'2', N'85539.80', N'17107.96', N'85439.80', N'100.00', NULL, NULL, NULL, NULL, NULL, NULL, N'10/21/2014 9:13:44 AM', N'PVT')
 INSERT [dbo].[ExportformDetails] ([ID], [ItemName], [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate], [ExporterID], [ConsigneeID], [NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section], [Unit], [Quantity], [Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight], [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]) VALUES (N'80d7597a-6b32-4bfa-ac22-fcb60c05b090', N'LADIES KNITTED BRA, BRIEF', N'008-P-0143', N'07-04-2014', N'IT06591406110030', N'12-06-2014', N'23BDO-02439', N'07-04-2014', N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'8b94af59-0267-43d2-8114-4728657fa6b4', N'13fef8b1-3faa-4fad-ba7d-ac9dcb9b3e1a', N'62121010', NULL, N'e98d1ed2-cc8f-4479-9e8c-61c9f72f128d', N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2', N'55', N'110', N'1', N'5', N'10.30', N'2.06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'10/22/2014 12:59:44 PM', N'PVT')
-/****** Object:  Table [dbo].[ExporterDetails]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[ExporterDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -265,21 +269,22 @@ CREATE TABLE [dbo].[ExporterDetails](
 	[ExporterNo] [nvarchar](20) NOT NULL,
 	[ExporterName] [nvarchar](max) NOT NULL,
 	[RegDetails] [nvarchar](max) NULL,
+	[EPBReg] [nvarchar](100) NULL,
  CONSTRAINT [PK_ExporterDetails] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails]) VALUES (N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'HY002', N'HOP YICK (BD) LTD., PLOT # 61-65, DEPZ, SAVAR, DHAKA.', N'BEPZA: 03.0314.014.02.00.321.2010/959
-DATE: JULY 19, 2011')
-INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails]) VALUES (N'265d1ddd-483c-4433-86ea-1758e7c4f7f6', N'AP001', N'HOP LUN APPAREL LTD.
+INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails], [EPBReg]) VALUES (N'f78cab48-1a3f-4cd7-b99c-026e8597077b', N'HY002', N'HOP YICK (BD) LTD., PLOT # 61-65, DEPZ, SAVAR, DHAKA.', N'BEPZA: 03.0314.014.02.00.321.2010/959
+DATE: JULY 19, 2011', N'BD05173')
+INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails], [EPBReg]) VALUES (N'265d1ddd-483c-4433-86ea-1758e7c4f7f6', N'APP001', N'HOP LUN APPAREL LTD.
 S T TOWER, 3 NO. DHAKA- MYMENSHING ROAD
 EAST GAZIPURA, TONGI, GAZIPUR,
-DHAKA, BANGLADESH.', N'ERC NO : RA 78849')
-INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails]) VALUES (N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'BD001', N'HOP LUN (BD) LTD.  DEPZ, SAVAR, DHAKA', N'BEPZA: IP-M-DEPZ-01 ( )/99/595
-DATE: APRIL 06,2000')
-/****** Object:  Table [dbo].[ExcelImport]    Script Date: 11/05/2014 16:31:59 ******/
+DHAKA, BANGLADESH.', N'ERC NO : RA 78849', N'BDO4808')
+INSERT [dbo].[ExporterDetails] ([ID], [ExporterNo], [ExporterName], [RegDetails], [EPBReg]) VALUES (N'8c5486a5-d434-4d89-b03d-9eae6816fd32', N'BD001', N'HOP LUN (BD) LTD.  DEPZ, SAVAR, DHAKA', N'BEPZA: IP-M-DEPZ-01 ( )/99/595
+DATE: APRIL 06,2000', N'BD03904')
+/****** Object:  Table [dbo].[ExcelImport]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -310,7 +315,7 @@ CREATE TABLE [dbo].[ExcelImport](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Category]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Category]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -331,7 +336,7 @@ INSERT [dbo].[Category] ([ID], [Name]) VALUES (N'496a6c6c-2913-4465-9ef2-5f7468f
 INSERT [dbo].[Category] ([ID], [Name]) VALUES (N'8d9d0775-7e5f-4993-9145-86048fabd18b', N'HANGER')
 INSERT [dbo].[Category] ([ID], [Name]) VALUES (N'09ed3529-264d-4806-b6e3-a526cba402fa', N'POLYBAG')
 INSERT [dbo].[Category] ([ID], [Name]) VALUES (N'd53ad6d4-c9f8-42d9-ac87-a9a04f741f08', N'FABRIC')
-/****** Object:  Table [dbo].[BEInfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[BEInfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -350,7 +355,7 @@ INSERT [dbo].[BEInfo] ([ID], [BENo], [BEDate]) VALUES (N'd190bb77-b755-4a8e-909c
 INSERT [dbo].[BEInfo] ([ID], [BENo], [BEDate]) VALUES (N'c017d764-0746-41c6-8a36-5d13dfe762a1', N'#REF!', N'#REF!')
 INSERT [dbo].[BEInfo] ([ID], [BENo], [BEDate]) VALUES (N'01b22fc4-3508-45da-a9ad-6fe1a18326bd', N'#N/A', N'#N/A')
 INSERT [dbo].[BEInfo] ([ID], [BENo], [BEDate]) VALUES (N'53d7fd1f-d646-440b-85b5-74806b336548', N'', N'')
-/****** Object:  Table [dbo].[DestCountry]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[DestCountry]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -368,7 +373,7 @@ CREATE TABLE [dbo].[DestCountry](
 GO
 INSERT [dbo].[DestCountry] ([ID], [CountryCode], [Name], [Port]) VALUES (N'70b2b1aa-856c-473b-b80f-23cc5b245f90', N'2002', N'BELGIUM', N'ANTWERPEN(ANVERS)')
 INSERT [dbo].[DestCountry] ([ID], [CountryCode], [Name], [Port]) VALUES (N'e3aec8d0-37f7-4f0a-841f-fdf62999e941', N'2004', N'GERMANY', N'EUROPEAN POINT')
-/****** Object:  Table [dbo].[ConsigneeDetails]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[ConsigneeDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -377,36 +382,38 @@ CREATE TABLE [dbo].[ConsigneeDetails](
 	[ID] [uniqueidentifier] NOT NULL,
 	[ConsigneeNo] [nvarchar](20) NOT NULL,
 	[ConsigneeName] [nvarchar](max) NOT NULL,
+	[Country] [nvarchar](100) NULL,
  CONSTRAINT [PK_ConsigneeDetails] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName]) VALUES (N'8b94af59-0267-43d2-8114-4728657fa6b4', N'C&A', N'C & A BUYING GMBH & CO KG
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'8b94af59-0267-43d2-8114-4728657fa6b4', N'C&A', N'C & A BUYING GMBH & CO KG
 WANHEIMERSTR 70,
 40468 DUSSELDORF,
 GERMANY.
-')
-INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName]) VALUES (N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'CARR-BELGIUM', N'CARREFOUR BELGIUM SA
+', N'GERMANY')
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'40314773-3797-481b-b0a8-6cda51c0d5b4', N'CARR-BELGIUM', N'CARREFOUR BELGIUM SA
 AVENUE DES OLYMPIADES,20B
 OLYMPIADENLAAN-EVERE 3
-BP 500 1140 BRUXELLES, BELGIUM')
-INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName]) VALUES (N'bfd81bdc-2e90-4ad4-a6cf-a715febcd4ab', N'CARREFOUR', N'CARREFOUR BELGIUM SA
+BP 500 1140 BRUXELLES, BELGIUM', N'BELGIUM')
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'bfd81bdc-2e90-4ad4-a6cf-a715febcd4ab', N'CARREFOUR', N'CARREFOUR BELGIUM SA
 AVENUE DES OLYMPIADES,20B
 OLYMPIADENLAAN-EVERE 3
-BP 500 1140 BRUXELLES, BELGIUM')
-INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName]) VALUES (N'c61c3846-22e6-4cc8-8cd8-ae26052f97ae', N'HK002', N'PT Hindo
+BP 500 1140 BRUXELLES, BELGIUM', NULL)
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'c61c3846-22e6-4cc8-8cd8-ae26052f97ae', N'HK002', N'PT Hindo
 C/O DHL Supply Chain
 Jalan Trembesi Plot F15-6
 Kawasan Industri Delta Silicon II, Lippo Cikarang
 Kabupaten Bekasi, 17550
-Indonesia')
-INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName]) VALUES (N'd353c1fa-9d21-435c-baf3-f98357069fc5', N'CARR-FRANCE', N'CARREFOUR IMPORT SAS
+Indonesia', NULL)
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'3332aa2e-9a1c-4cce-a104-db49054b2308', N'C&A', N'C & A BUYING GMBH & CO KG WANHEIMERSTR 70, 40468 DUSSELDORF, GERMANY. ', N'GERMANY')
+INSERT [dbo].[ConsigneeDetails] ([ID], [ConsigneeNo], [ConsigneeName], [Country]) VALUES (N'd353c1fa-9d21-435c-baf3-f98357069fc5', N'CARR-FRANCE', N'CARREFOUR IMPORT SAS
 18 AVENUE DU QUEBEC
 ZA DE COURTABOEUF
-91140 VILLEBON SUR YVETTE, FRANCE')
-/****** Object:  Table [dbo].[SalesContract]    Script Date: 11/05/2014 16:31:59 ******/
+91140 VILLEBON SUR YVETTE, FRANCE', NULL)
+/****** Object:  Table [dbo].[SalesContract]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -424,7 +431,7 @@ INSERT [dbo].[SalesContract] ([ID], [SalesContract]) VALUES (N'1f0bf095-62bc-452
 INSERT [dbo].[SalesContract] ([ID], [SalesContract]) VALUES (N'e80a15f3-dd42-45d5-a1b9-18cbedb01f7a', N'HLAP-14-HK-02')
 INSERT [dbo].[SalesContract] ([ID], [SalesContract]) VALUES (N'c6ec6739-fa17-4f18-b084-41965f2db9c6', N'')
 INSERT [dbo].[SalesContract] ([ID], [SalesContract]) VALUES (N'7a981a4b-56cc-429b-a8a8-83c2792470e3', N'HLAP-14-HK-01')
-/****** Object:  Table [dbo].[NotifyDetails]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[NotifyDetails]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -452,7 +459,7 @@ Rungedamm 38
 DE-21035, Hamburg
 Germany')
 INSERT [dbo].[NotifyDetails] ([ID], [NotifyNo], [NotifyName]) VALUES (N'c7a0aeb8-716d-4ef4-927f-e2ec1b2cd8df', N'HM GM', N'H & M Hennes & Mauritz GBC AB Rungedamm 38 DE-21035, Hamburg Germany')
-/****** Object:  Table [dbo].[Location]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Location]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -468,7 +475,7 @@ CREATE TABLE [dbo].[Location](
 GO
 INSERT [dbo].[Location] ([ID], [Location]) VALUES (N'8facdeaf-49a9-4b70-90cb-3f49f0be5687', N'HLAP')
 INSERT [dbo].[Location] ([ID], [Location]) VALUES (N'338f8b6f-fa5e-4742-93ae-a860a9d912de', N'')
-/****** Object:  Table [dbo].[Unitinfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Unitinfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -482,7 +489,7 @@ CREATE TABLE [dbo].[Unitinfo](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UDInfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[UDInfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -502,7 +509,7 @@ INSERT [dbo].[UDInfo] ([ID], [UDNo], [AMDNo], [AMDDate]) VALUES (N'd836029c-9e37
 INSERT [dbo].[UDInfo] ([ID], [UDNo], [AMDNo], [AMDDate]) VALUES (N'9cb30729-3d65-43c9-91e4-3470d658adf9', N'2014/04', N'UD', N'22/05/2014 12:00:00 AM')
 INSERT [dbo].[UDInfo] ([ID], [UDNo], [AMDNo], [AMDDate]) VALUES (N'1e936df3-27d3-4c0c-97cb-c8d13372dbbf', N'2014/03', N'AMD-003', N'2014-04-17')
 INSERT [dbo].[UDInfo] ([ID], [UDNo], [AMDNo], [AMDDate]) VALUES (N'14193a6c-85e9-48b8-8669-e5f5028f0102', N'2014/02', N'AMD-010', N'17/05/2014 12:00:00 AM')
-/****** Object:  Table [dbo].[Transport]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Transport]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -522,7 +529,7 @@ INSERT [dbo].[Transport] ([ID], [Name], [Port]) VALUES (N'e98d1ed2-cc8f-4479-9e8
 INSERT [dbo].[Transport] ([ID], [Name], [Port]) VALUES (N'8a2d2cbf-633c-4d9b-a8e4-a1e78b7de5e6', N'Sea+Air', N'Chittagong')
 INSERT [dbo].[Transport] ([ID], [Name], [Port]) VALUES (N'bd73a0b6-2e17-4f33-8e93-bdb609fb87e6', N'ROAD', N'BENAPOLE')
 INSERT [dbo].[Transport] ([ID], [Name], [Port]) VALUES (N'9768c254-dd5c-47f5-ba6d-f6a4d22276c2', N'SEA', N'CHITTAGONG')
-/****** Object:  Table [dbo].[Transhipment]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Transhipment]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -538,7 +545,7 @@ CREATE TABLE [dbo].[Transhipment](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Transhipment] ([ID], [CountryName], [Details]) VALUES (N'96df90d8-3750-4625-967c-c37c09522317', N'SPAIN', N'TANJUNG PELEPAS TO BARCELONA (SPAIN)')
-/****** Object:  Table [dbo].[User]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -561,7 +568,7 @@ GO
 INSERT [dbo].[User] ([ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]) VALUES (N'740e71f3-106c-4306-8dc4-6be5e851d5fd', N'PVT', N'321', N'Private', N'pvt@hoplunbd.com', 1, N'22-07-2014', N'86b7b37f-da63-474d-a714-34584b70e7b2')
 INSERT [dbo].[User] ([ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]) VALUES (N'1eb4393c-f31a-4857-a996-9543d84fec23', N'EXP', N'123', N'Administrator', N'admin@hoplunbd.com', 1, N'21-07-2014', N'4df62498-2bad-4172-ae7c-57ed7ef2629b')
 INSERT [dbo].[User] ([ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]) VALUES (N'af36c3c2-2640-44b8-abfa-c14b3c2e39e9', N'Admin', N'123', N'Administrator', N'admin@hoplunbd.com', 1, N'21-07-2014', N'4df62498-2bad-4172-ae7c-57ed7ef2629b')
-/****** Object:  StoredProcedure [dbo].[spSetPostdataRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spSetPostdataRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -585,7 +592,7 @@ BEGIN
 	DELETE FROM [Commercial].[dbo].[ExcelImport]
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetUDinfoRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetUDinfoRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -617,7 +624,7 @@ BEGIN
            ,@pAMDDate)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetSumqtytotalvalue]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetSumqtytotalvalue]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -681,7 +688,7 @@ BEGIN
           ORDER BY Invoice, Category  ASC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetSalesContractRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetSalesContractRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -708,7 +715,7 @@ BEGIN
            (@pSalesContract)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetLocationRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetLocationRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -735,7 +742,110 @@ BEGIN
            (@pLocation)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetInvoiceSearchByNo]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetInvoiceSearchByNoApp]    Script Date: 11/09/2014 16:09:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Md. Hasib-Al-Aziz>
+-- Create date: <Create 04/06/2014,,>
+-- Description:	<Using Invoice and Category Search,,>
+-- =============================================
+Create PROCEDURE [dbo].[spGetInvoiceSearchByNoApp] 
+	-- Add the parameters for the stored procedure here
+	  @pInvoiceno  AS NVARCHAR(MAX)
+	, @pConsignee  AS NVARCHAR(MAX)
+	
+AS
+IF(@pInvoiceno!=' ' AND @pConsignee='') 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate,
+            A.ItemName, 
+            A.TTNo, A.TTDate,
+            A.ExporterID, EX.ExporterName, EX.RegDetails,
+            A.ExporterID, EX.ExporterName, EX.RegDetails,
+            A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName,
+            A.NotifyID, NOTI.NotifyName,
+            A.HSCode, A.HSCodesecond,
+            A.DestinationID,DC.CountryCode, DC.Name, DC.Port,
+            A.TransportID, TR.Name AS TName, TR.Port AS TPort,
+            A.Section, 
+            A.Unit,
+            A.Quantity, 
+            A.Currency,
+            A.Incoterm,
+            A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight,
+            A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate
+            FROM ExportformDetails AS A
+            LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID
+            LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID
+            LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID
+            LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
+            LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID
+            WHERE A.InvoiceNo=@pInvoiceno
+            
+            
+END
+ELSE IF(@pInvoiceno = ' ' AND @pConsignee!=' ')
+BEGIN    
+    SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate,
+            A.ItemName, 
+            A.TTNo, A.TTDate,
+            A.ExporterID, EX.ExporterName, EX.RegDetails,
+            A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName,
+            A.NotifyID, NOTI.NotifyName,
+            A.HSCode, A.HSCodesecond,
+            A.DestinationID,DC.CountryCode, DC.Name, DC.Port,
+            A.TransportID, TR.Name AS TName, TR.Port AS TPort,
+            A.Section, 
+            A.Unit,
+            A.Quantity, 
+            A.Currency,
+            A.Incoterm,
+            A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight,
+            A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate
+            FROM ExportformDetails AS A
+            LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID
+            LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID
+            LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID
+            LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
+            LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID
+            WHERE A.ConsigneeID=@pConsignee 
+            
+END
+ELSE  
+BEGIN    
+    SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate,
+            A.ItemName, 
+            A.TTNo, A.TTDate,
+            A.ExporterID, EX.ExporterName, EX.RegDetails,
+            A.ConsigneeID, CON.ConsigneeNo, CON.ConsigneeName,
+            A.NotifyID, NOTI.NotifyName,
+            A.HSCode, A.HSCodesecond,
+            A.DestinationID,DC.CountryCode, DC.Name, DC.Port,
+            A.TransportID, TR.Name AS TName, TR.Port AS TPort,
+            A.Section, 
+            A.Unit,
+            A.Quantity, 
+            A.Currency,
+            A.Incoterm,
+            A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight,
+            A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate
+            FROM ExportformDetails AS A
+            LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID
+            LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID
+            LEFT JOIN NotifyDetails AS NOTI ON NOTI.ID=A.NotifyID
+            LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
+            LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID           
+            
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetInvoiceSearchByNo]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -838,7 +948,7 @@ BEGIN
             
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetInvoiceinfoRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetInvoiceinfoRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -864,7 +974,7 @@ BEGIN
            (@pInvoice)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetInvoiceBycatnameexcel]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetInvoiceBycatnameexcel]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1020,7 +1130,7 @@ BEGIN
           ORDER BY Invoice, Category  ASC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetInvoiceBycatname]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetInvoiceBycatname]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1176,7 +1286,7 @@ BEGIN
           ORDER BY Invoice, Category  ASC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetExcelinfoRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetExcelinfoRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1253,7 +1363,7 @@ BEGIN
            ,@pImportDate)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetCategoryRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetCategoryRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1280,7 +1390,7 @@ BEGIN
            (@pCategory)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spGetBillofEntryRecord]    Script Date: 11/05/2014 16:32:00 ******/
+/****** Object:  StoredProcedure [dbo].[spGetBillofEntryRecord]    Script Date: 11/09/2014 16:09:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1309,7 +1419,7 @@ BEGIN
            ,@pBEDate)
 END
 GO
-/****** Object:  Table [dbo].[Invoiceinfo]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Invoiceinfo]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1325,7 +1435,7 @@ CREATE TABLE [dbo].[Invoiceinfo](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categoryitem]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Categoryitem]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1341,7 +1451,7 @@ CREATE TABLE [dbo].[Categoryitem](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Categoryitem] ([ID], [CategoryID], [Item]) VALUES (N'4f1915a8-44d8-4fb1-82d8-7ea6b9ef7fcc', N'8d9d0775-7e5f-4993-9145-86048fabd18b', N'Hanger')
-/****** Object:  Table [dbo].[Excel]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Table [dbo].[Excel]    Script Date: 11/09/2014 16:09:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1363,84 +1473,84 @@ INSERT [dbo].[Excel] ([Invoice], [Category], [Item]) VALUES (N'HAMS0401.14S(D)',
 INSERT [dbo].[Excel] ([Invoice], [Category], [Item]) VALUES (N'HAMS0401.14S(D)', N'ACCESSORIES', N'Slider')
 INSERT [dbo].[Excel] ([Invoice], [Category], [Item]) VALUES (N'HAMS0401.14S(D)', N'ACCESSORIES', N'Paper Tag')
 INSERT [dbo].[Excel] ([Invoice], [Category], [Item]) VALUES (N'HAMS0401.14S(D)', N'ACCESSORIES', N'Slider')
-/****** Object:  Default [DF_BEInfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_BEInfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[BEInfo] ADD  CONSTRAINT [DF_BEInfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Category_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Category_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Category] ADD  CONSTRAINT [DF_Category_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Categoryitem_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Categoryitem_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Categoryitem] ADD  CONSTRAINT [DF_Categoryitem_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_ConsigneeDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_ConsigneeDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[ConsigneeDetails] ADD  CONSTRAINT [DF_ConsigneeDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_DestCountry_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_DestCountry_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[DestCountry] ADD  CONSTRAINT [DF_DestCountry_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_ExcelImport_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_ExcelImport_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[ExcelImport] ADD  CONSTRAINT [DF_ExcelImport_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_ExporterDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_ExporterDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[ExporterDetails] ADD  CONSTRAINT [DF_ExporterDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_ExportformDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_ExportformDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[ExportformDetails] ADD  CONSTRAINT [DF_ExportformDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Group_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Group_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Group] ADD  CONSTRAINT [DF_Group_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_GSPformDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_GSPformDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[GSPformDetails] ADD  CONSTRAINT [DF_GSPformDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_GSPItemInfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_GSPItemInfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[GSPItemInfo] ADD  CONSTRAINT [DF_GSPItemInfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_HSCodeDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_HSCodeDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[HSCodeDetails] ADD  CONSTRAINT [DF_HSCodeDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Importinfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Importinfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Importinfo] ADD  CONSTRAINT [DF_Importinfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Invoice_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Invoice_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Invoice] ADD  CONSTRAINT [DF_Invoice_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Invoiceinfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Invoiceinfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Invoiceinfo] ADD  CONSTRAINT [DF_Invoiceinfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Location_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Location_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Location] ADD  CONSTRAINT [DF_Location_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_NotifyDetails_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_NotifyDetails_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[NotifyDetails] ADD  CONSTRAINT [DF_NotifyDetails_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_SalesContract_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_SalesContract_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[SalesContract] ADD  CONSTRAINT [DF_SalesContract_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Transhipment_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Transhipment_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Transhipment] ADD  CONSTRAINT [DF_Transhipment_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Transport_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Transport_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Transport] ADD  CONSTRAINT [DF_Transport_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_UDInfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_UDInfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[UDInfo] ADD  CONSTRAINT [DF_UDInfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_Unitinfo_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_Unitinfo_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Unitinfo] ADD  CONSTRAINT [DF_Unitinfo_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  Default [DF_User_ID]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  Default [DF_User_ID]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[User] ADD  CONSTRAINT [DF_User_ID]  DEFAULT (newid()) FOR [ID]
 GO
-/****** Object:  ForeignKey [FK__Categoryi__Categ__300424B4]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  ForeignKey [FK__Categoryi__Categ__300424B4]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Categoryitem]  WITH CHECK ADD FOREIGN KEY([CategoryID])
 REFERENCES [dbo].[Category] ([ID])
 GO
-/****** Object:  ForeignKey [FK__Invoicein__Locat__4CA06362]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  ForeignKey [FK__Invoicein__Locat__4CA06362]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[Invoiceinfo]  WITH CHECK ADD FOREIGN KEY([LocationID])
 REFERENCES [dbo].[Location] ([ID])
 GO
-/****** Object:  ForeignKey [FK_User_Group]    Script Date: 11/05/2014 16:31:59 ******/
+/****** Object:  ForeignKey [FK_User_Group]    Script Date: 11/09/2014 16:09:01 ******/
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Group] FOREIGN KEY([GroupID])
 REFERENCES [dbo].[Group] ([ID])
 GO

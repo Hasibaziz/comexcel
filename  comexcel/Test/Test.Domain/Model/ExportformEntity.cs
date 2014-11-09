@@ -12,7 +12,7 @@ namespace Test.Domain.Model
        public string ContractNo { set; get; }
 
        [Required(ErrorMessage = "* [Item Name] is required")]
-       [StringLength(100, ErrorMessage = "Max length 100 characters")]       
+       [StringLength(200, ErrorMessage = "Max length 200 characters")]       
        public string ItemName { set; get; }
        [Display(Name = "Contract Date")]
        [Required(ErrorMessage = "{0} is required!")]
@@ -99,6 +99,7 @@ namespace Test.Domain.Model
        public string CurrentDate { set; get; }
 
        public int HeaderSpaces { set; get; }
+       public int iFontSize { set; get; }
 
        public string UserName { set; get; }
 

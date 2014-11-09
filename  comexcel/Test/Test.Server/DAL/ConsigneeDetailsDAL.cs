@@ -27,7 +27,7 @@ namespace Test.Server.DAL
 
             db.AddInParameter(dbCommand, "ConsigneeNo", DbType.String, CONEntity.ConsigneeNo);
             db.AddInParameter(dbCommand, "ConsigneeName", DbType.String, CONEntity.ConsigneeName);
-
+            db.AddInParameter(dbCommand, "Country", DbType.String, CONEntity.Country);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;

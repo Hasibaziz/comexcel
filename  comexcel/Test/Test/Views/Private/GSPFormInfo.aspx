@@ -13,15 +13,26 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
+
+
+<script type="text/javascript">
+    function printItem() {
+        //alert("Report");
+        window.open("/Private/GSPRecordsReport");
+    }
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
 <div class="mp_right_content">
    <div class="page_list_container">
-     <fieldset><div id="RecordsContainer"></div></fieldset>
+     <fieldset>
+     <div id="RecordsContainer">
+         <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active" onclick="printItem()" />
+     </div></fieldset>
    </div>
 </div>
-    <script type="text/javascript">
+<script type="text/javascript">
 
         $(document).ready(function () {
 

@@ -1292,6 +1292,92 @@ namespace Test.Controllers
             return View("ExporterFormUpdateApp", _Model);
         }
 
+        [HttpPost]
+        public JsonResult InvoiceSearchByNoApp(string Invno, string consigneeid, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    ExportformEntity _Model = new ExportformEntity();
+                    _Model.InvoiceNo = Invno;
+                    _Model.ConsigneeID = consigneeid;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNoAPP, _Model);
+                    List<ExportformEntity> ItemList = null;
+                    ItemList = new List<ExportformEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ExportformEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                ItemName = dr["ItemName"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+                                TTNo = dr["TTNo"].ToString(),
+                                TTDate = dr["TTDate"].ToString(),
+                                ExporterID = dr["ExporterID"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString(),
+                                ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                NotifyID = dr["NotifyID"].ToString(),
+                                NotifyName = dr["NotifyName"].ToString(),
+                                //HSCodeID = dr["HSCodeID"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+                                HSCodesecond = dr["HSCodesecond"].ToString(),
+                                //HSs = dr["HSs"].ToString(),
+                                //ShortName = dr["ShortName"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
+                                Port = dr["Port"].ToString(),
+                                DestinationID = dr["DestinationID"].ToString(),
+                                TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
+                                TPort = dr["TPort"].ToString(),
+                                Section = dr["Section"].ToString(),
+                                Unit = dr["Unit"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+                                Currency = dr["Currency"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+                                FOBValue = dr["FOBValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),
+                                CPTFOBValue = dr["CPTFOBValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
+
+                                ExpNo = dr["CMValue"].ToString(),
+                                ExpDate = dr["ExpDate"].ToString(),
+                                EPNo = dr["EPNo"].ToString(),
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLNo"].ToString(),
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    Session["ExpEntryApp"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+
         /// <summary>
         /// Destination Details view, add, Update.
         /// </summary>
@@ -2222,7 +2308,7 @@ namespace Test.Controllers
         /// Report Generate in PDF for Apparel Ltd.
         /// </summary>
         /// <returns></returns>
-        public ActionResult PDFViewApp(float headspc)
+        public ActionResult PDFViewApp(float headspc, int iFontSize)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -2247,7 +2333,7 @@ namespace Test.Controllers
                     t0.DefaultCell.Border = Rectangle.NO_BORDER;
 
                     t0.SpacingBefore = 20f;                    
-                    t0.SetTotalWidth(new[] { 310f, 165f, 210f });         //Table cell spaceing  " 280, 175, 215 "
+                    t0.SetTotalWidth(new[] { 310f, 170f, 210f });         //Table cell spaceing  " 280, 175, 215 "
 
                     PdfPCell cell = new PdfPCell(new Paragraph());
 
@@ -2256,14 +2342,14 @@ namespace Test.Controllers
                     cell = new PdfPCell();
                     cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                     t0.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 9f, Font.NORMAL)));
+                    cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), iFontSize, Font.NORMAL)));
                     cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                     cell.FixedHeight = 25f;
                     t0.AddCell(cell);
                     if (dr.HSCodesecond == "")
                     {
                         string hscode = dr.HSCode;
-                        string finalStr = Regex.Replace(hscode, @"(.{1})", "$1    ");    /// For Making space between characters in a String.                      
+                        string finalStr = Regex.Replace(hscode, @"(.{1})", "$1  ");    /// For Making space between characters in a String.                      
                         cell = new PdfPCell(new Phrase(finalStr, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.NORMAL)));                        
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                         cell.PaddingBottom = 5f;
@@ -2277,7 +2363,7 @@ namespace Test.Controllers
                         string hscode = dr.HSCode;
                         string finalStr = Regex.Replace(hscode, @"(.{1})", "$1   ");    /// For Making space between characters in a String.                                             
                         string hssecond = dr.HSCodesecond;
-                        string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1     ");                        
+                        string secondStr = Regex.Replace(hssecond, @"(.{1})", "$1   ");                        
                         var FirstTextFont = FontFactory.GetFont("Arial", 12f, Color.BLACK);
                         var SecondTextFont = FontFactory.GetFont("Arial", 8f, Color.BLACK);
 
@@ -2512,7 +2598,7 @@ namespace Test.Controllers
                     //cell.PaddingBottom = 5f;
                     //t0.AddCell(cell);
 
-                    cell = new PdfPCell(new Phrase(dr.TName+"            INVOICE NO:", new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
+                    cell = new PdfPCell(new Phrase(dr.TName+"          INVOICE NO:", new Font(Font.GetFamilyIndex("Arial"), 10f, Font.NORMAL)));
                     cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                     t0.AddCell(cell);
                     cell = new PdfPCell(new Phrase(dr.InvoiceNo, new Font()));
@@ -2770,6 +2856,7 @@ namespace Test.Controllers
 
                                 CartonNo = dr["CartonNo"].ToString(),
                                 ItemDetails = dr["ItemDetails"].ToString(),
+                                OrderNo = dr["OrderNo"].ToString(),
                                 ContractNo = dr["ContractNo"].ToString(),
                                 ContractDate = dr["ContractDate"].ToString(),
                                 MasterContractNo = dr["MasterContractNo"].ToString(),
@@ -2798,6 +2885,7 @@ namespace Test.Controllers
                     }
                     var RecordCount = dt.Rows.Count;
                     var Record = ItemList;
+                    Session["GSPRecords"] = ItemList;
                     return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
                 }
                 catch (Exception ex)
@@ -2945,7 +3033,26 @@ namespace Test.Controllers
             }
         }
 
-               
 
+
+        /// <summary>
+        /// GSP Records Reports on SAP Crystal Reporting.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GSPRecordsReport()
+        {
+            rptGSPformDetailsEntity obj;
+            
+            ReportClass rptH = new ReportClass();
+            ArrayList al = new ArrayList();
+            rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");
+            rptH.Load();
+
+            List<GSPformDetailsEntity> ItemList = (List<GSPformDetailsEntity>)Session["GSPRecords"];
+                        
+            rptH.SetDataSource(ItemList);
+            MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
+            return File(stream, "application/pdf");
+        }
     }
 }
