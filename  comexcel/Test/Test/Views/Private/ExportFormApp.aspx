@@ -13,8 +13,9 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
-                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
+                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>
                  Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "14.6", style = "width: 30px;" })%>
+                 Left Spaces:  <%: Html.TextBoxFor(model => model.LeftSpaces, new { @Value = "325", style = "width: 30px;" })%>
                  Item Font Size:  <%: Html.TextBoxFor(model => model.iFontSize, new { @Value = "10", style = "width: 20px;" })%>
                  <%--Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>--%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
@@ -34,6 +35,9 @@
         //alert("Report");
         window.open("/Private/ExportFormReport");
     }
+//   $(function() {
+    //       $("#iFontSize").spinner();             //http://jqueryui.com/spinner/#time
+//    });
 </script>
 <script type="text/javascript">
     //    function printPDF() {
@@ -48,7 +52,8 @@
     function printPDF() {
         var headspaces = $('#HeaderSpaces').val();
         var iFSize = $('#iFontSize').val();
-        var url = "/Private/PDFViewApp?headspc=" + headspaces + "&iFontSize=" + iFSize;
+        var LeftSpc = $('#LeftSpaces').val();
+        var url = "/Private/PDFViewApp?headspc=" + headspaces + "&iFontSize=" + iFSize + "&LeftSpace=" + LeftSpc;
         var win = window.open('', '', 'left=0px, top=0px, width=600px, height=650px, scrollbars=no, status =no, resizable=no');
         win.location.href = url;
         win = null;

@@ -99,6 +99,7 @@ namespace Test.Domain.Model
        public string CurrentDate { set; get; }
 
        public int HeaderSpaces { set; get; }
+       public int LeftSpaces { set; get; }
        public int iFontSize { set; get; }
 
        public string UserName { set; get; }

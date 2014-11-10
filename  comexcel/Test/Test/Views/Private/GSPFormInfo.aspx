@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Private.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Private.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.GSPformDetailsEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     GSPFormInfo
@@ -28,10 +28,21 @@
    <div class="page_list_container">
      <fieldset>
      <div id="RecordsContainer">
+         Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>
          <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active" onclick="printItem()" />
      </div></fieldset>
    </div>
 </div>
+<script type="text/javascript">
+ function printPDF() {
+        var CON = $('#ConsigneeID').val();
+        var url = "/Private/PDFView?headspc=" + headspaces + "&LeftSpace=" + LeftSpc;
+        var win = window.open('', '', 'left=0px, top=0px, width=600px, height=650px, scrollbars=no, status =no, resizable=no');
+        win.location.href = url;
+        win = null;
+        return false;
+    } 
+</script>
 <script type="text/javascript">
 
         $(document).ready(function () {

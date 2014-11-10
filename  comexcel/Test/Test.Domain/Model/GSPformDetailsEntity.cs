@@ -15,6 +15,7 @@ namespace Test.Domain.Model
         public string ExporterName { set; get; }
         public string EPBReg { set; get; }
 
+        public string ConsigneeID { set; get; }
         public string ConsigneeNo { set; get; }
         public string ConsigneeName { set; get; }
         public string Country { set; get; }

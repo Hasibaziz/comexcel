@@ -1746,7 +1746,7 @@ namespace Test.Controllers
         /// Report Generate in PDF
         /// </summary>
         /// <returns></returns>
-        public ActionResult PDFView(float headspc)
+        public ActionResult PDFView(float headspc, int LeftSpace)
         {
             using(MemoryStream ms = new MemoryStream())
             {
@@ -2308,7 +2308,7 @@ namespace Test.Controllers
         /// Report Generate in PDF for Apparel Ltd.
         /// </summary>
         /// <returns></returns>
-        public ActionResult PDFViewApp(float headspc, int iFontSize)
+        public ActionResult PDFViewApp(float headspc, int iFontSize, int LeftSpace)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -2332,8 +2332,8 @@ namespace Test.Controllers
                     t0.LockedWidth = true;
                     t0.DefaultCell.Border = Rectangle.NO_BORDER;
 
-                    t0.SpacingBefore = 20f;                    
-                    t0.SetTotalWidth(new[] { 310f, 170f, 210f });         //Table cell spaceing  " 280, 175, 215 "
+                    t0.SpacingBefore = 20f;
+                    t0.SetTotalWidth(new[] { LeftSpace, 170, 210f });         //Table cell spaceing  " 280, 175, 215 "
 
                     PdfPCell cell = new PdfPCell(new Paragraph());
 
@@ -2817,7 +2817,8 @@ namespace Test.Controllers
         
         public ActionResult GSPFormInfo()
         {
-
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
             return View();
         }
         [HttpPost]
@@ -3039,20 +3040,30 @@ namespace Test.Controllers
         /// GSP Records Reports on SAP Crystal Reporting.
         /// </summary>
         /// <returns></returns>
-        public ActionResult GSPRecordsReport()
+        public ActionResult GSPRecordsReport(string ConID)
         {
-            rptGSPformDetailsEntity obj;
+            //rptGSPformDetailsEntity obj;
             
             ReportClass rptH = new ReportClass();
-            ArrayList al = new ArrayList();
-            rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");
-            rptH.Load();
+            //ArrayList al = new ArrayList();
+            //rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");            
+            //rptH.Load();           
 
             List<GSPformDetailsEntity> ItemList = (List<GSPformDetailsEntity>)Session["GSPRecords"];
-                        
+            foreach (GSPformDetailsEntity dr in ItemList)
+            {
+                if (dr.ConsigneeID == ConID)
+                {
+                    rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");
+                    rptH.Load();
+                }
+            }    
+        
             rptH.SetDataSource(ItemList);
             MemoryStream stream = (MemoryStream)rptH.ExportToStream(ExportFormatType.PortableDocFormat);
             return File(stream, "application/pdf");
         }
+
+
     }
 }
