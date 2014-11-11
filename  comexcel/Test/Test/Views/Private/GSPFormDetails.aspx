@@ -145,14 +145,15 @@
             <%: Html.EditorFor(model => model.ExpNo)%>
             <%: Html.ValidationMessageFor(model => model.ExpNo)%>
         </div>
-<div class="New_Right_Begingspf">
-        <div class="editor-label01">
+
+         <div class="editor-label01">
           <label for="ExpDate">Exp Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ExpDate)%>
             <%: Html.ValidationMessageFor(model => model.ExpDate)%>
         </div>
+<div class="New_Right_Begingspf">       
 
         <div class="editor-label01">            
             <label for="BuyerContractNo">Buyer Contract No:</label>
@@ -200,7 +201,14 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.SBDate) %>
             <%: Html.ValidationMessageFor(model => model.SBDate) %>
-        </div>        
+        </div>  
+        <div class="editor-label01">           
+            <label for="Itemnumber">Item Number:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextAreaFor(model => model.Itemnumber)%>
+            <%: Html.ValidationMessageFor(model => model.Itemnumber)%>
+        </div>            
    </div>    
          <p>
            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     

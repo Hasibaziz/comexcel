@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //string sql = "SELECT [ID],[InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo]  FROM [Commercial].[dbo].[GSPformDetails]";
             string sql = "SELECT A.InvoiceNo, EXPF.InvoiceDate, ";
             sql = sql + " EXPTR.ID, EXPTR.ExporterNo, EXPTR.ExporterName, EXPTR.EPBReg, ";
-            sql = sql + " CON.ID, CON.ConsigneeNo, CON.ConsigneeName, CON.Country, ";
+            sql = sql + " CON.ID, CON.ConsigneeNo, CON.ConsigneeName, CON.Country, CON.BCode, ";
             sql = sql + " TNS.ID, TNS.Name AS TName, ";
             sql = sql + " EXPF.BLNo, EXPF.BLDate, ";
             sql = sql + " A.VesselNo, A.VesselContractNo, A.CartonNo, ";            
@@ -44,7 +44,7 @@ namespace Test.Server.DAL
         }
         public bool SaveGSPFormDetailsRecord(GSPformDetailsEntity gspfEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO [Commercial].[dbo].[GSPformDetails] ( [InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo] ) VALUES ( @InvoiceNo, @ContractNo, @ContractDate, @MasterContractNo, @MasterContractDate, @BuyerContractNo, @BuyerContractDate, @BKMEANo, @BINNo, @SBNo, @SBDate, @VesselNo, @VesselContractNo, @CartonNo )";
+            string sql = "INSERT INTO [Commercial].[dbo].[GSPformDetails] ( [InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo], [CartonNo], [Itemnumber] ) VALUES ( @InvoiceNo, @ContractNo, @ContractDate, @MasterContractNo, @MasterContractDate, @BuyerContractNo, @BuyerContractDate, @BKMEANo, @BINNo, @SBNo, @SBDate, @VesselNo, @VesselContractNo, @CartonNo, @Itemnumber )";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, gspfEntity.InvoiceNo);
@@ -61,13 +61,14 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "VesselNo", DbType.String, gspfEntity.VesselNo);
             db.AddInParameter(dbCommand, "VesselContractNo", DbType.String, gspfEntity.VesselContractNo);
             db.AddInParameter(dbCommand, "CartonNo", DbType.String, gspfEntity.CartonNo);
+            db.AddInParameter(dbCommand, "Itemnumber", DbType.String, gspfEntity.Itemnumber);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
         public bool UpdateGSPFormDetailsRecord(GSPformDetailsEntity gspfEntity, Database db, DbTransaction transaction)
         {
-            string sql = "UPDATE [Commercial].[dbo].[GSPformDetails] SET OrderNo= @OrderNo, ItemDetails= @ItemDetails, StyleNo= @StyleNo, TAGIDNo= @TAGIDNo, OurID= @OurID, ARTNo=@ARTNo, CustomerPO=@CustomerPO, Delivery=@Delivery, Category=@Category, Origion=@Origion, Quantity=@Quantity WHERE ID=@ID";
+            string sql = "UPDATE [Commercial].[dbo].[GSPformDetails] SET OrderNo= @OrderNo, ItemDetails= @ItemDetails, StyleNo= @StyleNo, TAGIDNo= @TAGIDNo, OurID= @OurID, ARTNo=@ARTNo, CustomerPO=@CustomerPO, Delivery=@Delivery, Category=@Category, Origion=@Origion, Quantity=@Quantity, Itemnumber=@Itemnumber WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, gspfEntity.ID);
@@ -84,7 +85,7 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "VesselNo", DbType.String, gspfEntity.VesselNo);
             db.AddInParameter(dbCommand, "VesselContractNo", DbType.String, gspfEntity.VesselContractNo);
             db.AddInParameter(dbCommand, "CartonNo", DbType.String, gspfEntity.CartonNo);
-
+            db.AddInParameter(dbCommand, "Itemnumber", DbType.String, gspfEntity.Itemnumber);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;

@@ -45,6 +45,7 @@ namespace Test.Domain.Model
         public string Origion { set; get; }
         public string Quantity { set; get; }
         public string TranshipmentID { set; get; }
+        public string Itemnumber { set; get; }
         
         public string BKMEANo { set; get; }
         public string BINNo { set; get; }
@@ -64,5 +65,6 @@ namespace Test.Domain.Model
         public string CurrentDate { set; get; }
 
         public string UserName { set; get; }
+        public string BCode { set; get; }
     }
 }

@@ -138,6 +138,12 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\SalesCarList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\AsdaGSPformReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsdaGSPformReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\CommonGSPformReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -460,6 +466,10 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <EmbeddedResource Include="Report\AsdaGSPformReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AsdaGSPformReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\CommonGSPformReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CommonGSPformReport.cs</LastGenOutput>

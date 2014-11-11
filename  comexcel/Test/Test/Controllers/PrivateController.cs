@@ -2879,7 +2879,8 @@ namespace Test.Controllers
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
                                 Origion = dr["Origion"].ToString(),
-                                Quantity = dr["Quantity"].ToString()
+                                Quantity = dr["Quantity"].ToString(),
+                                BCode = dr["BCode"].ToString()
                             });
                         }
                         iCount += 1;
@@ -3045,14 +3046,32 @@ namespace Test.Controllers
             //rptGSPformDetailsEntity obj;
             
             ReportClass rptH = new ReportClass();
+            //ReportDocument rptd = new ReportDocument();
             //ArrayList al = new ArrayList();
             //rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");            
             //rptH.Load();           
+            
 
             List<GSPformDetailsEntity> ItemList = (List<GSPformDetailsEntity>)Session["GSPRecords"];
             foreach (GSPformDetailsEntity dr in ItemList)
             {
-                if (dr.ConsigneeID == ConID)
+                if (dr.BCode == "C1001")
+                {
+                    rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");
+                    rptH.Load();
+                }
+                else if (dr.BCode == "C1002")
+                {
+                    rptH.FileName = Server.MapPath("/Report/AsdaGSPformReport.rpt");
+                    TextObject txt;
+                    if (rptH.ReportDefinition.ReportObjects["Text2"] != null)
+                    {
+                        txt = (TextObject)rptH.ReportDefinition.ReportObjects["Text2"];
+                        txt.Text = "Report Name";
+                     }
+                    rptH.Load();
+                }
+                else
                 {
                     rptH.FileName = Server.MapPath("/Report/CommonGSPformReport.rpt");
                     rptH.Load();

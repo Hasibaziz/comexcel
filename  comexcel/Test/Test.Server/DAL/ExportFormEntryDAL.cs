@@ -39,7 +39,7 @@ namespace Test.Server.DAL
             //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
-            sql = sql + " WHERE  EX.ExporterNo in('HY002','BD001')";
+            sql = sql + " WHERE  EX.ExporterNo in('HY001','BD001')";
             sql = sql + " ORDER BY CurrentDate DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

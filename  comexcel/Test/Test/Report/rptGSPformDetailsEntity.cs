@@ -44,6 +44,7 @@ namespace Test.Report
         public string Origion { set; get; }
         public string Quantity { set; get; }
         public string TranshipmentID { set; get; }
+        public string Itemnumber { set; get; }
 
         public string BKMEANo { set; get; }
         public string BINNo { set; get; }
