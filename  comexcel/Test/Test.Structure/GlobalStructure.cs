@@ -179,7 +179,7 @@ namespace Test.Structure
         public const string AG_GetAllGSPFormInfoRecord = "AG_GetAllGSPFormInfoRecord";
         public const string AG_SaveGSPFormDetailsRecord = "AG_SaveGSPFormDetailsRecord";
         public const string AG_UpdateGSPFormDetailsRecord = "AG_UpdateGSPFormDetailsRecord";
-        //public const string AG_Duplicateheckinv = "AG_Duplicateheckinv";
+        public const string AG_GetGSPFormSearchByInvoiceno = "AG_GetGSPFormSearchByInvoiceno";
         #endregion
 
     }

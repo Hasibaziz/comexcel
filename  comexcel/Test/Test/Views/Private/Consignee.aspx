@@ -49,7 +49,7 @@
                     ConsigneeName: {
                         title: 'Consignee Address',
                         type: 'textarea',
-                        inputClass: 'validate[optional,maxSize[150]]'
+                        inputClass: 'validate[optional,maxSize[200]]'
                     },
                     Country: {
                         title: 'Country',

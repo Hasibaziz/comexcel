@@ -73,5 +73,13 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+
+        public object GetGSPFormSearchByInvoiceno(object param)
+        {
+            object retObj = null;
+            GSPFormInfoRecordDAL gspfDAL = new GSPFormInfoRecordDAL();
+            retObj = (object)gspfDAL.GetGSPFormSearchByInvoiceno(param);
+            return retObj;
+        }
     }
 }

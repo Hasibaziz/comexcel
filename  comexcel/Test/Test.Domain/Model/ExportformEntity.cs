@@ -126,6 +126,7 @@ namespace Test.Domain.Model
            CFR = 3,
            DDP = 4,
            FCA = 5,    //sea
+           CIF = 6,
        }
 
     }

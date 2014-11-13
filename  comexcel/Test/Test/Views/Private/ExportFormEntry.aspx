@@ -540,7 +540,7 @@
             $("#Quantity").val(data.Quantity);
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
-            if (data.Incoterm == 2 || data.Incoterm == 4) {
+            if (data.Incoterm == 2 || data.Incoterm == 4 || data.Incoterm == 6) {
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTCMValue").prop("disabled", false);
                 $("#CPTFOBValue").prop("disabled", false);
@@ -582,7 +582,7 @@
             // var value = $("#Incoterm option:selected").val();
             //alert($(this).val());
             var cpt = $(this).val();
-            if (cpt == 2 || cpt == 4 ) {
+            if (cpt == 2 || cpt == 4 || cpt == 6) {
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTCMValue").prop("disabled", false);
                 $("#CPTFOBValue").prop("disabled", false);

@@ -513,10 +513,10 @@ namespace Test.Structure.TaskManager
                     gspfDAL = new GSPFormInfoRecordBLL();
                     return gspfDAL.UpdateGSPFormDetailsRecord(param);
                     break;
-                //case TestTask.AG_UpdateGSPFormDetailsRecord:
-                //    gspfDAL = new GSPFormInfoRecordBLL();
-                //    return gspfDAL.UpdateGSPFormDetailsRecord(param);
-                //    break;
+                case TestTask.AG_GetGSPFormSearchByInvoiceno:
+                    gspfDAL = new GSPFormInfoRecordBLL();
+                    return gspfDAL.GetGSPFormSearchByInvoiceno(param);
+                    break;
                 #endregion
 
                 default:

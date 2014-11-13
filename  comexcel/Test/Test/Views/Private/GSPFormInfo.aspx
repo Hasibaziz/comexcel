@@ -16,8 +16,31 @@
 
 
 <script type="text/javascript">
+//    function printItem(data) {
+//        //alert("Report");
+
+//        if (data.isSuccess) {
+//            $('<div></div>').html('Check! ' + data.message).dialog({
+//                modal: true,
+//                resizable: false,
+//                title: "Alert",
+//                dataType: "json",
+//                width: 400,
+//                height: 155,
+//                buttons: {
+//                    "OK": function () {
+//                        //closeDialog($(this))
+//                        $(this).dialog("close");
+//                    }
+//                }
+//            });
+//            //alert("Check! " + data.message);
+//        } else {
+//            window.open("/Private/GSPRecordsReport");
+//        }
+//    }
+    //
     function printItem() {
-        //alert("Report");
         window.open("/Private/GSPRecordsReport");
     }
 </script>
@@ -28,7 +51,8 @@
    <div class="page_list_container">
      <fieldset>
      <div id="RecordsContainer">
-         Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>
+         Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>
+         <%--Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>--%>
          <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active" onclick="printItem()" />
      </div></fieldset>
    </div>
@@ -45,7 +69,68 @@
 </script>
 <script type="text/javascript">
 
-        $(document).ready(function () {
+$('input#InvoiceNo').change(function () { 
+
+        $('#RecordsContainer').jtable({
+            paging: true,
+            pageSize: 15,
+            sorting: false,
+            defaultSorting: 'Name ASC',
+            actions: {
+                listAction: '/Private/GSPFormSearchByInvoiceno?Invno=' + $("#InvoiceNo").val()
+                //                    createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
+                //                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
+                //                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
+            },
+            fields: {
+                ID: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                InvoiceNo: {
+                    title: 'Invoice No',
+                    width: '4%'
+                },
+                ExporterNo: {
+                    title: 'Exporter No',
+                    width: '6%'
+                },
+                ConsigneeNo: {
+                    title: 'Consignee No',
+                    width: '8%'
+                },
+                ContractNo: {
+                    title: 'Contract No',
+                    width: '10%'
+                },
+                StyleNo: {
+                    title: 'Style No',
+                    width: '12%'
+                },
+                Category: {
+                    title: 'Category',
+                    width: '5%'
+                },
+                Origion: {
+                    title: 'Origion',
+                    width: '5%'
+                },
+                Quantity: {
+                    title: 'Quantity',
+                    width: '5%'
+                },
+                TranshipmentID: {
+                    title: 'Transhipment',
+                    width: '10%'
+                }
+            }
+        });
+        $('#RecordsContainer').jtable('load');
+    });
+ 
+$(document).ready(function () {
 
             $('#RecordsContainer').jtable({
                 paging: true,
