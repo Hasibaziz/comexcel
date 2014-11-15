@@ -659,6 +659,24 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetTTRecord(string imodel)
+        {
+
+            TTRecordEntity _Model = new TTRecordEntity();
+            _Model.TTNumber = imodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetTTRecordBalance, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.TTNumber = dr["TTNumber"].ToString();
+                _Model.TTAmount = dr["TTAmount"].ToString();
+                _Model.TTDate = dr["TTDate"].ToString();
+                _Model.TTBalance = dr["TTBalance"].ToString();
+            }
+            return _Model;
+        }
         public object GetDuplicateInvoiceno(string invoice)
         {
             ExportformEntity _Model = new ExportformEntity();

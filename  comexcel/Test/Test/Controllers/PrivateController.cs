@@ -1741,6 +1741,47 @@ namespace Test.Controllers
                 }
             }
         }
+        public JsonResult GetTTRecordID(string ttNo)
+        {
+            if (ttNo.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
+            }
+            else
+            {
+                try
+                {
+                    TTRecordEntity obj = (TTRecordEntity)GetTTRecord(ttNo);
+
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
+        //public JsonResult GetTTBalance(string cmVal)
+        //{
+        //    if (cmVal.ToString().Trim() == "")
+        //    {
+        //        return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            TTRecordEntity obj = (TTRecordEntity)GetTTnCMBalance(cmVal);
+
+        //            return Json(obj);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return Json(new { Result = "ERROR", Message = ex.Message });
+        //        }
+        //    }
+        //}
+
 
         /// <summary>
         /// Report Generate in PDF
@@ -3201,6 +3242,85 @@ namespace Test.Controllers
             }
         }
 
+        /// <summary>
+        /// TT Records
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult TTRecord()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult TTRecordList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetTTRecord, null);
+                    List<TTRecordEntity> ItemList = null;
+                    ItemList = new List<TTRecordEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new TTRecordEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                ExporterDetailsID = dr["ExporterDetailsID"].ToString(),
+                                TTNumber = dr["TTNumber"].ToString(),
+                                TTAmount = dr["TTAmount"].ToString(),
+                                TTDate = dr["TTDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUpdateTTRecord(TTRecordEntity _Model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                }
+
+
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveTTRecordInfo, _Model);
+                else
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateTTRecordInfo, _Model);
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    return Json(new { Result = "OK", Record = addedModel });
+                }
+                else
+                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
 
 
         /// <summary>

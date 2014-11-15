@@ -182,5 +182,13 @@ namespace Test.Structure
         public const string AG_GetGSPFormSearchByInvoiceno = "AG_GetGSPFormSearchByInvoiceno";
         #endregion
 
+        #region Auto Generated - TTRecord.
+        public const string AG_GetTTRecord = "AG_GetTTRecord";
+        public const string AG_SaveTTRecordInfo = "AG_SaveTTRecordInfo";
+        public const string AG_UpdateTTRecordInfo = "AG_UpdateTTRecordInfo";
+        public const string AG_GetTTRecordBalance = "AG_GetTTRecordBalance";
+        public const string AG_GetTTnCMBalance = "AG_GetTTnCMBalance";
+        #endregion
+
     }
 }

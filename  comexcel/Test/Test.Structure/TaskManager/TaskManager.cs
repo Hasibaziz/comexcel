@@ -519,6 +519,30 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                #region Auto Generated - TTRecord
+                case TestTask.AG_GetTTRecord:
+                    TTRecordBLL ttBLL = null;
+                    ttBLL = new TTRecordBLL();
+                    return ttBLL.GetTTRecord(param);
+                    break;
+                case TestTask.AG_SaveTTRecordInfo:
+                    ttBLL = new TTRecordBLL();
+                    return ttBLL.SaveTTRecordInfo(param);
+                    break;
+                //case TestTask.AG_UpdateTTRecordInfo:
+                //    ttBLL = new TTRecordBLL();
+                //    return ttBLL.UpdateTTRecordInfo(param);
+                //    break;
+                case TestTask.AG_GetTTRecordBalance:
+                    ttBLL = new TTRecordBLL();
+                    return ttBLL.GetTTRecordBalance(param);
+                    break;
+                //case TestTask.AG_GetTTnCMBalance:
+                //    ttBLL = new TTRecordBLL();
+                //    return ttBLL.GetTTnCMBalance(param);
+                //    break;
+                #endregion
+
                 default:
                     break;
             }

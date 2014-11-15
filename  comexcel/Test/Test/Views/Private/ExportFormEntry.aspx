@@ -228,7 +228,14 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTNo)%>
             <%: Html.ValidationMessageFor(model => model.TTNo)%>
+            <p style="color: Green;" id="ttAmount" ></p>              
         </div>
+       <%-- <div class="editor-label01">
+            <label for="ttAmount">TT Amount:</label>
+        </div>  --%>
+       <%-- <div class="editor-label01" style="color: Green;">                
+            <p id="ttAmount" ></p>            
+        </div>--%>
         <div class="editor-label01">
           <label for="TTDate">TT Date:</label>
         </div>
@@ -280,11 +287,13 @@
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
+            <p style="color: Green;" id="Destination" ></p>
+            <p style="color: Green;" id="Port" ></p>
         </div>
-         <div class="editor-label01" style="color: Green;">       
+        <%-- <div class="editor-label01" style="color: Green;">       
             <p id="Destination" ></p>
             <p id="Port" ></p>
-        </div>
+        </div>--%>
         
        <%-- <div class="editor-label01" style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
@@ -366,7 +375,14 @@
             <%: Html.EditorFor(model => model.CMValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
         </div>          
-
+<div class="New_Right_Begintt"> 
+         <div class="editor-label01">
+            <label for="ttBalance">Availabe TT Balance:</label>
+        </div>
+         <div class="editor-field01" style="color: Green;">  
+             <p id="ttBalance" ></p>            
+        </div>
+</div>
         <fieldset> 
           <legend>CPT/DDP Value</legend>       
             <div class="editor-field01">
@@ -474,6 +490,20 @@
             $("#Port").html(data.Port);
         });
     });
+    $('#TTNo').change( function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
+            $("#TTDate").val(data.TTDate);
+            $("#ttAmount").html(data.TTAmount);
+            $("#ttBalance").html(data.TTBalance);
+        });
+    });
+//    $('#CMValue').change(function () {
+//        var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?cmVal=")%>' + $("#CMValue").attr("value"), function (data) {
+//            $("#TTDate").val(data.TTDate);
+//            $("#ttAmount").html(data.TTAmount);
+//            $("#ttBalance").html(data.TTBalance);
+//        });
+//    });
 </script>
 <script type="text/javascript">
     $('#FOBValue').change(function () {

@@ -104,6 +104,7 @@
     <Compile Include="BLL\TrServicedetailsBLLPartial.cs" />
     <Compile Include="BLL\TrServicemasterBLL.cs" />
     <Compile Include="BLL\TrServicemasterBLLPartial.cs" />
+    <Compile Include="BLL\TTRecordBLL.cs" />
     <Compile Include="BLL\UDInformationBLL.cs" />
     <Compile Include="DAL\AllUDInfoDAL.cs" />
     <Compile Include="DAL\BEInfoDAL.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="DAL\TrServicedetailsDALPartial.cs" />
     <Compile Include="DAL\TrServicemasterDAL.cs" />
     <Compile Include="DAL\TrServicemasterDALPartial.cs" />
+    <Compile Include="DAL\TTRecordDAL.cs" />
     <Compile Include="DAL\UDInformationDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
