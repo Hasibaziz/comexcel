@@ -44,5 +44,15 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetTTBalance(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            TTRecordEntity obj = (TTRecordEntity)param;
+            string sql = "SELECT TTNumber, (CONVERT(FLOAT,TTAmount) - (SELECT SUM(CONVERT(FLOAT,CMValue)) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo)) AS TTBalance FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

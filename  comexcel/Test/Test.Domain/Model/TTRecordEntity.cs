@@ -13,5 +13,8 @@ namespace Test.Domain.Model
        public string TTAmount { set; get; }
        public string TTDate { set; get; }
        public string TTBalance { set; get; }
+
+       public string CMValue { set; get; }
+
     }
 }

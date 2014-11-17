@@ -54,12 +54,12 @@ namespace Test.Server.BLL
             retObj = (object)ttDAL.GetTTRecordBalance(param);
             return retObj;
         }
-        //public object GetTTnCMBalance(object param)
-        //{
-        //    object retObj = null;
-        //    TTRecordDAL ttDAL = new TTRecordDAL();
-        //    retObj = (object)ttDAL.GetTTnCMBalance(param);
-        //    return retObj;
-        //}
+        public object GetTTBalance(object param)
+        {
+            object retObj = null;
+            TTRecordDAL ttDAL = new TTRecordDAL();
+            retObj = (object)ttDAL.GetTTBalance(param);
+            return retObj;
+        }
     }
 }

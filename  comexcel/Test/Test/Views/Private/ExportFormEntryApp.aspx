@@ -493,6 +493,7 @@
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);
             $("#ttBalance").html(data.TTBalance);
+//            $("#ExporterID").val(data.ExporterDetailsID);
         });
     });
 </script>
@@ -504,9 +505,29 @@
         CM = (FOB * 20) / 100;
         var cmvalue = parseFloat(CM).toFixed(2);
         var fbvalue = parseFloat(FOB).toFixed(2);
-        $("#CMValue").val(cmvalue);
-        $("#FOBValue").val(fbvalue);
-        //        $("#FOBValue").attr("disabled", true);
+        var Q = document.getElementById("ttBalance").innerHTML;
+        if (Q - cmvalue <= 0) {
+            $('<div></div>').html('TT Amount is not available!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 300,
+                buttons: {
+                    "OK": function () {
+                        $("#FOBValue").val(" ");
+                        $("#CMValue").val(" ");
+                        $(this).dialog("close");
+                        $("#FOBValue").focus();
+                    }
+                }
+            });
+        }
+        else {
+            $("#CMValue").val(cmvalue);
+            $("#FOBValue").val(fbvalue);
+            //$("#FOBValue").attr("disabled", true);
+        }
     });
     $(document).ready(function () {
         $('#CPTValue').change(function () {

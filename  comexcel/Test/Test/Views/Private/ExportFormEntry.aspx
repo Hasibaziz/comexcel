@@ -490,18 +490,22 @@
             $("#Port").html(data.Port);
         });
     });
-    $('#TTNo').change( function () {
+    $('#TTNo').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);
             $("#ttBalance").html(data.TTBalance);
+            $("#ExporterID").val(data.ExporterDetailsID);
         });
     });
 //    $('#CMValue').change(function () {
-//        var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?cmVal=")%>' + $("#CMValue").attr("value"), function (data) {
-//            $("#TTDate").val(data.TTDate);
+//        var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?cmVal=")%>' + $("#CMValue").attr("value") + "&ttNO=" + $("#TTNo").val(), function (data) {
+//            var X = $(this).val();
 //            $("#ttAmount").html(data.TTAmount);
-//            $("#ttBalance").html(data.TTBalance);
+//            var Y = $("#ttBalance").html(data.TTBalance);
+//            if (Y - X > 0) {
+//                alert(Y - X);
+//            }
 //        });
 //    });
 </script>
@@ -513,10 +517,31 @@
         CM = (FOB * 20) / 100;
         var cmvalue = parseFloat(CM).toFixed(2);
         var fbvalue = parseFloat(FOB).toFixed(2);
-        $("#CMValue").val(cmvalue);
-        $("#FOBValue").val(fbvalue);
-//        $("#FOBValue").attr("disabled", true);
-    });
+        //var Q = $("#ttBalance").val();
+        var Q = document.getElementById("ttBalance").innerHTML;        
+        if (Q - cmvalue <= 0) {           
+            $('<div></div>').html('TT Amount is not available!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 300,
+                buttons: {
+                    "OK": function () {
+                        $("#FOBValue").val(" ");
+                        $("#CMValue").val(" ");
+                        $(this).dialog("close");
+                        $("#FOBValue").focus();
+                    }
+                }
+            });
+        }
+        else {
+            $("#CMValue").val(cmvalue);
+            $("#FOBValue").val(fbvalue);
+            //$("#FOBValue").attr("disabled", true);
+        }
+    });   
     $(document).ready(function () {
         $('#CPTValue').change(function () {
             var cptval = $(this).val();

@@ -537,10 +537,10 @@ namespace Test.Structure.TaskManager
                     ttBLL = new TTRecordBLL();
                     return ttBLL.GetTTRecordBalance(param);
                     break;
-                //case TestTask.AG_GetTTnCMBalance:
-                //    ttBLL = new TTRecordBLL();
-                //    return ttBLL.GetTTnCMBalance(param);
-                //    break;
+                case TestTask.AG_GetTTBalance:
+                    ttBLL = new TTRecordBLL();
+                    return ttBLL.GetTTBalance(param);
+                    break;
                 #endregion
 
                 default:

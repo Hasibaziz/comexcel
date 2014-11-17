@@ -1761,26 +1761,26 @@ namespace Test.Controllers
                 }
             }
         }
-        //public JsonResult GetTTBalance(string cmVal)
-        //{
-        //    if (cmVal.ToString().Trim() == "")
-        //    {
-        //        return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            TTRecordEntity obj = (TTRecordEntity)GetTTnCMBalance(cmVal);
+        public JsonResult GetTTBalance(string cmVal, string ttNO)
+        {
+            if (cmVal.ToString().Trim() == "")
+            {
+                return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
+            }
+            else
+            {
+                try
+                {
+                    TTRecordEntity obj = (TTRecordEntity)GetTTnCMBalance(cmVal, ttNO);
 
-        //            return Json(obj);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new { Result = "ERROR", Message = ex.Message });
-        //        }
-        //    }
-        //}
+                    return Json(obj);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+        }
 
 
         /// <summary>

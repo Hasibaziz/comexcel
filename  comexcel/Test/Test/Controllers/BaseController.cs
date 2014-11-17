@@ -674,6 +674,27 @@ namespace Test.Controllers
                 _Model.TTAmount = dr["TTAmount"].ToString();
                 _Model.TTDate = dr["TTDate"].ToString();
                 _Model.TTBalance = dr["TTBalance"].ToString();
+                _Model.ExporterDetailsID = dr["ExporterDetailsID"].ToString();
+            }
+            return _Model;
+        }
+        public object GetTTnCMBalance(string imodel, string tmodel)
+        {
+
+            TTRecordEntity _Model = new TTRecordEntity();
+            _Model.CMValue = imodel;
+            _Model.TTNumber = tmodel;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetTTBalance, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                _Model.ID = dr["ID"].ToString();
+                _Model.TTNumber = dr["TTNumber"].ToString();
+                _Model.TTAmount = dr["TTAmount"].ToString();
+                _Model.TTDate = dr["TTDate"].ToString();
+                _Model.TTBalance = dr["TTBalance"].ToString();
+                _Model.ExporterDetailsID = dr["ExporterDetailsID"].ToString();
             }
             return _Model;
         }

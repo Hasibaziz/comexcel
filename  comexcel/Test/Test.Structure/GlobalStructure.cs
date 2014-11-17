@@ -188,6 +188,7 @@ namespace Test.Structure
         public const string AG_UpdateTTRecordInfo = "AG_UpdateTTRecordInfo";
         public const string AG_GetTTRecordBalance = "AG_GetTTRecordBalance";
         public const string AG_GetTTnCMBalance = "AG_GetTTnCMBalance";
+        public const string AG_GetTTBalance = "AG_GetTTBalance";
         #endregion
 
     }
