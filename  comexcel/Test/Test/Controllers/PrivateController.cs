@@ -1761,9 +1761,9 @@ namespace Test.Controllers
                 }
             }
         }
-        public JsonResult GetTTBalance(string cmVal, string ttNO)
+        public JsonResult GetTTBalance(string ttNO)
         {
-            if (cmVal.ToString().Trim() == "")
+            if (ttNO.ToString().Trim() == "")
             {
                 return Json(new { Result = "ERROR", Message = "Enter Destination ID" });
             }
@@ -1771,7 +1771,7 @@ namespace Test.Controllers
             {
                 try
                 {
-                    TTRecordEntity obj = (TTRecordEntity)GetTTnCMBalance(cmVal, ttNO);
+                    TTRecordEntity obj = (TTRecordEntity)GetTTnCMBalance(ttNO);
 
                     return Json(obj);
                 }

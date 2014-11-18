@@ -678,12 +678,12 @@ namespace Test.Controllers
             }
             return _Model;
         }
-        public object GetTTnCMBalance(string imodel, string tmodel)
+        public object GetTTnCMBalance(string imodel)
         {
 
             TTRecordEntity _Model = new TTRecordEntity();
-            _Model.CMValue = imodel;
-            _Model.TTNumber = tmodel;
+            //_Model.CMValue = imodel;
+            _Model.TTNumber = imodel;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetTTBalance, _Model);
 
             foreach (DataRow dr in dt.Rows)
