@@ -529,10 +529,10 @@ namespace Test.Structure.TaskManager
                     ttBLL = new TTRecordBLL();
                     return ttBLL.SaveTTRecordInfo(param);
                     break;
-                //case TestTask.AG_UpdateTTRecordInfo:
-                //    ttBLL = new TTRecordBLL();
-                //    return ttBLL.UpdateTTRecordInfo(param);
-                //    break;
+                case TestTask.AG_UpdateTTRecordInfo:
+                    ttBLL = new TTRecordBLL();
+                    return ttBLL.UpdateTTRecordInfo(param);
+                    break;
                 case TestTask.AG_GetTTRecordBalance:
                     ttBLL = new TTRecordBLL();
                     return ttBLL.GetTTRecordBalance(param);
@@ -541,6 +541,24 @@ namespace Test.Structure.TaskManager
                     ttBLL = new TTRecordBLL();
                     return ttBLL.GetTTBalance(param);
                     break;
+                #endregion
+
+                ////Export Form Report Information ***
+
+                #region Auto Generated - TTCMInformation
+                case TestTask.AG_GetTTCMInformationRecord:
+                    TTCMInformationBLL ttcmI = null;
+                    ttcmI = new TTCMInformationBLL();
+                    return ttcmI.GetTTCMInformationRecord(param);
+                    break;
+                case TestTask.AG_GetTTCMInformationByttno:
+                    ttcmI = new TTCMInformationBLL();
+                    return ttcmI.GetTTCMInformationByttno(param);
+                    break;
+                case TestTask.AG_GetCMTotalusingTTNo:
+                    ttcmI = new TTCMInformationBLL();
+                    return ttcmI.GetCMTotalusingTTNo(param);
+                    break; 
                 #endregion
 
                 default:

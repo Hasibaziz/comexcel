@@ -17,35 +17,9 @@
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
           <%--**************--------------------------**************************--%>
-
+ <script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
 
 <script type="text/javascript" >
-    $(document).ready(function () {
-        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
-        $.datepicker.setDefaults($.extend({},
-            {
-                changeMonth: true,
-                changeYear: true,
-                showStatus: true,
-                dateFormat: 'dd-mm-yy',
-                duration: 'fast',
-                yearRange: '1890:2100'
-            }
-            )
-        );
-        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({
-            onSelect: function () {
-                document.all ? $(this).get(0).fireEevent("onChange") :
-                            $(this).change();
-                this.focus();
-            },
-            onClose: function (dateText, inst) {
-                if (!document.all)
-                    this.select();
-            }
-        });
-    });
-
     $(function () {
         $("#tabs").tabs();
     });
@@ -118,26 +92,7 @@
                 }
             });
         }
-    }
-
-    $(document).ready(function () {
-        // Define a custom validation function.
-        //        $.validationEngineLanguage.allRules['test_value'] = {
-        //            "func": function (field, rules, i, options) {
-        //                return (field.val() == 'test');
-        //            },
-        //            "alertText": "* Value must be 'test'."
-        //        };
-
-        // Initiate the validation engine.
-        $('#frmID').validationEngine();
-    });
-
-    $(function () {
-        $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
-            $(this).attr({ 'title': $(this).html() });
-        });
-    });
+    }   
 
 </script>
 <div class="mp_left_menu">
@@ -496,6 +451,35 @@
 //            $("#ExporterID").val(data.ExporterDetailsID);
         });
     });
+
+    $(document).ready(function () {
+        var cmValue = document.getElementById("CMValue").value;
+        $('#CMValue').mouseenter(function () {
+            //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
+            var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
+                var X = $("*[id$='CMValue']").val();
+                var TTA = data.TTAmount;
+                var Y = data.TTBalance;
+                if (X != " " && Y + X >= TTA) {
+                    $('<div></div>').html('TT Amount is not available!').dialog({
+                        modal: true,
+                        resizable: false,
+                        title: "Message",
+                        dataType: "json",
+                        width: 300,
+                        buttons: {
+                            "OK": function () {
+                                $("#FOBValue").val(" ");
+                                $("#CMValue").val(" ");
+                                $(this).dialog("close");
+                                $("#FOBValue").focus();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    });
 </script>
 <script type="text/javascript">
     $('#FOBValue').change(function () {
@@ -583,25 +567,32 @@
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
             if (data.Incoterm == 2 || data.Incoterm == 4 || data.Incoterm == 6) {
-                $("#CPTValue").prop("disabled", false);
-                $("#CPTCMValue").prop("disabled", false);
-                $("#CPTFOBValue").prop("disabled", false);
-                $("#Freight").prop("disabled", false);
-
                 $("#FOBValue").prop("disabled", true);
                 $("#CMValue").prop("disabled", true);
+
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTValue").val(data.FOBValue)
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTCMValue").val(data.CMValue);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#CPTFOBValue").val(data.CPTFOBValue);
+                $("#Freight").prop("disabled", false);
+                $("#Freight").val(data.Freight);
             }
             else {
-                $("#FOBValue").prop("disabled", false);
-                $("#CMValue").prop("disabled", false);
-
                 $("#CPTValue").prop("disabled", true);
                 $("#CPTCMValue").prop("disabled", true);
                 $("#CPTFOBValue").prop("disabled", true);
                 $("#Freight").prop("disabled", true);
+
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+                $("#FOBValue").val(data.FOBValue);
+                $("#CMValue").val(data.CMValue);
+
             }
-            $("#FOBValue").val(data.FOBValue);
-            $("#CMValue").val(data.CMValue);
+//            $("#FOBValue").val(data.FOBValue);
+//            $("#CMValue").val(data.CMValue);
             $("#EPNo").val(data.EPNo);
             $("#ExpNo").val(data.ExpNo);
             $("#ExpDate").val(data.ExpDate);

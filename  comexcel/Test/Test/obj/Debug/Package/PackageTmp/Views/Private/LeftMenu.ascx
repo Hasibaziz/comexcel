@@ -5,7 +5,8 @@
     <a href="<%=Url.Content("~/Private/Exporter") %>">Exporter Entry</a>
     <a href="<%=Url.Content("~/Private/Consignee") %>">Consignee Entry</a>
     <a href="<%=Url.Content("~/Private/Notifyparty") %>">Notify Party Entry</a>
-    <a href="<%=Url.Content("~/Private/HSCode") %>">H.S. Code Entry</a>  
+    <%--<a href="<%=Url.Content("~/Private/HSCode") %>">H.S. Code Entry</a>  --%>
+    <a href="<%=Url.Content("~/Private/TTRecord") %>">TT Value Information</a> 
     <a href="<%=Url.Content("~/Private/Modeinfo") %>">Local Transport Info</a> 
     <a href="<%=Url.Content("~/Private/Destination") %>">Destination Details</a>   
     <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>   

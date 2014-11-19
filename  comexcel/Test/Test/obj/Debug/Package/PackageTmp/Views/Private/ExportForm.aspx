@@ -12,8 +12,9 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
-                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo)%>
+                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>
                  Header Spaces:  <%: Html.TextBoxFor(model => model.HeaderSpaces, new { @Value = "11.7", style = "width: 50px;" })%>
+                 Left Spaces:  <%: Html.TextBoxFor(model => model.LeftSpaces, new { @Value = "282", style = "width: 30px;" })%>
                  <%--Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>--%>
                  <%--<input type="button" value="Print Preview" title="Print"   onclick="printItem()" />--%>
                  <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />
@@ -45,7 +46,8 @@
 //    }
     function printPDF() {
         var headspaces = $('#HeaderSpaces').val();
-        var url = "/Private/PDFView?headspc=" + headspaces;
+        var LeftSpc = $('#LeftSpaces').val();
+        var url = "/Private/PDFView?headspc=" + headspaces + "&LeftSpace=" + LeftSpc;
         var win = window.open('', '', 'left=0px, top=0px, width=600px, height=650px, scrollbars=no, status =no, resizable=no');
         win.location.href = url;
         win = null;

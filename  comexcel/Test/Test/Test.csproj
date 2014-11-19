@@ -130,6 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportpvtController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="DAL\User.cs" />
     <Compile Include="Global.asax.cs">
@@ -335,6 +336,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Scripts\AccCommon.js" />
+    <Content Include="Scripts\Exportform.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
@@ -429,6 +431,9 @@
     <Content Include="Views\Private\Notifyparty.aspx" />
     <Content Include="Views\Private\Transhipment.aspx" />
     <Content Include="Views\Private\TTRecord.aspx" />
+    <Content Include="Views\Reportpvt\Control\LeftMenu.ascx" />
+    <Content Include="Views\Reportpvt\Index.aspx" />
+    <Content Include="Views\Reportpvt\TTCMInformation.aspx" />
     <Content Include="Views\Report\AllUDInfo.aspx" />
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\Index.aspx" />

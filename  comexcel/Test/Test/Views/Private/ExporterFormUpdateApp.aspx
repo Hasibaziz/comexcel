@@ -16,24 +16,19 @@
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine-en.js")  %>" type="text/javascript" ></script>
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
           <%--**************--------------------------**************************--%>
+<script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
 
 <script type="text/javascript" >
-    $(document).ready(function () {
-        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
-        $(this).focus();
-    });
+//    $(document).ready(function () {
+//        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ dateFormat: "dd-mm-yy" });
+//        $(this).focus();
+//    });
     $(function () {
         $("#tabs").tabs();
     });
     $(document).ready(function () {
         // Initiate the validation engine.
         $('#frmID').validationEngine();
-    });
-
-    $(function () {
-        $("#ItemName option, #ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
-            $(this).attr({ 'title': $(this).html() });
-        });
     });
 </script>
 <div class="mp_left_menu">

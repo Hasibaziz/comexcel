@@ -46,6 +46,33 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
+        public object UpdateTTRecordInfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    TTRecordEntity ttEntity = (TTRecordEntity)param;
+                    TTRecordDAL ttDAL = new TTRecordDAL();
+                    retObj = (object)ttDAL.UpdateTTRecordInfo(ttEntity, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
 
         public object GetTTRecordBalance(object param)
         {

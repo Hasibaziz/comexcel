@@ -191,5 +191,14 @@ namespace Test.Structure
         public const string AG_GetTTBalance = "AG_GetTTBalance";
         #endregion
 
+        /// <summary>
+        /// Export Form Report Information ***
+        /// </summary>
+        #region Auto Generated - TTCMInformation.
+        public const string AG_GetTTCMInformationRecord = "AG_GetTTCMInformationRecord";
+        public const string AG_GetTTCMInformationByttno = "AG_GetTTCMInformationByttno";
+        public const string AG_GetCMTotalusingTTNo = "AG_GetCMTotalusingTTNo";      
+        #endregion
+
     }
 }

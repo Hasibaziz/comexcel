@@ -3,7 +3,7 @@
     <div id="top-menu" style="float: left; width: 100%">
         <ul class="menu">
             <li><a href="<%=Url.Content("~/Private/Index") %>"><span>Basic Entry</span></a></li>             
-            <li><a href="<%=Url.Content("~/Private/In") %>"><span>Reports</span></a></li> 
+            <li><a href="<%=Url.Content("~/Reportpvt/Index") %>"><span>Reports</span></a></li> 
             <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>           
         </ul>
     </div>

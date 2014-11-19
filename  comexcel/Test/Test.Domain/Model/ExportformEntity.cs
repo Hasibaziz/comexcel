@@ -71,6 +71,7 @@ namespace Test.Domain.Model
        public string Freight { set; get; }
        public string Section { set; get; }
 
+       public string CMTotal { set; get; }
        /// <summary>
        /// if use like public Units Unit { set; get; }  Units type Unit variable the it 
        /// will pass the Content of A DropDown List But

@@ -578,6 +578,7 @@ namespace Test.Controllers
                 return null;
             }
         }
+       
         public object GetExporterDetails(string imodel)
         {
 
@@ -695,6 +696,19 @@ namespace Test.Controllers
                 _Model.TTDate = dr["TTDate"].ToString();
                 _Model.TTBalance = dr["TTBalance"].ToString();
                 _Model.ExporterDetailsID = dr["ExporterDetailsID"].ToString();
+            }
+            return _Model;
+        }
+        public object GetCMTotalusingTTNo(string ttNumber)
+        {
+            ExportformEntity _Model = new ExportformEntity();           
+            _Model.TTNo= ttNumber;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCMTotalusingTTNo, _Model);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.TTNo = dr["TTNo"].ToString();
+                _Model.CMTotal = dr["CMTotal"].ToString();               
             }
             return _Model;
         }

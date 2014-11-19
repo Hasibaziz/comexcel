@@ -17,34 +17,10 @@
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
           <%--**************--------------------------**************************--%>
 
+<script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
+
 
 <script type="text/javascript" >
-    $(document).ready(function () {
-        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
-        $.datepicker.setDefaults($.extend({},
-            {
-                 changeMonth: true,
-                 changeYear: true,
-                 showStatus: true,
-                 dateFormat: 'dd-mm-yy',
-                 duration: 'fast',
-                 yearRange: '1890:2100'
-            }
-            )
-        );
-        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ 
-                   onSelect: function(){
-                            document.all ? $(this).get(0).fireEevent("onChange"):
-                            $(this).change();
-                            this.focus();
-                            },
-                   onClose: function(dateText, inst){
-                            if(!document.all)
-                              this.select();
-                   }
-          });                  
-    });
-
     $(function () {
         $("#tabs").tabs();
     });
@@ -119,25 +95,6 @@
       }    
     }
 
-    $(document).ready(function () {
-        // Define a custom validation function.
-//        $.validationEngineLanguage.allRules['test_value'] = {
-//            "func": function (field, rules, i, options) {
-//                return (field.val() == 'test');
-//            },
-//            "alertText": "* Value must be 'test'."
-//        };
-
-        // Initiate the validation engine.
-        $('#frmID').validationEngine();
-    });
-
-    $(function () {
-        $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
-            $(this).attr({ 'title': $(this).html() });
-        });
-    });
-
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -165,7 +122,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]"})%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -228,7 +185,14 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTNo)%>
             <%: Html.ValidationMessageFor(model => model.TTNo)%>
+            <p style="color: Green;" id="ttAmount" ></p>              
         </div>
+       <%-- <div class="editor-label01">
+            <label for="ttAmount">TT Amount:</label>
+        </div>  --%>
+       <%-- <div class="editor-label01" style="color: Green;">                
+            <p id="ttAmount" ></p>            
+        </div>--%>
         <div class="editor-label01">
           <label for="TTDate">TT Date:</label>
         </div>
@@ -280,11 +244,13 @@
         <div class="editor-field01">
             <%: Html.DropDownListFor(model => model.DestinationID, (List<SelectListItem>)ViewData["CCode"], "Destination", new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.DestinationID)%>
+            <p style="color: Green;" id="Destination" ></p>
+            <p style="color: Green;" id="Port" ></p>
         </div>
-         <div class="editor-label01" style="color: Green;">       
+        <%-- <div class="editor-label01" style="color: Green;">       
             <p id="Destination" ></p>
             <p id="Port" ></p>
-        </div>
+        </div>--%>
         
        <%-- <div class="editor-label01" style="color: Green; margin: 0.3em 1px 5px 200px;">       
             <p id="Destination" ></p>
@@ -366,7 +332,14 @@
             <%: Html.EditorFor(model => model.CMValue, new { @readonly = "readonly" })%>
             <%: Html.ValidationMessageFor(model => model.CMValue)%>
         </div>          
-
+<div class="New_Right_Begintt"> 
+         <div class="editor-label01">
+            <label for="ttBalance">Availabe TT Balance:</label>
+        </div>
+         <div class="editor-field01" style="color: Green;">  
+             <p id="ttBalance" ></p>            
+        </div>
+</div>
         <fieldset> 
           <legend>CPT/DDP Value</legend>       
             <div class="editor-field01">
@@ -474,6 +447,42 @@
             $("#Port").html(data.Port);
         });
     });
+    $('#TTNo').hover(function () {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
+            $("#TTDate").val(data.TTDate);
+            $("#ttAmount").html(data.TTAmount);
+            $("#ttBalance").html(data.TTBalance);
+            $("#ExporterID").val(data.ExporterDetailsID);
+        });
+    });
+    $(document).ready(function () {
+        var cmValue = document.getElementById("CMValue").value;
+        $('#CMValue').mouseenter(function () {
+        //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
+        var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
+            var X = $("*[id$='CMValue']").val();
+            var TTA = data.TTAmount;
+            var Y = data.TTBalance;            
+            if (X !=" " && Y + X >= TTA) {                
+                $('<div></div>').html('TT Amount is not available!').dialog({
+                    modal: true,
+                    resizable: false,
+                    title: "Message",
+                    dataType: "json",
+                    width: 300,
+                    buttons: {
+                        "OK": function () {
+                            $("#FOBValue").val(" ");
+                            $("#CMValue").val(" ");
+                            $(this).dialog("close");
+                            $("#FOBValue").focus();
+                        }
+                    }
+                });
+            }           
+        });
+    });
+  });
 </script>
 <script type="text/javascript">
     $('#FOBValue').change(function () {
@@ -483,10 +492,31 @@
         CM = (FOB * 20) / 100;
         var cmvalue = parseFloat(CM).toFixed(2);
         var fbvalue = parseFloat(FOB).toFixed(2);
-        $("#CMValue").val(cmvalue);
-        $("#FOBValue").val(fbvalue);
-//        $("#FOBValue").attr("disabled", true);
-    });
+        //var Q = $("#ttBalance").val();
+        var Q = document.getElementById("ttBalance").innerHTML;        
+        if (Q - cmvalue <= 0) {           
+            $('<div></div>').html('TT Amount is not available!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 300,
+                buttons: {
+                    "OK": function () {
+                        $("#FOBValue").val(" ");
+                        $("#CMValue").val(" ");
+                        $(this).dialog("close");
+                        $("#FOBValue").focus();
+                    }
+                }
+            });
+        }
+        else {
+            $("#CMValue").val(cmvalue);
+            $("#FOBValue").val(fbvalue);
+            //$("#FOBValue").attr("disabled", true);
+        }
+    });   
     $(document).ready(function () {
         $('#CPTValue').change(function () {
             var cptval = $(this).val();
@@ -540,26 +570,33 @@
             $("#Quantity").val(data.Quantity);
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
-            if (data.Incoterm == 2 || data.Incoterm == 4) {
-                $("#CPTValue").prop("disabled", false);
-                $("#CPTCMValue").prop("disabled", false);
-                $("#CPTFOBValue").prop("disabled", false);
-                $("#Freight").prop("disabled", false);
-
+            if (data.Incoterm == 2 || data.Incoterm == 4 || data.Incoterm == 6) {
                 $("#FOBValue").prop("disabled", true);
                 $("#CMValue").prop("disabled", true);
+
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTValue").val(data.FOBValue)
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTCMValue").val(data.CMValue);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#CPTFOBValue").val(data.CPTFOBValue);
+                $("#Freight").prop("disabled", false);
+                $("#Freight").val(data.Freight);
             }
             else {
-                $("#FOBValue").prop("disabled", false);
-                $("#CMValue").prop("disabled", false);
-
                 $("#CPTValue").prop("disabled", true);
                 $("#CPTCMValue").prop("disabled", true);
                 $("#CPTFOBValue").prop("disabled", true);
                 $("#Freight").prop("disabled", true);
+
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+                $("#FOBValue").val(data.FOBValue);
+                $("#CMValue").val(data.CMValue);
+               
             }
-            $("#FOBValue").val(data.FOBValue);
-            $("#CMValue").val(data.CMValue);
+//            $("#FOBValue").val(data.FOBValue);
+//            $("#CMValue").val(data.CMValue);
             $("#EPNo").val(data.EPNo);
             $("#ExpNo").val(data.ExpNo);
             $("#ExpDate").val(data.ExpDate);
@@ -582,7 +619,7 @@
             // var value = $("#Incoterm option:selected").val();
             //alert($(this).val());
             var cpt = $(this).val();
-            if (cpt == 2 || cpt == 4 ) {
+            if (cpt == 2 || cpt == 4 || cpt == 6) {
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTCMValue").prop("disabled", false);
                 $("#CPTFOBValue").prop("disabled", false);

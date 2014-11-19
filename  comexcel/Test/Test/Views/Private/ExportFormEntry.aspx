@@ -17,34 +17,10 @@
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
           <%--**************--------------------------**************************--%>
 
+<script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
+
 
 <script type="text/javascript" >
-    $(document).ready(function () {
-        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
-        $.datepicker.setDefaults($.extend({},
-            {
-                 changeMonth: true,
-                 changeYear: true,
-                 showStatus: true,
-                 dateFormat: 'dd-mm-yy',
-                 duration: 'fast',
-                 yearRange: '1890:2100'
-            }
-            )
-        );
-        $("input#InvoiceDate, #ContractDate, #TTDate, #ExpDate, #BLDate, #ExFactoryDate").datepicker({ 
-                   onSelect: function(){
-                            document.all ? $(this).get(0).fireEevent("onChange"):
-                            $(this).change();
-                            this.focus();
-                            },
-                   onClose: function(dateText, inst){
-                            if(!document.all)
-                              this.select();
-                   }
-          });                  
-    });
-
     $(function () {
         $("#tabs").tabs();
     });
@@ -119,25 +95,6 @@
       }    
     }
 
-    $(document).ready(function () {
-        // Define a custom validation function.
-//        $.validationEngineLanguage.allRules['test_value'] = {
-//            "func": function (field, rules, i, options) {
-//                return (field.val() == 'test');
-//            },
-//            "alertText": "* Value must be 'test'."
-//        };
-
-        // Initiate the validation engine.
-        $('#frmID').validationEngine();
-    });
-
-    $(function () {
-        $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
-            $(this).attr({ 'title': $(this).html() });
-        });
-    });
-
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -165,7 +122,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]"})%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -500,7 +457,7 @@
     });
     $(document).ready(function () {
         var cmValue = document.getElementById("CMValue").value;
-        $(cmValue).mouseenter(function () {
+        $('#CMValue').mouseenter(function () {
         //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
             var X = $("*[id$='CMValue']").val();

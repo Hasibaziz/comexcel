@@ -33,8 +33,8 @@
                 actions: {
                     listAction: '<%=Url.Content("~/Private/ExporterDetailsList") %>',
                     createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-                    deleteAction: '<%=Url.Content("~/Private/DeleteExporterdeatils") %>'
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>'
+                    //deleteAction: '<%=Url.Content("~/Private/DeleteExporterdeatils") %>'
                 },
                 fields: {
                     ID: {

@@ -40,7 +40,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " WHERE  EX.ExporterNo in('HY001','BD001')";
-            sql = sql + " ORDER BY CurrentDate DESC";
+            sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -355,7 +355,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID ";
             sql = sql + " WHERE  EX.ExporterNo='APP001'";
-            sql = sql + " ORDER BY CurrentDate DESC";
+            sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);           
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

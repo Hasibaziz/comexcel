@@ -32,8 +32,8 @@
                 actions: {
                     listAction: '<%=Url.Content("~/Private/ConsigneeDetailsList") %>',
                     createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
-                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
-                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
+                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>'
+                    //deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'
                 },
                 fields: {
                     ID: {
