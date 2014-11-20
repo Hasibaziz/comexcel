@@ -1,0 +1,30 @@
+USE [Commercial]
+GO
+/****** Object:  Trigger [dbo].[trExportFormDetail]    Script Date: 11/20/2014 16:46:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER TRIGGER [dbo].[trExportFormDetail]
+   ON  [Commercial].[dbo].[ExportformDetails] 
+   FOR  INSERT,DELETE,UPDATE
+AS 
+DECLARE  @invoiceNo AS VARCHAR(MAX);
+
+select @invoiceNo=i.InvoiceNo from inserted i;	
+
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+ -- Insert statements for trigger here
+    IF (NOT EXISTS(SELECT * FROM ExportformDetailsBAK WHERE InvoiceNo=@invoiceNo))
+   INSERT INTO ExportformDetailsBAK SELECT *FROM ExportformDetails WHERE InvoiceNo=@invoiceNo   
+    -- Insert statements for trigger here
+
+END

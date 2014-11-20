@@ -1787,7 +1787,7 @@ namespace Test.Controllers
         /// Report Generate in PDF
         /// </summary>
         /// <returns></returns>
-        public ActionResult PDFView(float headspc, int LeftSpace)
+        public ActionResult PDFView(float headspc, int iFontSize, int LeftSpace)
         {
             using(MemoryStream ms = new MemoryStream())
             {
@@ -1847,7 +1847,7 @@ namespace Test.Controllers
                        cell = new PdfPCell();
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                      
                        t0.AddCell(cell);
-                       cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), 9f, Font.BOLD)));
+                       cell = new PdfPCell(new Phrase(dr.ItemName, new Font(Font.GetFamilyIndex("Arial"), iFontSize, Font.BOLD)));
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        cell.FixedHeight = 25f;
                        t0.AddCell(cell);

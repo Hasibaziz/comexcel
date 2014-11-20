@@ -50,7 +50,7 @@
             $(document).idleTimeout({
                 inactivity: 1200000,    //5 Minutes=300000
                 noconfirm: 10000,
-                sessionAlive: 12000,     //One Minutes=3000
+                sessionAlive: 120000,     //One Minutes=3000
                 redirect_url: 'javascript:logout()'
             });         
         });

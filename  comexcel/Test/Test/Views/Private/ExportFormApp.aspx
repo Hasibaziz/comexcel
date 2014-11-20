@@ -67,6 +67,7 @@
             paging: true,
             pageSize: 15,
             sorting: false,
+            title: 'Invoice List for Apparel',
             defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
                 listAction: '/Private/InvoiceSearchByNoApp?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID").val()                               //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
@@ -162,6 +163,7 @@
             paging: true,
             pageSize: 15,
             sorting: false,
+            title: 'Invoice List for Apparel',
             defaultSorting: 'Name ASC',
             actions: {
                 listAction: '<%=Url.Content("~/Private/ExportFormDetailsAppList") %>'
