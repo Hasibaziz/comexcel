@@ -94,7 +94,19 @@
         });
       }    
     }
-
+</script>
+<script type="text/javascript">
+    //http://greatwebguy.com/programming/dom/setting-your-tabindex-on-your-html-forms-automatically-with-jquery/
+    $(function () {
+        var tabindex = 1;
+        $('input,select').each(function () {
+            if (this.type != "hidden") {
+                var $input = $(this);
+                $input.attr("tabindex", tabindex);
+                tabindex++;
+            }
+        });
+    });
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -122,7 +134,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]"})%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex=1})%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -279,14 +291,14 @@
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "Select")%>   Passing DropDown Content--%>
-           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
+           <%: Html.DropDownListFor(model => model.Unit, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Units)).Cast<Test.Domain.Model.ExportformEntity.Units>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString()}))%>
            <%: Html.ValidationMessageFor(model => model.Unit)%>
         </div>
         <div class="editor-label01">
           <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Quantity)%>
+            <%: Html.EditorFor(model => model.Quantity, new { tabindex = 2 })%>
             <%: Html.ValidationMessageFor(model => model.Quantity)%>
         </div>
         <div class="editor-label01">
@@ -451,38 +463,38 @@
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);
-            $("#ttBalance").html(data.TTBalance);
+            var tball = parseFloat(data.TTBalance).toFixed(2);
+            $("#ttBalance").html(tball);
             $("#ExporterID").val(data.ExporterDetailsID);
         });
     });
-    $(document).ready(function () {
-        var cmValue = document.getElementById("CMValue").value;
+    $(document).ready(function () {       
         $('#CMValue').mouseenter(function () {
-        //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
-        var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
-            var X = $("*[id$='CMValue']").val();
-            var TTA = data.TTAmount;
-            var Y = data.TTBalance;            
-            if (X !=" " && Y + X >= TTA) {                
-                $('<div></div>').html('TT Amount is not available!').dialog({
-                    modal: true,
-                    resizable: false,
-                    title: "Message",
-                    dataType: "json",
-                    width: 300,
-                    buttons: {
-                        "OK": function () {
-                            $("#FOBValue").val(" ");
-                            $("#CMValue").val(" ");
-                            $(this).dialog("close");
-                            $("#FOBValue").focus();
+            //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
+            var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
+                var X = $("*[id$='CMValue']").val();
+                var TTA = data.TTAmount;
+                var Y = data.TTBalance;
+                if (X != " " && Y + X >= TTA) {
+                    $('<div></div>').html('TT Amount is not available!').dialog({
+                        modal: true,
+                        resizable: false,
+                        title: "Message",
+                        dataType: "json",
+                        width: 300,
+                        buttons: {
+                            "OK": function () {
+                                $("#FOBValue").val(" ");
+                                $("#CMValue").val(" ");
+                                $(this).dialog("close");
+                                $("#FOBValue").focus();
+                            }
                         }
-                    }
-                });
-            }           
+                    });
+                }
+            });
         });
     });
-  });
 </script>
 <script type="text/javascript">
     $('#FOBValue').change(function () {
@@ -554,7 +566,9 @@
             $("#InvoiceDate").val(data.InvoiceDate);
             $("#ContractNo").val(data.ContractNo);
             $("#ContractDate").val(data.ContractDate);
-            $("#TTNo").val(data.TTNo);
+            $("#TTNo").val(data.TTNo);         
+
+
             $("#TTDate").val(data.TTDate);
            
             $("#ExporterID").val(data.ExporterID);
@@ -570,7 +584,7 @@
             $("#Quantity").val(data.Quantity);
             $("#Currency").val(data.Currency);
             $("#Incoterm").val(data.Incoterm);
-            if (data.Incoterm == 2 || data.Incoterm == 4 || data.Incoterm == 6) {
+            if (data.Incoterm == 2 || data.Incoterm == 4 || data.Incoterm == 6 || data.Incoterm == 7) {
                 $("#FOBValue").prop("disabled", true);
                 $("#CMValue").prop("disabled", true);
 
@@ -603,6 +617,8 @@
             $("#BLNo").val(data.BLNo);
             $("#BLDate").val(data.BLDate);
             $("#ExFactoryDate").val(data.ExFactoryDate);
+            //window.location = window.location.href;
+            //window.location.reload(true);
         });
     });
     $(function() // Shorthand for $(document).ready(function() {
@@ -619,7 +635,7 @@
             // var value = $("#Incoterm option:selected").val();
             //alert($(this).val());
             var cpt = $(this).val();
-            if (cpt == 2 || cpt == 4 || cpt == 6) {
+            if (cpt == 2 || cpt == 4 || cpt == 6 || cpt == 7) {
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTCMValue").prop("disabled", false);
                 $("#CPTFOBValue").prop("disabled", false);

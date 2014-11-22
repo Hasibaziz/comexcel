@@ -128,6 +128,7 @@ namespace Test.Domain.Model
            DDP = 4,
            FCA = 5,    //sea
            CIF = 6,
+           DAP = 7,    //Like-CPT, DDP, CIF;
        }
 
     }
