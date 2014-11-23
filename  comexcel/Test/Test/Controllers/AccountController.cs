@@ -36,7 +36,8 @@ namespace Test.Controllers
                     model.Password = dt.Rows[0]["Password"].ToString();
                     model.Groups = dt.Rows[0]["Groups"].ToString();
                     SetLoginSessionData(model, false);
-                    Session["UserName"] = CurrentGroups;                    
+                    Session["UserName"] = CurrentUserName;
+                    Session["Groups"] = CurrentGroups;
                     //if(CurrentGroups=="Admin")
                     //   return RedirectToAction("Index", "Home");
                     //else if (CurrentGroups == "Private")

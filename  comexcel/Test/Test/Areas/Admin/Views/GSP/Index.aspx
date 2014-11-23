@@ -6,6 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Index</h2>
+<div class="mp_left_menu">
+   <% Html.RenderPartial("LeftMenu"); %>
+</div>
+<div class="mp_right_content">
+   <div class="page_list_container">
+      <div id="RecordsContainer"></div>
+    </div>
+</div>
 
 </asp:Content>

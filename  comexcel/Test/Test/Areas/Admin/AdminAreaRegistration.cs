@@ -18,7 +18,7 @@ namespace Test.Areas.Admin
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "Test.Areas.Admin.Controllers" }
+                namespaces: new[]{ "Test.Areas.Admin.Controllers"}
             );
         }
     }

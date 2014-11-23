@@ -172,6 +172,10 @@
     <Compile Include="Utility\Excelimport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\GSP\GSPFormDetails.aspx" />
+    <Content Include="Areas\Admin\Views\GSP\GSPFormInfo.aspx" />
+    <Content Include="Areas\Admin\Views\GSP\GSPItemEntry.aspx" />
+    <Content Include="Areas\Admin\Views\GSP\GSPItemInfo.aspx" />
     <Content Include="Areas\Admin\Views\GSP\Index.aspx" />
     <Content Include="Areas\Admin\Views\GSP\LeftMenu.ascx" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />
@@ -446,12 +450,9 @@
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />
     <Content Include="Views\Shared\Footer.ascx" />
-    <Content Include="Views\Shared\ModuleHeader\BootstrapHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\DashBordHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\ModuleUserControl.ascx" />
-    <Content Include="Views\Shared\ModuleMenu\BootstrapMenu.ascx" />
     <Content Include="Views\Shared\ModuleMenu\Menu.ascx" />
-    <Content Include="Views\Shared\ModuleMenu\PrivateMenu.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -495,7 +496,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Images\" />
     <Folder Include="PDFFiles\" />
@@ -526,9 +526,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Private.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />

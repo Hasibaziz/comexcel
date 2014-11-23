@@ -32,12 +32,12 @@ namespace Test.Server.DAL
             sql = sql + " GSPI.Origion, GSPI.Quantity "; 
 
             sql = sql + " FROM GSPformDetails AS A";
-            sql = sql + " INNER JOIN GSPItemInfo AS GSPI ON GSPI.InvoiceNo=A.InvoiceNo ";
+            sql = sql + " INNER JOIN GSPItemInfo       AS GSPI ON GSPI.InvoiceNo=A.InvoiceNo ";
             sql = sql + " INNER JOIN ExportformDetails AS EXPF ON EXPF.InvoiceNo=A.InvoiceNo ";
-            sql = sql + " INNER JOIN ExporterDetails AS EXPTR ON EXPTR.ID=EXPF.ExporterID ";
-            sql = sql + " INNER JOIN ConsigneeDetails AS CON ON CON.ID=EXPF.ConsigneeID ";
-            sql = sql + " INNER JOIN Transport AS TNS ON TNS.ID=EXPF.TransportID ";
-            sql = sql + " INNER JOIN DestCountry AS DES ON DES.ID=EXPF.DestinationID ";
+            sql = sql + " INNER JOIN ExporterDetails   AS EXPTR ON EXPTR.ID=EXPF.ExporterID ";
+            sql = sql + " INNER JOIN ConsigneeDetails  AS CON ON CON.ID=EXPF.ConsigneeID ";
+            sql = sql + " INNER JOIN Transport         AS TNS ON TNS.ID=EXPF.TransportID ";
+            sql = sql + " INNER JOIN DestCountry       AS DES ON DES.ID=EXPF.DestinationID ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
