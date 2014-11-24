@@ -369,7 +369,98 @@ namespace Test.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult GSPFormItemInfo()
+        {
+            ConsigneeEntity conEntity = new ConsigneeEntity();
+            ViewData["ConsigneeNo"] = GetAllConsigneeDetails(conEntity);
+            return View();
+        }
+        [HttpPost]
+        public JsonResult GSPFormItemInfoList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllGSPFormItemInfoRecord, null);
+                    List<GSPformDetailsEntity> ItemList = null;
+                    ItemList = new List<GSPformDetailsEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new GSPformDetailsEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+                                ExporterNo = dr["ExporterNo"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                EPBReg = dr["EPBReg"].ToString(),
+
+                                ConsigneeNo = dr["ConsigneeNo"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                Country = dr["Country"].ToString(),
+
+                                TName = dr["TName"].ToString(),
+                                VesselNo = dr["VesselNo"].ToString(),
+                                VesselContractNo = dr["VesselContractNo"].ToString(),
+
+                                CartonNo = dr["CartonNo"].ToString(),
+                                ItemDetails = dr["ItemDetails"].ToString(),
+                                OrderNo = dr["OrderNo"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+                                MasterContractNo = dr["MasterContractNo"].ToString(),
+                                MasterContractDate = dr["MasterContractDate"].ToString(),
+                                BuyerContractNo = dr["BuyerContractNo"].ToString(),
+                                BuyerContractDate = dr["BuyerContractDate"].ToString(),
+                                StyleNo = dr["StyleNo"].ToString(),
+                                TAGIDNo = dr["TAGIDNo"].ToString(),
+                                OurID = dr["OurID"].ToString(),
+                                ARTNo = dr["ARTNo"].ToString(),
+                                CustomerPO = dr["CustomerPO"].ToString(),
+                                Delivery = dr["Delivery"].ToString(),
 
 
+                                Category = dr["Category"].ToString(),
+
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLDate"].ToString(),
+                                ExpNo = dr["ExpNo"].ToString(),
+                                ExpDate = dr["ExpDate"].ToString(),
+
+                                BKMEANo = dr["BKMEANo"].ToString(),
+                                BINNo = dr["BINNo"].ToString(),
+                                SBNo = dr["SBNo"].ToString(),
+                                SBDate = dr["SBDate"].ToString(),
+                                Origion = dr["Origion"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+                                BCode = dr["BCode"].ToString(),
+                                Itemnumber = dr["Itemnumber"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    //Session["GSPRecords"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+       
+        
     }
 }

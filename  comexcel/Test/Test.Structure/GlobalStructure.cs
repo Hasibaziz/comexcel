@@ -177,6 +177,7 @@ namespace Test.Structure
 
         #region Auto Generated - GSPFormDetailsRecord.
         public const string AG_GetAllGSPFormInfoRecord = "AG_GetAllGSPFormInfoRecord";
+        public const string AG_GetAllGSPFormItemInfoRecord = "AG_GetAllGSPFormItemInfoRecord";
         public const string AG_SaveGSPFormDetailsRecord = "AG_SaveGSPFormDetailsRecord";
         public const string AG_UpdateGSPFormDetailsRecord = "AG_UpdateGSPFormDetailsRecord";
         public const string AG_GetGSPFormSearchByInvoiceno = "AG_GetGSPFormSearchByInvoiceno";
@@ -197,7 +198,9 @@ namespace Test.Structure
         #region Auto Generated - TTCMInformation.
         public const string AG_GetTTCMInformationRecord = "AG_GetTTCMInformationRecord";
         public const string AG_GetTTCMInformationByttno = "AG_GetTTCMInformationByttno";
-        public const string AG_GetCMTotalusingTTNo = "AG_GetCMTotalusingTTNo";      
+        public const string AG_GetCMTotalusingTTNo = "AG_GetCMTotalusingTTNo";
+
+        public const string AG_GetAllExportFormReportRecord = "AG_GetAllExportFormReportRecord"; 
         #endregion
 
     }

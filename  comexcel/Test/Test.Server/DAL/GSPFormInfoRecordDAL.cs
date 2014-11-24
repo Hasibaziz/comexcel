@@ -12,7 +12,7 @@ namespace Test.Server.DAL
 {
     public partial class GSPFormInfoRecordDAL
     {
-        public DataTable GetAllGSPFormInfoRecord(object param)
+        public DataTable GetAllGSPFormItemInfoRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
             //string sql = "SELECT [ID],[InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo]  FROM [Commercial].[dbo].[GSPformDetails]";
@@ -21,18 +21,18 @@ namespace Test.Server.DAL
             sql = sql + " CON.ID, CON.ConsigneeNo, CON.ConsigneeName, CON.Country, CON.BCode, ";
             sql = sql + " TNS.ID, TNS.Name AS TName, ";
             sql = sql + " EXPF.BLNo, EXPF.BLDate, ";
-            sql = sql + " A.VesselNo, A.VesselContractNo, A.CartonNo, ";            
-            sql = sql + " GSPI.ItemDetails, ";
-            sql = sql + " GSPI.OrderNo, GSPI.StyleNo, ";
-            sql = sql + " GSPI.TAGIDNo, GSPI.OurID, GSPI.ARTNo, GSPI.CustomerPO, GSPI.Delivery, ";
-            sql = sql + " GSPI.Category, "; 
-            sql = sql + " A.MasterContractNo, A.MasterContractDate, ";
+            sql = sql + " GSPF.VesselNo, GSPF.VesselContractNo, GSPF.CartonNo, ";            
+            sql = sql + " A.ItemDetails, ";
+            sql = sql + " A.OrderNo, A.StyleNo, ";
+            sql = sql + " A.TAGIDNo, A.OurID, A.ARTNo, A.CustomerPO, A.Delivery, ";
+            sql = sql + " A.Category, ";
+            sql = sql + " GSPF.MasterContractNo, GSPF.MasterContractDate, ";
             sql = sql + " EXPF.ExpNo, EXPF.ExpDate, EXPF.ContractNo, EXPF.ContractDate, ";
-            sql = sql + " A.BuyerContractNo,  A.BuyerContractDate, A.BKMEANo,  A.BINNo, A.SBNo, A.SBDate, A.SBNo, A.SBDate,  A.Itemnumber, ";
-            sql = sql + " GSPI.Origion, GSPI.Quantity "; 
+            sql = sql + " GSPF.BuyerContractNo,  GSPF.BuyerContractDate, GSPF.BKMEANo,  GSPF.BINNo, GSPF.SBNo, GSPF.SBDate, GSPF.SBNo, GSPF.SBDate,  GSPF.Itemnumber, ";
+            sql = sql + " A.Origion, A.Quantity ";
 
-            sql = sql + " FROM GSPformDetails AS A";
-            sql = sql + " INNER JOIN GSPItemInfo       AS GSPI ON GSPI.InvoiceNo=A.InvoiceNo ";
+            sql = sql + " FROM GSPItemInfo AS A";
+            sql = sql + " INNER JOIN GSPformDetails       AS GSPF ON GSPF.InvoiceNo=A.InvoiceNo ";
             sql = sql + " INNER JOIN ExportformDetails AS EXPF ON EXPF.InvoiceNo=A.InvoiceNo ";
             sql = sql + " INNER JOIN ExporterDetails   AS EXPTR ON EXPTR.ID=EXPF.ExporterID ";
             sql = sql + " INNER JOIN ConsigneeDetails  AS CON ON CON.ID=EXPF.ConsigneeID ";
@@ -42,6 +42,8 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+
         public bool SaveGSPFormDetailsRecord(GSPformDetailsEntity gspfEntity, Database db, DbTransaction transaction)
         {
             string sql = "INSERT INTO [Commercial].[dbo].[GSPformDetails] ( [InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo], [CartonNo], [Itemnumber] ) VALUES ( @InvoiceNo, @ContractNo, @ContractDate, @MasterContractNo, @MasterContractDate, @BuyerContractNo, @BuyerContractDate, @BKMEANo, @BINNo, @SBNo, @SBDate, @VesselNo, @VesselContractNo, @CartonNo, @Itemnumber )";
@@ -97,9 +99,9 @@ namespace Test.Server.DAL
             GSPformDetailsEntity obj = (GSPformDetailsEntity)param;
             //string sql = "SELECT [ID],[InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo],[CartonNo]  FROM [Commercial].[dbo].[GSPformDetails]";
             string sql = "SELECT A.InvoiceNo, EXPF.InvoiceDate, ";
-            sql = sql + " EXPTR.ID, EXPTR.ExporterNo, EXPTR.ExporterName, EXPTR.EPBReg, ";
-            sql = sql + " CON.ID, CON.ConsigneeNo, CON.ConsigneeName, CON.Country, CON.BCode, ";
-            sql = sql + " TNS.ID, TNS.Name AS TName, ";
+            sql = sql + " EXPTR.ExporterNo, EXPTR.ExporterName, EXPTR.EPBReg, ";
+            sql = sql + " CON.ConsigneeNo, CON.ConsigneeName, CON.Country, CON.BCode, ";
+            sql = sql + " TNS.Name AS TName, ";
             sql = sql + " EXPF.BLNo, EXPF.BLDate, ";
             sql = sql + " A.VesselNo, A.VesselContractNo, A.CartonNo, ";
             sql = sql + " GSPI.ItemDetails, ";

@@ -33,6 +33,15 @@ namespace Test.Server.BLL
             retObj = (object)ttcmDAL.GetCMTotalusingTTNo(param);
             return retObj;
         }
+
+        public object GetAllExportFormReportRecord(object param)
+        {
+            object retObj = null;
+            TTCMInformationDAL ttcmDAL = new TTCMInformationDAL();
+            retObj = (object)ttcmDAL.GetAllExportFormReportRecord(param);
+            return retObj;
+        }
+
     }
 
 }

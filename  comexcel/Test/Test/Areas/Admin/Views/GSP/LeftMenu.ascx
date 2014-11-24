@@ -6,5 +6,6 @@
     <a href="<%=Url.Content("~/Admin/GSP/GSPItemInfo") %>">GSP Item Info</a>
     <a href="<%=Url.Content("~/Admin/GSP/GSPItemEntry") %>">GSP Item Entry</a> 
     <a href="<%=Url.Content("~/Admin/GSP/GSPFormInfo") %>">GSP Form Records</a>  
-    <a href="<%=Url.Content("~/Admin/GSP/GSPFormDetails") %>">GSP Form Records</a>  
+    <a href="<%=Url.Content("~/Admin/GSP/GSPFormDetails") %>">GSP Form Records</a> 
+    <a href="<%=Url.Content("~/Admin/GSP/GSPFormItemInfo") %>">GSP Records</a> 
 </div>

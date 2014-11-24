@@ -105,6 +105,8 @@ namespace Test.Domain.Model
 
        public string UserName { set; get; }
 
+       public string SL { get; set; }
+
        public enum Sections
        {
           PRIVATE = 2,          

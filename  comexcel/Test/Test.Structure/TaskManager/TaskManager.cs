@@ -500,10 +500,10 @@ namespace Test.Structure.TaskManager
                 #endregion
 
                 #region Auto Generated - GSPFormInfoRecord
-                case TestTask.AG_GetAllGSPFormInfoRecord:
+                case TestTask.AG_GetAllGSPFormItemInfoRecord:
                     GSPFormInfoRecordBLL gspfDAL = null;
                     gspfDAL = new GSPFormInfoRecordBLL();
-                    return gspfDAL.GetAllGSPFormInfoRecord(param);
+                    return gspfDAL.GetAllGSPFormItemInfoRecord(param);
                     break;
                 case TestTask.AG_SaveGSPFormDetailsRecord:
                     gspfDAL = new GSPFormInfoRecordBLL();
@@ -558,6 +558,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetCMTotalusingTTNo:
                     ttcmI = new TTCMInformationBLL();
                     return ttcmI.GetCMTotalusingTTNo(param);
+                    break;
+                case TestTask.AG_GetAllExportFormReportRecord:
+                    ttcmI = new TTCMInformationBLL();
+                    return ttcmI.GetAllExportFormReportRecord(param);
                     break; 
                 #endregion
 
