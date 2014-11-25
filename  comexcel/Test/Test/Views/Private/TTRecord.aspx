@@ -53,6 +53,12 @@
                         //inputClass: 'validate[required,minSize[6]]' ---For Interger Value----validate[required,custom[integer],max[50]]
                         inputClass: 'validate[optional,maxSize[50]]'
                     },
+                    BankName: {
+                        title: 'Bank Name',
+                        width: '12%',
+                        //inputClass: 'validate[required,minSize[6]]' ---For Interger Value----validate[required,custom[integer],max[50]]
+                        inputClass: 'validate[optional,maxSize[100]]'
+                    },
                     ExporterDetailsID: {
                         title: 'Location',
                         width: '10%',

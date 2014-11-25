@@ -61,37 +61,33 @@
                 InvoiceNo: {
                     title: 'Invoice No',
                     width: '4%'
-                },
-                ExporterNo: {
-                    title: 'Exporter No',
-                    width: '6%'
-                },
-                ConsigneeNo: {
-                    title: 'Consignee No',
-                    width: '8%'
-                },
+                },               
                 ContractNo: {
                     title: 'Contract No',
-                    width: '10%'
-                },
-                StyleNo: {
-                    title: 'Style No',
                     width: '12%'
                 },
-                Category: {
-                    title: 'Category',
+                ContractDate: {
+                    title: 'Contract Date',
+                    width: '6%'
+                },
+                VesselNo: {
+                    title: 'Vessel No',
+                    width: '10%'
+                },
+                BKMEANo: {
+                    title: 'BKMEA No',
                     width: '5%'
                 },
-                Origion: {
-                    title: 'Origion',
+                BINNo: {
+                    title: 'BIN No',
                     width: '5%'
                 },
-                Quantity: {
-                    title: 'Quantity',
+                SBNo: {
+                    title: 'SB No',
                     width: '5%'
                 },
-                TranshipmentID: {
-                    title: 'Transhipment',
+                SBDate: {
+                    title: 'SB Date',
                     width: '10%'
                 }
             }
@@ -123,36 +119,32 @@
                     title: 'Invoice No',
                     width: '4%'
                 },
-                ExporterNo: {
-                    title: 'Exporter No',
-                    width: '6%'
-                },
-                ConsigneeNo: {
-                    title: 'Consignee No',
-                    width: '8%'
-                },
                 ContractNo: {
                     title: 'Contract No',
-                    width: '10%'
-                },
-                StyleNo: {
-                    title: 'Style No',
                     width: '12%'
                 },
-                Category: {
-                    title: 'Category',
+                ContractDate: {
+                    title: 'Contract Date',
+                    width: '6%'
+                },
+                VesselNo: {
+                    title: 'Vessel No',
+                    width: '10%'
+                },
+                BKMEANo: {
+                    title: 'BKMEA No',
                     width: '5%'
                 },
-                Origion: {
-                    title: 'Origion',
+                BINNo: {
+                    title: 'BIN No',
                     width: '5%'
                 },
-                Quantity: {
-                    title: 'Quantity',
+                SBNo: {
+                    title: 'SB No',
                     width: '5%'
                 },
-                TranshipmentID: {
-                    title: 'Transhipment',
+                SBDate: {
+                    title: 'SB Date',
                     width: '10%'
                 }
             }

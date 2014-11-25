@@ -12,6 +12,13 @@ namespace Test.Server.BLL
 {
     public partial class GSPFormInfoRecordBLL
     {
+        public object GetAllGSPFormInfoRecord(object param)
+        {
+            object retObj = null;
+            GSPFormInfoRecordDAL gspfDAL = new GSPFormInfoRecordDAL();
+            retObj = (object)gspfDAL.GetAllGSPFormInfoRecord(param);
+            return retObj;
+        }
         public object GetAllGSPFormItemInfoRecord(object param)
         {
             object retObj = null;

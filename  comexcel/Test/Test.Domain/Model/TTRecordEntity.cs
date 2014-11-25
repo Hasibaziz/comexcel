@@ -11,6 +11,7 @@ namespace Test.Domain.Model
        public string ExporterDetailsID { set; get; }
        public string TTNumber { set; get; }
        public string TTAmount { set; get; }
+       public string BankName { set; get; }
        public string TTDate { set; get; }
        public string TTBalance { set; get; }
 

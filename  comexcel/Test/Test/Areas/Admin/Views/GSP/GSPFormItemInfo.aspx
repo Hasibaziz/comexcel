@@ -137,7 +137,7 @@
             sorting: false,
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '<%=Url.Content("~/GSP/GSPFormInfoList") %>'
+                listAction: '<%=Url.Content("~/GSP/GSPFormItemInfoList") %>'
                 //                    createAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
                 //                    updateAction: '<%=Url.Content("~/Private/AddUpdateConsigneeDetails") %>',
                 //                    deleteAction: '<%=Url.Content("~/Private/DeleteConsigneedeatils") %>'

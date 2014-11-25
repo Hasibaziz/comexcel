@@ -200,7 +200,8 @@ namespace Test.Structure
         public const string AG_GetTTCMInformationByttno = "AG_GetTTCMInformationByttno";
         public const string AG_GetCMTotalusingTTNo = "AG_GetCMTotalusingTTNo";
 
-        public const string AG_GetAllExportFormReportRecord = "AG_GetAllExportFormReportRecord"; 
+        public const string AG_GetAllExportFormReportRecord = "AG_GetAllExportFormReportRecord";
+        public const string AG_GetAllExportFormRecord = "AG_GetAllExportFormRecord"; 
         #endregion
 
     }

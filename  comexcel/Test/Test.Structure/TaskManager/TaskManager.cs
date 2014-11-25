@@ -505,6 +505,10 @@ namespace Test.Structure.TaskManager
                     gspfDAL = new GSPFormInfoRecordBLL();
                     return gspfDAL.GetAllGSPFormItemInfoRecord(param);
                     break;
+                case TestTask.AG_GetAllGSPFormInfoRecord:
+                    gspfDAL = new GSPFormInfoRecordBLL();
+                    return gspfDAL.GetAllGSPFormInfoRecord(param);
+                    break;
                 case TestTask.AG_SaveGSPFormDetailsRecord:
                     gspfDAL = new GSPFormInfoRecordBLL();
                     return gspfDAL.SaveGSPFormDetailsRecord(param);
@@ -562,7 +566,11 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetAllExportFormReportRecord:
                     ttcmI = new TTCMInformationBLL();
                     return ttcmI.GetAllExportFormReportRecord(param);
-                    break; 
+                    break;
+                case TestTask.AG_GetAllExportFormRecord:
+                    ttcmI = new TTCMInformationBLL();
+                    return ttcmI.GetAllExportFormRecord(param);
+                    break;
                 #endregion
 
                 default:

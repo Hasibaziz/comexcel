@@ -12,6 +12,14 @@ namespace Test.Server.DAL
 {
     public partial class GSPFormInfoRecordDAL
     {
+        public DataTable GetAllGSPFormInfoRecord(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT [ID], [InvoiceNo], [ContractNo], [ContractDate], [MasterContractNo], [MasterContractDate], [BuyerContractNo], [BuyerContractDate], [BKMEANo], [BINNo], [SBNo], [SBDate], [VesselNo], [VesselContractNo], [CartonNo], [Itemnumber]  FROM GSPformDetails";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
         public DataTable GetAllGSPFormItemInfoRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
@@ -42,8 +50,6 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
-
-
         public bool SaveGSPFormDetailsRecord(GSPformDetailsEntity gspfEntity, Database db, DbTransaction transaction)
         {
             string sql = "INSERT INTO [Commercial].[dbo].[GSPformDetails] ( [InvoiceNo],[ContractNo],[ContractDate],[MasterContractNo],[MasterContractDate],[BuyerContractNo],[BuyerContractDate],[BKMEANo],[BINNo],[SBNo],[SBDate],[VesselNo],[VesselContractNo], [CartonNo], [Itemnumber] ) VALUES ( @InvoiceNo, @ContractNo, @ContractDate, @MasterContractNo, @MasterContractDate, @BuyerContractNo, @BuyerContractDate, @BKMEANo, @BINNo, @SBNo, @SBDate, @VesselNo, @VesselContractNo, @CartonNo, @Itemnumber )";

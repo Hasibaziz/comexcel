@@ -155,7 +155,7 @@ namespace Test.Controllers
             {
                 try
                 {
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllExportFormReportRecord, null);
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllExportFormRecord, null);
                     List<ExportformEntity> ItemList = null;
                     ItemList = new List<ExportformEntity>();
                     int iCount = 0;
@@ -176,10 +176,10 @@ namespace Test.Controllers
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
                                 TTNo = dr["TTNo"].ToString(),
                                 TTDate = dr["TTDate"].ToString(),
-                                //ExporterID = dr["ExporterID"].ToString(),
+                                ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
                                 RegDetails = dr["RegDetails"].ToString(),
-                                //ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeID = dr["ConsigneeID"].ToString(),
                                 ConsigneeName = dr["ConsigneeName"].ToString(),
                                 //NotifyID = dr["NotifyID"].ToString(),
                                 //NotifyName = dr["NotifyName"].ToString(),
