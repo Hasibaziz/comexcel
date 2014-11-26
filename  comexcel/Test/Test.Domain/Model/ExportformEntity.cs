@@ -131,6 +131,7 @@ namespace Test.Domain.Model
            FCA = 5,    //sea
            CIF = 6,
            DAP = 7,    //Like-CPT, DDP, CIF;
+           EXW = 8,    //Like-FOB;
        }
 
     }

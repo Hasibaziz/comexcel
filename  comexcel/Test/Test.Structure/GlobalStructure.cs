@@ -203,6 +203,17 @@ namespace Test.Structure
         public const string AG_GetAllExportFormReportRecord = "AG_GetAllExportFormReportRecord";
         public const string AG_GetAllExportFormRecord = "AG_GetAllExportFormRecord"; 
         #endregion
+        
+        /// <summary>
+        /// Commercial Sales Entry.
+        /// </summary>
+
+        #region Auto Generated - AG_GetComsalsesInfoRecord.
+        public const string AG_GetComsalsesInfoRecord = "AG_GetComsalsesInfoRecord";
+        public const string AG_SaveComsalesEntryInfo = "AG_SaveComsalesEntryInfo";
+        public const string AG_UpdateComsalesEntryInfo = "AG_UpdateComsalesEntryInfo";
+        //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        #endregion
 
     }
 }

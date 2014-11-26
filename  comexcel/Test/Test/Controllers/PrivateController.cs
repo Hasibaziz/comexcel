@@ -2147,6 +2147,42 @@ namespace Test.Controllers
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            t0.AddCell(cell);
                        }
+                      else if (dr.Incoterm == "8")
+                       {
+                           string fob = "EXW";
+                           cell = new PdfPCell(new Phrase(fob, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)));
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingBottom = 20f;
+                           t0.AddCell(cell);
+                           //cell = new PdfPCell(new Phrase(dr.Incoterm, new Font()));
+                           //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           //t0.AddCell(cell);
+
+
+                           cell = new PdfPCell();
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           t0.AddCell(cell);
+                           cell = new PdfPCell();
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           t0.AddCell(cell);
+
+                           //cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                           //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           //t0.AddCell(cell);                                            ///
+                           //cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                           //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           //t0.AddCell(cell);
+                           //cell=new PdfPCell(new Phrase(" "));   ///For a Balnk Row
+                           //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           //t0.AddCell(cell);
+                           cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)));
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingBottom = 20f;
+                           t0.AddCell(cell);
+                           cell = new PdfPCell();
+                           cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           t0.AddCell(cell);
+                       }
                        else
                        {
                            string cpt = "CPT";
@@ -2650,6 +2686,42 @@ namespace Test.Controllers
                         cell.PaddingBottom = 10f;      //20f
                         t0.AddCell(cell);
                         cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                    }
+                    else if (dr.Incoterm == "8")
+                    {
+                        string fob = "EXW";
+                        cell = new PdfPCell(new Phrase(fob, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);
+                        //cell = new PdfPCell(new Phrase(dr.Incoterm, new Font()));
+                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        //t0.AddCell(cell);
+
+
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        t0.AddCell(cell);
+
+                        //cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        //t0.AddCell(cell);                                            ///
+                        //cell=new PdfPCell(new Phrase(" "));   ///For a Blank Row
+                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        //t0.AddCell(cell);
+                        //cell=new PdfPCell(new Phrase(" "));   ///For a Balnk Row
+                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        //t0.AddCell(cell);
+                        cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)));
+                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingBottom = 20f;
+                        t0.AddCell(cell);
+                        cell = new PdfPCell();
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                         t0.AddCell(cell);
                     }

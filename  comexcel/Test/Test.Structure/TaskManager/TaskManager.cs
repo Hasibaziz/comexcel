@@ -573,6 +573,27 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                /// 
+                /// Commercial Sales Information ****
+                ///                
+                #region Auto Generated - ComsalsesInfoRecord
+                case TestTask.AG_GetComsalsesInfoRecord:
+                    CommsalesinfoBLL csBLL = null;
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetComsalsesInfoRecord(param);
+                    break;
+                case TestTask.AG_SaveComsalesEntryInfo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.SaveComsalesEntryInfo(param);
+                    break;
+                case TestTask.AG_UpdateComsalesEntryInfo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.UpdateComsalesEntryInfo(param);
+                    break;               
+                #endregion
+
+
+
                 default:
                     break;
             }

@@ -624,7 +624,7 @@
                 $("#FOBValue").prop("disabled", true);
                 $("#CMValue").prop("disabled", true);
             }
-            else if (cpt == 1 || cpt == 3 || cpt == 5) {
+            else if (cpt == 1 || cpt == 3 || cpt == 5 || cpt == 8) {
                 $("#FOBValue").prop("disabled", false);
                 $("#CMValue").prop("disabled", false);
 

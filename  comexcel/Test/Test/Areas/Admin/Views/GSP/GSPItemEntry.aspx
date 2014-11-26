@@ -131,14 +131,29 @@
             <%: Html.EditorFor(model => model.Quantity) %>
             <%: Html.ValidationMessageFor(model => model.Quantity) %>
         </div>
-
-         <div class="editor-label01">           
+    </fieldset>
+ <fieldset>
+        <legend>Secial Status</legend>
+        <div class="editor-label01">           
              <label for="Quantity">Transhipment:</label>
         </div>
-        <div class="editor-field01">
-            <%--<%: Html.EditorFor(model => model.Quantity) %>--%>
+        <div class="editor-field01">            
             <%: Html.DropDownListFor(model => model.TranshipmentID, (List<SelectListItem>)ViewData["CountryName"], "Transhipment")%>
             <%: Html.ValidationMessageFor(model => model.TranshipmentID)%>
+        </div>
+        <div class="editor-label01">           
+             <label for="Quantity">Status:</label>
+        </div>
+        <div class="editor-field01">            
+            <%: Html.EditorFor(model => model.Status)%>
+            <%: Html.ValidationMessageFor(model => model.Status)%>
+        </div>
+        <div class="editor-label01">           
+             <label for="Quantity">Part:</label>
+        </div>
+        <div class="editor-field01">            
+             <%: Html.CheckBoxFor(model => model.Part)%>
+             <%--<%: Html.LabelFor(model => model.Part)%>--%>
         </div>
     </fieldset>
         <p>

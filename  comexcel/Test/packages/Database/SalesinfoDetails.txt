@@ -1,0 +1,53 @@
+USE [Commercial]
+GO
+
+/****** Object:  Table [dbo].[SalesinfoDetails]    Script Date: 11/26/2014 11:40:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SalesinfoDetails](
+	[ID]					[uniqueidentifier]			NOT NULL,	
+	[InvoiceNo]				[nvarchar](max)             NOT NULL,
+	[OrderNo]				[nvarchar](150)				    NULL,
+	[StyleNo]				[nvarchar](150)				    NULL,
+	[ProductType]			[nvarchar](100)             NOT NULL,
+	[ExFactoryDate]			[nvarchar](50)              NOT NULL,
+	[CargorptDate]			[nvarchar](50)              NOT NULL,
+	[ShipbordingDate]       [nvarchar](50)              NOT NULL,
+	[SailinExBDDate]        [nvarchar](50)              NOT NULL,
+	[BLNo]                  [nvarchar](max)             NOT NULL,
+	[BLDate]                [nvarchar](50)              NOT NULL,
+	[DocsendingDate]        [nvarchar](50)              NOT NULL,
+	[ETADate]               [nvarchar](50)              NOT NULL,
+	[UnitPrice]             [nvarchar](100)                 NULL,
+        [RevQty]                [nvarchar](50)              NOT NULL,
+	[RevisedFOBValue]       [nvarchar](100)                 NULL,
+	[RevisedCMValue]        [nvarchar](100)                 NULL,
+	[CartonQty]             [nvarchar](50)              NOT NULL,
+	[CBMValue]              [nvarchar](50)              NOT NULL,
+	[ExpNo]                 [nvarchar](max)             NOT NULL,
+	[ExpDate]               [nvarchar](50)              NOT NULL,
+	[SBNo]                  [nvarchar](max)             NOT NULL,
+	[EPNo]                  [nvarchar](max)             NOT NULL,
+	[SBDate]                [nvarchar](50)              NOT NULL,
+	[VesselNo]              [nvarchar](150)             NOT NULL,
+	[VesselContractNo]      [nvarchar](100)             NOT NULL,
+	[AirFreightCost]        [nvarchar](100)                 NULL,
+	[Agent]                 [nvarchar](50)              NOT NULL,
+	[Remarks]                [nvarchar](MAX)                 NULL,
+		
+ CONSTRAINT [PK_SalesinfoDetails] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[SalesinfoDetails] ADD  CONSTRAINT [DF_SalesinfoDetails_ID]  DEFAULT (newid()) FOR [ID]
+GO
+
+

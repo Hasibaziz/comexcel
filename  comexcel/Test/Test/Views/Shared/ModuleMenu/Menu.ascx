@@ -9,6 +9,7 @@
                  <li><a href="<%=Url.Content("~/Configuration/Index") %>"><span>Import Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Sales/Export") %>"><span>Export Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Private/Index") %>"><span>Export Form</span></a></li>
+                 <li><a href="<%=Url.Content("~/Comsales/CSales/Index") %>"><span>Sales Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Admin/GSP/Index") %>"><span>GSP Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
                  <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>                 

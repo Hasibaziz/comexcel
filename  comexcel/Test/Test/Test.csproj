@@ -124,6 +124,8 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\GSPController.cs" />
+    <Compile Include="Areas\Comsales\ComsalesAreaRegistration.cs" />
+    <Compile Include="Areas\Comsales\Controllers\CSalesController.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssignJobController.cs" />
@@ -179,6 +181,10 @@
     <Content Include="Areas\Admin\Views\GSP\GSPItemInfo.aspx" />
     <Content Include="Areas\Admin\Views\GSP\Index.aspx" />
     <Content Include="Areas\Admin\Views\GSP\LeftMenu.ascx" />
+    <Content Include="Areas\Comsales\Views\CSales\ComsalesEntry.aspx" />
+    <Content Include="Areas\Comsales\Views\CSales\ComsalesInfo.aspx" />
+    <Content Include="Areas\Comsales\Views\CSales\Index.aspx" />
+    <Content Include="Areas\Comsales\Views\CSales\LeftMenu.ascx" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Bootstrap\css\bootstrap.css" />
@@ -499,6 +505,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Comsales\Views\Shared\" />
     <Folder Include="Images\" />
     <Folder Include="PDFFiles\" />
     <Folder Include="Temp\" />
@@ -531,6 +538,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Comsales\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

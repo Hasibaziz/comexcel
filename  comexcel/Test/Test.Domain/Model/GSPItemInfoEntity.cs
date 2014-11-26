@@ -21,6 +21,9 @@ namespace Test.Domain.Model
         public string Category { set; get; }
         public string Origion { set; get; }
         public string Quantity { set; get; }
+        public string GSPQty { set; get; }
+        public bool Part { set; get; }
+        public string Status { set; get; }
         public string TranshipmentID { set; get; }
 
 

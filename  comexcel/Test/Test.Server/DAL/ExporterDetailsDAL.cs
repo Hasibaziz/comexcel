@@ -81,7 +81,7 @@ namespace Test.Server.DAL
         public DataTable GetAllExporterAppInfo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID AS ExporterID, ExporterNo, ExporterName FROM ExporterDetails WHERE ExporterNo='APP001'";
+            string sql = "SELECT ID AS ExporterID, ExporterNo, ExporterName FROM ExporterDetails WHERE ExporterNo='APPAREL'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
