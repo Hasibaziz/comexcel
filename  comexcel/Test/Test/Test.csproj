@@ -182,6 +182,7 @@
     <Content Include="Areas\Admin\Views\GSP\Index.aspx" />
     <Content Include="Areas\Admin\Views\GSP\LeftMenu.ascx" />
     <Content Include="Areas\Comsales\Views\CSales\ComsalesEntry.aspx" />
+    <Content Include="Areas\Comsales\Views\CSales\ComsalesEntryUpd.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\ComsalesInfo.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\Index.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\LeftMenu.ascx" />

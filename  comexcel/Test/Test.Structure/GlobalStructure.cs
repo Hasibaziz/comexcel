@@ -212,7 +212,7 @@ namespace Test.Structure
         public const string AG_GetComsalsesInfoRecord = "AG_GetComsalsesInfoRecord";
         public const string AG_SaveComsalesEntryInfo = "AG_SaveComsalesEntryInfo";
         public const string AG_UpdateComsalesEntryInfo = "AG_UpdateComsalesEntryInfo";
-        //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        public const string AG_GetSalesUpdateByInvoiceNo = "AG_GetSalesUpdateByInvoiceNo";
         #endregion
 
     }

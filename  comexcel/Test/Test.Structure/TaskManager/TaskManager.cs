@@ -589,7 +589,11 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_UpdateComsalesEntryInfo:
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.UpdateComsalesEntryInfo(param);
-                    break;               
+                    break;
+                case TestTask.AG_GetSalesUpdateByInvoiceNo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetSalesUpdateByInvoiceNo(param);
+                    break; 
                 #endregion
 
 

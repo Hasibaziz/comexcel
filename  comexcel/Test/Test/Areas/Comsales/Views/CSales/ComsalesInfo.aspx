@@ -14,10 +14,10 @@
      <fieldset><div id="RecordsContainer">
                  Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>               
                  <input type="button" value="Export to Excel" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />                
-               </div>  
-               <div>
-                 <%: Html.ActionLink("Add New Entry", "ComsalesEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>
-               </div>             
+                 <div>
+                   <%: Html.ActionLink("Add New Entry", "ComsalesEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>
+                 </div> 
+               </div>
      </fieldset>                
    </div>
 </div>
@@ -45,7 +45,7 @@
                     title: 'Invoice No',
                     width: '8%',
                     display: function (data) {
-                        return '<a href="/CSales/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        return '<a href="/CSales/ComsalesEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
                 InvoiceDate: {
@@ -67,19 +67,7 @@
                 StyleNo: {
                     title: 'Style No',
                     width: '10%'
-                },
-                Quantity: {
-                    title: 'Quantity',
-                    width: '6%'
-                },
-                FOBValue: {
-                    title: 'FOB Value',
-                    width: '6%'
-                },
-                CMValue: {
-                    title: 'CM Value',
-                    width: '8%'
-                },
+                },               
                 RevQty: {
                     title: 'RevQty',
                     width: '5%'

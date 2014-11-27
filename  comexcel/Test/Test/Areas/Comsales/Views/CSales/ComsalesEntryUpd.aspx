@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.ComsalesinfoEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ComsalesEntry
+    ComsalesEntryUpd
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
 <%--************-----------------For Client Side Validation-------------********************--%>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
@@ -23,7 +24,7 @@
         $("#tabs").tabs();
     });
     $('input#SInvoiceNo').keyup(function () {
-            $('#InvoiceNo').val($(this).val());
+        $('#InvoiceNo').val($(this).val());
     });
 </script>
 
@@ -52,9 +53,8 @@
             <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>            
+            <%: Html.EditorFor(model => model.InvoiceNo)%>
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
-            <a id="Invoiceno" href="#"><span>Search</span></a>
         </div>
         <div class="editor-label01">            
             <label for="OrderNo">Order No:</label>
@@ -266,77 +266,10 @@
     </div>
 </div>   
     <p>
-        <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
+        <input type="submit" id="Submit" class="btn btn-info btn-lg active" value="Update" />     
         <input type="button" onclick="window.location='<%: Url.Action("ComsalesInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />
     </p>  
 <% } %>
 </div>
-<script type="text/javascript">
-//    $('#Invoiceno').click(function () {
-//        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $('#Invoiceno').attr("value"), function (data) {
-//        });
-//    });
 
-
-    $('#Invoiceno').change(function () {
-        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $("#Invoiceno  > option:selected").attr("value"), function (data) {
-            $("#Destination").html(data.CountryCode);
-            $("#Port").html(data.Port);
-        });
-    });
-
-</script>
-<script type="text/javascript">
-    $('input#SInvoiceNo').change(function () {  
-
-        $('#RecordsContainer').jtable({
-            paging: true,
-            pageSize: 5,
-            sorting: false,
-            title: 'Invoice Records',
-            defaultSorting: 'Name ASC',
-            actions: {
-                listAction: '/CSales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
-                //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
-            },
-            fields: {
-                ID: {
-                    key: true,
-                    create: false,
-                    edit: false,
-                    list: false
-                },
-                InvoiceNo: {
-                    title: 'Invoice No',
-                    width: '8%'
-                },
-                InvoiceDate: {
-                    title: 'Invoice Date',
-                    width: '10%'
-                },
-                ContractNo: {
-                    title: 'Contract No',
-                    width: '10%'
-                },
-                ContractDate: {
-                    title: 'Contract Date',
-                    width: '10%'
-                },
-                Quantity: {
-                    title: 'Quantity',
-                    width: '6%'
-                },
-                FOBValue: {
-                    title: 'FOB Value',
-                    width: '6%'
-                },
-                CMValue: {
-                    title: 'CM Value',
-                    width: '8%'
-                }
-            }
-        });
-        $('#RecordsContainer').jtable('load');
-    });   
- </script>
 </asp:Content>
