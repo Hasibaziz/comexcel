@@ -455,6 +455,9 @@
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\Index.aspx" />
     <Content Include="Views\Report\Invoice.aspx" />
+    <Content Include="Views\Sales\ComsalesEntry.aspx" />
+    <Content Include="Views\Sales\ComsalesEntryUpd.aspx" />
+    <Content Include="Views\Sales\ComsalesInfo.aspx" />
     <Content Include="Views\Sales\Export.aspx" />
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />

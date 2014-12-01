@@ -6,6 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+
 <%--************-----------------For Client Side Validation-------------********************--%>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
@@ -22,10 +23,7 @@
 <script type="text/javascript" >
     $(function () {
         $("#tabs").tabs();
-    });
-    $('input#SInvoiceNo').keyup(function () {
-        $('#InvoiceNo').val($(this).val());
-    });
+    });   
 </script>
 
 
@@ -35,10 +33,10 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <div id="RecordsContainer">
-        Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  
+        <%--Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  --%>
      </div>
    </div>
-<% using (Html.BeginForm("ComsalesEntry", "CSales", new { @id = "frmID" }))
+<% using (Html.BeginForm("ComsalesEntry", "Sales", new { @id = "frmID" }))
    { %>
     <%: Html.ValidationSummary(true) %>   
         <%: Html.HiddenFor(model => model.ID)%>
@@ -150,14 +148,14 @@
             <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
         </div>
         <div class="editor-label01">            
-            <label for="ShipbordingDate">Ship Bording Date:</label>
+            <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ShipbordingDate) %>
             <%: Html.ValidationMessageFor(model => model.ShipbordingDate) %>
         </div>
          <div class="editor-label01">            
-            <label for="SailinExBDDate">Sailin/Ex-BD Date:</label>
+            <label for="SailinExBDDate">Sailing/Ex-BD Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.SailinExBDDate) %>
@@ -272,5 +270,18 @@
     </p>  
 <% } %>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#RevisedFOBValue').change(function () {
+            var cptval = $(this).val();
+            var cptfob = parseFloat(cptval).toFixed(2);
+            cmcpt = (cptfob * 20) / 100;
+            var cmcp = parseFloat(cmcpt).toFixed(2);
+            $('#RevisedCMValue').val(cmcp);
+            $('#RevisedFOBValue').val(cptfob);
+        });
 
+    });
+
+ </script>
 </asp:Content>

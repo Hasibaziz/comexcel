@@ -20,6 +20,11 @@
                 <li><a href="<%=Url.Content("~/Reportpvt/Index") %>"><span>Reports</span></a></li> 
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>         
               <%} %>
+               <%else if (GROUP == "Sales")
+             { %>
+                <li><a href="<%=Url.Content("~/Sales/Index") %>"><span>Sales Info</span></a></li>                             
+                <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>         
+              <%} %>
 
         </ul>
     </div>

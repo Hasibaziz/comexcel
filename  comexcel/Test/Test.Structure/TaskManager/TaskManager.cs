@@ -593,6 +593,14 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetSalesUpdateByInvoiceNo:
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GetSalesUpdateByInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetDuplicatesalesInvoiceno:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetDuplicatesalesInvoiceno(param);
+                    break;
+                case TestTask.AG_GetCSalesInvoiceSearchByNo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetCSalesInvoiceSearchByNo(param);
                     break; 
                 #endregion
 

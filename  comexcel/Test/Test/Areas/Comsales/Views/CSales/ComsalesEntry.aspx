@@ -22,6 +22,71 @@
     $(function () {
         $("#tabs").tabs();
     });
+    function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
+        if (data.isSuccess) {
+            $('<div></div>').html('Check! ' + data.message).dialog({
+                modal: true,
+                resizable: false,
+                title: "Alert",
+                dataType: "json",
+                width: 400,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            //alert("Check! " + data.message);
+        } else {
+            //alert("Save Successful");
+            //window.location.href = window.location.href;
+            $('<div></div>').html('Save Successful').dialog({
+                modal: true,
+                resizable: false,
+                title: "Success",
+                dataType: "json",
+                width: 200,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $("#OrderNo").val(" ");
+                        $("#InvoiceNo").val(" ");
+                        $("#StyleNo").val(" ");
+                        $("#ProductType").val(" ");
+                        $("#ExFactoryDate").val(" ");
+                        $("#CargorptDate").val(" ");
+                        $("#ShipbordingDate").val(" ");
+                        $("#SailinExBDDate").val(" ");
+                        $("#BLNo").val(" ");
+                        $("#BLDate").val(" ");
+                        $("#DocsendingDate").val(" ");
+                        $("#ETADate").val(" ");
+                        $("#RevQty").val(" ");
+                        $("#UnitPrice").val(" ");
+                        $("#RevisedFOBValue").val(" ");
+                        $("#RevisedCMValue").val(" ");
+                        $("#CartonQty").val(" ");
+                        $("#CBMValue").val(" ");
+                        $("#ExpNo").val(" ");
+                        $("#ExpDate").val(" ");
+                        $("#SBNo").val(" ");
+                        $("#EPNo").val(" ");
+                        $("#SBDate").val(" ");
+                        $("#VesselNo").val(" ");
+                        $("#VesselContractNo").val(" ");
+                        $("#AirFreightCost").val(" ");
+                        $("#Agent").val(" ");
+                        $("#Remarks").val(" ");
+
+                        $(this).dialog("close");
+                        $("#InvoiceNo").focus();
+                    }
+                }
+            });
+        }
+    }
     $('input#SInvoiceNo').keyup(function () {
             $('#InvoiceNo').val($(this).val());
     });
@@ -37,7 +102,7 @@
         Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  
      </div>
    </div>
-<% using (Html.BeginForm()) { %>
+<% using (Html.BeginForm("ComsalesEntry", "CSales", new { @id = "frmID" })) { %>
     <%: Html.ValidationSummary(true) %>   
         <%: Html.HiddenFor(model => model.ID)%>
 <div id="tabs">

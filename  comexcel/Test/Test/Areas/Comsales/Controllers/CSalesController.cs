@@ -150,38 +150,91 @@ namespace Test.Areas.Comsales.Controllers
             //return View("ComsalesEntryUpd", (object)_Model);
             return View("ComsalesEntryUpd", _Model);
         }
-      
+
 
 
         [HttpPost]
-        public JsonResult ComsalesEntry(ComsalesinfoEntity _Model)
+        public ActionResult ComsalesEntry(ComsalesinfoEntity _Model)
         {
+            var isSuccess = false;
+            var message = "";
+            _Model.UserName = CurrentUserName;
             try
             {
                 if (!ModelState.IsValid)
                 {
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    //return View(_Model);
                 }
 
-
+                _Model.CurrentDate = DateTime.Now.ToString();
                 bool isUpdate = false;
                 if (_Model.ID == null)
-                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveComsalesEntryInfo, _Model);
-                else
-                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateComsalesEntryInfo, _Model);
-                if (isUpdate)
                 {
-                    var addedModel = _Model;
-                    return Json(new { Result = "OK", Record = addedModel });
+                    if (DuplicatesalesInvoiceNo(_Model.InvoiceNo) != false)
+                    {
+                        //return Json(new { Result = "ERROR", Message = "The Invoice Number is already taken. Please choose another." });
+                        //return Json(new { result }, JsonRequestBehavior.AllowGet);
+                        isSuccess = true;
+                        message = "The Invoice Number is already taken. Please choose another.";
+                        var jsonData = new { isSuccess, message };
+                        return Json(jsonData);
+                    }
+                    else
+                    {
+                        isUpdate = (bool)ExecuteDB(TestTask.AG_SaveComsalesEntryInfo, _Model);
+                        return RedirectToAction("ComsalesEntry", "CSales");
+                    }
                 }
+                else if (_Model.ID != null)
+                {
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateComsalesEntryInfo, _Model);
+                    var addedModel = _Model;
+                    //return Json(new { Result = "OK", Record = addedModel });
+                    return RedirectToAction("ComsalesInfo", "CSales", addedModel);
+                }
+                //if (isUpdate)
+                //{
+                //    var addedModel = _Model;
+                //    //return Json(new { Result = "OK", Record = addedModel });
+                //    return RedirectToAction("ExportForm", "Private", addedModel);
+                //}
                 else
-                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+                    isSuccess = true;
+                message = "ERROR! Information failed to save";
+                var ERRORMSG = new { isSuccess, message };
+                return Json(ERRORMSG);
+                //return Json(new { Result = "ERROR", Message = "Information failed to save" });
+
             }
             catch (Exception ex)
             {
                 return Json(new { Result = "ERROR", Message = ex.Message });
+
             }
         }
+        /// <summary>
+        /// Dupliate Invoice value checking.
+        /// </summary>
+        /// <param name="invoiceno"></param>
+        /// <returns></returns>
+        public bool DuplicatesalesInvoiceNo(string invoiceno)
+        {
+            try
+            {
+                ExportformEntity obj = (ExportformEntity)GetDuplicatesalesInvoiceno(invoiceno);
+                //var obj1 = GetDupMail(UserID);                
+                if (obj.InvoiceNo == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         [HttpPost]
         public JsonResult InvoiceSearchByNo(string Invno, string consigneeid, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {

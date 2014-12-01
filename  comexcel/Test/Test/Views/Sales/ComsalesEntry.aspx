@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.ComsalesinfoEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ComsalesEntryUpd
+    ComsalesEntry
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
 
 <%--************-----------------For Client Side Validation-------------********************--%>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
@@ -23,9 +24,92 @@
     $(function () {
         $("#tabs").tabs();
     });
+    function frmSuccess(data) {  //Need this Reference: (" jquery.unobtrusive-ajax.js ")       
+        if (data.isSuccess) {
+            $('<div></div>').html('Check! ' + data.message).dialog({
+                modal: true,
+                resizable: false,
+                title: "Alert",
+                dataType: "json",
+                width: 400,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            //alert("Check! " + data.message);
+        } else {
+            //alert("Save Successful");
+            //window.location.href = window.location.href;
+            $('<div></div>').html('Save Successful').dialog({
+                modal: true,
+                resizable: false,
+                title: "Success",
+                dataType: "json",
+                width: 200,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $("#OrderNo").val(" ");
+                        $("#InvoiceNo").val(" ");
+                        $("#StyleNo").val(" ");
+                        $("#ProductType").val(" ");
+                        $("#ExFactoryDate").val(" ");
+                        $("#CargorptDate").val(" ");
+                        $("#ShipbordingDate").val(" ");
+                        $("#SailinExBDDate").val(" ");
+                        $("#BLNo").val(" ");
+                        $("#BLDate").val(" ");
+                        $("#DocsendingDate").val(" ");
+                        $("#ETADate").val(" ");
+                        $("#RevQty").val(" ");
+                        $("#UnitPrice").val(" ");
+                        $("#RevisedFOBValue").val(" ");
+                        $("#RevisedCMValue").val(" ");
+                        $("#CartonQty").val(" ");
+                        $("#CBMValue").val(" ");
+                        $("#ExpNo").val(" ");
+                        $("#ExpDate").val(" ");
+                        $("#SBNo").val(" ");
+                        $("#EPNo").val(" ");
+                        $("#SBDate").val(" ");
+                        $("#VesselNo").val(" ");
+                        $("#VesselContractNo").val(" ");
+                        $("#AirFreightCost").val(" ");
+                        $("#Agent").val(" ");
+                        $("#Remarks").val(" ");
+                       
+                        $(this).dialog("close");
+                        $("#InvoiceNo").focus();
+                    }
+                }
+            });
+        }
+    }
     $('input#SInvoiceNo').keyup(function () {
         $('#InvoiceNo').val($(this).val());
     });
+    $(document).ready(function () {
+        // Define a custom validation function.
+        //        $.validationEngineLanguage.allRules['test_value'] = {
+        //            "func": function (field, rules, i, options) {
+        //                return (field.val() == 'test');
+        //            },
+        //            "alertText": "* Value must be 'test'."
+        //        };
+
+        // Initiate the validation engine.
+        $('#frmSID').validationEngine();
+        $(function () {
+            $("#InvoiceNo option, #OrderNo option, #EPNo option").each(function () {
+                $(this).attr({ 'title': $(this).html() });
+            });
+        });
+    });
+   
 </script>
 
 
@@ -38,7 +122,7 @@
         Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  
      </div>
    </div>
-<% using (Html.BeginForm("ComsalesEntry", "CSales", new { @id = "frmID" }))
+<% using (Ajax.BeginForm("ComsalesEntry", "Sales", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new {@id = "frmSID" }))
    { %>
     <%: Html.ValidationSummary(true) %>   
         <%: Html.HiddenFor(model => model.ID)%>
@@ -54,14 +138,15 @@
             <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>            
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
+            <a id="Invoiceno" href="#"><span>Search</span></a>
         </div>
         <div class="editor-label01">            
             <label for="OrderNo">Order No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.OrderNo) %>
+            <%: Html.EditorFor(model => model.OrderNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.OrderNo) %>
         </div>
          <div class="editor-label01">           
@@ -150,14 +235,14 @@
             <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
         </div>
         <div class="editor-label01">            
-            <label for="ShipbordingDate">Ship Bording Date:</label>
+            <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ShipbordingDate) %>
             <%: Html.ValidationMessageFor(model => model.ShipbordingDate) %>
         </div>
          <div class="editor-label01">            
-            <label for="SailinExBDDate">Sailin/Ex-BD Date:</label>
+            <label for="SailinExBDDate">Sailing/Ex-BD Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.SailinExBDDate) %>
@@ -167,7 +252,7 @@
             <label for="EPNo">EP No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.EPNo) %>
+            <%: Html.TextBoxFor(model => model.EPNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.EPNo) %>
         </div>
         <div class="editor-label01">            
@@ -183,7 +268,7 @@
             <label for="BLNo">B/L No:</label>
         </div>        
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.BLNo) %>
+            <%: Html.TextBoxFor(model => model.BLNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.BLNo) %>
         </div>
         <div class="editor-label01">           
@@ -197,7 +282,7 @@
             <label for="ExpNo">Exp No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExpNo) %>
+            <%: Html.TextBoxFor(model => model.ExpNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ExpNo) %>
         </div>
 
@@ -229,7 +314,7 @@
             <label for="VesselNo">Vessel No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.VesselNo) %>
+            <%: Html.TextBoxFor(model => model.VesselNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.VesselNo) %>
         </div>
 
@@ -267,10 +352,92 @@
     </div>
 </div>   
     <p>
-        <input type="submit" id="Submit" class="btn btn-info btn-lg active" value="Update" />     
+        <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
         <input type="button" onclick="window.location='<%: Url.Action("ComsalesInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />
     </p>  
 <% } %>
 </div>
+<script type="text/javascript">
+    //    $('#Invoiceno').click(function () {
+    //        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $('#Invoiceno').attr("value"), function (data) {
+    //        });
+    //    });
+
+
+    $('#Invoiceno').change(function () {
+        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $("#Invoiceno  > option:selected").attr("value"), function (data) {
+            $("#Destination").html(data.CountryCode);
+            $("#Port").html(data.Port);
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    $('input#SInvoiceNo').change(function () {
+
+        $('#RecordsContainer').jtable({
+            paging: true,
+            pageSize: 5,
+            sorting: false,
+            title: 'Invoice Records',
+            defaultSorting: 'Name ASC',
+            actions: {
+                listAction: '/CSales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
+                //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
+            },
+            fields: {
+                ID: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                InvoiceNo: {
+                    title: 'Invoice No',
+                    width: '8%'
+                },
+                InvoiceDate: {
+                    title: 'Invoice Date',
+                    width: '10%'
+                },
+                ContractNo: {
+                    title: 'Contract No',
+                    width: '10%'
+                },
+                ContractDate: {
+                    title: 'Contract Date',
+                    width: '10%'
+                },
+                Quantity: {
+                    title: 'Quantity',
+                    width: '6%'
+                },
+                FOBValue: {
+                    title: 'FOB Value',
+                    width: '6%'
+                },
+                CMValue: {
+                    title: 'CM Value',
+                    width: '8%'
+                }
+            }
+        });
+        $('#RecordsContainer').jtable('load');
+    });   
+ </script>
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $('#RevisedFOBValue').change(function () {
+             var cptval = $(this).val();
+             var cptfob = parseFloat(cptval).toFixed(2);
+             cmcpt = (cptfob * 20) / 100;
+             var cmcp = parseFloat(cmcpt).toFixed(2);
+             $('#RevisedCMValue').val(cmcp);
+             $('#RevisedFOBValue').val(cptfob);            
+         });        
+
+     });
+
+ </script>
 
 </asp:Content>

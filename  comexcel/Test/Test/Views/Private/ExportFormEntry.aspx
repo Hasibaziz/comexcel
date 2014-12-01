@@ -81,12 +81,12 @@
                     $("#CPTFOBValue").val(" ");
                     $("#Freight").val(" ");
 
-                    $("#EPNo").val(data.EPNo);
-                    $("#ExpNo").val(data.ExpNo);
-                    $("#ExpDate").val(data.ExpDate);
-                    $("#BLNo").val(data.BLNo);
-                    $("#BLDate").val(data.BLDate);
-                    $("#ExFactoryDate").val(data.ExFactoryDate);
+                    $("#EPNo").val(" ");
+                    $("#ExpNo").val(" ");
+                    $("#ExpDate").val(" ");
+                    $("#BLNo").val(" ");
+                    $("#BLDate").val(" ");
+                    $("#ExFactoryDate").val(" ");
                     $(this).dialog("close");
                     $("#InvoiceNo").focus();
                 }
@@ -98,15 +98,34 @@
 <script type="text/javascript">
     //http://greatwebguy.com/programming/dom/setting-your-tabindex-on-your-html-forms-automatically-with-jquery/
     $(function () {
-        var tabindex = 1;
-        $('input,select').each(function () {
+        var tabindex = 1;        
+        $('input,select, textarea').each(function () {
             if (this.type != "hidden") {
                 var $input = $(this);
-                $input.attr("tabindex", tabindex);
+                $input.attr("tabindex", tabindex);                
                 tabindex++;
             }
         });
     });
+
+    $(document).ready(function () {
+        // Define a custom validation function.
+        //        $.validationEngineLanguage.allRules['test_value'] = {
+        //            "func": function (field, rules, i, options) {
+        //                return (field.val() == 'test');
+        //            },
+        //            "alertText": "* Value must be 'test'."
+        //        };
+
+        // Initiate the validation engine.
+        $('#frmID').validationEngine();
+        $(function () {
+            $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
+                $(this).attr({ 'title': $(this).html() });
+            });
+        });
+    });
+
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -117,7 +136,7 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new {@id = "frmID" }))
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new { @id = "frmID" }))
    { %>
     <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>
@@ -134,7 +153,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex=1})%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex = 1 })%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -142,7 +161,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  --%>
-            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]", tabindex = 2 })%>
             <%: Html.ValidationMessageFor(model => model.HSCode)%>
         </div>       
         <div class="editor-label01">
@@ -150,7 +169,7 @@
         </div>
         <div class="editor-field01">
            <%--<%: Html.DropDownListFor(model => model.HSCodesecond, (List<SelectListItem>)ViewData["HSs"], "Select HS Code", new { @readonly = "true" })%>  --%>
-           <%: Html.TextBoxFor(model => model.HSCodesecond)%>
+           <%: Html.TextBoxFor(model => model.HSCodesecond, new { tabindex = 3})%>
            <%-- <%: Html.ValidationMessageFor(model => model.HSCodeID)%>--%>
         </div>
         <div class="editor-label01">
@@ -158,7 +177,7 @@
         </div> 
         <div class="editor-field01">
             <%--<%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required, custom[test_value]]" })%>--%>
-            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]", tabindex = 4 })%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
@@ -172,14 +191,14 @@
           <label for="InvoiceDate">Invoice Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]", tabindex = 5 })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
         </div> 
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]", tabindex = 6 })%>
             <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
@@ -187,7 +206,7 @@
           <label for="ContractDate">Contract Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ContractDate)%>
+            <%: Html.EditorFor(model => model.ContractDate, new { tabindex = 7})%>
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
 <div class="New_Right_Begin"> 
@@ -298,7 +317,7 @@
           <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Quantity, new { tabindex = 2 })%>
+            <%: Html.TextBoxFor(model => model.Quantity, new { tabindex = 8 })%>
             <%: Html.ValidationMessageFor(model => model.Quantity)%>
         </div>
         <div class="editor-label01">
@@ -654,8 +673,12 @@
                 $("#Freight").prop("disabled", true);
             }
             else {
-                $("#CPT").hide();
-                $("#FOB").hide();
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
             }
         });
     });  

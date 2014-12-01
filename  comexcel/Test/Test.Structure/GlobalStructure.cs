@@ -213,6 +213,8 @@ namespace Test.Structure
         public const string AG_SaveComsalesEntryInfo = "AG_SaveComsalesEntryInfo";
         public const string AG_UpdateComsalesEntryInfo = "AG_UpdateComsalesEntryInfo";
         public const string AG_GetSalesUpdateByInvoiceNo = "AG_GetSalesUpdateByInvoiceNo";
+        public const string AG_GetDuplicatesalesInvoiceno = "AG_GetDuplicatesalesInvoiceno";
+        public const string AG_GetCSalesInvoiceSearchByNo = "AG_GetCSalesInvoiceSearchByNo";
         #endregion
 
     }
