@@ -52,7 +52,7 @@
             <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.InvoiceNo)%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true" })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
         </div>
         <div class="editor-label01">            
@@ -148,6 +148,13 @@
             <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
         </div>
         <div class="editor-label01">            
+            <label for="SInvoiceDate">Sales Invoice Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.SInvoiceDate)%>
+            <%: Html.ValidationMessageFor(model => model.SInvoiceDate)%>
+        </div>
+        <div class="editor-label01">            
             <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
@@ -232,7 +239,7 @@
         </div>
 
         <div class="editor-label01">           
-            <label for="VesselContractNo">Vessel Contract No:</label>
+            <label for="VesselContractNo">VesselContractNo/Truck No:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.VesselContractNo) %>
@@ -279,6 +286,15 @@
             var cmcp = parseFloat(cmcpt).toFixed(2);
             $('#RevisedCMValue').val(cmcp);
             $('#RevisedFOBValue').val(cptfob);
+        });
+        $('#SInvoiceNo').change(function () {
+            $('#InvoiceNo').val($(this).val());
+        });
+        $('#CargorptDate').change(function () {
+            $('#SInvoiceDate').val($(this).val());
+        });
+        $('#ShipbordingDate').change(function () {
+            $('#SailinExBDDate').val($(this).val());
         });
 
     });

@@ -121,7 +121,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new {style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex = 1 })%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -129,7 +129,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  --%>
-            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]", tabindex = 2 })%>
             <%: Html.ValidationMessageFor(model => model.HSCode)%>
         </div>       
         <div class="editor-label01">
@@ -145,7 +145,7 @@
         </div> 
         <div class="editor-field01">
             <%--<%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required, custom[test_value]]" })%>--%>
-            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]", tabindex = 3 })%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
@@ -159,14 +159,14 @@
           <label for="InvoiceDate">Invoice Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]", tabindex = 4 })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
         </div> 
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]", tabindex = 5 })%>
             <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
@@ -174,7 +174,7 @@
           <label for="ContractDate">Contract Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ContractDate)%>
+            <%: Html.TextBoxFor(model => model.ContractDate, new { tabindex = 6 })%>
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
 <div class="New_Right_Begin"> 
@@ -282,7 +282,7 @@
           <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Quantity)%>
+            <%: Html.TextBoxFor(model => model.Quantity, new { tabindex = 7 })%>
             <%: Html.ValidationMessageFor(model => model.Quantity)%>
         </div>
         <div class="editor-label01">
@@ -317,7 +317,7 @@
          <fieldset> 
           <legend>FOB/CFR/FCA Value</legend>       
             <div class="editor-field01">
-                <%: Html.EditorFor(model => model.FOBValue)%>
+                <%: Html.TextBoxFor(model => model.FOBValue, new { tabindex = 8 })%>
                 <%: Html.ValidationMessageFor(model => model.FOBValue)%>
             </div>
         </fieldset>
@@ -402,7 +402,7 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
+            <input type="submit" tabindex="9" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
            <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportFormApp") %>'" class="btn btn-default btn-lg" value="Cancel" />

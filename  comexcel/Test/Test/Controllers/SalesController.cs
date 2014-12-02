@@ -109,6 +109,7 @@ namespace Test.Controllers
                                 StyleNo = dr["StyleNo"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString(),
                                 CargorptDate = dr["CargorptDate"].ToString(),
+                                SInvoiceDate = dr["SInvoiceDate"].ToString(),
                                 ShipbordingDate = dr["ShipbordingDate"].ToString(),
                                 SailinExBDDate = dr["SailinExBDDate"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
@@ -169,6 +170,7 @@ namespace Test.Controllers
                     _Model.ProductType = dr["ProductType"].ToString();
                     _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
                     _Model.CargorptDate = dr["CargorptDate"].ToString();
+                    _Model.SInvoiceDate = dr["SInvoiceDate"].ToString();
                     _Model.ShipbordingDate = dr["ShipbordingDate"].ToString();
                     _Model.SailinExBDDate = dr["SailinExBDDate"].ToString();
                     _Model.BLNo = dr["BLNo"].ToString();
@@ -407,6 +409,7 @@ namespace Test.Controllers
                                 StyleNo = dr["StyleNo"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString(),
                                 CargorptDate = dr["CargorptDate"].ToString(),
+                                SInvoiceDate = dr["SInvoiceDate"].ToString(),
                                 ShipbordingDate = dr["ShipbordingDate"].ToString(),
                                 SailinExBDDate = dr["SailinExBDDate"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),

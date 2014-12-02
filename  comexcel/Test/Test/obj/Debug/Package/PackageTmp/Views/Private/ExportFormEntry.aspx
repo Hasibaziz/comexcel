@@ -81,12 +81,12 @@
                     $("#CPTFOBValue").val(" ");
                     $("#Freight").val(" ");
 
-                    $("#EPNo").val(data.EPNo);
-                    $("#ExpNo").val(data.ExpNo);
-                    $("#ExpDate").val(data.ExpDate);
-                    $("#BLNo").val(data.BLNo);
-                    $("#BLDate").val(data.BLDate);
-                    $("#ExFactoryDate").val(data.ExFactoryDate);
+                    $("#EPNo").val(" ");
+                    $("#ExpNo").val(" ");
+                    $("#ExpDate").val(" ");
+                    $("#BLNo").val(" ");
+                    $("#BLDate").val(" ");
+                    $("#ExFactoryDate").val(" ");
                     $(this).dialog("close");
                     $("#InvoiceNo").focus();
                 }
@@ -97,16 +97,35 @@
 </script>
 <script type="text/javascript">
     //http://greatwebguy.com/programming/dom/setting-your-tabindex-on-your-html-forms-automatically-with-jquery/
-    $(function () {
-        var tabindex = 1;
-        $('input,select').each(function () {
-            if (this.type != "hidden") {
-                var $input = $(this);
-                $input.attr("tabindex", tabindex);
-                tabindex++;
-            }
+//    $(function () {
+//        var tabindex = 1;        
+//        $('input,select, textarea').each(function () {
+//            if (this.type != "hidden") {
+//                var $input = $(this);
+//                $input.attr("tabindex", tabindex);                
+//                tabindex++;
+//            }
+//        });
+//    });
+
+    $(document).ready(function () {
+        // Define a custom validation function.
+        //        $.validationEngineLanguage.allRules['test_value'] = {
+        //            "func": function (field, rules, i, options) {
+        //                return (field.val() == 'test');
+        //            },
+        //            "alertText": "* Value must be 'test'."
+        //        };
+
+        // Initiate the validation engine.
+        $('#frmID').validationEngine();
+        $(function () {
+            $("#ExporterID option, #ConsigneeID option, #NotifyID option").each(function () {
+                $(this).attr({ 'title': $(this).html() });
+            });
         });
     });
+
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -117,7 +136,7 @@
      <div id="RecordsContainer"></div>
    </div>
 
-<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new {@id = "frmID" }))
+<% using (Ajax.BeginForm("ExportFormEntry", "Private", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new { @id = "frmID" }))
    { %>
     <%: Html.ValidationSummary(true)%>
         <%: Html.HiddenFor(model => model.ID)%>
@@ -134,7 +153,7 @@
           <label for="ContractNo">Item Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex=1})%>
+            <%: Html.TextAreaFor(model => model.ItemName, new { style = "width: 250px; height:50px;", cols = "25", rows = "5", @class = "validate[required]", tabindex = 1 })%>
             <%: Html.ValidationMessageFor(model => model.ItemName)%>
         </div>
         <div class="editor-label01">
@@ -142,7 +161,7 @@
         </div>
         <div class="editor-field01">
             <%--<%: Html.DropDownListFor(model => model.HSCodeID, (List<SelectListItem>)ViewData["HSCode"], "Select HS Code", new { @readonly = "true", @class = "validate[required]" })%>  --%>
-            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.HSCode, new { @class = "validate[required]", tabindex = 2 })%>
             <%: Html.ValidationMessageFor(model => model.HSCode)%>
         </div>       
         <div class="editor-label01">
@@ -158,7 +177,7 @@
         </div> 
         <div class="editor-field01">
             <%--<%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required, custom[test_value]]" })%>--%>
-            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]", tabindex = 3 })%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo", "Private", new { invoiceno = @Html.DisplayFor(model => model.InvoiceNo) }, null)%>--%>
             <%--<%: Html.ActionLink("Search", "ExporterFormSearchByInvoiceNo" + @Html.DisplayFor(model => model.Name))%>--%>
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
@@ -172,14 +191,14 @@
           <label for="InvoiceDate">Invoice Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceDate, new { @class = "validate[required]", tabindex = 4 })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceDate)%>
         </div> 
         <div class="editor-label01">
           <label for="ContractNo">Contract No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.ContractNo, new { style = "width: 200px; height:10px;", @class = "validate[required]", tabindex = 5 })%>
             <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
             <%: Html.ValidationMessageFor(model => model.ContractNo)%>
         </div>
@@ -187,7 +206,7 @@
           <label for="ContractDate">Contract Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ContractDate)%>
+            <%: Html.TextBoxFor(model => model.ContractDate, new { tabindex = 6 })%>
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
 <div class="New_Right_Begin"> 
@@ -195,7 +214,7 @@
           <label for="TTNo">TT No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.TTNo)%>
+            <%: Html.TextBoxFor(model => model.TTNo)%>
             <%: Html.ValidationMessageFor(model => model.TTNo)%>
             <p style="color: Green;" id="ttAmount" ></p>              
         </div>
@@ -209,7 +228,7 @@
           <label for="TTDate">TT Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.TTDate)%>
+            <%: Html.TextBoxFor(model => model.TTDate)%>
             <%: Html.ValidationMessageFor(model => model.TTDate)%>
         </div>     
         <div class="editor-label01">
@@ -298,7 +317,7 @@
           <label for="Volume">Quantity:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Quantity, new { tabindex = 2 })%>
+            <%: Html.TextBoxFor(model => model.Quantity, new { tabindex = 7 })%>
             <%: Html.ValidationMessageFor(model => model.Quantity)%>
         </div>
         <div class="editor-label01">
@@ -333,7 +352,7 @@
          <fieldset> 
           <legend>FOB/CFR/FCA Value</legend>       
             <div class="editor-field01">
-                <%: Html.EditorFor(model => model.FOBValue)%>
+                <%: Html.TextBoxFor(model => model.FOBValue, new { tabindex = 8 })%>
                 <%: Html.ValidationMessageFor(model => model.FOBValue)%>
             </div>
         </fieldset>
@@ -418,7 +437,7 @@
    </div>
    <div style="color:Red;"><span id="Message" ></span></div>     
         <p>
-            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
+            <input type="submit" tabindex="9" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
            <%-- <button type="submit" class="btn btn-primary btn-lg active">Save</button>  --%>                           
             <%--<input type="button" onclick="window.location='<%: Url.Action("ExportForm", new { id = Model.Id }) %>'"  value="Cancel" />    //Passing Parameters--%>
             <input type="button" onclick="window.location='<%: Url.Action("ExportForm") %>'" class="btn btn-default btn-lg" value="Cancel" />
@@ -644,7 +663,7 @@
                 $("#FOBValue").prop("disabled", true);
                 $("#CMValue").prop("disabled", true);
             }
-            else if (cpt == 1 || cpt == 3 || cpt == 5 ) {
+            else if (cpt == 1 || cpt == 3 || cpt == 5 || cpt == 8) {
                 $("#FOBValue").prop("disabled", false);
                 $("#CMValue").prop("disabled", false);
 
@@ -654,8 +673,12 @@
                 $("#Freight").prop("disabled", true);
             }
             else {
-                $("#CPT").hide();
-                $("#FOB").hide();
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
             }
         });
     });  

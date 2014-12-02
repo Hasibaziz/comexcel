@@ -37,6 +37,7 @@
                     "OK": function () {
                         //closeDialog($(this))
                         $(this).dialog("close");
+                        window.location = '<%: Url.Action("ComsalesInfo") %>'
                     }
                 }
             });
@@ -88,10 +89,7 @@
                 }
             });
         }
-    }
-    $('input#SInvoiceNo').keyup(function () {
-        $('#InvoiceNo').val($(this).val());
-    });
+    }   
     $(document).ready(function () {
         // Define a custom validation function.
         //        $.validationEngineLanguage.allRules['test_value'] = {
@@ -138,7 +136,7 @@
             <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @class = "validate[required]" })%>            
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true", @class = "validate[required]" })%>            
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
             <a id="Invoiceno" href="#"><span>Search</span></a>
         </div>
@@ -235,6 +233,13 @@
             <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
         </div>
         <div class="editor-label01">            
+            <label for="SInvoiceDate">Sales Invoice Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.SInvoiceDate, new { @readonly = "true" })%>
+            <%: Html.ValidationMessageFor(model => model.SInvoiceDate)%>
+        </div>
+        <div class="editor-label01">            
             <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
@@ -245,7 +250,7 @@
             <label for="SailinExBDDate">Sailing/Ex-BD Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SailinExBDDate) %>
+            <%: Html.TextBoxFor(model => model.SailinExBDDate, new { @readonly = "true" })%>
             <%: Html.ValidationMessageFor(model => model.SailinExBDDate) %>
         </div>
          <div class="editor-label01">            
@@ -255,15 +260,16 @@
             <%: Html.TextBoxFor(model => model.EPNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.EPNo) %>
         </div>
+       
+     </fieldset>
+<div class="New_Right_Begins">
         <div class="editor-label01">            
             <label for="ETADate">ETA Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ETADate) %>
             <%: Html.ValidationMessageFor(model => model.ETADate) %>
-        </div>
-     </fieldset>
-<div class="New_Right_Begins"> 
+        </div> 
         <div class="editor-label01">           
             <label for="BLNo">B/L No:</label>
         </div>        
@@ -319,7 +325,7 @@
         </div>
 
         <div class="editor-label01">           
-            <label for="VesselContractNo">Vessel Contract No:</label>
+            <label for="VesselContractNo">VesselContractNo/Truck No:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.VesselContractNo) %>
@@ -363,7 +369,6 @@
     //        });
     //    });
 
-
     $('#Invoiceno').change(function () {
         var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $("#Invoiceno  > option:selected").attr("value"), function (data) {
             $("#Destination").html(data.CountryCode);
@@ -374,55 +379,89 @@
 </script>
 <script type="text/javascript">
     $('input#SInvoiceNo').change(function () {
-
-        $('#RecordsContainer').jtable({
-            paging: true,
-            pageSize: 5,
-            sorting: false,
-            title: 'Invoice Records',
-            defaultSorting: 'Name ASC',
-            actions: {
-                listAction: '/CSales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
-                //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
-            },
-            fields: {
-                ID: {
-                    key: true,
-                    create: false,
-                    edit: false,
-                    list: false
-                },
-                InvoiceNo: {
-                    title: 'Invoice No',
-                    width: '8%'
-                },
-                InvoiceDate: {
-                    title: 'Invoice Date',
-                    width: '10%'
-                },
-                ContractNo: {
-                    title: 'Contract No',
-                    width: '10%'
-                },
-                ContractDate: {
-                    title: 'Contract Date',
-                    width: '10%'
-                },
-                Quantity: {
-                    title: 'Quantity',
-                    width: '6%'
-                },
-                FOBValue: {
-                    title: 'FOB Value',
-                    width: '6%'
-                },
-                CMValue: {
-                    title: 'CM Value',
-                    width: '8%'
+        var inv = $('#SInvoiceNo').val();        
+        if (inv == ""){
+             $('<div></div>').html('Please Insert Invoice Number!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 350,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                        window.location = '<%: Url.Action("ComsalesInfo") %>'
+                    }
                 }
-            }
-        });
-        $('#RecordsContainer').jtable('load');
+            });
+            //alert("Check! " + data.message);
+        } else{
+
+            $('#RecordsContainer').jtable({
+                paging: true,
+                pageSize: 5,
+                sorting: false,
+                title: 'Invoice Records',
+                defaultSorting: 'Name ASC',
+                actions: {
+                    listAction: '/CSales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
+                    //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    InvoiceNo: {
+                        title: 'Invoice No',
+                        width: '8%'
+                    },
+                    InvoiceDate: {
+                        title: 'Invoice Date',
+                        width: '10%'
+                    },
+                    ContractNo: {
+                        title: 'Contract No',
+                        width: '10%'
+                    },
+                    ContractDate: {
+                        title: 'Contract Date',
+                        width: '10%'
+                    },
+                    ExporterID: {
+                        title: 'Exporter',
+                        width: '6%',
+                        options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
+                    },
+                    ConsigneeID: {
+                        title: 'Consignee No',
+                        width: '10%',
+                        options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
+                    },
+                    TPort: {
+                        title: 'Local Port',
+                        width: '10%'
+                    },
+                    Quantity: {
+                        title: 'Quantity',
+                        width: '6%'
+                    },
+                    FOBValue: {
+                        title: 'FOB Value',
+                        width: '6%'
+                    },
+                    CMValue: {
+                        title: 'CM Value',
+                        width: '8%'
+                    }
+                }
+            });
+            $('#RecordsContainer').jtable('load');
+        }
     });   
  </script>
  <script type="text/javascript">
@@ -434,7 +473,16 @@
              var cmcp = parseFloat(cmcpt).toFixed(2);
              $('#RevisedCMValue').val(cmcp);
              $('#RevisedFOBValue').val(cptfob);            
-         });        
+         });
+         $('#SInvoiceNo').change(function () {
+             $('#InvoiceNo').val($(this).val());
+         });
+         $('#CargorptDate').change(function () {
+             $('#SInvoiceDate').val($(this).val());
+         });
+         $('#ShipbordingDate').change(function () {
+             $('#SailinExBDDate').val($(this).val());
+         });
 
      });
 

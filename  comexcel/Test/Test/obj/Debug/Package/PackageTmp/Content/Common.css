@@ -1549,14 +1549,19 @@ input[type="submit"],input[type="button"] {
     margin: -25em 50cm 0px .5cm;
     padding: 0em 0cm 0px 15cm;
  }
-  .New_Right_Begingspf
+.New_Right_Begingspf
 {
     margin: -25em 50cm 0px .5cm;
     padding: 0em 0cm 0px 15cm;
  }
-   .New_Right_Begintt
+.New_Right_Begintt
 {
     margin: -2em 50cm 0px .5cm;
+    padding: 0em 0cm 0px 15cm;
+ }
+.New_Right_Begins
+{
+    margin: -24em 50cm 0px .5cm;
     padding: 0em 0cm 0px 15cm;
  }
 .editor-label01 
