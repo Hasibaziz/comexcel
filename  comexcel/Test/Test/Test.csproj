@@ -136,6 +136,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportpvtController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\ShippingController.cs" />
     <Compile Include="DAL\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -465,6 +466,10 @@
     <Content Include="Views\Shared\ModuleHeader\DashBordHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\ModuleUserControl.ascx" />
     <Content Include="Views\Shared\ModuleMenu\Menu.ascx" />
+    <Content Include="Views\Shipping\Index.aspx" />
+    <Content Include="Views\Shipping\LeftMenu.ascx" />
+    <Content Include="Views\Shipping\ShippingformEntry.aspx" />
+    <Content Include="Views\Shipping\ShippingInfo.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

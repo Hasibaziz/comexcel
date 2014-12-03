@@ -106,33 +106,19 @@ namespace Test.Controllers
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 OrderNo = dr["OrderNo"].ToString(),
                                 ProductType = dr["ProductType"].ToString(),
-                                StyleNo = dr["StyleNo"].ToString(),
-                                ExFactoryDate = dr["ExFactoryDate"].ToString(),
-                                CargorptDate = dr["CargorptDate"].ToString(),
-                                SInvoiceDate = dr["SInvoiceDate"].ToString(),
-                                ShipbordingDate = dr["ShipbordingDate"].ToString(),
-                                SailinExBDDate = dr["SailinExBDDate"].ToString(),
+                                StyleNo = dr["StyleNo"].ToString(),                              
+                                ShipbordingDate = dr["ShipbordingDate"].ToString(),                             
                                 BLNo = dr["BLNo"].ToString(),
-                                BLDate = dr["BLDate"].ToString(),
-                                DocsendingDate = dr["DocsendingDate"].ToString(),
+                                BLDate = dr["BLDate"].ToString(),                             
 
                                 ETADate = dr["ETADate"].ToString(),
-                                UnitPrice = dr["UnitPrice"].ToString(),
-                                RevQty = dr["UnitPrice"].ToString(),
+                                RevQty = dr["RevQty"].ToString(),
                                 RevisedFOBValue = dr["RevisedFOBValue"].ToString(),
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                ExpNo = dr["ExpNo"].ToString(),
-                                ExpDate = dr["ExpDate"].ToString(),
-                                SBNo = dr["SBNo"].ToString(),
-                                EPNo = dr["EPNo"].ToString(),
-                                SBDate = dr["SBDate"].ToString(),
-                                VesselNo = dr["VesselNo"].ToString(),
-                                VesselContractNo = dr["VesselContractNo"].ToString(),
-                                AirFreightCost = dr["AirFreightCost"].ToString(),
-                                Agent = dr["Agent"].ToString(),
-                                Remarks = dr["Remarks"].ToString()
+                                TTLCTN = dr["TTLCTN"].ToString(),
+                                VesselName = dr["VesselName"].ToString()                               
                             });
                         }
                         iCount += 1;
@@ -167,32 +153,21 @@ namespace Test.Controllers
                     _Model.InvoiceNo = dr["InvoiceNo"].ToString();
                     _Model.OrderNo = dr["OrderNo"].ToString();
                     _Model.StyleNo = dr["StyleNo"].ToString();
-                    _Model.ProductType = dr["ProductType"].ToString();
-                    _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
-                    _Model.CargorptDate = dr["CargorptDate"].ToString();
-                    _Model.SInvoiceDate = dr["SInvoiceDate"].ToString();
+                    _Model.ProductType = dr["ProductType"].ToString();                   
                     _Model.ShipbordingDate = dr["ShipbordingDate"].ToString();
-                    _Model.SailinExBDDate = dr["SailinExBDDate"].ToString();
+                   
                     _Model.BLNo = dr["BLNo"].ToString();
                     _Model.BLDate = dr["BLDate"].ToString();
-                    _Model.DocsendingDate = dr["DocsendingDate"].ToString();
+                   
                     _Model.ETADate = dr["ETADate"].ToString();
                     _Model.RevQty = dr["RevQty"].ToString();
-                    _Model.UnitPrice = dr["UnitPrice"].ToString();
+                    
                     _Model.RevisedFOBValue = dr["RevisedFOBValue"].ToString();
                     _Model.RevisedCMValue = dr["RevisedCMValue"].ToString();
                     _Model.CartonQty = dr["CartonQty"].ToString();
                     _Model.CBMValue = dr["CBMValue"].ToString();
-                    _Model.ExpNo = dr["ExpNo"].ToString();
-                    _Model.ExpDate = dr["ExpDate"].ToString();
-                    _Model.SBNo = dr["SBNo"].ToString();
-                    _Model.EPNo = dr["EPNo"].ToString();
-                    _Model.SBDate = dr["SBDate"].ToString();
-                    _Model.VesselNo = dr["VesselNo"].ToString();
-                    _Model.VesselContractNo = dr["VesselContractNo"].ToString();
-                    _Model.AirFreightCost = dr["AirFreightCost"].ToString();
-                    _Model.Agent = dr["Agent"].ToString();
-                    _Model.Remarks = dr["Remarks"].ToString();
+                    _Model.TTLCTN = dr["TTLCTN"].ToString();
+                    _Model.VesselName = dr["VesselName"].ToString();                   
                 }
             }
             else
@@ -220,16 +195,16 @@ namespace Test.Controllers
         {
             var isSuccess = false;
             var message = "";
-            _Model.UserName = CurrentUserName;           
+            _Model.UserName = CurrentUserName;
+            _Model.CurrentDate = DateTime.Now.ToString();
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    isSuccess = true;
+                    return Json(new { isSuccess, message = "Form is not valid! Please correct it and try again." });
                     //return View(_Model);
-                }
-
-                _Model.CurrentDate = DateTime.Now.ToString();
+                }                
                 bool isUpdate = false;
                 if (_Model.ID == null)
                 {
@@ -407,32 +382,18 @@ namespace Test.Controllers
                                 OrderNo = dr["OrderNo"].ToString(),
                                 ProductType = dr["ProductType"].ToString(),
                                 StyleNo = dr["StyleNo"].ToString(),
-                                ExFactoryDate = dr["ExFactoryDate"].ToString(),
-                                CargorptDate = dr["CargorptDate"].ToString(),
-                                SInvoiceDate = dr["SInvoiceDate"].ToString(),
                                 ShipbordingDate = dr["ShipbordingDate"].ToString(),
-                                SailinExBDDate = dr["SailinExBDDate"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLDate"].ToString(),
-                                DocsendingDate = dr["DocsendingDate"].ToString(),
 
                                 ETADate = dr["ETADate"].ToString(),
-                                UnitPrice = dr["UnitPrice"].ToString(),
-                                RevQty = dr["UnitPrice"].ToString(),
+                                RevQty = dr["RevQty"].ToString(),
                                 RevisedFOBValue = dr["RevisedFOBValue"].ToString(),
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                ExpNo = dr["ExpNo"].ToString(),
-                                ExpDate = dr["ExpDate"].ToString(),
-                                SBNo = dr["SBNo"].ToString(),
-                                EPNo = dr["EPNo"].ToString(),
-                                SBDate = dr["SBDate"].ToString(),
-                                VesselNo = dr["VesselNo"].ToString(),
-                                VesselContractNo = dr["VesselContractNo"].ToString(),
-                                AirFreightCost = dr["AirFreightCost"].ToString(),
-                                Agent = dr["Agent"].ToString(),
-                                Remarks = dr["Remarks"].ToString()
+                                TTLCTN = dr["TTLCTN"].ToString(),
+                                VesselName = dr["VesselName"].ToString() 
                             });
                         }
                         iCount += 1;

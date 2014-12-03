@@ -604,6 +604,36 @@ namespace Test.Structure.TaskManager
                     break; 
                 #endregion
 
+                    //// 
+                    /// Shipping Team Information***
+                /// 
+                #region Auto Generated - ShippingInfoRecord
+                case TestTask.AG_GetShippingInfoRecord:
+                    ShippingInfoBLL sppBLL = null;
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.GetShippingInfoRecord(param);
+                    break;
+                //case TestTask.AG_SaveComsalesEntryInfo:
+                //    csBLL = new CommsalesinfoBLL();
+                //    return csBLL.SaveComsalesEntryInfo(param);
+                //    break;
+                //case TestTask.AG_UpdateComsalesEntryInfo:
+                //    csBLL = new CommsalesinfoBLL();
+                //    return csBLL.UpdateComsalesEntryInfo(param);
+                //    break;
+                //case TestTask.AG_GetSalesUpdateByInvoiceNo:
+                //    csBLL = new CommsalesinfoBLL();
+                //    return csBLL.GetSalesUpdateByInvoiceNo(param);
+                //    break;
+                //case TestTask.AG_GetDuplicatesalesInvoiceno:
+                //    csBLL = new CommsalesinfoBLL();
+                //    return csBLL.GetDuplicatesalesInvoiceno(param);
+                //    break;
+                //case TestTask.AG_GetCSalesInvoiceSearchByNo:
+                //    csBLL = new CommsalesinfoBLL();
+                //    return csBLL.GetCSalesInvoiceSearchByNo(param);
+                //    break;
+                #endregion
 
 
                 default:

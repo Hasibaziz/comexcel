@@ -508,6 +508,7 @@ namespace Test.Controllers
             var isSuccess = false;
             var message = "";
             _Model.UserName = CurrentUserName;
+            _Model.CurrentDate = DateTime.Now.ToString();
             if (_Model.CPTValue != null)
             {
                 _Model.FOBValue = _Model.CPTValue;
@@ -517,53 +518,53 @@ namespace Test.Controllers
             {               
                 if (!ModelState.IsValid)
                 {
-                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                    isSuccess = true;
+                    return Json(new { Result = "ERROR", message = "Form is not valid! Please correct it and try again." });
                     //return View(_Model);
-                }
-
-                _Model.CurrentDate = DateTime.Now.ToString();
+                }               
                 bool isUpdate = false;
                 if (_Model.ID == null)
                 {
                     if (DuplicateInvoiceNo(_Model.InvoiceNo) != false)
-                    {
-                        //return Json(new { Result = "ERROR", Message = "The Invoice Number is already taken. Please choose another." });
-                        //return Json(new { result }, JsonRequestBehavior.AllowGet);
+                    {                        
                          isSuccess = true;
                          message = "The Invoice Number is already taken. Please choose another.";
                          var jsonData = new { isSuccess, message };
-                         return Json(jsonData);
+                         return Json(jsonData);                        
                        }
                     else
                     {
                         isUpdate = (bool)ExecuteDB(TestTask.AG_SaveExportFormEntryRecord, _Model);
-                        return RedirectToAction("ExportFormEntry", "Private");
+                        //return RedirectToAction("ExportFormEntry", "Private");
                     }
+                    return RedirectToAction("ExportFormEntry", "Private");
                 }
                 else if (_Model.ID != null)
                 {
                     isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateExportFormEntryRecord, _Model);
                     var addedModel = _Model;
-                    //return Json(new { Result = "OK", Record = addedModel });
                     return RedirectToAction("ExportForm", "Private", addedModel);
                 }
                 //if (isUpdate)
                 //{
                 //    var addedModel = _Model;
                 //    //return Json(new { Result = "OK", Record = addedModel });
-                //    return RedirectToAction("ExportForm", "Private", addedModel);
+                //    return RedirectToAction("ExportFormEntry", "Private", addedModel);
                 //}
                 else
+                {
                     isSuccess = true;
                     message = "ERROR! Information failed to save";
                     var ERRORMSG = new { isSuccess, message };
                     return Json(ERRORMSG);
                     //return Json(new { Result = "ERROR", Message = "Information failed to save" });
+                }
 
             }
             catch (Exception ex)
             {
-               return Json(new { Result = "ERROR", Message = ex.Message });
+               isSuccess = true;
+               return Json(new { isSuccess, message = ex.Message });
                
             }
         }

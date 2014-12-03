@@ -96,6 +96,7 @@
     <Compile Include="Model\LocationEntity.cs" />
     <Compile Include="Model\ModeinfoEntity.cs" />
     <Compile Include="Model\NotifypartyEntity.cs" />
+    <Compile Include="Model\ShippinginfoEntity.cs" />
     <Compile Include="Model\TranshipmentEntity.cs" />
     <Compile Include="Model\TrServicedetailsEntity.cs" />
     <Compile Include="Model\TrServicemasterEntity.cs" />

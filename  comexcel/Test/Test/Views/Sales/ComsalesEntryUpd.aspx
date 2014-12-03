@@ -44,22 +44,22 @@
         <ul>
         <li><a href="#tabs-1">Item Info Entry</a></li>
         <li><a href="#tabs-2">Quantity & Value</a></li>  
-        <li><a href="#tabs-3">Shipment Status Info</a></li>  
-        <li><a href="#tabs-4">Vassel Info</a></li>    
+        <li><a href="#tabs-3">Shipment Status Info</a></li>          
         </ul>
     <div id="tabs-1">
         <div class="editor-label01">           
             <label for="InvoiceNo">Invoice No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true" })%>
+            <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true", @class = "validate[required]" })%>            
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
+            <a id="Invoiceno" href="#"><span>Search</span></a>
         </div>
         <div class="editor-label01">            
             <label for="OrderNo">Order No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.OrderNo) %>
+            <%: Html.EditorFor(model => model.OrderNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.OrderNo) %>
         </div>
          <div class="editor-label01">           
@@ -92,14 +92,7 @@
             <%: Html.EditorFor(model => model.CartonQty) %>
             <%: Html.ValidationMessageFor(model => model.CartonQty) %>
         </div>
-
-        <div class="editor-label01">            
-            <label for="UnitPrice">Unit Price:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.UnitPrice) %>
-            <%: Html.ValidationMessageFor(model => model.UnitPrice) %>
-        </div>
+       
         <div class="editor-label01">            
             <label for="RevisedFOBValue">Revised FOB Value:</label>
         </div>
@@ -127,68 +120,39 @@
       <fieldset>
         <legend>Shipment Status Entry</legend>
          <div class="editor-label01">           
-            <label for="DocsendingDate">Doc Sending Date:</label>
+            <label for="CBMValue">CBM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.DocsendingDate) %>
-            <%: Html.ValidationMessageFor(model => model.DocsendingDate) %>
+            <%: Html.EditorFor(model => model.CBMValue)%>
+            <%: Html.ValidationMessageFor(model => model.CBMValue)%>
         </div>
         <div class="editor-label01">            
-            <label for="ExFactoryDate">Ex-Factory Date:</label>
+            <label for="TTLCTN">TTL CTN:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExFactoryDate) %>
-            <%: Html.ValidationMessageFor(model => model.ExFactoryDate) %>
+            <%: Html.EditorFor(model => model.TTLCTN)%>
+            <%: Html.ValidationMessageFor(model => model.TTLCTN)%>
         </div>
         <div class="editor-label01">            
-            <label for="CargorptDate">Cargo Receive Date:</label>
+            <label for="VesselName">Vessel Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CargorptDate) %>
-            <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
-        </div>
-        <div class="editor-label01">            
-            <label for="SInvoiceDate">Sales Invoice Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SInvoiceDate)%>
-            <%: Html.ValidationMessageFor(model => model.SInvoiceDate)%>
-        </div>
+            <%: Html.EditorFor(model => model.VesselName)%>
+            <%: Html.ValidationMessageFor(model => model.VesselName)%>
+        </div>        
         <div class="editor-label01">            
             <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ShipbordingDate) %>
             <%: Html.ValidationMessageFor(model => model.ShipbordingDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="SailinExBDDate">Sailing/Ex-BD Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SailinExBDDate) %>
-            <%: Html.ValidationMessageFor(model => model.SailinExBDDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="EPNo">EP No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.EPNo) %>
-            <%: Html.ValidationMessageFor(model => model.EPNo) %>
-        </div>
-        <div class="editor-label01">            
-            <label for="ETADate">ETA Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ETADate) %>
-            <%: Html.ValidationMessageFor(model => model.ETADate) %>
-        </div>
-     </fieldset>
-<div class="New_Right_Begins"> 
+        </div>        
+               
         <div class="editor-label01">           
             <label for="BLNo">B/L No:</label>
         </div>        
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.BLNo) %>
+            <%: Html.TextBoxFor(model => model.BLNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.BLNo) %>
         </div>
         <div class="editor-label01">           
@@ -197,79 +161,9 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.BLDate) %>
             <%: Html.ValidationMessageFor(model => model.BLDate) %>
-        </div>         
-        <div class="editor-label01">            
-            <label for="ExpNo">Exp No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExpNo) %>
-            <%: Html.ValidationMessageFor(model => model.ExpNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="ExpDate">Exp Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExpDate) %>
-            <%: Html.ValidationMessageFor(model => model.ExpDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="SBNo">SB No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBNo) %>
-            <%: Html.ValidationMessageFor(model => model.SBNo) %>
-        </div>
-        <div class="editor-label01">           
-             <label for="SBDate">SB Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBDate) %>
-            <%: Html.ValidationMessageFor(model => model.SBDate) %>
-        </div>
-</div>        
-    </div>
-    <div id="tabs-4">
-         <div class="editor-label01">            
-            <label for="VesselNo">Vessel No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.VesselNo) %>
-            <%: Html.ValidationMessageFor(model => model.VesselNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="VesselContractNo">VesselContractNo/Truck No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.VesselContractNo) %>
-            <%: Html.ValidationMessageFor(model => model.VesselContractNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="AirFreightCost">Air Freight Cost:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.AirFreightCost) %>
-            <%: Html.ValidationMessageFor(model => model.AirFreightCost) %>
-        </div>
-
-        <div class="editor-label01">            
-            <label for="Agent">Agent:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Agent) %>
-            <%: Html.ValidationMessageFor(model => model.Agent) %>
-        </div>
-
-        <div class="editor-label01">            
-            <label for="Remarks">Remarks:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.Remarks)%>
-            <%: Html.ValidationMessageFor(model => model.Remarks) %>
-        </div>    
-    </div>
+        </div>      
+ 
+    </div>   
 </div>   
     <p>
         <input type="submit" id="Submit" class="btn btn-info btn-lg active" value="Update" />     

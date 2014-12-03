@@ -31,8 +31,8 @@
                 resizable: false,
                 title: "Alert",
                 dataType: "json",
-                width: 400,
-                height: 155,
+                width: 430,
+                height: 160,
                 buttons: {
                     "OK": function () {
                         //closeDialog($(this))
@@ -58,30 +58,21 @@
                         $("#InvoiceNo").val(" ");
                         $("#StyleNo").val(" ");
                         $("#ProductType").val(" ");
-                        $("#ExFactoryDate").val(" ");
-                        $("#CargorptDate").val(" ");
+                       
                         $("#ShipbordingDate").val(" ");
-                        $("#SailinExBDDate").val(" ");
+                       
                         $("#BLNo").val(" ");
                         $("#BLDate").val(" ");
-                        $("#DocsendingDate").val(" ");
-                        $("#ETADate").val(" ");
+                       
                         $("#RevQty").val(" ");
-                        $("#UnitPrice").val(" ");
+                       
                         $("#RevisedFOBValue").val(" ");
                         $("#RevisedCMValue").val(" ");
                         $("#CartonQty").val(" ");
                         $("#CBMValue").val(" ");
-                        $("#ExpNo").val(" ");
-                        $("#ExpDate").val(" ");
-                        $("#SBNo").val(" ");
-                        $("#EPNo").val(" ");
-                        $("#SBDate").val(" ");
-                        $("#VesselNo").val(" ");
-                        $("#VesselContractNo").val(" ");
-                        $("#AirFreightCost").val(" ");
-                        $("#Agent").val(" ");
-                        $("#Remarks").val(" ");
+                        $("#TTLCTN").val(" ");
+                        $("#VesselName").val(" ");                      
+                                               
                        
                         $(this).dialog("close");
                         $("#InvoiceNo").focus();
@@ -128,8 +119,7 @@
         <ul>
         <li><a href="#tabs-1">Item Info Entry</a></li>
         <li><a href="#tabs-2">Quantity & Value</a></li>  
-        <li><a href="#tabs-3">Shipment Status Info</a></li>  
-        <li><a href="#tabs-4">Vassel Info</a></li>    
+        <li><a href="#tabs-3">Shipment Status Info</a></li>          
         </ul>
     <div id="tabs-1">
         <div class="editor-label01">           
@@ -177,14 +167,7 @@
             <%: Html.EditorFor(model => model.CartonQty) %>
             <%: Html.ValidationMessageFor(model => model.CartonQty) %>
         </div>
-
-        <div class="editor-label01">            
-            <label for="UnitPrice">Unit Price:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.UnitPrice) %>
-            <%: Html.ValidationMessageFor(model => model.UnitPrice) %>
-        </div>
+       
         <div class="editor-label01">            
             <label for="RevisedFOBValue">Revised FOB Value:</label>
         </div>
@@ -197,7 +180,7 @@
             <label for="RevisedCMValue">Revised CM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.RevisedCMValue) %>
+            <%: Html.TextBoxFor(model => model.RevisedCMValue, new { @readonly = "true" })%>
             <%: Html.ValidationMessageFor(model => model.RevisedCMValue) %>
         </div>
          <div class="editor-label01">           
@@ -212,64 +195,34 @@
       <fieldset>
         <legend>Shipment Status Entry</legend>
          <div class="editor-label01">           
-            <label for="DocsendingDate">Doc Sending Date:</label>
+            <label for="CBMValue">CBM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.DocsendingDate) %>
-            <%: Html.ValidationMessageFor(model => model.DocsendingDate) %>
+            <%: Html.EditorFor(model => model.CBMValue)%>
+            <%: Html.ValidationMessageFor(model => model.CBMValue)%>
         </div>
         <div class="editor-label01">            
-            <label for="ExFactoryDate">Ex-Factory Date:</label>
+            <label for="TTLCTN">TTL CTN:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExFactoryDate) %>
-            <%: Html.ValidationMessageFor(model => model.ExFactoryDate) %>
+            <%: Html.EditorFor(model => model.TTLCTN)%>
+            <%: Html.ValidationMessageFor(model => model.TTLCTN)%>
         </div>
         <div class="editor-label01">            
-            <label for="CargorptDate">Cargo Receive Date:</label>
+            <label for="VesselName">Vessel Name:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CargorptDate) %>
-            <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
-        </div>
-        <div class="editor-label01">            
-            <label for="SInvoiceDate">Sales Invoice Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.SInvoiceDate, new { @readonly = "true" })%>
-            <%: Html.ValidationMessageFor(model => model.SInvoiceDate)%>
-        </div>
+            <%: Html.EditorFor(model => model.VesselName)%>
+            <%: Html.ValidationMessageFor(model => model.VesselName)%>
+        </div>        
         <div class="editor-label01">            
             <label for="ShipbordingDate">Shipped on Board Date:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ShipbordingDate) %>
             <%: Html.ValidationMessageFor(model => model.ShipbordingDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="SailinExBDDate">Sailing/Ex-BD Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.SailinExBDDate, new { @readonly = "true" })%>
-            <%: Html.ValidationMessageFor(model => model.SailinExBDDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="EPNo">EP No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.EPNo, new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.EPNo) %>
-        </div>
-       
-     </fieldset>
-<div class="New_Right_Begins">
-        <div class="editor-label01">            
-            <label for="ETADate">ETA Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ETADate) %>
-            <%: Html.ValidationMessageFor(model => model.ETADate) %>
-        </div> 
+        </div>        
+               
         <div class="editor-label01">           
             <label for="BLNo">B/L No:</label>
         </div>        
@@ -283,79 +236,9 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.BLDate) %>
             <%: Html.ValidationMessageFor(model => model.BLDate) %>
-        </div>         
-        <div class="editor-label01">            
-            <label for="ExpNo">Exp No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.ExpNo, new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.ExpNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="ExpDate">Exp Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.ExpDate) %>
-            <%: Html.ValidationMessageFor(model => model.ExpDate) %>
-        </div>
-         <div class="editor-label01">            
-            <label for="SBNo">SB No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBNo) %>
-            <%: Html.ValidationMessageFor(model => model.SBNo) %>
-        </div>
-        <div class="editor-label01">           
-             <label for="SBDate">SB Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBDate) %>
-            <%: Html.ValidationMessageFor(model => model.SBDate) %>
-        </div>
-</div>        
-    </div>
-    <div id="tabs-4">
-         <div class="editor-label01">            
-            <label for="VesselNo">Vessel No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.VesselNo, new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.VesselNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="VesselContractNo">VesselContractNo/Truck No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.VesselContractNo) %>
-            <%: Html.ValidationMessageFor(model => model.VesselContractNo) %>
-        </div>
-
-        <div class="editor-label01">           
-            <label for="AirFreightCost">Air Freight Cost:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.AirFreightCost) %>
-            <%: Html.ValidationMessageFor(model => model.AirFreightCost) %>
-        </div>
-
-        <div class="editor-label01">            
-            <label for="Agent">Agent:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.Agent) %>
-            <%: Html.ValidationMessageFor(model => model.Agent) %>
-        </div>
-
-        <div class="editor-label01">            
-            <label for="Remarks">Remarks:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextAreaFor(model => model.Remarks)%>
-            <%: Html.ValidationMessageFor(model => model.Remarks) %>
-        </div>    
-    </div>
+        </div>      
+   </fieldset>
+    </div>   
 </div>   
     <p>
         <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
@@ -369,12 +252,12 @@
     //        });
     //    });
 
-    $('#Invoiceno').change(function () {
-        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $("#Invoiceno  > option:selected").attr("value"), function (data) {
-            $("#Destination").html(data.CountryCode);
-            $("#Port").html(data.Port);
-        });
-    });
+//    $('#Invoiceno').change(function () {
+//        var Result = $.post('<%: ResolveUrl("~/CSales/ComsalesEntryUpdByInvoiceNo?ID=")%>' + $("#Invoiceno  > option:selected").attr("value"), function (data) {
+//            $("#Destination").html(data.CountryCode);
+//            $("#Port").html(data.Port);
+//        });
+//    });
 
 </script>
 <script type="text/javascript">

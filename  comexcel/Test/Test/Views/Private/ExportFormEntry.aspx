@@ -31,12 +31,13 @@
                 resizable: false,
                 title:"Alert",
                 dataType: "json",
-                width: 400,
-                height: 155,
+                width: 430,
+                height: 160,
                 buttons: {
                     "OK": function () {
                         //closeDialog($(this))
                         $(this).dialog("close");
+                        //window.location = '<%: Url.Action("ExportFormEntry") %>'
                     }
                 }
                         });
