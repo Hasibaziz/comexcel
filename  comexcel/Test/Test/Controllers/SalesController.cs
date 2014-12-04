@@ -282,7 +282,7 @@ namespace Test.Controllers
                     ExportformEntity _Model = new ExportformEntity();
                     _Model.InvoiceNo = Invno;
                     _Model.ConsigneeID = consigneeid;
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNo, _Model);
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetSalesEntryInvoiceSearchByNo, _Model);
                     List<ExportformEntity> ItemList = null;
                     ItemList = new List<ExportformEntity>();
                     int iCount = 0;
@@ -333,9 +333,7 @@ namespace Test.Controllers
 
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
-                                EPNo = dr["EPNo"].ToString(),
-                                BLNo = dr["BLNo"].ToString(),
-                                BLDate = dr["BLNo"].ToString(),
+                                EPNo = dr["EPNo"].ToString(),                               
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }

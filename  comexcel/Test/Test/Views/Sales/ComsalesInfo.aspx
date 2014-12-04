@@ -121,10 +121,6 @@
                 RevisedCMValue: {
                     title: 'R C.M.',
                     width: '8%'
-                },
-                ExFactoryDate: {
-                    title: 'Ex-Factory',
-                    width: '8%'
                 }
             }
         });

@@ -289,7 +289,7 @@
                 title: 'Invoice Records',
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '/CSales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
+                    listAction: '/Sales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
                     //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
                 },
                 fields: {
@@ -339,6 +339,10 @@
                     },
                     CMValue: {
                         title: 'CM Value',
+                        width: '8%'
+                    },                   
+                    ExFactoryDate: {
+                        title: 'Ex-Factory',
                         width: '8%'
                     }
                 }

@@ -46,7 +46,7 @@
                     title: 'Invoice No',
                     width: '8%',
                     display: function (data) {
-                        return '<a href="/Shipping/ComsalesEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        return '<a href="/Shipping/ShippingformEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
                 EPNo: {
@@ -84,6 +84,10 @@
                 ExFactoryDate: {
                     title: 'Ex-Factory Date',
                     width: '10%'
+                },
+                ExFactoryDate: {
+                    title: 'Ex-Factory Date',
+                    width: '10%'
                 }
                 
             }
@@ -99,7 +103,7 @@
             title: 'Invoice List for Sales',
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '/Sales/CSalesInvoiceSearchByNo?InvNo=' + $("#InvoiceNo").val()
+                listAction: '/Shipping/ShippingInvoiceSearchByNo?InvNo=' + $("#InvoiceNo").val()
                 //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
             },
             fields: {
@@ -113,7 +117,7 @@
                     title: 'Invoice No',
                     width: '8%',
                     display: function (data) {
-                        return '<a href="/Sales/ComsalesEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        return '<a href="/Shipping/ShippingformEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
                 EPNo: {

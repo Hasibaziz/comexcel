@@ -601,6 +601,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetCSalesInvoiceSearchByNo:
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GetCSalesInvoiceSearchByNo(param);
+                    break;
+                case TestTask.AG_GetSalesEntryInvoiceSearchByNo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetSalesEntryInvoiceSearchByNo(param);
                     break; 
                 #endregion
 
@@ -613,26 +617,26 @@ namespace Test.Structure.TaskManager
                     sppBLL = new ShippingInfoBLL();
                     return sppBLL.GetShippingInfoRecord(param);
                     break;
-                //case TestTask.AG_SaveComsalesEntryInfo:
-                //    csBLL = new CommsalesinfoBLL();
-                //    return csBLL.SaveComsalesEntryInfo(param);
-                //    break;
-                //case TestTask.AG_UpdateComsalesEntryInfo:
-                //    csBLL = new CommsalesinfoBLL();
-                //    return csBLL.UpdateComsalesEntryInfo(param);
-                //    break;
-                //case TestTask.AG_GetSalesUpdateByInvoiceNo:
-                //    csBLL = new CommsalesinfoBLL();
-                //    return csBLL.GetSalesUpdateByInvoiceNo(param);
-                //    break;
-                //case TestTask.AG_GetDuplicatesalesInvoiceno:
-                //    csBLL = new CommsalesinfoBLL();
-                //    return csBLL.GetDuplicatesalesInvoiceno(param);
-                //    break;
-                //case TestTask.AG_GetCSalesInvoiceSearchByNo:
-                //    csBLL = new CommsalesinfoBLL();
-                //    return csBLL.GetCSalesInvoiceSearchByNo(param);
-                //    break;
+                case TestTask.AG_SaveShippingformEntry:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.SaveShippingformEntry(param);
+                    break;
+                case TestTask.AG_UpdateShippingformEntry:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.UpdateShippingformEntry(param);
+                    break;
+                case TestTask.AG_GetShippingInvoiceSearchByNo:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.GetShippingInvoiceSearchByNo(param);
+                    break;
+                case TestTask.AG_GetDuplicateshipInvoiceNo:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.GetDuplicateshipInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetShippingformEntryUpdByInvoiceNo:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.GetShippingformEntryUpdByInvoiceNo(param);
+                    break;
                 #endregion
 
 

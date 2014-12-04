@@ -469,6 +469,7 @@
     <Content Include="Views\Shipping\Index.aspx" />
     <Content Include="Views\Shipping\LeftMenu.ascx" />
     <Content Include="Views\Shipping\ShippingformEntry.aspx" />
+    <Content Include="Views\Shipping\ShippingformEntryUpd.aspx" />
     <Content Include="Views\Shipping\ShippingInfo.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

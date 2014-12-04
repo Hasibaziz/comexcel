@@ -215,6 +215,7 @@ namespace Test.Structure
         public const string AG_GetSalesUpdateByInvoiceNo = "AG_GetSalesUpdateByInvoiceNo";
         public const string AG_GetDuplicatesalesInvoiceno = "AG_GetDuplicatesalesInvoiceno";
         public const string AG_GetCSalesInvoiceSearchByNo = "AG_GetCSalesInvoiceSearchByNo";
+        public const string AG_GetSalesEntryInvoiceSearchByNo = "AG_GetSalesEntryInvoiceSearchByNo";
         #endregion
 
         /// <summary>
@@ -223,11 +224,11 @@ namespace Test.Structure
 
         #region Auto Generated - AG_GetShippingInfoRecord.
         public const string AG_GetShippingInfoRecord = "AG_GetShippingInfoRecord";
-        //public const string AG_SaveComsalesEntryInfo = "AG_SaveComsalesEntryInfo";
-        //public const string AG_UpdateComsalesEntryInfo = "AG_UpdateComsalesEntryInfo";
-        //public const string AG_GetSalesUpdateByInvoiceNo = "AG_GetSalesUpdateByInvoiceNo";
-        //public const string AG_GetDuplicatesalesInvoiceno = "AG_GetDuplicatesalesInvoiceno";
-        //public const string AG_GetCSalesInvoiceSearchByNo = "AG_GetCSalesInvoiceSearchByNo";
+        public const string AG_SaveShippingformEntry = "AG_SaveShippingformEntry";
+        public const string AG_UpdateShippingformEntry = "AG_UpdateShippingformEntry";
+        public const string AG_GetShippingInvoiceSearchByNo = "AG_GetShippingInvoiceSearchByNo";
+        public const string AG_GetDuplicateshipInvoiceNo = "AG_GetDuplicateshipInvoiceNo";
+        public const string AG_GetShippingformEntryUpdByInvoiceNo = "AG_GetShippingformEntryUpdByInvoiceNo";
         #endregion
 
     }
