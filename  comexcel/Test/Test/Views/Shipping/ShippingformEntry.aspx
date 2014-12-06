@@ -56,28 +56,23 @@
                 buttons: {
                     "OK": function () {
                         //closeDialog($(this))
-                        $("#OrderNo").val(" ");
-                        $("#InvoiceNo").val(" ");
-                        $("#StyleNo").val(" ");
-                        $("#ProductType").val(" ");
+                        $("#EPNo").val(" ");
+                        $("#EPDate").val(" ");
+                        $("#EXPNo").val(" ");
+                        $("#EXPDate").val(" ");
 
-                        $("#ShipbordingDate").val(" ");
+                        $("#ExFactoryDate").val(" ");
 
-                        $("#BLNo").val(" ");
-                        $("#BLDate").val(" ");
+                        $("#CnFAgent").val(" ");
+                        $("#TransportID").val(" ");
 
-                        $("#RevQty").val(" ");
+                        $("#SBNo").val(" ");
 
-                        $("#RevisedFOBValue").val(" ");
-                        $("#RevisedCMValue").val(" ");
-                        $("#CartonQty").val(" ");
-                        $("#CBMValue").val(" ");
-                        $("#TTLCTN").val(" ");
-                        $("#VesselName").val(" ");
-
-
+                        $("#SBDate").val(" ");
+                        $("#VesselNo").val(" ");
+                        $("#CargorptDate").val(" ");                       
                         $(this).dialog("close");
-                        $("#InvoiceNo").focus();
+                        $("#SInvoiceNo").focus();
                     }
                 }
             });
