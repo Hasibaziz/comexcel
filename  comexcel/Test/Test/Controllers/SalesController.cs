@@ -117,7 +117,7 @@ namespace Test.Controllers
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                TTLCTN = dr["TTLCTN"].ToString(),
+                                //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString()                               
                             });
                         }
@@ -166,7 +166,7 @@ namespace Test.Controllers
                     _Model.RevisedCMValue = dr["RevisedCMValue"].ToString();
                     _Model.CartonQty = dr["CartonQty"].ToString();
                     _Model.CBMValue = dr["CBMValue"].ToString();
-                    _Model.TTLCTN = dr["TTLCTN"].ToString();
+                    //_Model.TTLCTN = dr["TTLCTN"].ToString();
                     _Model.VesselName = dr["VesselName"].ToString();                   
                 }
             }
@@ -182,6 +182,7 @@ namespace Test.Controllers
 
         public ActionResult ComsalesEntry()
         {
+
             return View();
         }
 
@@ -259,7 +260,7 @@ namespace Test.Controllers
         {
             try
             {
-                ExportformEntity obj = (ExportformEntity)GetDuplicatesalesInvoiceno(invoiceno);
+                ComsalesinfoEntity obj = (ComsalesinfoEntity)GetDuplicatesalesInvoiceno(invoiceno);
                 //var obj1 = GetDupMail(UserID);                
                 if (obj.InvoiceNo == null)
                     return false;
@@ -334,7 +335,8 @@ namespace Test.Controllers
                                 ExpNo = dr["CMValue"].ToString(),
                                 ExpDate = dr["ExpDate"].ToString(),
                                 EPNo = dr["EPNo"].ToString(),                               
-                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+                                ExFactoryDate = dr["ExFactoryDate"].ToString(),
+                                RTransport = dr["RTransport"].ToString()
                             });
                         }
                         iCount += 1;
@@ -390,7 +392,7 @@ namespace Test.Controllers
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                TTLCTN = dr["TTLCTN"].ToString(),
+                                //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString() 
                             });
                         }

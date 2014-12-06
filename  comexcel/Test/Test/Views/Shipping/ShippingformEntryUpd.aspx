@@ -126,7 +126,7 @@
             <%: Html.ValidationMessageFor(model => model.CnFAgent) %>
         </div>        
          <div class="editor-label01">
-           <label for="VesselNo">Vessel No:</label>            
+           <label for="VesselNo">Truck No:</label>            
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.VesselNo) %>

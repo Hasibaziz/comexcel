@@ -70,7 +70,7 @@
                         $("#RevisedCMValue").val(" ");
                         $("#CartonQty").val(" ");
                         $("#CBMValue").val(" ");
-                        $("#TTLCTN").val(" ");
+                        $("#ETADate").val(" ");
                         $("#VesselName").val(" ");                      
                                                
                        
@@ -195,19 +195,19 @@
       <fieldset>
         <legend>Shipment Status Entry</legend>
          <div class="editor-label01">           
-            <label for="CBMValue">CBM Value:</label>
+            <label for="CBMValue">ETA Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CBMValue)%>
-            <%: Html.ValidationMessageFor(model => model.CBMValue)%>
+            <%: Html.EditorFor(model => model.ETADate)%>
+            <%: Html.ValidationMessageFor(model => model.ETADate)%>
         </div>
-        <div class="editor-label01">            
+       <%-- <div class="editor-label01">            
             <label for="TTLCTN">TTL CTN:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTLCTN)%>
             <%: Html.ValidationMessageFor(model => model.TTLCTN)%>
-        </div>
+        </div>--%>
         <div class="editor-label01">            
             <label for="VesselName">Vessel Name:</label>
         </div>
@@ -344,6 +344,10 @@
                     ExFactoryDate: {
                         title: 'Ex-Factory',
                         width: '8%'
+                    },
+                    RTransport: {
+                        title: 'S.Transport',
+                        width: '10%'
                     }
                 }
             });

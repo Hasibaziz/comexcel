@@ -57,7 +57,7 @@ namespace Test.Areas.Comsales.Controllers
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                TTLCTN = dr["TTLCTN"].ToString(),
+                                //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString()       
                             });
                         }
@@ -115,7 +115,7 @@ namespace Test.Areas.Comsales.Controllers
                     _Model.RevisedCMValue = dr["RevisedCMValue"].ToString();
                     _Model.CartonQty = dr["CartonQty"].ToString();
                     _Model.CBMValue = dr["CBMValue"].ToString();
-                    _Model.TTLCTN = dr["TTLCTN"].ToString();
+                    //_Model.TTLCTN = dr["TTLCTN"].ToString();
                     _Model.VesselName = dr["VesselName"].ToString();       
                 }
             }
@@ -333,7 +333,7 @@ namespace Test.Areas.Comsales.Controllers
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
-                                TTLCTN = dr["TTLCTN"].ToString(),
+                                //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString()
                             });
                         }

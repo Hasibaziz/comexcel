@@ -727,7 +727,7 @@ namespace Test.Controllers
         }
         public object GetDuplicatesalesInvoiceno(string invoice)
         {
-            ExportformEntity _Model = new ExportformEntity();
+            ComsalesinfoEntity _Model = new ComsalesinfoEntity();
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicatesalesInvoiceno, invoice);
 
             foreach (DataRow dr in dt.Rows)
@@ -740,7 +740,7 @@ namespace Test.Controllers
         }
         public object GetDuplicateshipInvoiceNo(string invoice)
         {
-            ExportformEntity _Model = new ExportformEntity();
+            ShippinginfoEntity _Model = new ShippinginfoEntity();
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicateshipInvoiceNo, invoice);
 
             foreach (DataRow dr in dt.Rows)

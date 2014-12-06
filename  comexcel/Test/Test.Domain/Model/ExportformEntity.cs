@@ -97,6 +97,8 @@ namespace Test.Domain.Model
        public string BLNo { set; get; }
        public string BLDate { set; get; }
        public string ExFactoryDate { set; get; }
+       public string RTransport { set; get; }      //Revise Transport;
+
        public string CurrentDate { set; get; }
 
        public int HeaderSpaces { set; get; }
