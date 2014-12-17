@@ -33,7 +33,9 @@ namespace Test.Controllers
             {
                 try
                 {
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetShippingInfoRecord, null);
+                    ShippinginfoEntity _Model = new ShippinginfoEntity();
+                    _Model.UserName = CurrentUserName;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetShippingInfoRecord, _Model);
                     List<ShippinginfoEntity> ItemList = null;
                     ItemList = new List<ShippinginfoEntity>();
                     int iCount = 0;

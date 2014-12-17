@@ -120,11 +120,11 @@
       <fieldset>
         <legend>Shipment Status Entry</legend>
          <div class="editor-label01">           
-            <label for="CBMValue">CBM Value:</label>
+            <label for="CBMValue">ETA Date:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CBMValue)%>
-            <%: Html.ValidationMessageFor(model => model.CBMValue)%>
+            <%: Html.EditorFor(model => model.ETADate)%>
+            <%: Html.ValidationMessageFor(model => model.ETADate)%>
         </div>
         <%--<div class="editor-label01">            
             <label for="TTLCTN">TTL CTN:</label>
@@ -162,7 +162,7 @@
             <%: Html.EditorFor(model => model.BLDate) %>
             <%: Html.ValidationMessageFor(model => model.BLDate) %>
         </div>      
- 
+     </fieldset>
     </div>   
 </div>   
     <p>

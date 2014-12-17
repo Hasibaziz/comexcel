@@ -90,7 +90,9 @@ namespace Test.Controllers
             {
                 try
                 {
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetComsalsesInfoRecord, null);
+                    ComsalesinfoEntity _Model = new ComsalesinfoEntity();
+                    _Model.UserName = CurrentUserName;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetComsalsesInfoRecord, _Model);
                     List<ComsalesinfoEntity> ItemList = null;
                     ItemList = new List<ComsalesinfoEntity>();
                     int iCount = 0;
@@ -274,77 +276,90 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public JsonResult InvoiceSearchByNo(string Invno, string consigneeid, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult InvoiceSearchByNo(string Invno, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
                 try
                 {
+                    var isSuccess = false;
+                    var message = "";
                     ExportformEntity _Model = new ExportformEntity();
                     _Model.InvoiceNo = Invno;
-                    _Model.ConsigneeID = consigneeid;
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetSalesEntryInvoiceSearchByNo, _Model);
-                    List<ExportformEntity> ItemList = null;
-                    ItemList = new List<ExportformEntity>();
-                    int iCount = 0;
-                    int offset = 0;
-                    offset = jtStartIndex / jtPageSize;
-                    foreach (DataRow dr in dt.Rows)
+                    if (CheckshippingInvoiceNo(Invno) == false)
                     {
-                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
-                        {
-                            ItemList.Add(new ExportformEntity()
-                            {
-                                //ID = dr["ID"].ToString(),
-                                ItemName = dr["ItemName"].ToString(),
-                                ContractNo = dr["ContractNo"].ToString(),
-                                ContractDate = dr["ContractDate"].ToString(),
-                                InvoiceNo = dr["InvoiceNo"].ToString(),
-                                InvoiceDate = dr["InvoiceDate"].ToString(),
-                                TTNo = dr["TTNo"].ToString(),
-                                TTDate = dr["TTDate"].ToString(),
-                                ExporterID = dr["ExporterID"].ToString(),
-                                ExporterName = dr["ExporterName"].ToString(),
-                                RegDetails = dr["RegDetails"].ToString(),
-                                ConsigneeID = dr["ConsigneeID"].ToString(),
-                                ConsigneeName = dr["ConsigneeName"].ToString(),
-                                NotifyID = dr["NotifyID"].ToString(),
-                                NotifyName = dr["NotifyName"].ToString(),
-                                //HSCodeID = dr["HSCodeID"].ToString(),
-                                HSCode = dr["HSCode"].ToString(),
-                                HSCodesecond = dr["HSCodesecond"].ToString(),
-                                //HSs = dr["HSs"].ToString(),
-                                //ShortName = dr["ShortName"].ToString(),
-                                CountryCode = dr["CountryCode"].ToString(),
-                                Name = dr["Name"].ToString(),
-                                Port = dr["Port"].ToString(),
-                                DestinationID = dr["DestinationID"].ToString(),
-                                TransportID = dr["TransportID"].ToString(),
-                                TName = dr["TName"].ToString(),
-                                TPort = dr["TPort"].ToString(),
-                                Section = dr["Section"].ToString(),
-                                Unit = dr["Unit"].ToString(),
-                                Quantity = dr["Quantity"].ToString(),
-                                Currency = dr["Currency"].ToString(),
-                                Incoterm = dr["Incoterm"].ToString(),
-                                FOBValue = dr["FOBValue"].ToString(),
-                                CMValue = dr["CMValue"].ToString(),
-                                CPTFOBValue = dr["CPTFOBValue"].ToString(),
-                                Freight = dr["Freight"].ToString(),
-
-                                ExpNo = dr["CMValue"].ToString(),
-                                ExpDate = dr["ExpDate"].ToString(),
-                                EPNo = dr["EPNo"].ToString(),                               
-                                ExFactoryDate = dr["ExFactoryDate"].ToString(),
-                                RTransport = dr["RTransport"].ToString()
-                            });
-                        }
-                        iCount += 1;
+                        //return Json(new { Result = "ERROR", Message = "The Invoice Number is already taken. Please choose another." });
+                        //return Json(new { result }, JsonRequestBehavior.AllowGet);
+                        isSuccess = true;
+                        message = "Please Update Shipping Information First!";
+                        var jsonData = new { isSuccess, message };
+                        return Json(jsonData);
                     }
-                    var RecordCount = dt.Rows.Count;
-                    var Record = ItemList;
-                    Session["ExpEntry"] = ItemList;
-                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                    else
+                    {
+                        DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetSalesEntryInvoiceSearchByNo, _Model);
+                        List<ExportformEntity> ItemList = null;
+                        ItemList = new List<ExportformEntity>();
+                        int iCount = 0;
+                        int offset = 0;
+                        offset = jtStartIndex / jtPageSize;
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                            {
+                                ItemList.Add(new ExportformEntity()
+                                {
+                                    //ID = dr["ID"].ToString(),
+                                    ItemName = dr["ItemName"].ToString(),
+                                    ContractNo = dr["ContractNo"].ToString(),
+                                    ContractDate = dr["ContractDate"].ToString(),
+                                    InvoiceNo = dr["InvoiceNo"].ToString(),
+                                    InvoiceDate = dr["InvoiceDate"].ToString(),
+                                    TTNo = dr["TTNo"].ToString(),
+                                    TTDate = dr["TTDate"].ToString(),
+                                    ExporterID = dr["ExporterID"].ToString(),
+                                    ExporterName = dr["ExporterName"].ToString(),
+                                    RegDetails = dr["RegDetails"].ToString(),
+                                    ConsigneeID = dr["ConsigneeID"].ToString(),
+                                    ConsigneeName = dr["ConsigneeName"].ToString(),
+                                    NotifyID = dr["NotifyID"].ToString(),
+                                    NotifyName = dr["NotifyName"].ToString(),
+                                    //HSCodeID = dr["HSCodeID"].ToString(),
+                                    HSCode = dr["HSCode"].ToString(),
+                                    HSCodesecond = dr["HSCodesecond"].ToString(),
+                                    //HSs = dr["HSs"].ToString(),
+                                    //ShortName = dr["ShortName"].ToString(),
+                                    CountryCode = dr["CountryCode"].ToString(),
+                                    Name = dr["Name"].ToString(),
+                                    Port = dr["Port"].ToString(),
+                                    DestinationID = dr["DestinationID"].ToString(),
+                                    TransportID = dr["TransportID"].ToString(),
+                                    TName = dr["TName"].ToString(),
+                                    TPort = dr["TPort"].ToString(),
+                                    Section = dr["Section"].ToString(),
+                                    Unit = dr["Unit"].ToString(),
+                                    Quantity = dr["Quantity"].ToString(),
+                                    Currency = dr["Currency"].ToString(),
+                                    Incoterm = dr["Incoterm"].ToString(),
+                                    FOBValue = dr["FOBValue"].ToString(),
+                                    CMValue = dr["CMValue"].ToString(),
+                                    CPTFOBValue = dr["CPTFOBValue"].ToString(),
+                                    Freight = dr["Freight"].ToString(),
+
+                                    ExpNo = dr["CMValue"].ToString(),
+                                    ExpDate = dr["ExpDate"].ToString(),
+                                    EPNo = dr["EPNo"].ToString(),
+                                    ExFactoryDate = dr["ExFactoryDate"].ToString(),
+                                    RTransport = dr["RTransport"].ToString()
+                                });
+                            }
+                            iCount += 1;
+                        }
+                        var RecordCount = dt.Rows.Count;
+                        var Record = ItemList;
+                        Session["ExpEntry"] = ItemList;
+                        return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -362,10 +377,12 @@ namespace Test.Controllers
             try
             {
                 try
-                {
+                {                   
                     ComsalesinfoEntity _Model = new ComsalesinfoEntity();
                     _Model.InvoiceNo = InvNo;
+                   
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCSalesInvoiceSearchByNo, _Model);
+
                     List<ComsalesinfoEntity> ItemList = null;
                     ItemList = new List<ComsalesinfoEntity>();
                     int iCount = 0;
@@ -393,14 +410,15 @@ namespace Test.Controllers
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
                                 //TTLCTN = dr["TTLCTN"].ToString(),
-                                VesselName = dr["VesselName"].ToString() 
+                                VesselName = dr["VesselName"].ToString()
                             });
                         }
                         iCount += 1;
+
                     }
                     var RecordCount = dt.Rows.Count;
                     var Record = ItemList;
-                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });                  
                 }
                 catch (Exception ex)
                 {
@@ -412,7 +430,23 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-       
+
+        public bool CheckshippingInvoiceNo(string invoiceno)
+        {
+            try
+            {
+                ShippinginfoEntity obj = (ShippinginfoEntity)GetCheckshippingInvoiceNo(invoiceno);
+                //var obj1 = GetDupMail(UserID);                
+                if (obj.InvoiceNo == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
        
     }
 }

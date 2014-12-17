@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AllReportInfoBLL.cs" />
     <Compile Include="BLL\AllUDInfoBLL.cs" />
     <Compile Include="BLL\BEInfoBLL.CS" />
     <Compile Include="BLL\CategoriesrptBLL.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="BLL\TTCMInformationBLL.cs" />
     <Compile Include="BLL\TTRecordBLL.cs" />
     <Compile Include="BLL\UDInformationBLL.cs" />
+    <Compile Include="DAL\AllReportInfoDAL.cs" />
     <Compile Include="DAL\AllUDInfoDAL.cs" />
     <Compile Include="DAL\BEInfoDAL.cs" />
     <Compile Include="DAL\CategoriesrptDAL.cs" />

@@ -605,7 +605,11 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetSalesEntryInvoiceSearchByNo:
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GetSalesEntryInvoiceSearchByNo(param);
-                    break; 
+                    break;
+                case TestTask.AG_GetCheckshippingInvoiceNo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetCheckshippingInvoiceNo(param);
+                    break;
                 #endregion
 
                     //// 
@@ -638,6 +642,23 @@ namespace Test.Structure.TaskManager
                     return sppBLL.GetShippingformEntryUpdByInvoiceNo(param);
                     break;
                 #endregion
+
+                ///
+                /// Report Information***
+                ///
+
+                #region Auto Generated - AllReport Information
+                case TestTask.AG_GetAllSalesreportRecord:
+                    AllReportInfoBLL allBLL = null;
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetAllSalesreportRecord(param);
+                    break;
+                //case TestTask.AG_SaveShippingformEntry:
+                //    sppBLL = new ShippingInfoBLL();
+                //    return sppBLL.SaveShippingformEntry(param);
+                //    break;               
+                #endregion
+
 
 
                 default:

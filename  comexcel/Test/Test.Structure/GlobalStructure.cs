@@ -208,7 +208,7 @@ namespace Test.Structure
         /// Commercial Sales Entry.
         /// </summary>
 
-        #region Auto Generated - AG_GetComsalsesInfoRecord.
+        #region Auto Generated - ComsalsesInfoRecord.
         public const string AG_GetComsalsesInfoRecord = "AG_GetComsalsesInfoRecord";
         public const string AG_SaveComsalesEntryInfo = "AG_SaveComsalesEntryInfo";
         public const string AG_UpdateComsalesEntryInfo = "AG_UpdateComsalesEntryInfo";
@@ -216,13 +216,14 @@ namespace Test.Structure
         public const string AG_GetDuplicatesalesInvoiceno = "AG_GetDuplicatesalesInvoiceno";
         public const string AG_GetCSalesInvoiceSearchByNo = "AG_GetCSalesInvoiceSearchByNo";
         public const string AG_GetSalesEntryInvoiceSearchByNo = "AG_GetSalesEntryInvoiceSearchByNo";
+        public const string AG_GetCheckshippingInvoiceNo = "AG_GetCheckshippingInvoiceNo";
         #endregion
 
         /// <summary>
         /// Shipping Team Information*********/////
         /// </summary>
 
-        #region Auto Generated - AG_GetShippingInfoRecord.
+        #region Auto Generated - ShippingInfoRecord.
         public const string AG_GetShippingInfoRecord = "AG_GetShippingInfoRecord";
         public const string AG_SaveShippingformEntry = "AG_SaveShippingformEntry";
         public const string AG_UpdateShippingformEntry = "AG_UpdateShippingformEntry";
@@ -230,6 +231,19 @@ namespace Test.Structure
         public const string AG_GetDuplicateshipInvoiceNo = "AG_GetDuplicateshipInvoiceNo";
         public const string AG_GetShippingformEntryUpdByInvoiceNo = "AG_GetShippingformEntryUpdByInvoiceNo";
         #endregion
+
+        /// <summary>
+        /// Report Controller 
+        /// </summary>
+
+        #region Auto Generated - ReportAll.
+        public const string AG_GetAllSalesreportRecord = "AG_GetAllSalesreportRecord";
+        //public const string AG_SaveTranshipmentDetailsRecord = "AG_SaveTranshipmentDetailsRecord";
+        //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
+        //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        #endregion
+        
+
 
     }
 }

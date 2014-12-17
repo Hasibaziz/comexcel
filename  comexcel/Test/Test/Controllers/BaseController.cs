@@ -738,6 +738,20 @@ namespace Test.Controllers
             }
             return _Model;
         }
+
+        public object GetCheckshippingInvoiceNo(string invoice)
+        {
+            ShippinginfoEntity _Model = new ShippinginfoEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCheckshippingInvoiceNo, invoice);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
         public object GetDuplicateshipInvoiceNo(string invoice)
         {
             ShippinginfoEntity _Model = new ShippinginfoEntity();
@@ -751,6 +765,7 @@ namespace Test.Controllers
             }
             return _Model;
         }
+
 
     }
 }
