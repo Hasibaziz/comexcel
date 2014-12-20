@@ -38,7 +38,7 @@
         Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  
      </div>
    </div>
-<% using (Html.BeginForm("ComsalesEntry", "CSales", new { @id = "frmID" }))
+<% using (Html.BeginForm("ComsalesEntryUpd", "CSales", new { @id = "frmID" }))
    { %>
    <%: Html.ValidationSummary(true) %>   
         <%: Html.HiddenFor(model => model.ID)%>
@@ -128,13 +128,13 @@
             <%: Html.EditorFor(model => model.CBMValue)%>
             <%: Html.ValidationMessageFor(model => model.CBMValue)%>
         </div>
-        <div class="editor-label01">            
+       <%-- <div class="editor-label01">            
             <label for="TTLCTN">TTL CTN:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTLCTN)%>
             <%: Html.ValidationMessageFor(model => model.TTLCTN)%>
-        </div>
+        </div>--%>
         <div class="editor-label01">            
             <label for="VesselName">Vessel Name:</label>
         </div>

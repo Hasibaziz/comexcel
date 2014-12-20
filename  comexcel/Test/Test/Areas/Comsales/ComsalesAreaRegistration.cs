@@ -17,7 +17,8 @@ namespace Test.Areas.Comsales
             context.MapRoute(
                 "Comsales_default",
                 "Comsales/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                //new { action = "Index", id = UrlParameter.Optional },
+                new {controller = "Account", action = "Index", id = UrlParameter.Optional},
                 namespaces: new[] { "Test.Areas.Comsales.Controllers" }
             );
         }

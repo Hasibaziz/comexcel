@@ -28,7 +28,8 @@ namespace Test.Server.DAL
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";            
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
-            sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
+            sql = sql + " A.Unit, A.Quantity, A.Currency, ";
+            sql = sql + " CASE A.Incoterm  WHEN '1' Then 'FOB' WHEN '2' Then 'CPT' WHEN '3' Then 'CFR' WHEN '4' Then 'DDP' WHEN '5' Then 'FCA' WHEN '6' Then 'CIF' WHEN '7' Then 'DAP' END AS Incoterm ,  ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";
@@ -343,7 +344,8 @@ namespace Test.Server.DAL
             sql = sql + " A.DestinationID,DC.CountryCode, DC.Name, DC.Port, ";
             sql = sql + " A.TransportID, TR.Name AS TName, TR.Port AS TPort, ";
             sql = sql + " A.Section, ";
-            sql = sql + " A.Unit, A.Quantity, A.Currency, A.Incoterm, ";
+            sql = sql + " A.Unit, A.Quantity, A.Currency,";
+            sql = sql + " CASE A.Incoterm  WHEN '1' Then 'FOB' WHEN '2' Then 'CPT' WHEN '3' Then 'CFR' WHEN '4' Then 'DDP' WHEN '5' Then 'FCA' WHEN '6' Then 'CIF' WHEN '7' Then 'DAP' END AS Incoterm ,  ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
             sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
             sql = sql + " FROM ExportformDetails AS A";

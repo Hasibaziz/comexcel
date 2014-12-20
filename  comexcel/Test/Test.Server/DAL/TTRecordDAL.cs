@@ -54,7 +54,9 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             TTRecordEntity obj = (TTRecordEntity)param;
-            string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, (CONVERT(FLOAT,TTAmount) - (SELECT SUM(CONVERT(FLOAT,CMValue)) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo)) AS TTBalance FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
+            string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, ";
+            sql = sql + " (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
+            sql = sql + " FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -64,7 +66,9 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             TTRecordEntity obj = (TTRecordEntity)param;
-            string sql = "SELECT ID, TTNumber, TTAmount, (CONVERT(FLOAT,TTAmount) - (SELECT SUM(CONVERT(FLOAT,CMValue)) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo)) AS TTBalance FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
+            string sql = "SELECT ID, TTNumber, TTAmount, ";
+            sql = sql + " (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
+            sql=sql+" FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

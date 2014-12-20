@@ -123,8 +123,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\GSPController.cs" />
     <Compile Include="Areas\Comsales\ComsalesAreaRegistration.cs" />
+    <Compile Include="Areas\Comsales\Controllers\AccountController.cs" />
     <Compile Include="Areas\Comsales\Controllers\CSalesController.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />

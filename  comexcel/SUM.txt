@@ -25,3 +25,20 @@ LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID
 
 /*********  Collapsible ***********/
 http://jqueryui.com/accordion/#collapsible
+
+
+
+Subtraction Values:
+------------------------------------------------------------------------------------
+SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, (SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='IT06591406110030' GROUP BY TTNo) as TotalCM
+,CAST((CONVERT(FLOAT,TTAmount) - (SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0)  FROM [ExportformDetails] WHERE TTNo='IT06591406110030' GROUP BY TTNo)) AS FLOAT)  AS CTTBalance 
+FROM TTInformation WHERE TTNumber='IT06591406110030'
+
+
+SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate
+,(COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='IT06591406110037' GROUP BY TTNo),0)  )    AS TTBalance
+FROM TTInformation WHERE TTNumber='IT06591406110037'
+
+SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, (SELECT SUM(CONVERT(FLOAT,CMValue)) FROM [ExportformDetails] WHERE TTNo='IT06591406110037' GROUP BY TTNo) as TotalCM
+,(COALESCE(CAST('500' AS FLOAT),0) - COALESCE(CAST('0' AS FLOAT),0)  )    AS TTBalance
+FROM TTInformation WHERE TTNumber='IT06591406110037'

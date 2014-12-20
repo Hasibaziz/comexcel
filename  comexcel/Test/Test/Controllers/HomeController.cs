@@ -11,7 +11,7 @@ namespace Test.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "ERP";
+            ViewBag.Message = "Commercial";
             return View();
         }
 

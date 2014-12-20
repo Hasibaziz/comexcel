@@ -140,6 +140,10 @@
                     title: 'Qty',
                     width: '5%'
                 },
+                Incoterm: {
+                    title: 'Incoterm',
+                    width: '5%'
+                },
                 FOBValue: {
                     title: 'FOB',
                     width: '8%'
@@ -237,6 +241,10 @@
                 },
                 Quantity: {
                     title: 'Qty',
+                    width: '5%'
+                },
+                Incoterm: {
+                    title: 'Incoterm',
                     width: '5%'
                 },
                 FOBValue: {
