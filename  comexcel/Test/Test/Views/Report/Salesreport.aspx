@@ -47,7 +47,7 @@ $(document).ready(function () {
                     },
                     InvoiceDate: {
                         title: 'Invoice Date',
-                        width: '10%'
+                        width: '14%'
                     },                    
                     ContractNo: {
                         title: 'Contract No',
@@ -59,7 +59,7 @@ $(document).ready(function () {
                     },                   
                     ExporterID: {
                         title: 'Exporter',
-                        width: '6%',
+                        width: '4%',
                         options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
                     },
                     ConsigneeID: {

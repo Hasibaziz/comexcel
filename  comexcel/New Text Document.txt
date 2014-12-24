@@ -49,3 +49,18 @@ SET @pInvoice='BA0401.14S'
             BETWEEN   (LEFT(@StartDate, 2)+ SUBSTRING(@StartDate, 3,3)+ SUBSTRING(@StartDate,6,6))
             AND (LEFT(@EndDate, 2)+ SUBSTRING(@EndDate, 3,3)+ SUBSTRING(@EndDate,6,6))
           GROUP BY  Category  
+
+
+
+Date Time Convertion:
+http://www.sqlusa.com/bestpractices/datetimeconversion/
+https://anubhavg.wordpress.com/2009/06/11/how-to-format-datetime-date-in-sql-server-2005/
+---------------------------------------------------------------------------------------------------------
+SELECT upper(InvoiceNo), InvoiceDate
+, [US-Style01] = replace( CONVERT(varchar, CONVERT(datetime, InvoiceDate, 105), 101), '-', '/')
+, [US-Style02] = CONVERT(varchar, replace( CONVERT(varchar, CONVERT(datetime, InvoiceDate, 105), 101), '-', '/'), 107)
+, [US-Style03] = CONVERT(varchar, CONVERT(datetime, InvoiceDate, 105), 107)
+, [US-Style03] = CONVERT(varchar, CONVERT(datetime, InvoiceDate, 105), 6)
+, [UK-Style04] = CONVERT(VARCHAR, CONVERT(datetime, InvoiceDate, 105), 3)
+, [UK-Style] = CONVERT(datetime, InvoiceDate, 105) 
+FROM dbo.ExportformDetails

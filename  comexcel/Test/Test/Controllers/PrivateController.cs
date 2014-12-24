@@ -28,6 +28,15 @@ namespace Test.Controllers
 {
     public class PrivateController : BaseController
     {
+        /// <summary>
+        /// This is Private Controller for  inputting all the information for Export Form Related
+        /// Md. Hasib-Al-Aziz
+        /// For Converting  Varchar Field into DateTime "Convert(VARCHAR(50), InvoiceDate, 100)"
+        /// SELECT convert(datetime, '23-10-2016', 105) -- dd-mm-yyyy 
+        /// CONVERT(varchar, CONVERT(datetime, InvoiceDate, 105), 6)
+        /// </summary>
+        /// <returns></returns>
+
         public ActionResult Index()
         {
             return View();
