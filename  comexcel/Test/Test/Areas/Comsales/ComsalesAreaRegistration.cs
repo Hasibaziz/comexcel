@@ -18,7 +18,7 @@ namespace Test.Areas.Comsales
                 "Comsales_default",
                 "Comsales/{controller}/{action}/{id}",
                 //new { action = "Index", id = UrlParameter.Optional },
-                new {controller = "Account", action = "Index", id = UrlParameter.Optional},
+                new { area = "Comsales", controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Test.Areas.Comsales.Controllers" }
             );
         }

@@ -125,8 +125,7 @@ namespace Test.Areas.Comsales.Controllers
                 //return Json(new { Result = "ERROR", Message = "Information failed to Open" });
             }
             //return View("ComsalesEntryUpd", (object)_Model);
-            return View("ComsalesEntryUpd", _Model);
-            
+            return View("ComsalesEntryUpd", _Model);            
         }
 
 

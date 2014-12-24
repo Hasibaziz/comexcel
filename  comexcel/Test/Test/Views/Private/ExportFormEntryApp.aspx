@@ -315,9 +315,9 @@
         </div> --%>
         </div>
          <fieldset> 
-          <legend>FOB/CFR/FCA Value</legend>       
+          <legend>FOB/CFR/FCA/EXW Value</legend>       
             <div class="editor-field01">
-                <%: Html.TextBoxFor(model => model.FOBValue, new { tabindex = 8 })%>
+                <%: Html.TextBoxFor(model => model.FOBValue, new { @class = "validate[required]", tabindex = 8 })%>
                 <%: Html.ValidationMessageFor(model => model.FOBValue)%>
             </div>
         </fieldset>
@@ -337,9 +337,9 @@
         </div>
 </div>
         <fieldset> 
-          <legend>CPT/DDP Value</legend>       
+          <legend>CPT/DDP/CIF/DAP Value</legend>       
             <div class="editor-field01">
-                <%: Html.EditorFor(model => model.CPTValue)%>
+                <%: Html.TextBoxFor(model => model.CPTValue, new { @class = "validate[required]" })%>
                 <%: Html.ValidationMessageFor(model => model.CPTValue)%>
             </div>
         </fieldset>       

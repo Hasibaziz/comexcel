@@ -123,11 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\GSPController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Comsales\ComsalesAreaRegistration.cs" />
-    <Compile Include="Areas\Comsales\Controllers\AccountController.cs" />
     <Compile Include="Areas\Comsales\Controllers\CSalesController.cs" />
+    <Compile Include="Areas\Comsales\Controllers\HomeController.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssignJobController.cs" />
@@ -184,11 +184,13 @@
     <Content Include="Areas\Admin\Views\GSP\GSPItemInfo.aspx" />
     <Content Include="Areas\Admin\Views\GSP\Index.aspx" />
     <Content Include="Areas\Admin\Views\GSP\LeftMenu.ascx" />
+    <Content Include="Areas\Admin\Views\Home\Index.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\ComsalesEntry.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\ComsalesEntryUpd.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\ComsalesInfo.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\Index.aspx" />
     <Content Include="Areas\Comsales\Views\CSales\LeftMenu.ascx" />
+    <Content Include="Areas\Comsales\Views\Home\Index.aspx" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Bootstrap\css\bootstrap.css" />

@@ -2087,6 +2087,7 @@ namespace Test.Controllers
                            t0.AddCell(cell);
                            cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingTop = 30f;
                            t0.AddCell(cell);
                        }
                        else if (dr.Incoterm == "6")
@@ -2123,6 +2124,7 @@ namespace Test.Controllers
                            t0.AddCell(cell);
                            cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingTop = 30f;
                            t0.AddCell(cell);
                        }
                        else if (dr.Incoterm == "7")
@@ -2146,6 +2148,7 @@ namespace Test.Controllers
                            t0.AddCell(cell);
                            cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingTop = 30f;
                            t0.AddCell(cell);
                        }
                       else if (dr.Incoterm == "8")
@@ -2201,9 +2204,10 @@ namespace Test.Controllers
                            cell = new PdfPCell(new Phrase("$" + dr.FOBValue, new Font(Font.GetFamilyIndex("Arial"), 12f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                            cell.PaddingBottom = 20f;
-                           t0.AddCell(cell);
+                           t0.AddCell(cell);                          
                            cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                            cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                           cell.PaddingTop = 30f;
                            t0.AddCell(cell);
                        }
                        cell = new PdfPCell();
@@ -2641,6 +2645,7 @@ namespace Test.Controllers
                         t0.AddCell(cell);
                         cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingTop = 30f;
                         t0.AddCell(cell);
                     }
                     else if (dr.Incoterm == "6")
@@ -2665,6 +2670,7 @@ namespace Test.Controllers
                         t0.AddCell(cell);
                         cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingTop = 30f;
                         t0.AddCell(cell);
                     }
                     else if (dr.Incoterm == "7")
@@ -2688,6 +2694,7 @@ namespace Test.Controllers
                         t0.AddCell(cell);
                         cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingTop = 30f;
                         t0.AddCell(cell);
                     }
                     else if (dr.Incoterm == "8")
@@ -2747,6 +2754,7 @@ namespace Test.Controllers
                         t0.AddCell(cell);
                         cell = new PdfPCell(new Phrase("FOB:$" + dr.CPTFOBValue + "   " + "Freight:$" + dr.Freight, new Font(Font.GetFamilyIndex("Arial"), 10f, Font.BOLD)));
                         cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                        cell.PaddingTop = 30f;
                         t0.AddCell(cell);
                     }
                     cell = new PdfPCell();

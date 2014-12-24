@@ -40,7 +40,7 @@ namespace Test.Server.DAL
             //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
-            sql = sql + " WHERE  EX.ExporterNo in('HOPYICK','HLBD')";
+            sql = sql + " WHERE  EX.ExporterNo in('HOPYICK','HLBD') AND A.Status is null  ";
             sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -315,7 +315,7 @@ namespace Test.Server.DAL
 
         public bool DeleteExportFormEntryDetailsById(object param, Database db, DbTransaction transaction)
         {
-            string sql = "DELETE FROM [ExportformDetails] WHERE ID=@Id";
+            string sql = "UPDATE ExportformDetails SET Status='Void' WHERE ID=@Id";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "Id", DbType.String, param);
 
@@ -356,7 +356,7 @@ namespace Test.Server.DAL
             //sql = sql + " LEFT JOIN HSCodeDetails AS HSs ON HSs.ID=A.HSCodesecond";
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID ";
-            sql = sql + " WHERE  EX.ExporterNo='APPAREL'";
+            sql = sql + " WHERE  EX.ExporterNo='APPAREL' AND A.Status is null";
             sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);           
             DataSet ds = db.ExecuteDataSet(dbCommand);

@@ -81,7 +81,7 @@
     </div>
     <div id="tabs-2">
           <div class="editor-label01">           
-            <label for="RevQty">Revise Qty:</label>
+            <label for="RevQty">Shipped Qty:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.RevQty) %>
@@ -96,7 +96,7 @@
         </div>
        
         <div class="editor-label01">            
-            <label for="RevisedFOBValue">Revised FOB Value:</label>
+            <label for="RevisedFOBValue">Shipped FOB Value:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.RevisedFOBValue) %>
@@ -104,14 +104,14 @@
         </div>
 
         <div class="editor-label01">            
-            <label for="RevisedCMValue">Revised CM Value:</label>
+            <label for="RevisedCMValue">Shipped CM Value:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.RevisedCMValue) %>
             <%: Html.ValidationMessageFor(model => model.RevisedCMValue) %>
         </div>
          <div class="editor-label01">           
-            <label for="CBMValue">CBM Value:</label>
+            <label for="CBMValue">CBM:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CBMValue) %>

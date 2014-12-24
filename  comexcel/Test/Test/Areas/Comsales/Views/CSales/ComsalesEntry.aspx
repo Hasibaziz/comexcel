@@ -169,7 +169,7 @@
         </div>
        
         <div class="editor-label01">            
-            <label for="RevisedFOBValue">Revised FOB Value:</label>
+            <label for="RevisedFOBValue">Shipped FOB Value:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.RevisedFOBValue) %>
@@ -177,7 +177,7 @@
         </div>
 
         <div class="editor-label01">            
-            <label for="RevisedCMValue">Revised CM Value:</label>
+            <label for="RevisedCMValue">Shipped CM Value:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.RevisedCMValue) %>
@@ -195,19 +195,19 @@
       <fieldset>
         <legend>Shipment Status Entry</legend>
          <div class="editor-label01">           
-            <label for="CBMValue">CBM Value:</label>
+            <label for="CBMValue">CBM:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.CBMValue)%>
             <%: Html.ValidationMessageFor(model => model.CBMValue)%>
         </div>
-        <div class="editor-label01">            
+       <%-- <div class="editor-label01">            
             <label for="TTLCTN">TTL CTN:</label>
         </div>
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.TTLCTN)%>
             <%: Html.ValidationMessageFor(model => model.TTLCTN)%>
-        </div>
+        </div>--%>
         <div class="editor-label01">            
             <label for="VesselName">Vessel Name:</label>
         </div>
@@ -237,7 +237,7 @@
             <%: Html.EditorFor(model => model.BLDate) %>
             <%: Html.ValidationMessageFor(model => model.BLDate) %>
         </div>      
- 
+    </fieldset>
     </div>   
 </div>   
     <p>
