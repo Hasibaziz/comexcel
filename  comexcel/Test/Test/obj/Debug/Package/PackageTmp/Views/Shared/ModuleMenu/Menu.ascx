@@ -12,6 +12,7 @@
                  <li><a href="<%=Url.Content("~/Shipping/Index") %>"><span>Shipping Info</span></a></li> 
                  <li><a href="<%=Url.Content("~/Comsales/CSales/Index") %>"><span>Sales Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Admin/GSP/Index") %>"><span>GSP Info</span></a></li>
+                 <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
                  <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>                 
             <% }%>
@@ -35,6 +36,11 @@
              { %>
                 <li><a href="<%=Url.Content("~/Shipping/Index") %>"><span>Shipping Info</span></a></li> 
                 <li><a href="<%=Url.Content("~/Sales/Index") %>"><span>Sales Info</span></a></li> 
+                <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
+             <%} %>
+              <%else if (GROUP == "CustomsAudit")
+             { %>
+                <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
              <%} %>
 

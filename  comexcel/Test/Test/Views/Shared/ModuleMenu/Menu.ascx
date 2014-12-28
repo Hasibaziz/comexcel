@@ -38,6 +38,11 @@
                 <li><a href="<%=Url.Content("~/Sales/Index") %>"><span>Sales Info</span></a></li> 
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
              <%} %>
+              <%else if (GROUP == "CustomsAudit")
+             { %>
+                <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
+             <%} %>
 
         </ul>
     </div>

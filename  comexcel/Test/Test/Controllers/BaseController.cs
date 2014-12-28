@@ -738,6 +738,19 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDuplicateAuditInvoiceNo(string invoice)
+        {
+            CustomsAuditEntity _Model = new CustomsAuditEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicateAuditInvoiceNo, invoice);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
 
         public object GetCheckshippingInvoiceNo(string invoice)
         {

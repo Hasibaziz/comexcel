@@ -250,8 +250,10 @@ namespace Test.Structure
         #region Auto Generated - CustomsAudit.
         public const string AG_GetCustomsAuditInfoRecord = "AG_GetCustomsAuditInfoRecord";
         public const string AG_GetAuditInvoiceSearchByNo = "AG_GetAuditInvoiceSearchByNo";
-        //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
-        //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        public const string AG_SaveCustomsAuditDetails = "AG_SaveCustomsAuditDetails";
+        public const string AG_UpdateCustomsAuditDetails = "AG_UpdateCustomsAuditDetails";
+        public const string AG_GetDuplicateAuditInvoiceNo="AG_GetDuplicateAuditInvoiceNo";
+        public const string AG_GetCustomsAuditInvoiceSearchByNo="AG_GetCustomsAuditInvoiceSearchByNo";
         #endregion
 
     }

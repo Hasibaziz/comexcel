@@ -672,7 +672,23 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetAuditInvoiceSearchByNo:
                     auditBLL = new CustomsAuditBLL();
                     return auditBLL.GetAuditInvoiceSearchByNo(param);
-                    break;               
+                    break;
+                case TestTask.AG_SaveCustomsAuditDetails:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.SaveCustomsAuditDetails(param);
+                    break;
+                case TestTask.AG_UpdateCustomsAuditDetails:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.UpdateCustomsAuditDetails(param);
+                    break;
+                case TestTask.AG_GetDuplicateAuditInvoiceNo:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetDuplicateAuditInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetCustomsAuditInvoiceSearchByNo:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetCustomsAuditInvoiceSearchByNo(param);
+                    break;
                 #endregion
 
 

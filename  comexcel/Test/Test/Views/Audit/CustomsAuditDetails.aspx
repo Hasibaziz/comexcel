@@ -37,7 +37,7 @@
                     "OK": function () {
                         //closeDialog($(this))
                         $(this).dialog("close");
-                        window.location = '<%: Url.Action("ComsalesInfo") %>'
+                        window.location = '<%: Url.Action("CustomsAuditInfo") %>'
                     }
                 }
             });
@@ -53,29 +53,22 @@
                 width: 200,
                 buttons: {
                     "OK": function () {
-                        //closeDialog($(this))
-                        $("#OrderNo").val(" ");
-                        $("#InvoiceNo").val(" ");
-                        $("#StyleNo").val(" ");
-                        $("#ProductType").val(" ");
+                        //closeDialog($(this)) 
+                        $("#InvoiceNo").val(" ");                      
+                        $("#IRegisterNo").val(" ");
+                        $("#IBond").val(" ");
 
-                        $("#ShipbordingDate").val(" ");
+                        $("#TotalFabric").val(" ");
 
-                        $("#BLNo").val(" ");
-                        $("#BLDate").val(" ");
+                        $("#AdjustReg").val(" ");
+                        $("#AdjustRegPage").val(" ");
 
                         $("#RevQty").val(" ");
 
-                        $("#RevisedFOBValue").val(" ");
-                        $("#RevisedCMValue").val(" ");
-                        $("#CartonQty").val(" ");
-                        $("#CBMValue").val(" ");
-                        $("#ETADate").val(" ");
-                        $("#VesselName").val(" ");
-
+                       
 
                         $(this).dialog("close");
-                        $("#InvoiceNo").focus();
+                        $("#SInvoiceNo").focus();
                     }
                 }
             });
@@ -114,6 +107,7 @@
 <% using (Ajax.BeginForm("CustomsAuditDetails", "Audit", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new { @id = "frmSID" }))
    { %>
     <%: Html.ValidationSummary(true) %>
+     <%: Html.HiddenFor(model => model.ID) %>
     <fieldset>
         <legend>Customs Audit Entry</legend>
 
@@ -275,10 +269,10 @@
             });
             $('#RecordsContainer').jtable('load');
         }
+       // $('#SInvoiceNo').change(function () {
+        $('#InvoiceNo').val($(this).val());
+        //$("#InvoiceNo").val(data.InvoiceNo);
+        //}); 
     }); 
-        
-$('#SInvoiceNo').change(function () {
-    $('#InvoiceNo').val($(this).val());
-}); 
  </script>
 </asp:Content>
