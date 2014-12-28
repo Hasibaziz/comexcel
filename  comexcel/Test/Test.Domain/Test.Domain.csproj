@@ -86,6 +86,7 @@
     <Compile Include="Model\CompanyEntity.cs" />
     <Compile Include="Model\ComsalesinfoEntity.cs" />
     <Compile Include="Model\ConsigneeEntity.cs" />
+    <Compile Include="Model\CustomsAuditEntity.cs" />
     <Compile Include="Model\DestinationEntity.cs" />
     <Compile Include="Model\ExporterEntity.cs" />
     <Compile Include="Model\ExportformEntity.cs" />

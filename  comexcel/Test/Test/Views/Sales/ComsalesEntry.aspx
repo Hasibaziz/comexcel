@@ -289,8 +289,7 @@
                 title: 'Invoice Records',
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '/Sales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
-                    //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
+                    listAction: '/Sales/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()              
                 },
                 fields: {
                     ID: {

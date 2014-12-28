@@ -658,7 +658,22 @@ namespace Test.Structure.TaskManager
                 //    return sppBLL.SaveShippingformEntry(param);
                 //    break;               
                 #endregion
+                
+                ///
+                /// Customs Audit Details Information.
+                ///
 
+                #region Auto Generated - Customs Audit Info 
+                case TestTask.AG_GetCustomsAuditInfoRecord:
+                    CustomsAuditBLL auditBLL = null;
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetCustomsAuditInfoRecord(param);
+                    break;
+                case TestTask.AG_GetAuditInvoiceSearchByNo:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetAuditInvoiceSearchByNo(param);
+                    break;               
+                #endregion
 
 
                 default:

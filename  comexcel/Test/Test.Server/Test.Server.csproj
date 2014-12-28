@@ -91,6 +91,7 @@
     <Compile Include="BLL\CommonBLL.cs" />
     <Compile Include="BLL\CommsalesinfoBLL.cs" />
     <Compile Include="BLL\ConsigneeDetailsBLL.cs" />
+    <Compile Include="BLL\CustomsAuditBLL.cs" />
     <Compile Include="BLL\DestinationBLL.cs" />
     <Compile Include="BLL\ExporterDetailsBLL.cs" />
     <Compile Include="BLL\ExportFormEntryBLL.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="DAL\CommomDAL.cs" />
     <Compile Include="DAL\CommsalesinfoDAL.cs" />
     <Compile Include="DAL\ConsigneeDetailsDAL.cs" />
+    <Compile Include="DAL\CustomsAuditDAL.cs" />
     <Compile Include="DAL\DestinationDAL.cs" />
     <Compile Include="DAL\ExporterDetailsDAL.cs" />
     <Compile Include="DAL\ExportFormEntryDAL.cs" />

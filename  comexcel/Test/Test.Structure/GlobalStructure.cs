@@ -242,8 +242,17 @@ namespace Test.Structure
         //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
         //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
         #endregion
-        
 
+        /// <summary>
+        /// Customs Audit Details Information
+        /// </summary>
+
+        #region Auto Generated - CustomsAudit.
+        public const string AG_GetCustomsAuditInfoRecord = "AG_GetCustomsAuditInfoRecord";
+        public const string AG_GetAuditInvoiceSearchByNo = "AG_GetAuditInvoiceSearchByNo";
+        //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
+        //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
+        #endregion
 
     }
 }
