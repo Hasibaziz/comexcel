@@ -212,11 +212,11 @@
                     },
                     InvoiceNo: {
                         title: 'Invoice No',
-                        width: '8%'
+                        width: '7%'
                     },
                     InvoiceDate: {
                         title: 'Invoice Date',
-                        width: '12%'
+                        width: '8%'
                     },                    
                     ExporterID: {
                         title: 'Exporter',
@@ -235,19 +235,19 @@
                     },
                     TPort: {
                         title: 'Port',
-                        width: '8%'
+                        width: '7%'
                     },                   
                     RevQty: {
                         title: 'Invoice Qty',
-                        width: '10%'
+                        width: '8%'
                     },
                     RevisedFOBValue: {
                         title: 'Invoice Value(FOB)',
-                        width: '15%'
+                        width: '14%'
                     },                   
                     EXPNo: {
                         title: 'EXP No',
-                        width: '8%'
+                        width: '12%'
                     },
                     EXPDate: {
                         title: 'EXP Date',
@@ -259,7 +259,7 @@
                     },
                     EPDate: {
                         title: 'EP Date',
-                        width: '8%'
+                        width: '10%'
                     },
                     ExFactoryDate: {
                         title: 'Ex-Factory',
