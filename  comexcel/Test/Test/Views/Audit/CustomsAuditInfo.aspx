@@ -50,7 +50,10 @@
                     },
                     InvoiceNo: {
                         title: 'Invoice No',
-                        width: '6%'
+                        width: '6%',
+                        display: function (data) {
+                            return '<a href="/Audit/CustomsAuditDetailsUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
+                        }
                     },
                     IRegisterNo: {
                         title: 'Import Reg No',

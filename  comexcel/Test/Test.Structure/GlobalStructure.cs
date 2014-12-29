@@ -254,6 +254,7 @@ namespace Test.Structure
         public const string AG_UpdateCustomsAuditDetails = "AG_UpdateCustomsAuditDetails";
         public const string AG_GetDuplicateAuditInvoiceNo="AG_GetDuplicateAuditInvoiceNo";
         public const string AG_GetCustomsAuditInvoiceSearchByNo="AG_GetCustomsAuditInvoiceSearchByNo";
+        public const string AG_GetCustomsAuditDetailsUpdateByInvoiceNo = "AG_GetCustomsAuditDetailsUpdateByInvoiceNo";
         #endregion
 
     }

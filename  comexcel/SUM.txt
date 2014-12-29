@@ -42,3 +42,10 @@ FROM TTInformation WHERE TTNumber='IT06591406110037'
 SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, (SELECT SUM(CONVERT(FLOAT,CMValue)) FROM [ExportformDetails] WHERE TTNo='IT06591406110037' GROUP BY TTNo) as TotalCM
 ,(COALESCE(CAST('500' AS FLOAT),0) - COALESCE(CAST('0' AS FLOAT),0)  )    AS TTBalance
 FROM TTInformation WHERE TTNumber='IT06591406110037'
+
+
+
+
+Matchin Column FOR SHIPPING AND SALES TABLES
+----------------------------------------------------------------------------------------------------------
+SELECT InvoiceNo from SalesinfoDetails AS SA where not exists(SELECT InvoiceNo FROM ShippingInfo AS SP WHERE SA.InvoiceNo=SP.InvoiceNo )

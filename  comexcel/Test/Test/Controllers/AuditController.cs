@@ -291,6 +291,40 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult CustomsAuditDetailsUpdate()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CustomsAuditDetailsUpdateByInvoiceNo(String ID)
+        {
+            CustomsAuditEntity _Model = new CustomsAuditEntity();             
+            if (ID != null)
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCustomsAuditDetailsUpdateByInvoiceNo, ID);
+                List<CustomsAuditEntity> ItemList = null;
+                ItemList = new List<CustomsAuditEntity>();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    _Model.ID = dr["ID"].ToString();
+                    _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+                    _Model.IRegisterNo = dr["IRegisterNo"].ToString();
+                    _Model.IBond = dr["IBond"].ToString();
+                    _Model.TotalFabric = dr["TotalFabric"].ToString();
+                    _Model.AdjustReg = dr["AdjustReg"].ToString();
+                    _Model.AdjustRegPage = dr["AdjustRegPage"].ToString();                   
+                }
+            }
+            else
+            {
+                return View("CustomsAuditDetails", _Model);
+                //return Json(new { Result = "ERROR", Message = "Information failed to Open" });
+            }
+            //return View("ComsalesEntryUpd", (object)_Model);
+            return View("CustomsAuditDetailsUpdate", _Model);
+        }
 
     }
 }

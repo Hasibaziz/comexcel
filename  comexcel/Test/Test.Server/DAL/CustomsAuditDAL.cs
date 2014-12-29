@@ -97,5 +97,16 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetCustomsAuditDetailsUpdateByInvoiceNo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT [ID], [InvoiceNo], [IRegisterNo], [IBond], [TotalFabric], [AdjustReg], [AdjustRegPage], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[CustomAuditDetails] WHERE ID=@id";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            db.AddInParameter(dbCommand, "id", DbType.String, param.ToString());
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
     }
 }

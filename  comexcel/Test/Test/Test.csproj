@@ -421,6 +421,7 @@
     <Content Include="Views\Account\Login.aspx" />
     <Content Include="Views\AssignJob\Index.aspx" />
     <Content Include="Views\Audit\CustomsAuditDetails.aspx" />
+    <Content Include="Views\Audit\CustomsAuditDetailsUpdate.aspx" />
     <Content Include="Views\Audit\CustomsAuditInfo.aspx" />
     <Content Include="Views\Audit\Index.aspx" />
     <Content Include="Views\Audit\LeftMenu.ascx" />

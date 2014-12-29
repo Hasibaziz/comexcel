@@ -95,5 +95,13 @@ namespace Test.Server.BLL
             retObj = (object)allDAL.GetCustomsAuditInvoiceSearchByNo(param);
             return retObj;
         }
+        public object GetCustomsAuditDetailsUpdateByInvoiceNo(object param)
+        {
+            object retObj = null;
+            CustomsAuditDAL allDAL = new CustomsAuditDAL();
+            retObj = (object)allDAL.GetCustomsAuditDetailsUpdateByInvoiceNo(param);
+            return retObj;
+        }
+
     }
 }

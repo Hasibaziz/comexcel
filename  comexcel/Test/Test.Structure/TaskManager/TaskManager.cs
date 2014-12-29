@@ -689,6 +689,10 @@ namespace Test.Structure.TaskManager
                     auditBLL = new CustomsAuditBLL();
                     return auditBLL.GetCustomsAuditInvoiceSearchByNo(param);
                     break;
+                case TestTask.AG_GetCustomsAuditDetailsUpdateByInvoiceNo:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetCustomsAuditDetailsUpdateByInvoiceNo(param);
+                    break;
                 #endregion
 
 
