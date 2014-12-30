@@ -280,8 +280,12 @@
                 }
             });
             //alert("Check! " + data.message);
-        } else{
-
+        } 
+        else if (inv != "") {
+            var Result = $.post('<%: ResolveUrl("~/Sales/SalesInvoiceSrcByNo?invoice=")%>' + $("#SInvoiceNo").attr("value"), function (data) {
+                $("#InvoiceNo").val(data.InvoiceNo);
+            });
+             
             $('#RecordsContainer').jtable({
                 paging: true,
                 pageSize: 5,

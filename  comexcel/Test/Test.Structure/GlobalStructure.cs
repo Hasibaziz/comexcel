@@ -217,6 +217,7 @@ namespace Test.Structure
         public const string AG_GetCSalesInvoiceSearchByNo = "AG_GetCSalesInvoiceSearchByNo";
         public const string AG_GetSalesEntryInvoiceSearchByNo = "AG_GetSalesEntryInvoiceSearchByNo";
         public const string AG_GetCheckshippingInvoiceNo = "AG_GetCheckshippingInvoiceNo";
+        public const string AG_GetSalesSearchByInvoiceNo = "AG_GetSalesSearchByInvoiceNo";
         #endregion
 
         /// <summary>
@@ -255,6 +256,7 @@ namespace Test.Structure
         public const string AG_GetDuplicateAuditInvoiceNo="AG_GetDuplicateAuditInvoiceNo";
         public const string AG_GetCustomsAuditInvoiceSearchByNo="AG_GetCustomsAuditInvoiceSearchByNo";
         public const string AG_GetCustomsAuditDetailsUpdateByInvoiceNo = "AG_GetCustomsAuditDetailsUpdateByInvoiceNo";
+        public const string AG_GetAuditSearchByInvoiceNo = "AG_GetAuditSearchByInvoiceNo";
         #endregion
 
     }

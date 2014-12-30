@@ -116,5 +116,15 @@ namespace Test.Server.BLL
             retObj = (object)csDAL.GetCheckshippingInvoiceNo(param, Dupinv);
             return retObj;
         }
+
+        public object GetSalesSearchByInvoiceNo(object param)
+        {
+            object retObj = null;
+            string invno = param.ToString();
+            CommsalesinfoDAL csDAL = new CommsalesinfoDAL();
+            //retObj = (object)csDAL.GetCSalesInvoiceSearchByNo(param, invno);
+            retObj = (object)csDAL.GetSalesSearchByInvoiceNo(param, invno);
+            return retObj;
+        }
     }
 }

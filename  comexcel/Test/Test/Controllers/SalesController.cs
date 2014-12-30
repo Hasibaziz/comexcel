@@ -447,6 +447,34 @@ namespace Test.Controllers
                 return false;
             }
         }
+
+        public JsonResult SalesInvoiceSrcByNo(string invoice)
+        {
+            try
+            {
+                ExportformEntity obj = (ExportformEntity)SalesSearchByInvoiceNo(invoice);
+
+                return Json(obj);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public object SalesSearchByInvoiceNo(string invoice)
+        {
+            ExportformEntity _Model = new ExportformEntity();
+            //_Model.InvoiceNo = invoice;
+
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetSalesSearchByInvoiceNo, invoice);
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
        
     }
 }

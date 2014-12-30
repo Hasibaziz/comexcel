@@ -162,6 +162,34 @@ namespace Test.Controllers
             }
         }
 
+        public JsonResult AuditInvoiceSrcByNo(string invoice)
+        {
+            try
+            {
+                SalesreportEntity obj = (SalesreportEntity)AuditSearchByInvoiceNo(invoice);
+
+                return Json(obj);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public object AuditSearchByInvoiceNo(string invoice)
+        {
+            SalesreportEntity _Model = new SalesreportEntity();
+            //_Model.InvoiceNo = invoice;
+
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAuditSearchByInvoiceNo, invoice);
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();             
+
+            }
+            return _Model;
+        }
+
         [HttpPost]
         public ActionResult CustomsAuditDetails(CustomsAuditEntity _Model)
         {

@@ -610,6 +610,10 @@ namespace Test.Structure.TaskManager
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GetCheckshippingInvoiceNo(param);
                     break;
+                case TestTask.AG_GetSalesSearchByInvoiceNo:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GetSalesSearchByInvoiceNo(param);
+                    break;
                 #endregion
 
                     //// 
@@ -692,6 +696,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetCustomsAuditDetailsUpdateByInvoiceNo:
                     auditBLL = new CustomsAuditBLL();
                     return auditBLL.GetCustomsAuditDetailsUpdateByInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetAuditSearchByInvoiceNo:
+                    auditBLL = new CustomsAuditBLL();
+                    return auditBLL.GetAuditSearchByInvoiceNo(param);
                     break;
                 #endregion
 

@@ -191,7 +191,11 @@
                 }
             });
             //alert("Check! " + data.message);
-        } else {
+        } 
+        else if(inv!="") {          
+            var Result = $.post('<%: ResolveUrl("~/Audit/AuditInvoiceSrcByNo?invoice=")%>' + $("#SInvoiceNo").attr("value"), function (data) {
+                    $("#InvoiceNo").val(data.InvoiceNo);                    
+                });           
 
             $('#RecordsContainer').jtable({
                 paging: true,
@@ -266,13 +270,26 @@
                         width: '8%'
                     }
                 }
-            });
+            });           
             $('#RecordsContainer').jtable('load');
         }
-       // $('#SInvoiceNo').change(function () {
-        $('#InvoiceNo').val($(this).val());
-        //$("#InvoiceNo").val(data.InvoiceNo);
-        //}); 
+        else {
+            $('<div></div>').html('Please Insert Correct Invoice Number!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 350,
+                height: 155,
+                buttons: {
+                    "OK": function () {
+                        //closeDialog($(this))
+                        $(this).dialog("close");
+                        window.location = '<%: Url.Action("CustomsAuditInfo") %>'
+                    }
+                }
+            });
+        }       
     }); 
  </script>
 </asp:Content>

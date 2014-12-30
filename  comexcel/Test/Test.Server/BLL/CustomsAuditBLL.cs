@@ -22,6 +22,7 @@ namespace Test.Server.BLL
         public object GetAuditInvoiceSearchByNo(object param)
         {
             object retObj = null;
+            //string invNo = param.ToString();
             CustomsAuditDAL allDAL = new CustomsAuditDAL();
             retObj = (object)allDAL.GetAuditInvoiceSearchByNo(param);
             return retObj;
@@ -100,6 +101,15 @@ namespace Test.Server.BLL
             object retObj = null;
             CustomsAuditDAL allDAL = new CustomsAuditDAL();
             retObj = (object)allDAL.GetCustomsAuditDetailsUpdateByInvoiceNo(param);
+            return retObj;
+        }
+
+        public object GetAuditSearchByInvoiceNo(object param)
+        {
+            object retObj = null;
+            string invNo = param.ToString();
+            CustomsAuditDAL allDAL = new CustomsAuditDAL();
+            retObj = (object)allDAL.GetAuditSearchByInvoiceNo(param, invNo);
             return retObj;
         }
 

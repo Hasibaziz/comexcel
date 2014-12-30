@@ -186,5 +186,17 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetSalesSearchByInvoiceNo(object param, string Inv)
+        {
+            Database db = DatabaseFactory.CreateDatabase();            
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo ";
+            sql = sql + " WHERE InvoiceNo='" + Inv + "' ";           
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
     }
 }
