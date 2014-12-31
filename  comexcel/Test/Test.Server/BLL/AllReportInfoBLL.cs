@@ -19,5 +19,13 @@ namespace Test.Server.BLL
             retObj = (object)allDAL.GetAllSalesreportRecord(param);
             return retObj;
         }
+
+        public object GetCustomsAuditReportRecord(object param)
+        {
+            object retObj = null;
+            AllReportInfoDAL allDAL = new AllReportInfoDAL();
+            retObj = (object)allDAL.GetCustomsAuditReportRecord(param);
+            return retObj;
+        }
     }
 }

@@ -35,5 +35,13 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetCustomsAuditReportRecord(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();           
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetCustomsAuditReportRecord");
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

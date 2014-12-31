@@ -324,6 +324,100 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult CustomsAuditReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult CustomsAuditReportList(string invoice = "", string CatName = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCustomsAuditReportRecord, null);
+                    List<CustomsAuditReportEntity> ItemList = null;
+                    ItemList = new List<CustomsAuditReportEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new CustomsAuditReportEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+
+                                ItemName = dr["ItemName"].ToString(),
+                                ContractNo = dr["ContractNo"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+
+                                OrderNo = dr["OrderNo"].ToString(),
+                                ExporterID = dr["ExporterID"].ToString(),
+                                ExporterName = dr["ExporterName"].ToString(),
+                                RegDetails = dr["RegDetails"].ToString(),
+
+                                ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeName = dr["ConsigneeName"].ToString(),
+
+                                DestinationID = dr["DestinationID"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                Name = dr["Name"].ToString(),
+
+                                TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
+                                TPort = dr["TPort"].ToString(),
+                                //FOBValue = dr["FOBValue"].ToString(),
+                                //CMValue = dr["CMValue"].ToString(),
+                               
+                                //Freight = dr["Freight"].ToString(),
+                                //Quantity = dr["Quantity"].ToString(),
+
+                                RevQty = dr["RevQty"].ToString(),
+                                RevisedFOBValue = dr["RevisedFOBValue"].ToString(),
+                                RevisedCMValue = dr["RevisedCMValue"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+
+                                EXPNo = dr["EXPNo"].ToString(),
+                                EXPDate = dr["EXPDate"].ToString(),
+                                EPNo = dr["EPNo"].ToString(),
+                                EPDate = dr["EPDate"].ToString(),
+
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLDate"].ToString(),
+                                SBNo = dr["SBNo"].ToString(),
+                                SBDate = dr["SBDate"].ToString(),
+
+                                IRegisterNo = dr["SBDate"].ToString(),
+                                IBond = dr["IBond"].ToString(),
+                                TotalFabric = dr["TotalFabric"].ToString(),
+                                AdjustReg = dr["AdjustReg"].ToString(),
+                                AdjustRegPage = dr["AdjustRegPage"].ToString(),
+
+
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
 
 
      }

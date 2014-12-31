@@ -488,8 +488,8 @@
             $("#ExporterID").val(data.ExporterDetailsID);
         });
     });
-    $(document).ready(function () {       
-        $('#CMValue').mouseenter(function () {
+    $(document).ready(function () {
+        $('#CMValue').change(function () {     //mouseenter   to change
             //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
             var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
                 var X = $("*[id$='CMValue']").val();

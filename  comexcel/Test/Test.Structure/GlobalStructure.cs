@@ -239,7 +239,7 @@ namespace Test.Structure
 
         #region Auto Generated - ReportAll.
         public const string AG_GetAllSalesreportRecord = "AG_GetAllSalesreportRecord";
-        //public const string AG_SaveTranshipmentDetailsRecord = "AG_SaveTranshipmentDetailsRecord";
+        public const string AG_GetCustomsAuditReportRecord = "AG_GetCustomsAuditReportRecord";
         //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
         //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
         #endregion

@@ -657,10 +657,10 @@ namespace Test.Structure.TaskManager
                     allBLL = new AllReportInfoBLL();
                     return allBLL.GetAllSalesreportRecord(param);
                     break;
-                //case TestTask.AG_SaveShippingformEntry:
-                //    sppBLL = new ShippingInfoBLL();
-                //    return sppBLL.SaveShippingformEntry(param);
-                //    break;               
+                case TestTask.AG_GetCustomsAuditReportRecord:
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetCustomsAuditReportRecord(param);
+                    break;               
                 #endregion
                 
                 ///

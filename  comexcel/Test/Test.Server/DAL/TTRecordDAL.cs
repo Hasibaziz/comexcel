@@ -54,8 +54,9 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             TTRecordEntity obj = (TTRecordEntity)param;
-            string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, ";
-            sql = sql + " (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
+            string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate  ";
+            sql = sql + ", (SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo) AS allCMsum";
+            sql = sql + ", (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
             sql = sql + " FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

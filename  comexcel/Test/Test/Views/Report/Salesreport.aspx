@@ -29,10 +29,6 @@ $(document).ready(function () {
                 defaultSorting: 'Name ASC',
                 actions: {
                     listAction: '<%=Url.Content("~/Report/SalesreportList") %>'
-                   // deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
-//                    createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-//                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>' 
-//                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
                 },
                 fields: {
                     ID: {
