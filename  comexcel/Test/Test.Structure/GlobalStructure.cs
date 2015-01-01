@@ -25,6 +25,20 @@ namespace Test.Structure
         public const string AG_GetSingleTrServicedetailsRecordById = "AG_GetSingleTrServicedetailsRecordById";
         #endregion
 
+        #region Auto Generated - GroupNuserCreate
+        public const string AG_GetAllCreateGroupRecord = "AG_GetAllCreateGroupRecord";
+        public const string AG_SaveCreateGroupInfo = "AG_SaveCreateGroupInfo";
+        public const string AG_UpdateCreateGroupInfo = "AG_UpdateCreateGroupInfo";
+        public const string AG_DeleteCreateGroupInfoById = "AG_DeleteCreateGroupInfoById";
+        public const string AG_GetAllCreateGroupInfoRecord = "AG_GetAllCreateGroupInfoRecord";
+
+        public const string AG_GetAllCreateUsersListRecord = "AG_GetAllCreateUsersListRecord";
+        public const string AG_SaveCreateUsersInfo = "AG_SaveCreateUsersInfo";
+        public const string AG_UpdateCreateUsersInfo = "AG_UpdateCreateUsersInfo";
+        public const string AG_DeleteCreateUsersById = "AG_DeleteCreateUsersById";
+        #endregion
+
+
         #region Auto Generated - CategoryName
         public const string AG_GetAllCategorymasterRecord = "AG_GetAllCategorymasterRecord";
         public const string AG_SaveCategorynameInfo = "AG_SaveCategorynameInfo";

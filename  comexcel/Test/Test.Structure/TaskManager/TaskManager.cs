@@ -66,6 +66,46 @@ namespace Test.Structure.TaskManager
                     break;
                 #endregion
 
+                #region Auto Generated - GroupCreate
+                case TestTask.AG_GetAllCreateGroupRecord:
+                    GroupNuserBLL guBLL = null;
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.GetAllCreateGroupRecord(param);
+                   break;
+                case TestTask.AG_SaveCreateGroupInfo:
+                     guBLL = new GroupNuserBLL();
+                     return guBLL.SaveCreateGroupInfo(param);
+                    break;
+                case TestTask.AG_UpdateCreateGroupInfo:
+                     guBLL = new GroupNuserBLL();
+                     return guBLL.UpdateCreateGroupInfo(param);
+                    break;
+                case TestTask.AG_DeleteCreateGroupInfoById:
+                     guBLL = new GroupNuserBLL();
+                     return guBLL.DeleteCreateGroupInfoById(param);
+                    break;
+                case TestTask.AG_GetAllCreateGroupInfoRecord:
+                     guBLL = new GroupNuserBLL();
+                     return guBLL.GetAllCreateGroupInfoRecord(param);
+                    break;
+                case TestTask.AG_GetAllCreateUsersListRecord:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.GetAllCreateUsersListRecord(param);
+                    break;
+                case TestTask.AG_SaveCreateUsersInfo:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.SaveCreateUsersInfo(param);
+                    break;
+                case TestTask.AG_UpdateCreateUsersInfo:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.UpdateCreateUsersInfo(param);
+                    break;
+                case TestTask.AG_DeleteCreateUsersById:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.DeleteCreateUsersById(param);
+                    break;
+                #endregion
+
                 #region Auto Generated - CategoryName
                 case TestTask.AG_SaveCategorynameInfo:
                     CategorynameBLL categorynameBLL = null;

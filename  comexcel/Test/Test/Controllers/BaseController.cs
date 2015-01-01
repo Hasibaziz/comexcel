@@ -221,7 +221,29 @@ namespace Test.Controllers
                 return null;
             }
         }
+        public List<SelectListItem> GetAllCreateGroupList()
+        {
+            try
+            {
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllCreateGroupInfoRecord, null);
+                List<SelectListItem> ItemList = null;
+                ItemList = new List<SelectListItem>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ItemList.Add(new SelectListItem()
+                    {
+                        Value = dr["ID"].ToString(),
+                        Text = dr["Name"].ToString()
+                    });
 
+                }
+                return ItemList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<SelectListItem> GetAllCategoryNameListItem()
         {
             try

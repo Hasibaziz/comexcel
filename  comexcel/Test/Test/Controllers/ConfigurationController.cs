@@ -139,7 +139,7 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-
+               
         [HttpPost]
         public JsonResult ServiceNameDetilsList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
