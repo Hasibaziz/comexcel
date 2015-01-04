@@ -10,16 +10,16 @@ using Test.Server.DAL;
 
 namespace Test.Server.BLL
 {
-    public partial class ShippingInfoBLL
+    public partial class BillingInfoBLL
     {
-        public object GetShippingInfoRecord(object param)
+        public object GetBillingInfoRecord(object param)
         {
             object retObj = null;
-            ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-            retObj = (object)sppDAL.GetShippingInfoRecord(param);
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GetBillingInfoRecord(param);
             return retObj;
         }
-        public object SaveShippingformEntry(object param)
+        public object SaveBillinginfoEntry(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
             object retObj = null;
@@ -29,9 +29,9 @@ namespace Test.Server.BLL
                 DbTransaction transaction = connection.BeginTransaction();
                 try
                 {
-                    ShippinginfoEntity sppEntity = (ShippinginfoEntity)param;
-                    ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-                    retObj = (object)sppDAL.SaveShippingformEntry(sppEntity, db, transaction);
+                    BillingInfoEntity billEntity = (BillingInfoEntity)param;
+                    BillingInfoDAL billDAL = new BillingInfoDAL();
+                    retObj = (object)billDAL.SaveBillinginfoEntry(billEntity, db, transaction);
                     transaction.Commit();
                 }
                 catch
@@ -46,7 +46,7 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
-        public object UpdateShippingformEntry(object param)
+        public object UpdateBillinginfoEntry(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
             object retObj = null;
@@ -56,9 +56,9 @@ namespace Test.Server.BLL
                 DbTransaction transaction = connection.BeginTransaction();
                 try
                 {
-                    ShippinginfoEntity sppEntity = (ShippinginfoEntity)param;
-                    ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-                    retObj = (object)sppDAL.UpdateShippingformEntry(sppEntity, db, transaction);
+                    BillingInfoEntity billEntity = (BillingInfoEntity)param;
+                    BillingInfoDAL billDAL = new BillingInfoDAL();
+                    retObj = (object)billDAL.UpdateBillinginfoEntry(billEntity, db, transaction);
                     transaction.Commit();
                 }
                 catch
@@ -73,36 +73,26 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
-        public object GetDuplicateshipInvoiceNo(object param)
+        public object GetDuplicateBillInvoiceNo(object param)
         {
             object retObj = null;
             string Dupinv = param.ToString();
-            ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-            retObj = (object)sppDAL.GetDuplicateshipInvoiceNo(param, Dupinv);
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GetDuplicateBillInvoiceNo(param, Dupinv);
             return retObj;
         }
-
-        public object GetShippingInvoiceSearchByNo(object param)
+        public object GetBillingEntryUpdateByInvoiceNo(object param)
         {
             object retObj = null;
-            ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-            retObj = (object)sppDAL.GetShippingInvoiceSearchByNo(param);
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GetBillingEntryUpdateByInvoiceNo(param);
             return retObj;
         }
-
-        public object GetShippingformEntryUpdByInvoiceNo(object param)
+        public object GetBillingInvoiceSearchByNo(object param)
         {
             object retObj = null;
-            ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-            retObj = (object)sppDAL.GetShippingformEntryUpdByInvoiceNo(param);
-            return retObj;
-        }
-
-        public object GetShippingMonitorInvoiceSearchByNo(object param)
-        {
-            object retObj = null;
-            ShippingInfoDAL sppDAL = new ShippingInfoDAL();
-            retObj = (object)sppDAL.GetShippingMonitorInvoiceSearchByNo(param);
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GetBillingInvoiceSearchByNo(param);
             return retObj;
         }
     }

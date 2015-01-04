@@ -67,6 +67,14 @@
                 RevisedCMValue: {
                     title: 'ShippedC.M.',
                     width: '8%'
+                },
+                BLNo: {
+                    title: 'B/L No',
+                    width: '6%'
+                },
+                BLDate: {
+                    title: 'B/L Date',
+                    width: '8%'
                 }
             }
         });
@@ -120,6 +128,14 @@
                 },
                 RevisedCMValue: {
                     title: 'R C.M.',
+                    width: '8%'
+                },
+                BLNo: {
+                    title: 'B/L No',
+                    width: '6%'
+                },
+                BLDate: {
+                    title: 'B/L Date',
                     width: '8%'
                 }
             }

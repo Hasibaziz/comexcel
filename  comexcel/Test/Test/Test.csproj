@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AssignJobController.cs" />
     <Compile Include="Controllers\AuditController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BillingController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrivateController.cs" />
@@ -426,6 +427,11 @@
     <Content Include="Views\Audit\CustomsAuditInfo.aspx" />
     <Content Include="Views\Audit\Index.aspx" />
     <Content Include="Views\Audit\LeftMenu.ascx" />
+    <Content Include="Views\Billing\BillingEntry.aspx" />
+    <Content Include="Views\Billing\BillingEntryUpdate.aspx" />
+    <Content Include="Views\Billing\BillingInfo.aspx" />
+    <Content Include="Views\Billing\Index.aspx" />
+    <Content Include="Views\Billing\LeftMenu.ascx" />
     <Content Include="Views\Configuration\BEInfo.aspx" />
     <Content Include="Views\Configuration\CategoryDetails.aspx" />
     <Content Include="Views\Configuration\CategoryName.aspx" />
@@ -484,6 +490,7 @@
     <Content Include="Views\Shipping\ShippingformEntry.aspx" />
     <Content Include="Views\Shipping\ShippingformEntryUpd.aspx" />
     <Content Include="Views\Shipping\ShippingInfo.aspx" />
+    <Content Include="Views\Shipping\ShippingMonitor.aspx" />
     <Content Include="Views\User\CreateGroup.aspx" />
     <Content Include="Views\User\CreateUsers.aspx" />
     <Content Include="Views\User\Index.aspx" />

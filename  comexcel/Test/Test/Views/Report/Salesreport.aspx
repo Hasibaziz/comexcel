@@ -6,12 +6,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+
+<script type="text/javascript">
+    function printItem() {
+        //alert("Report");
+        window.open("/Report/SalesExcelReport");
+    }
+    function PrintExcel() {
+        //alert("Report");
+        window.open("/Report/ExcelReport");
+    }
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("Control/LeftMenu"); %>
 </div>
 <div class="mp_right_content">
    <div class="page_list_container">
-     <fieldset><div id="RecordsContainer">               
+     <fieldset><div id="RecordsContainer">  
+                  <input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="printItem()" />
+                  <input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />
                </div>               
      </fieldset>                
    </div>
@@ -31,12 +44,12 @@ $(document).ready(function () {
                     listAction: '<%=Url.Content("~/Report/SalesreportList") %>'
                 },
                 fields: {
-                    ID: {
-                        key: true,
-                        create: false,
-                        edit: false,
-                        list: false
-                    },
+//                    ID: {
+//                        key: true,
+//                        create: false,
+//                        edit: false,
+//                        list: false
+//                    },
                     InvoiceNo: {
                         title: 'Invoice No',                        
                         width: '8%'

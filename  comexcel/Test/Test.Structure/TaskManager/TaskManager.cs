@@ -685,6 +685,43 @@ namespace Test.Structure.TaskManager
                     sppBLL = new ShippingInfoBLL();
                     return sppBLL.GetShippingformEntryUpdByInvoiceNo(param);
                     break;
+                case TestTask.AG_GetShippingMonitorInvoiceSearchByNo:
+                    sppBLL = new ShippingInfoBLL();
+                    return sppBLL.GetShippingMonitorInvoiceSearchByNo(param);
+                    break;
+                #endregion
+
+
+
+                //// 
+                /// Billing Team Information***
+                /// 
+                #region Auto Generated - BillingInfoRecord
+                case TestTask.AG_GetBillingInfoRecord:
+                    BillingInfoBLL billBLL = null;
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GetBillingInfoRecord(param);
+                    break;
+                case TestTask.AG_SaveBillinginfoEntry:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.SaveBillinginfoEntry(param);
+                    break;
+                case TestTask.AG_UpdateBillinginfoEntry:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.UpdateBillinginfoEntry(param);
+                    break;
+                case TestTask.AG_GetDuplicateBillInvoiceNo:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GetDuplicateBillInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetBillingEntryUpdateByInvoiceNo:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GetBillingEntryUpdateByInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetBillingInvoiceSearchByNo:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GetBillingInvoiceSearchByNo(param);
+                    break;
                 #endregion
 
                 ///

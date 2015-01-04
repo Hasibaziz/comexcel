@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.ShippinginfoEntity>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.BillingInfoEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ShippingformEntry
+    BillingEntry
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -20,6 +20,33 @@
           <%--**************--------------------------**************************--%>
 
 <script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
+    $.datepicker.setDefaults($.extend({},
+            {
+                changeMonth: true,
+                changeYear: true,
+                showStatus: true,
+                dateFormat: 'dd-mm-yy',
+                duration: 'fast',
+                yearRange: '1890:2100'
+            }
+            )
+        );
+            $("input#DocsendingDate, #ETADate, #SBDate, #EPDate, #DocSubmitDate, #CourierDate, #BuyerCourierDate, #LeadTime, #BankSubmitDate").datepicker({
+        onSelect: function () {
+            document.all ? $(this).get(0).fireEevent("onChange") :
+                            $(this).change();
+            this.focus();
+        },
+        onClose: function (dateText, inst) {
+            if (!document.all)
+                this.select();
+        }
+    });    
+});
+</script>
 
 <script type="text/javascript" >
     $(function () {
@@ -39,7 +66,7 @@
                     "OK": function () {
                         //closeDialog($(this))
                         $(this).dialog("close");
-                        window.location = '<%: Url.Action("ShippingInfo") %>'
+                        window.location = '<%: Url.Action("BillingInfo") %>'
                     }
                 }
             });
@@ -56,21 +83,19 @@
                 buttons: {
                     "OK": function () {
                         //closeDialog($(this))
-                        $("#EPNo").val(" ");
-                        $("#EPDate").val(" ");
-                        $("#EXPNo").val(" ");
-                        $("#EXPDate").val(" ");
-
-                        $("#ExFactoryDate").val(" ");
-
-                        $("#CnFAgent").val(" ");
-                        $("#TransportID").val(" ");
-
                         $("#SBNo").val(" ");
-
                         $("#SBDate").val(" ");
-                        $("#VesselNo").val(" ");
-                        $("#CargorptDate").val(" ");                       
+                        $("#DocSubmitDate").val(" ");
+                        $("#CourierNo").val(" ");
+
+                        $("#CourierDate").val(" ");
+
+                        $("#BuyerCourierNo").val(" ");
+                        $("#BuyerCourierDate").val(" ");
+
+                        $("#LeadTime").val(" ");
+
+                        $("#BankSubmitDate").val(" ");                       
                         $(this).dialog("close");
                         $("#SInvoiceNo").focus();
                     }
@@ -90,7 +115,7 @@
         // Initiate the validation engine.
         $('#frmSpID').validationEngine();
         $(function () {
-            $("#InvoiceNo option, #ExFactoryDate option, #EPNo option").each(function () {
+            $("#InvoiceNo option, #SBDate option, #DocSubmitDate option, #CourierDate option, #BuyerCourierDate option").each(function () {
                 $(this).attr({ 'title': $(this).html() });
             });
         });
@@ -106,67 +131,26 @@
         Invoice No:  <%: Html.TextBoxFor(model => model.SInvoiceNo, new { style = "width: 120px;" })%>  
      </div>
    </div>
-<% using (Ajax.BeginForm("ShippingformEntry", "Shipping", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new { @id = "frmSpID" }))
+<% using (Ajax.BeginForm("BillingEntry", "Billing", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "frmSuccess" }, new { @id = "frmSpID" }))
    { %>
     <%: Html.ValidationSummary(true) %>
-       <%: Html.HiddenFor(model => model.ID) %>
-<div id="tabs">
-        <ul>
-          <li><a href="#tabs-1">Shipment Status Info</a></li>
-          <li><a href="#tabs-2">Other Info</a></li>                  
-        </ul>
-    <div id="tabs-1">
-      <fieldset>         
-             <legend>Shipment Status Info</legend>
+        <%: Html.HiddenFor(model => model.ID) %>
+    <fieldset>
+        <legend>Billing Information Entry</legend>
+
         <div class="editor-label01">
-            <label for="InvoiceNo">Invoice No:</label>            
+            <label for="InvoiceNo">Invoice No:</label>               
         </div>
         <div class="editor-field01">
             <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
         </div>
-        <div class="editor-label01">
-            <label for="EPNo">EP No:</label>               
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.EPNo, new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.EPNo) %>
-        </div>
 
         <div class="editor-label01">
-            <label for="EPDate">EP Date:</label>            
+            <label for="SBNo">SB No:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.EPDate) %>
-            <%: Html.ValidationMessageFor(model => model.EPDate) %>
-        </div>
-        <div class="editor-label01">
-            <label for="EXPNo">EXP No:</label>             
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.EXPNo) %>
-            <%: Html.ValidationMessageFor(model => model.EXPNo) %>
-        </div>
-
-        <div class="editor-label01">
-            <label for="EXPDate">EXP Date:</label>            
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.EXPDate) %>
-            <%: Html.ValidationMessageFor(model => model.EXPDate) %>
-        </div>
-        <div class="editor-label01">
-            <label for="ExFactoryDate">Ex-Factory Date:</label>             
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.ExFactoryDate, new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.ExFactoryDate) %>
-        </div>
-         <div class="editor-label01">
-            <label for="SBNo">SB No:</label>            
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBNo) %>
+            <%: Html.TextBoxFor(model => model.SBNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.SBNo) %>
         </div>
 
@@ -174,55 +158,76 @@
             <label for="SBDate">SB Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.SBDate) %>
+            <%: Html.TextBoxFor(model => model.SBDate, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.SBDate) %>
         </div>
 
-        </fieldset>
-    </div>
-    <div id="tabs-2">
-      <fieldset>         
-             <legend>Other Info</legend>
         <div class="editor-label01">
-            <label for="TransportID">Local Transport:</label>             
+            <label for="DocSubmitDate">Doc Submit Date:</label>             
         </div>
         <div class="editor-field01">
-            <%--<%: Html.EditorFor(model => model.TransportID) %>--%>
-            <%: Html.DropDownListFor(model => model.TransportID, (List<SelectListItem>)ViewData["Name"], new { @class = "validate[required]" })%>  
-            <%: Html.ValidationMessageFor(model => model.TransportID) %>
-        </div>
-        <div class="editor-label01">
-           <label for="CnFAgent">C&F Agent:</label>            
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CnFAgent) %>
-            <%: Html.ValidationMessageFor(model => model.CnFAgent) %>
-        </div>        
-         <div class="editor-label01">
-           <label for="VesselNo">Truck No:</label>            
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.VesselNo) %>
-            <%: Html.ValidationMessageFor(model => model.VesselNo) %>
+            <%: Html.TextBoxFor(model => model.DocSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.DocSubmitDate) %>
         </div>
 
         <div class="editor-label01">
-            <label for="CargorptDate">Cargo Receive Date:</label>             
+            <label for="CourierNo">HK Courier No:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CargorptDate) %>
-            <%: Html.ValidationMessageFor(model => model.CargorptDate) %>
+            <%: Html.TextBoxFor(model => model.CourierNo, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.CourierNo) %>
         </div>
-      </fieldset>
-    </div>
-</div>        
 
-    <p>
-        <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
-        <input type="button" onclick="window.location='<%: Url.Action("ShippingInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />   
-    </p>
-   
-<% } %>
+        <div class="editor-label01">
+            <label for="CourierDate">HK Courier Date:</label>              
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.CourierDate, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.CourierDate) %>
+        </div>
+
+        <div class="editor-label01">
+            <label for="BuyerCourierNo">Buyer Courier No:</label>              
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.BuyerCourierNo, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.BuyerCourierNo) %>
+        </div>
+
+        <div class="editor-label01">
+            <label for="BuyerCourierDate">Buyer Courier Date:</label>            
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.BuyerCourierDate, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.BuyerCourierDate) %>
+        </div>
+
+        <div class="editor-label01">
+            <label for="LeadTime">Lead Time:</label>             
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.LeadTime, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.LeadTime) %>
+        </div>
+
+        <div class="editor-label01">
+            <label for="BankSubmitDate">Bank Submit Date:</label>            
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.BankSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
+        </div>             
+
+        <p>
+            <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
+            <input type="button" onclick="window.location='<%: Url.Action("BillingInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />   
+        </p>
+    </fieldset>
+    <% } %>
+    
+    <div>
+        <%: Html.ActionLink("Back to List", "BillingInfo")%>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -313,11 +318,11 @@
     });   
  </script>
 <script type="text/javascript">
-    $(document).ready(function () {       
+    $(document).ready(function () {
         $('#SInvoiceNo').change(function () {
             $('#InvoiceNo').val($(this).val());
         });
-});
+    });
 
 </script>
 </asp:Content>

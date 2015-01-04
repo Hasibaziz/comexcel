@@ -259,7 +259,7 @@ namespace Test.Controllers
                         {
                             ItemList.Add(new SalesreportEntity()
                             {
-                                ID = dr["ID"].ToString(),
+                               // ID = dr["ID"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
 
@@ -268,18 +268,18 @@ namespace Test.Controllers
                                 ContractDate = dr["ContractDate"].ToString(),
 
                                 OrderNo = dr["OrderNo"].ToString(),
-                                ExporterID = dr["ExporterID"].ToString(),
+                                //ExporterID = dr["ExporterID"].ToString(),
                                 ExporterName = dr["ExporterName"].ToString(),
-                                RegDetails = dr["RegDetails"].ToString(),
+                                //RegDetails = dr["RegDetails"].ToString(),
 
-                                ConsigneeID = dr["ConsigneeID"].ToString(),
+                                //ConsigneeID = dr["ConsigneeID"].ToString(),
                                 ConsigneeName = dr["ConsigneeName"].ToString(),
 
-                                DestinationID = dr["DestinationID"].ToString(),
+                                //DestinationID = dr["DestinationID"].ToString(),
                                 CountryCode = dr["CountryCode"].ToString(),
                                 Name = dr["Name"].ToString(),
 
-                                TransportID = dr["TransportID"].ToString(),
+                                //TransportID = dr["TransportID"].ToString(),
                                 TName = dr["TName"].ToString(),
                                 TPort = dr["TPort"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
@@ -311,6 +311,7 @@ namespace Test.Controllers
                     }
                     var RecordCount = dt.Rows.Count;
                     var Record = ItemList;
+                    Session["SALESRPT"] = ItemList;
                     return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
                 }
                 catch (Exception ex)
@@ -323,7 +324,68 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        
+        public ActionResult SalesExcelReport(string EX1 = "", string EX2 = "")
+        {
+            // DataTable dt = -- > get your data
+            SalesreportEntity _Model = new SalesreportEntity();
+            //_Model.Invoice = EX1;
+            //_Model.Category = EX2;          
 
+
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, _Model);
+            Test.Utility.Excelimport.ExcelFileResult actionResult = new Test.Utility.Excelimport.ExcelFileResult(dt) { FileDownloadName = "SalesReport.xls" };
+            return actionResult;
+        }
+        public ActionResult ExcelReport(string EX1 = "", string EX2 = "")
+        {
+
+            SalesreportEntity _Model = new SalesreportEntity();
+            //_Model.StartDate = EX1;
+            //_Model.EndDate = EX2;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, _Model);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + "Sales Report" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            this.Response.ContentType = "application/vnd.ms-excel";
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+        }
         public ActionResult CustomsAuditReport()
         {
             return View();

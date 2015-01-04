@@ -245,6 +245,16 @@ namespace Test.Structure
         public const string AG_GetShippingInvoiceSearchByNo = "AG_GetShippingInvoiceSearchByNo";
         public const string AG_GetDuplicateshipInvoiceNo = "AG_GetDuplicateshipInvoiceNo";
         public const string AG_GetShippingformEntryUpdByInvoiceNo = "AG_GetShippingformEntryUpdByInvoiceNo";
+        public const string AG_GetShippingMonitorInvoiceSearchByNo = "AG_GetShippingMonitorInvoiceSearchByNo";
+        #endregion
+
+        #region Auto Generated - BillingInfoRecord.
+        public const string AG_GetBillingInfoRecord = "AG_GetBillingInfoRecord";
+        public const string AG_SaveBillinginfoEntry = "AG_SaveBillinginfoEntry";
+        public const string AG_UpdateBillinginfoEntry = "AG_UpdateBillinginfoEntry";
+        public const string AG_GetDuplicateBillInvoiceNo = "AG_GetDuplicateBillInvoiceNo";
+        public const string AG_GetBillingEntryUpdateByInvoiceNo = "AG_GetBillingEntryUpdateByInvoiceNo";
+        public const string AG_GetBillingInvoiceSearchByNo = "AG_GetBillingInvoiceSearchByNo";
         #endregion
 
         /// <summary>

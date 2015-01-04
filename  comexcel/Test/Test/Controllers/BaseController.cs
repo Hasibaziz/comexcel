@@ -800,7 +800,19 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDuplicateBillInvoiceNo(string invoice)
+        {
+            BillingInfoEntity _Model = new BillingInfoEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicateBillInvoiceNo, invoice);
 
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
 
     }
 }

@@ -85,6 +85,7 @@
     <Compile Include="BLL\AllReportInfoBLL.cs" />
     <Compile Include="BLL\AllUDInfoBLL.cs" />
     <Compile Include="BLL\BEInfoBLL.CS" />
+    <Compile Include="BLL\BillingInfoBLL.CS" />
     <Compile Include="BLL\CategoriesrptBLL.cs" />
     <Compile Include="BLL\CategorydetailsBLL.cs" />
     <Compile Include="BLL\CategorynameBLL.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="DAL\AllReportInfoDAL.cs" />
     <Compile Include="DAL\AllUDInfoDAL.cs" />
     <Compile Include="DAL\BEInfoDAL.cs" />
+    <Compile Include="DAL\BillingInfoDAL.cs" />
     <Compile Include="DAL\CategoriesrptDAL.cs" />
     <Compile Include="DAL\CategorydetailsDAL.cs" />
     <Compile Include="DAL\CategorynameDAL.cs" />
