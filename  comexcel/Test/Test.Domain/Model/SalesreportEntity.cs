@@ -23,9 +23,11 @@ namespace Test.Domain.Model
         public string TTDate { set; get; }       
            
         public string ExporterID { set; get; }
+        public string ExporterNo { set; get; }
         public string ExporterName { set; get; }
         public string RegDetails { set; get; }       
         public string ConsigneeID { set; get; }
+        public string ConsigneeNo { set; get; }
         public string ConsigneeName { set; get; }       
       
         public string TransportID { set; get; }

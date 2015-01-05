@@ -104,6 +104,10 @@ namespace Test.Structure.TaskManager
                     guBLL = new GroupNuserBLL();
                     return guBLL.DeleteCreateUsersById(param);
                     break;
+                case TestTask.AG_GetGetDeplicateMailCheck:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.GetGetDeplicateMailCheck(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - CategoryName

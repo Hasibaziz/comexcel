@@ -245,12 +245,16 @@ $(document).ready(function () {
                     "OK": function () {
                         //closeDialog($(this))
                         $(this).dialog("close");
-                        window.location = '<%: Url.Action("ShippingInfo") %>'
+                        window.location = '<%: Url.Action("BillingInfo") %>'
                     }
                 }
             });
             //alert("Check! " + data.message);
-        } else {
+        } 
+        else if (inv != "") {
+            var Result = $.post('<%: ResolveUrl("~/Billing/InvoiceSrcByNo?invoice=")%>' + $("#SInvoiceNo").attr("value"), function (data) {
+                $("#InvoiceNo").val(data.InvoiceNo);
+            });
 
             $('#RecordsContainer').jtable({
                 paging: true,

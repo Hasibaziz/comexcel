@@ -194,6 +194,13 @@ namespace Test.Server.BLL
             }
             return retObj;
         }
-      
+        public object GetGetDeplicateMailCheck(object param)
+        {
+            object retObj = null;
+            string Email = param.ToString();
+            GroupNuserDAL guDAL = new GroupNuserDAL();            
+            retObj = (object)guDAL.GetGetDeplicateMailCheck(Email, param);
+            return retObj;
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace Test.Domain.Model
       public string FullName{set;get;}
       public string Email{set;get;}
       public bool IsActive{set;get;}
-      public string Created{set;get;}
+      public DateTime Created{set;get;}
+      public string LocID { set; get; }
       public string GroupID { set; get; }
 
     }

@@ -146,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mail\MailManager.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\SalesCarList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,9 +176,12 @@
     </Compile>
     <Compile Include="Report\rptExportformEntity.cs" />
     <Compile Include="Report\rptGSPformDetailsEntity.cs" />
+    <Compile Include="Utility\AppConstants.cs" />
     <Compile Include="Utility\BinaryFileResult.cs" />
+    <Compile Include="Utility\ConfigReader.cs" />
     <Compile Include="Utility\ConstantApp.cs" />
     <Compile Include="Utility\Excelimport.cs" />
+    <Compile Include="Utility\WebUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\GSP\GSPFormDetails.aspx" />
@@ -355,6 +359,7 @@
     <Content Include="Content\Treview\screen.css" />
     <Content Include="Content\Treview\jquery.treeview.css" />
     <Content Include="Content\uploadify.css" />
+    <Content Include="EmailTemplates\Common.Html" />
     <Content Include="Global.asax" />
     <EmbeddedResource Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -575,6 +580,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Comsales\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppSettings.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

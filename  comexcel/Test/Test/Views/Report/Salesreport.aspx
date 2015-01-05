@@ -65,22 +65,34 @@ $(document).ready(function () {
                     ContractDate: {
                         title: 'Contract Date',
                         width: '10%'
-                    },                   
-                    ExporterID: {
+                    },
+                    ExporterNo: {
                         title: 'Exporter',
-                        width: '4%',
-                        options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
+                        width: '4%'
                     },
-                    ConsigneeID: {
+//                    ExporterID: {
+//                        title: 'Exporter',
+//                        width: '4%',
+//                        options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
+//                    },
+                    ConsigneeNo: {
                         title: 'Consignee',
-                        width: '10%',
-                        options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
-                    },             
-                    DestinationID: {
-                        title: 'Destination',
-                        width: '5%',
-                        options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+                        width: '10%'
                     },
+//                    ConsigneeID: {
+//                        title: 'Consignee',
+//                        width: '10%',
+//                        options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
+//                    },            
+                    Name: {
+                        title: 'Destination',
+                        width: '5%'
+                    },
+//                    DestinationID: {
+//                        title: 'Destination',
+//                        width: '5%',
+//                        options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
+//                    },
                     TPort: {
                         title: 'Port',
                         width: '12%'

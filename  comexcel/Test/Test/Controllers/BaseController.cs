@@ -813,6 +813,19 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDeplicateMailCheck(string Mail)
+        {
+            CreateUserEntity _Model = new CreateUserEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetGetDeplicateMailCheck, Mail);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.Email = dr["Email"].ToString();
+
+            }
+            return _Model;
+        }
 
     }
 }

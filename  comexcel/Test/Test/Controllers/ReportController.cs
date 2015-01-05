@@ -269,10 +269,12 @@ namespace Test.Controllers
 
                                 OrderNo = dr["OrderNo"].ToString(),
                                 //ExporterID = dr["ExporterID"].ToString(),
-                                ExporterName = dr["ExporterName"].ToString(),
+                                ExporterNo = dr["ExporterNo"].ToString(),                                
+                                ExporterName = dr["ExporterName"].ToString(),                                
                                 //RegDetails = dr["RegDetails"].ToString(),
 
                                 //ConsigneeID = dr["ConsigneeID"].ToString(),
+                                ConsigneeNo = dr["ConsigneeNo"].ToString(),
                                 ConsigneeName = dr["ConsigneeName"].ToString(),
 
                                 //DestinationID = dr["DestinationID"].ToString(),

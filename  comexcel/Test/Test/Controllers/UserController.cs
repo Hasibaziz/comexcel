@@ -8,6 +8,7 @@ using System.Data;
 using Test.Structure;
 using Test.Models;
 using System.Threading;
+using Test.Utility;
 
 
 namespace Test.Controllers
@@ -160,7 +161,7 @@ namespace Test.Controllers
                                 FullName = dr["FullName"].ToString(),
                                 Email = dr["Email"].ToString(),
                                 IsActive = Convert.ToBoolean(dr["IsActive"].ToString()),
-                                Created = dr["Created"].ToString(),
+                                Created =Convert.ToDateTime( dr["Created"].ToString()),
                                 GroupID = dr["GroupID"].ToString()
                             });
                         }
@@ -192,9 +193,23 @@ namespace Test.Controllers
 
 
                 bool isUpdate = false;
-                _Model.Created = DateTime.Now.ToString();
+                _Model.Created = DateTime.Today;
                 if (_Model.ID == null)
-                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveCreateUsersInfo, _Model);
+                {
+                    if (DeplicateMailCheck(_Model.Email) != false)
+                        //ModelState.AddModelError("", "The Email address is already taken. Please choose another.");
+                        //return Json("Sorry, " + _Model.Usermail + " already exist", JsonRequestBehavior.AllowGet);
+                        return Json(new { Result = "Message", Message = "The Email address is already taken. Please choose another." });
+                    //return ModelState.AddModelError("", "Given user name already taken. Please choose another.");
+                    else
+                    {
+                        WebUtil.sendNotificationToSiteUser(_Model);          ///***********  For Sending Mail
+                        //string Encriptpass = _Model.Password;
+                        //_Model.Password = Encdecript.Encryptdata(Encriptpass);
+                        isUpdate = (bool)ExecuteDB(TestTask.AG_SaveCreateUsersInfo, _Model);
+                    }
+                    
+                }
                 else
                     isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateCreateUsersInfo, _Model);
                 if (isUpdate)
@@ -228,8 +243,23 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-        
 
+        public bool DeplicateMailCheck(string UserID)
+        {
+            try
+            {
+                CreateUserEntity obj = (CreateUserEntity)GetDeplicateMailCheck(UserID);
+                //var obj1 = GetDupMail(UserID);                
+                if (obj.Email == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
 
     }

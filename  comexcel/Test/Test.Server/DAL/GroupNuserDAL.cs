@@ -64,7 +64,7 @@ namespace Test.Server.DAL
         public DataTable GetAllCreateUsersListRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
+            string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], Created=CONVERT(varchar, CONVERT(datetime, [Created], 105), 6), [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -112,6 +112,15 @@ namespace Test.Server.DAL
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
-      
+        public DataTable GetGetDeplicateMailCheck(string UserMail, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            //string sql = "SELECT COUNT(Usermail) as MailCount FROM ITInventory.dbo.Login_info GROUP BY Usermail HAVING COUNT(Usermail)>=1";
+            string sql = "SELECT [ID], [Email]  FROM [Commercial].[dbo].[User] where Email like '%" + UserMail + "%'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

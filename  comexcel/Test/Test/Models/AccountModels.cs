@@ -56,9 +56,13 @@ namespace Test.Models
         [Display(Name = "IsActive")]
         public string IsActive { get; set; }
 
+        public string Location { get; set; }
         [Required]
         [Display(Name = "Group")]
         public string Groups { get; set; }
+        [Required]
+        [Display(Name = "Useremail")]
+        public string Useremail { get; set; }
 
     }
 

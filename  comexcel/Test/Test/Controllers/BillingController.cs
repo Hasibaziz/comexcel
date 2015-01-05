@@ -249,6 +249,18 @@ namespace Test.Controllers
             }
         }
 
+        public JsonResult InvoiceSrcByNo(string invoice)
+        {
+            try
+            {
+                ExportformEntity obj = (ExportformEntity)GetDuplicateInvoiceno(invoice);
 
+                return Json(obj);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
     }
 }
