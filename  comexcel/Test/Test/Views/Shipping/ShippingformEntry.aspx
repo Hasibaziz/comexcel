@@ -159,7 +159,7 @@
             <label for="ExFactoryDate">Ex-Factory Date:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.ExFactoryDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.ExFactoryDate)%>
             <%: Html.ValidationMessageFor(model => model.ExFactoryDate) %>
         </div>
          <div class="editor-label01">

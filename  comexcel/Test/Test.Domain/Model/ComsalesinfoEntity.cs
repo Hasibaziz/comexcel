@@ -23,11 +23,11 @@ namespace Test.Domain.Model
       [Display(Name = "BL No")]
       [Required(ErrorMessage = "{0} is required!")]
       public string  BLNo { set; get; }
-      [Display(Name = "BL Date")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "BL Date")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string  BLDate { set; get; }
-      [Display(Name = "ETA Date")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "ETA Date")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string  ETADate { set; get; }
       [Display(Name = "This Field")]
       [Required(ErrorMessage = "{0} is required!")]

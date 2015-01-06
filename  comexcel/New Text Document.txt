@@ -64,3 +64,21 @@ SELECT upper(InvoiceNo), InvoiceDate
 , [UK-Style04] = CONVERT(VARCHAR, CONVERT(datetime, InvoiceDate, 105), 3)
 , [UK-Style] = CONVERT(datetime, InvoiceDate, 105) 
 FROM dbo.ExportformDetails
+
+
+
+----------------------------------------------------------------------------------------------------------
+http://sqlfiddle.com/#!3/019d5
+http://stackoverflow.com/questions/23831052/calculate-consecutive-holiday-weekend-in-a-table?rq=1
+-----------------------
+DECLARE @StartDate DATETIME
+DECLARE @EndDate DATETIME
+SET @StartDate = '2014/01/01'
+SET @EndDate = '2014/01/31'
+
+
+SELECT
+   (DATEDIFF(dd, @StartDate, @EndDate) + 0)
+  -(DATEDIFF(wk, @StartDate, @EndDate) * 2)
+  -(CASE WHEN DATENAME(dw, @StartDate) = 'Sunday' THEN 1 ELSE 0 END)
+  -(CASE WHEN DATENAME(dw, @EndDate) = 'Saturday' THEN 1 ELSE 0 END)

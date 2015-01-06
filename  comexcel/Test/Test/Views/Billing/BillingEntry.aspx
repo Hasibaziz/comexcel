@@ -34,7 +34,7 @@ $(document).ready(function () {
             }
             )
         );
-            $("input#DocsendingDate, #ETADate, #SBDate, #EPDate, #DocSubmitDate, #CourierDate, #BuyerCourierDate, #LeadTime, #BankSubmitDate").datepicker({
+            $("input#DocsendingDate, #ETADate, #SBDate, #EPDate, #DocSubmitDate, #CourierDate, #BuyerCourierDate, #BankSubmitDate").datepicker({
         onSelect: function () {
             document.all ? $(this).get(0).fireEevent("onChange") :
                             $(this).change();
@@ -83,6 +83,7 @@ $(document).ready(function () {
                 buttons: {
                     "OK": function () {
                         //closeDialog($(this))
+                        $("#InvoiceNo").val(" ");
                         $("#SBNo").val(" ");
                         $("#SBDate").val(" ");
                         $("#DocSubmitDate").val(" ");
@@ -166,7 +167,7 @@ $(document).ready(function () {
             <label for="DocSubmitDate">Doc Submit Date:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.DocSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.DocSubmitDate)%>
             <%: Html.ValidationMessageFor(model => model.DocSubmitDate) %>
         </div>
 
@@ -198,7 +199,7 @@ $(document).ready(function () {
             <label for="BuyerCourierDate">Buyer Courier Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BuyerCourierDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BuyerCourierDate)%>
             <%: Html.ValidationMessageFor(model => model.BuyerCourierDate) %>
         </div>
 
@@ -206,7 +207,7 @@ $(document).ready(function () {
             <label for="LeadTime">Lead Time:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.LeadTime, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.LeadTime)%>
             <%: Html.ValidationMessageFor(model => model.LeadTime) %>
         </div>
 
@@ -214,7 +215,7 @@ $(document).ready(function () {
             <label for="BankSubmitDate">Bank Submit Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BankSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BankSubmitDate)%>
             <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
         </div>             
 
@@ -263,7 +264,7 @@ $(document).ready(function () {
                 title: 'Invoice Records',
                 defaultSorting: 'Name ASC',
                 actions: {
-                    listAction: '/Shipping/InvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
+                    listAction: '/Sales/CSalesInvoiceSearchByNo?Invno=' + $("#SInvoiceNo").val()
                     //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
                 },
                 fields: {
@@ -277,42 +278,32 @@ $(document).ready(function () {
                         title: 'Invoice No',
                         width: '8%'
                     },
-                    InvoiceDate: {
-                        title: 'Invoice Date',
-                        width: '10%'
-                    },
-                    ContractNo: {
-                        title: 'Contract No',
-                        width: '10%'
-                    },
-                    ContractDate: {
-                        title: 'Contract Date',
-                        width: '10%'
-                    },
-                    ExporterID: {
-                        title: 'Exporter',
-                        width: '6%',
-                        options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
-                    },
-                    ConsigneeID: {
-                        title: 'Consignee No',
-                        width: '10%',
-                        options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
-                    },
-                    TPort: {
-                        title: 'Local Port',
-                        width: '10%'
-                    },
-                    Quantity: {
-                        title: 'Quantity',
+                    OrderNo: {
+                        title: 'Order No',
                         width: '6%'
                     },
-                    FOBValue: {
-                        title: 'FOB Value',
+                    StyleNo: {
+                        title: 'Style No',
+                        width: '10%'
+                    },
+                    RevQty: {
+                        title: 'RevQty',
+                        width: '5%'
+                    },
+                    RevisedFOBValue: {
+                        title: 'ShippedFOB',
+                        width: '8%'
+                    },
+                    RevisedCMValue: {
+                        title: 'ShippedC.M.',
+                        width: '8%'
+                    },
+                    BLNo: {
+                        title: 'B/L No',
                         width: '6%'
                     },
-                    CMValue: {
-                        title: 'CM Value',
+                    BLDate: {
+                        title: 'B/L Date',
                         width: '8%'
                     }
                 }

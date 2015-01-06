@@ -95,5 +95,13 @@ namespace Test.Server.BLL
             retObj = (object)billDAL.GetBillingInvoiceSearchByNo(param);
             return retObj;
         }
+        public object GetBillingfromSalesInvoiceno(object param)
+        {
+            object retObj = null;
+            string InvNo = param.ToString();
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GetBillingfromSalesInvoiceno(param, InvNo);
+            return retObj;
+        }
     }
 }

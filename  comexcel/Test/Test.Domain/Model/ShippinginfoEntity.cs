@@ -23,25 +23,25 @@ namespace Test.Domain.Model
       [Required(ErrorMessage = "{0} is required!")]
       [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
       public string EXPDate{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string ExFactoryDate{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string CnFAgent{ set;get;}
 
       public string TransportID{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string SBNo{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string SBDate{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string VesselNo{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string CargorptDate { set; get; }
 
       public string SInvoiceNo { set; get; }

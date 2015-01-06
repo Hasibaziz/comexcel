@@ -253,7 +253,7 @@ namespace Test.Controllers
         {
             try
             {
-                ExportformEntity obj = (ExportformEntity)GetDuplicateInvoiceno(invoice);
+                BillingInfoEntity obj = (BillingInfoEntity)GetBillingfromSalesInvoiceno(invoice);
 
                 return Json(obj);
             }

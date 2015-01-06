@@ -483,6 +483,145 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult BillingReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult BillingReportList(string invoice = "", string CatName = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, null);
+                    List<ReportBillinInfoEntity> ItemList = null;
+                    ItemList = new List<ReportBillinInfoEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ReportBillinInfoEntity()
+                            {
+                                // ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+
+                                //ItemName = dr["ItemName"].ToString(),
+                                CONTRACTNO = dr["CONTRACTNO"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+
+                                ORDERNO = dr["ORDERNO"].ToString(),
+                                //ExporterID = dr["ExporterID"].ToString(),
+                                ExporterNo = dr["ExporterNo"].ToString(),
+                                //ExporterName = dr["ExporterName"].ToString(),
+                                //RegDetails = dr["RegDetails"].ToString(),
+
+                                //ConsigneeID = dr["ConsigneeID"].ToString(),
+                                BUYERNAME = dr["BUYERNAME"].ToString(),
+                                //ConsigneeName = dr["ConsigneeName"].ToString(),
+
+                                //DestinationID = dr["DestinationID"].ToString(),
+                                CountryCode = dr["CountryCode"].ToString(),
+                                DESTINATION = dr["DESTINATION"].ToString(),
+
+                                //TransportID = dr["TransportID"].ToString(),
+                                TName = dr["TName"].ToString(),
+                                MODE = dr["MODE"].ToString(),
+                                FOBValue = dr["FOBValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),
+                                //CPTValue = dr["CPTValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+
+                                QtyPCS = dr["QtyPCS"].ToString(),
+                                FOBValueUSD = dr["FOBValueUSD"].ToString(),
+                                CMValueUSD = dr["CMValueUSD"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+
+                                EXPNo = dr["EXPNo"].ToString(),
+                                EXPDate = dr["EXPDate"].ToString(),
+                                //EPNo = dr["EPNo"].ToString(),
+                                //EPDate = dr["EPDate"].ToString(),
+
+                                BLAWBNO = dr["BLAWBNO"].ToString(),
+                                BLAWBDate = dr["BLAWBDate"].ToString(),
+                                SBNo = dr["SBNo"].ToString(),
+                                SBDate = dr["SBDate"].ToString(),
+
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    Session["SALESRPT"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public ActionResult BillingReportOnExcel(string EX1 = "", string EX2 = "")
+        {
+
+            SalesreportEntity _Model = new SalesreportEntity();
+            //_Model.StartDate = EX1;
+            //_Model.EndDate = EX2;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + "Billing Report" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            this.Response.ContentType = "application/vnd.ms-excel";
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
+        }
 
      }
 }

@@ -475,6 +475,7 @@
     <Content Include="Views\Reportpvt\Index.aspx" />
     <Content Include="Views\Reportpvt\TTCMInformation.aspx" />
     <Content Include="Views\Report\AllUDInfo.aspx" />
+    <Content Include="Views\Report\BillingReport.aspx" />
     <Content Include="Views\Report\Control\LeftMenu.ascx" />
     <Content Include="Views\Report\CustomsAuditReport.aspx" />
     <Content Include="Views\Report\Index.aspx" />

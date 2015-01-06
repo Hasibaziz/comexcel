@@ -49,7 +49,10 @@
              <%} %>
              <%else if (GROUP == "Billing")
              { %>
-                <li><a href="<%=Url.Content("~/Billing/Index") %>"><span>Audit Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Shipping/Index") %>"><span>Shipping Info</span></a></li> 
+                <li><a href="<%=Url.Content("~/Sales/Index") %>"><span>Sales Info</span></a></li> 
+                <li><a href="<%=Url.Content("~/Billing/Index") %>"><span>Billing Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
              <%} %>
 

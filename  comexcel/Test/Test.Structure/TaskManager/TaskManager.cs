@@ -726,6 +726,10 @@ namespace Test.Structure.TaskManager
                     billBLL = new BillingInfoBLL();
                     return billBLL.GetBillingInvoiceSearchByNo(param);
                     break;
+                case TestTask.AG_GetBillingfromSalesInvoiceno:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GetBillingfromSalesInvoiceno(param);
+                    break;
                 #endregion
 
                 ///
@@ -741,7 +745,11 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetCustomsAuditReportRecord:
                     allBLL = new AllReportInfoBLL();
                     return allBLL.GetCustomsAuditReportRecord(param);
-                    break;               
+                    break;
+                case TestTask.AG_GetAllBillingReportRecord:
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetAllBillingReportRecord(param);
+                    break;
                 #endregion
                 
                 ///

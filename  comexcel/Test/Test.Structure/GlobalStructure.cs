@@ -256,6 +256,7 @@ namespace Test.Structure
         public const string AG_GetDuplicateBillInvoiceNo = "AG_GetDuplicateBillInvoiceNo";
         public const string AG_GetBillingEntryUpdateByInvoiceNo = "AG_GetBillingEntryUpdateByInvoiceNo";
         public const string AG_GetBillingInvoiceSearchByNo = "AG_GetBillingInvoiceSearchByNo";
+        public const string AG_GetBillingfromSalesInvoiceno = "AG_GetBillingfromSalesInvoiceno";
         #endregion
 
         /// <summary>
@@ -265,7 +266,7 @@ namespace Test.Structure
         #region Auto Generated - ReportAll.
         public const string AG_GetAllSalesreportRecord = "AG_GetAllSalesreportRecord";
         public const string AG_GetCustomsAuditReportRecord = "AG_GetCustomsAuditReportRecord";
-        //public const string AG_UpdateTranshipmentDetailsRecord = "AG_UpdateTranshipmentDetailsRecord";
+        public const string AG_GetAllBillingReportRecord = "AG_GetAllBillingReportRecord";
         //public const string AG_GetAllTranshipmentDetails = "AG_GetAllTranshipmentDetails";
         #endregion
 

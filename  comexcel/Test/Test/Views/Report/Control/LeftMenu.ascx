@@ -8,13 +8,18 @@
          <a href="<%=Url.Content("~/Report/AllUDInfo") %>">U/D Information</a>
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
          <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Report</a>
+         <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>
          <a href="<%=Url.Content("~/Reportpvt/TTCMInformation") %>">TT & CM Information</a>
          <a href="<%=Url.Content("~/Reportpvt/ExportFormReport") %>">Export Form Report</a>
      <% }%>
-    <%else if (GROUP == "ShipNsales")
+     <%else if (GROUP == "ShipNsales")
       { %>
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
      <% }%>
+     <%else if (GROUP == "Billing")
+      { %>
+         <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>
+      <%} %>
 </div>
 
 

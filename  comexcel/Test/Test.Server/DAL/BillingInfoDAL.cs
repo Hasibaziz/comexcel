@@ -87,5 +87,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+        public DataTable GetBillingfromSalesInvoiceno(object param, string InvNo)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            //BillingInfoEntity obj = (BillingInfoEntity)param;
+            string sql = "SELECT ID, InvoiceNo FROM SalesinfoDetails Where InvoiceNo='" + InvNo + "'";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }
