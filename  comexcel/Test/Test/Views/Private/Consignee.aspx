@@ -44,7 +44,7 @@
                     },
                     ConsigneeNo: {
                         title: 'Consignee Name',
-                        width: '10%'
+                        width: '20%'
                     },
                     ConsigneeName: {
                         title: 'Consignee Address',
@@ -53,7 +53,7 @@
                     },
                     Country: {
                         title: 'Country',
-                        width: '15%',
+                        width: '25%',
                         inputClass: 'validate[optional,maxSize[100]]'
                     }
                 },

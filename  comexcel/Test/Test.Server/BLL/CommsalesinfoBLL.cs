@@ -126,5 +126,29 @@ namespace Test.Server.BLL
             retObj = (object)csDAL.GetSalesSearchByInvoiceNo(param, invno);
             return retObj;
         }
+
+        public object SaveSalesImportExcelRecord(object param)
+        {
+            object retObj = null;
+            CommsalesinfoDAL csDAL = new CommsalesinfoDAL();
+            SalesImportExcelEntity obj = (SalesImportExcelEntity)param;
+            retObj = (object)csDAL.SaveSalesImportExcelRecord(obj, param);
+            return retObj;
+        }
+        public object GETAllSalesImportExcelList(object param)
+        {
+            object retObj = null;
+            CommsalesinfoDAL csDAL = new CommsalesinfoDAL();
+            retObj = (object)csDAL.GETAllSalesImportExcelList(param);
+            return retObj;
+        }
+        public object GETSalesPostRecord(object param)
+        {
+            object retObj = null;
+            CommsalesinfoDAL csDAL = new CommsalesinfoDAL();
+            SalesImportExcelEntity obj = (SalesImportExcelEntity)param;
+            retObj = (object)csDAL.GETSalesPostRecord(obj, param);
+            return retObj;
+        }
     }
 }

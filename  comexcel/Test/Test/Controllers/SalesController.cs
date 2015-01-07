@@ -7,6 +7,7 @@ using Test.Domain.Model;
 using System.Data;
 using Test.Structure;
 using Test.Models;
+using System.Data.OleDb;
 
 namespace Test.Controllers
 {
@@ -476,7 +477,192 @@ namespace Test.Controllers
             return _Model;
         }
 
+        public ActionResult SalesImportExcel()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SalesImportExcel(HttpPostedFileBase file, SalesImportExcelEntity _Model)
+        {
 
+            if (Request.Files["FileUpload"].ContentLength > 0)
+            {
+                string fileExtension = System.IO.Path.GetExtension(Request.Files["FileUpload"].FileName);
+
+                if (fileExtension == ".xls" || fileExtension == ".xlsx")
+                {
+
+                    // Create a folder in App_Data named ExcelFiles because you need to save the file temporarily location and getting data from there. 
+                    string fileLocation = string.Format("{0}/{1}", Server.MapPath("~/Temp"), Request.Files["FileUpload"].FileName);
+
+                    if (System.IO.File.Exists(fileLocation))
+                        System.IO.File.Delete(fileLocation);
+
+                    Request.Files["FileUpload"].SaveAs(fileLocation);
+                    string excelConnectionString = string.Empty;
+
+                    excelConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileLocation + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+                    //connection String for xls file format.
+                    if (fileExtension == ".xls")
+                    {
+                        excelConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileLocation + ";Extended Properties=\"Excel 8.0;HDR=Yes;IMEX=2\"";
+                    }
+                    //connection String for xlsx file format.
+                    else if (fileExtension == ".xlsx")
+                    {
+
+                        excelConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileLocation + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+                    }
+
+                    //Create Connection to Excel work book and add oledb namespace
+                    OleDbConnection excelConnection = new OleDbConnection(excelConnectionString);
+                    excelConnection.Open();
+
+                    DataTable dt = new DataTable();
+
+                    dt = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    if (dt == null)
+                    {
+                        return null;
+                    }
+
+                    String[] excelSheets = new String[dt.Rows.Count];
+                    int t = 0;
+                    //excel data saves in temp file here.
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        excelSheets[t] = row["TABLE_NAME"].ToString();
+                        t++;
+                    }
+                    OleDbConnection excelConnection1 = new OleDbConnection(excelConnectionString);
+                    excelConnection.Close();
+
+                    DataSet ds = new DataSet();
+
+                    string query = string.Format("Select * from [{0}]", excelSheets[0]);    //Range of selection: string cmdText = "SELECT * FROM [w1$A10:B10]";
+                    //string DEL = string.Format("DELETE FROM [{0}]", excelSheets[0]); //For Deleting the Data from Excel
+                    using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, excelConnection1))
+                    {
+                        dataAdapter.Fill(ds);
+                        dt = ds.Tables[0];
+                    }
+
+                    // Putting Status on the Status Field
+                    //for (int i = 0; i < dt.Rows.Count; i++)
+                    //{
+                    //    if (dt.Rows[i][6].ToString() == "")
+                    //    {
+                    //        string Status = string.Format("Update  [{0}] set '" + dt.Rows[i][6].ToString() + "'='Post' where '" + dt.Rows[i][17].ToString() + "'='' ", excelSheets[0]);
+                    //        OleDbDataAdapter dataAdapter = new OleDbDataAdapter(Status, excelConnection1);
+                    //    }
+                    //}
+
+
+                    ////For Validation the First Row on The Excel File-like Sales Contract.
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (dt.Rows[i][0].ToString() == "")
+                        {
+                            int RowNo = i + 2;
+                            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "InvalidArgs", "alert('Please enter Employee ID in row " + RowNo + "');", true);
+                            //ViewBag.message = "Please check the Blank Field";                         
+                            ModelState.AddModelError("", "Please check the Blank(Sales Contract) in Row- " + RowNo + "");
+                            return View();
+                        }
+                    }
+
+                    bool isUpdate = false;
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        // _Model.ID = ds.Tables[0].Rows[i]["ID"].ToString();
+                        _Model.InvoiceNo = ds.Tables[0].Rows[i]["Invoice No"].ToString();
+                        _Model.BLNo = ds.Tables[0].Rows[i]["BL No"].ToString();
+                        _Model.BLDate = ds.Tables[0].Rows[i]["BL Date"].ToString();
+                        _Model.ETADate = ds.Tables[0].Rows[i]["ETA Date"].ToString();
+                        _Model.ShipbordingDate = ds.Tables[0].Rows[i]["Ship Bording Date"].ToString();
+                       
+                        //_Model.ImportDate = DateTime.Today.ToString();
+
+                        if (_Model.InvoiceNo != null)
+                            isUpdate = (bool)ExecuteDB(TestTask.AG_SaveSalesImportExcelRecord, _Model);
+                        else
+                            ViewBag.message = "Fail to Save Data, Please check the Excel File";
+                    }
+                    ViewBag.message = "Information saved successfully.";
+                    //lblMessage.Text = "Information saved successfully.";
+                }
+                else
+                    ModelState.AddModelError("", "Please select Excel File.");
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult AllSalesImportExcelList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    //SalesImportExcelEntity _Model = new SalesImportExcelEntity();
+                    //_Model.UserName = CurrentUserName;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GETAllSalesImportExcelList, null);
+                    List<SalesImportExcelEntity> ItemList = null;
+                    ItemList = new List<SalesImportExcelEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new SalesImportExcelEntity()
+                            {
+                                ID = dr["ID"].ToString(),
+                                InvoiceNo = dr["InvoiceNo"].ToString(),                               
+                                ShipbordingDate = dr["ShipbordingDate"].ToString(),
+                                BLNo = dr["BLNo"].ToString(),
+                                BLDate = dr["BLDate"].ToString(),
+                                ETADate = dr["ETADate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        public JsonResult SalesPostRecord()
+        {
+            bool result = true;
+            SalesImportExcelEntity _Model = new SalesImportExcelEntity();
+            try
+            {
+                if (DuplicatesalesInvoiceNo(_Model.InvoiceNo) != false)
+                    //return Json(new { Result = "Message", Message = "Invoice already Exists!." });                    
+                    return Json(new { result }, JsonRequestBehavior.AllowGet);
+                else
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GETSalesPostRecord, null);
+                    return Json(new { Result = "OK" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
        
     }
 }

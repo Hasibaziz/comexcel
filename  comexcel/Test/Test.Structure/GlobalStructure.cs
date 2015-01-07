@@ -233,6 +233,10 @@ namespace Test.Structure
         public const string AG_GetSalesEntryInvoiceSearchByNo = "AG_GetSalesEntryInvoiceSearchByNo";
         public const string AG_GetCheckshippingInvoiceNo = "AG_GetCheckshippingInvoiceNo";
         public const string AG_GetSalesSearchByInvoiceNo = "AG_GetSalesSearchByInvoiceNo";
+
+        public const string AG_SaveSalesImportExcelRecord = "AG_SaveSalesImportExcelRecord";
+        public const string AG_GETAllSalesImportExcelList = "AG_GETAllSalesImportExcelList";
+        public const string AG_GETSalesPostRecord = "AG_GETSalesPostRecord";
         #endregion
 
         /// <summary>

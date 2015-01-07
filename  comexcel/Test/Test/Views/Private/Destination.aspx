@@ -43,15 +43,15 @@
                     },
                     CountryCode: {
                         title: 'Country Code',
-                        width: '10%'
+                        width: '20%'
                     },
                     Name: {
                         title: 'Name',
-                        width: '10%'
+                        width: '40%'
                     },
                     Port: {
                         title: 'Port',
-                        width: '15%'
+                        width: '30%'
                     }
                 },
                 formCreated: function (event, data) {

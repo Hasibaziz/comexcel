@@ -658,6 +658,18 @@ namespace Test.Structure.TaskManager
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GetSalesSearchByInvoiceNo(param);
                     break;
+                case TestTask.AG_SaveSalesImportExcelRecord:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.SaveSalesImportExcelRecord(param);
+                    break;
+                case TestTask.AG_GETAllSalesImportExcelList:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GETAllSalesImportExcelList(param);
+                    break;
+                case TestTask.AG_GETSalesPostRecord:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GETSalesPostRecord(param);
+                    break;
                 #endregion
 
                     //// 

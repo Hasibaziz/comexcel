@@ -487,6 +487,7 @@
     <Content Include="Views\Sales\Export.aspx" />
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />
+    <Content Include="Views\Sales\SalesImportExcel.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\ModuleHeader\DashBordHeader.ascx" />
     <Content Include="Views\Shared\ModuleHeader\ModuleUserControl.ascx" />

@@ -198,5 +198,33 @@ namespace Test.Server.DAL
             return ds.Tables[0];
         }
 
+        public bool SaveSalesImportExcelRecord(SalesImportExcelEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.BLNo, obj.BLDate, obj.ETADate, obj.ShipbordingDate};
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetSalesImportExcelRecord", parametersImportinfo);         
+
+
+            DataSet ds = db.ExecuteDataSet(dbCommand);           
+            return true;
+        }
+        public DataTable GETAllSalesImportExcelList(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, [InvoiceNo], [BLNo], [BLDate], [ETADate], [ShipbordingDate] FROM SalesExcel";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+                    
+        }
+        public bool GETSalesPostRecord(SalesImportExcelEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            //object[] parametersImportinfo = new object[] { obj.SContract, obj.UDNo, obj.AMDNo, obj.AMDDate, obj.Factory, obj.Invoice, obj.Category, obj.Item, obj.QTY, obj.Unit, obj.TotalValue, obj.BENo, obj.BEDate, obj.Passbook, obj.Pageno, obj.BLNo, obj.Mode, obj.ImportDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spSetSalesPostRecord");
+
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return true;
+        }
     }
 }

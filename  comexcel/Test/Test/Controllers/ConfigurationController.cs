@@ -734,7 +734,7 @@ namespace Test.Controllers
                         _Model.Pageno = ds.Tables[0].Rows[i]["Pageno"].ToString();
                         _Model.BLNo = ds.Tables[0].Rows[i]["B/L No"].ToString();
                         _Model.Mode = ds.Tables[0].Rows[i]["Mode"].ToString();
-                        _Model.ImportDate = DateTime.Today.ToString();
+                        _Model.ImportDate =  DateTime.Today.ToString();
 
                         if (_Model.Invoice != null)
                             isUpdate = (bool)ExecuteDB(TestTask.AG_SaveImportexcelRecord, _Model);
