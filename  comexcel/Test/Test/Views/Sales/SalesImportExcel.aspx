@@ -67,7 +67,7 @@
                 },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '20%'
+                    width: '15%'
                 },                             
                 BLNo: {
                     title: 'B/L No',
@@ -79,11 +79,15 @@
                 },
                 ETADate: {
                     title: 'ETA Date',
-                    width: '20%'
+                    width: '15%'
                 }, 
                 ShipbordingDate: {
                     title: 'Ship Bording Date',
-                    width: '20%'
+                    width: '15%'
+                },
+                VesselName: {
+                    title: 'Vessel Name',
+                    width: '15%'
                 }
             }
         });

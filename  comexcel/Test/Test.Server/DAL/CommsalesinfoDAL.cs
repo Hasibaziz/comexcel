@@ -211,7 +211,7 @@ namespace Test.Server.DAL
         public DataTable GETAllSalesImportExcelList(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, [InvoiceNo], [BLNo], [BLDate], [ETADate], [ShipbordingDate] FROM SalesExcel";
+            string sql = "SELECT ID, [InvoiceNo], [BLNo], [BLDate], [ETADate], [ShipbordingDate], [VesselName] FROM SalesExcel";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

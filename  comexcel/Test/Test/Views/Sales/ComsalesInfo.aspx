@@ -50,7 +50,7 @@
                 },                
                 OrderNo: {
                     title: 'Order No',
-                    width: '6%'
+                    width: '8%'
                 },
                 StyleNo: {
                     title: 'Style No',
@@ -58,23 +58,31 @@
                 },
                 RevQty: {
                     title: 'RevQty',
-                    width: '5%'
+                    width: '7%'
                 },                
                 RevisedFOBValue: {
                     title: 'ShippedFOB',
-                    width: '8%'
+                    width: '7%'
                 },
                 RevisedCMValue: {
                     title: 'ShippedC.M.',
-                    width: '8%'
+                    width: '7%'
                 },
                 BLNo: {
                     title: 'B/L No',
-                    width: '6%'
+                    width: '8%'
                 },
                 BLDate: {
                     title: 'B/L Date',
-                    width: '8%'
+                    width: '12%'
+                },
+                ShipbordingDate: {
+                    title: 'Ship Bording Date',
+                    width: '12%'
+                },
+                VesselName: {
+                    title: 'Vessel Name',
+                    width: '9%'
                 }
             }
         });

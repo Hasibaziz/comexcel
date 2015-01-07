@@ -580,6 +580,7 @@ namespace Test.Controllers
                         _Model.BLDate = ds.Tables[0].Rows[i]["BL Date"].ToString();
                         _Model.ETADate = ds.Tables[0].Rows[i]["ETA Date"].ToString();
                         _Model.ShipbordingDate = ds.Tables[0].Rows[i]["Ship Bording Date"].ToString();
+                        _Model.VesselName = ds.Tables[0].Rows[i]["Vessel Name"].ToString();
                        
                         //_Model.ImportDate = DateTime.Today.ToString();
 
@@ -624,7 +625,8 @@ namespace Test.Controllers
                                 ShipbordingDate = dr["ShipbordingDate"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLDate"].ToString(),
-                                ETADate = dr["ETADate"].ToString()
+                                ETADate = dr["ETADate"].ToString(),
+                                VesselName = dr["VesselName"].ToString()
                             });
                         }
                         iCount += 1;
