@@ -383,6 +383,8 @@
           <%-- CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;", @class = "validate[required]" })%>--%>
            CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
            FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
+           <%--CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;" })%> 
+           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;" })%> --%>
            Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>      
         </div>
 
@@ -586,9 +588,8 @@
             $("#InvoiceDate").val(data.InvoiceDate);
             $("#ContractNo").val(data.ContractNo);
             $("#ContractDate").val(data.ContractDate);
-            $("#TTNo").val(data.TTNo);         
-
-
+            $("#TTNo").val(data.TTNo);
+            
             $("#TTDate").val(data.TTDate);
            
             $("#ExporterID").val(data.ExporterID);
@@ -610,9 +611,9 @@
 
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTValue").val(data.FOBValue)
-                $("#CPTCMValue").prop("disabled", true);
+                //$("#CPTCMValue").prop("disabled", true);
                 $("#CPTCMValue").val(data.CMValue);
-                $("#CPTFOBValue").prop("disabled", true);
+                //$("#CPTFOBValue").prop("disabled", true);
                 $("#CPTFOBValue").val(data.CPTFOBValue);
                 $("#Freight").prop("disabled", false);
                 $("#Freight").val(data.Freight);

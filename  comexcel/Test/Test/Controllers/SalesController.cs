@@ -8,6 +8,8 @@ using System.Data;
 using Test.Structure;
 using Test.Models;
 using System.Data.OleDb;
+using System.IO;
+using Test.Utility;
 
 namespace Test.Controllers
 {
@@ -479,7 +481,12 @@ namespace Test.Controllers
 
         public ActionResult SalesImportExcel()
         {
-            return View();
+            var files = from f in System.IO.Directory.GetFiles(
+                                 Server.MapPath("~/Temp/ExcelFormat/"),
+                                 "*.*",
+                                 SearchOption.TopDirectoryOnly)
+                        select System.IO.Path.GetFileName(f);
+            return View(files);
         }
         [HttpPost]
         public ActionResult SalesImportExcel(HttpPostedFileBase file, SalesImportExcelEntity _Model)
@@ -558,18 +565,18 @@ namespace Test.Controllers
                     //}
 
 
-                    ////For Validation the First Row on The Excel File-like Sales Contract.
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        if (dt.Rows[i][0].ToString() == "")
-                        {
-                            int RowNo = i + 2;
-                            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "InvalidArgs", "alert('Please enter Employee ID in row " + RowNo + "');", true);
-                            //ViewBag.message = "Please check the Blank Field";                         
-                            ModelState.AddModelError("", "Please check the Blank(Sales Contract) in Row- " + RowNo + "");
-                            return View();
-                        }
-                    }
+                    //For Validation the First Row on The Excel File-like Sales Contract.
+                    //for (int i = 0; i < dt.Rows.Count; i++)
+                    //{
+                    //    if (dt.Rows[i][0].ToString() == "")
+                    //    {
+                    //        int RowNo = i + 1;
+                    //        //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "InvalidArgs", "alert('Please enter Employee ID in row " + RowNo + "');", true);
+                    //        //ViewBag.message = "Please check the Blank Field";                         
+                    //        ModelState.AddModelError("", "Please check the Blank(Invoice NO) in Row- " + RowNo + "");
+                    //        return View();
+                    //    }
+                    //}
 
                     bool isUpdate = false;
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -598,6 +605,23 @@ namespace Test.Controllers
             }
             return View();
         }
+        public ActionResult Download(string fn)
+        {
+            string pfn = Server.MapPath("~/Temp/ExcelFormat/" + fn);
+            if (!System.IO.File.Exists(pfn))
+            {
+                throw new ArgumentException("Invalid file name or file not exists!");
+            }
+
+            return new BinaryContentResult()
+            {
+                FileName = fn,
+                ContentType = "application/octet-stream",
+                Content = System.IO.File.ReadAllBytes(pfn)
+            };
+
+        }
+
 
         [HttpPost]
         public JsonResult AllSalesImportExcelList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)

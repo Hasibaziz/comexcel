@@ -572,9 +572,9 @@
 
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTValue").val(data.FOBValue)
-                $("#CPTCMValue").prop("disabled", true);
+                //$("#CPTCMValue").prop("disabled", true);
                 $("#CPTCMValue").val(data.CMValue);
-                $("#CPTFOBValue").prop("disabled", true);
+                //$("#CPTFOBValue").prop("disabled", true);
                 $("#CPTFOBValue").val(data.CPTFOBValue);
                 $("#Freight").prop("disabled", false);
                 $("#Freight").val(data.Freight);

@@ -145,6 +145,14 @@
                 BLDate: {
                     title: 'B/L Date',
                     width: '8%'
+                },
+                ShipbordingDate: {
+                    title: 'Ship Bording Date',
+                    width: '12%'
+                },
+                VesselName: {
+                    title: 'Vessel Name',
+                    width: '9%'
                 }
             }
         });

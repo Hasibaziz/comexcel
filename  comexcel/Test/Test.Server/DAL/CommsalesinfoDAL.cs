@@ -201,7 +201,7 @@ namespace Test.Server.DAL
         public bool SaveSalesImportExcelRecord(SalesImportExcelEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.BLNo, obj.BLDate, obj.ETADate, obj.ShipbordingDate};
+            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.BLNo, obj.BLDate, obj.ETADate, obj.ShipbordingDate, obj.VesselName};
             DbCommand dbCommand = db.GetStoredProcCommand("spGetSalesImportExcelRecord", parametersImportinfo);         
 
 
