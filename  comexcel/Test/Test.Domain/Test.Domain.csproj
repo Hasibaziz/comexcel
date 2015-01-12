@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\BEInfoEntity.cs" />
+    <Compile Include="Model\BillingImportExcelEntity.cs" />
     <Compile Include="Model\BillingInfoEntity.cs" />
     <Compile Include="Model\CategorydetailsEntity.cs" />
     <Compile Include="Model\CategoryEntity.cs" />

@@ -434,6 +434,7 @@
     <Content Include="Views\Audit\LeftMenu.ascx" />
     <Content Include="Views\Billing\BillingEntry.aspx" />
     <Content Include="Views\Billing\BillingEntryUpdate.aspx" />
+    <Content Include="Views\Billing\BillingImportExcel.aspx" />
     <Content Include="Views\Billing\BillingInfo.aspx" />
     <Content Include="Views\Billing\Index.aspx" />
     <Content Include="Views\Billing\LeftMenu.ascx" />

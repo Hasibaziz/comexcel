@@ -220,7 +220,7 @@ namespace Test.Server.DAL
         public bool GETSalesPostRecord(SalesImportExcelEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            //object[] parametersImportinfo = new object[] { obj.SContract, obj.UDNo, obj.AMDNo, obj.AMDDate, obj.Factory, obj.Invoice, obj.Category, obj.Item, obj.QTY, obj.Unit, obj.TotalValue, obj.BENo, obj.BEDate, obj.Passbook, obj.Pageno, obj.BLNo, obj.Mode, obj.ImportDate };
+            //object[] parametersImportinfo = new object[] { obj.SContract, obj.UDNo, obj.BLNo, obj.Mode, obj.ImportDate };
             DbCommand dbCommand = db.GetStoredProcCommand("spSetSalesPostRecord");
 
             DataSet ds = db.ExecuteDataSet(dbCommand);

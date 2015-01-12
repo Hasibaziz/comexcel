@@ -96,5 +96,34 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public bool SaveBillingImportExcelRecord(BillingImportExcelEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.CourierNo, obj.CourierDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetBillingImportExcelRecord", parametersImportinfo);
+
+
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return true;
+        }
+        public DataTable GETAllBillingImportExcelList(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT [ID], [InvoiceNo], [CourierNo], [CourierDate]  FROM [Commercial].[dbo].[BillingExcel] ";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+        public bool GETBillingPostRecord(BillingImportExcelEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            //object[] parametersImportinfo = new object[] { obj.SContract, obj.UDNo, obj.BLNo, obj.Mode, obj.ImportDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spSetBillingPostRecord");
+
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return true;
+        }
+
     }
 }

@@ -24,7 +24,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ExportformEntity obj = (ExportformEntity)param;
-            string sql = "SELECT ID, InvoiceNo, InvoiceDate, ContractNo, ContractDate, TTNo, TTDate, Quantity, FOBValue, CMValue FROM ExportformDetails WHERE TTNo='"+obj.TTNo+"' ORDER BY TTNo ASC";
+            string sql = "SELECT ID, InvoiceNo, InvoiceDate, ContractNo, ContractDate, TTNo, TTDate, Quantity, FOBValue, CMValue FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL ORDER BY TTNo ASC";
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -34,7 +34,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ExportformEntity obj = (ExportformEntity)param;
-            string sql = "SELECT TTNo, SUM(CONVERT(FLOAT,CMValue)) AS CMTotal FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' GROUP BY TTNo";
+            string sql = "SELECT TTNo, SUM(CONVERT(FLOAT,CMValue)) AS CMTotal FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo";
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

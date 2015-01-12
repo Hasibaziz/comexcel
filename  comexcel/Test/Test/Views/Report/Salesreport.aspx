@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<Test.Domain.Model.SalesreportEntity>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Salesreport
@@ -12,9 +12,15 @@
         //alert("Report");
         window.open("/Report/SalesExcelReport");
     }
+//    function PrintExcel() {
+//        //alert("Report");
+//        window.open("/Report/ExcelReport");
+//    }
+//    <script type="text/javascript">
     function PrintExcel() {
-        //alert("Report");
-        window.open("/Report/ExcelReport");
+        EX1 = $("#StartDate").val();
+        EX2 = $("#EndDate").val();        
+        window.location = "/Report/ExcelReport?EX1=" + EX1 + "&EX2=" + EX2;
     }
 </script>
 <div class="mp_left_menu">
@@ -23,6 +29,9 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">  
+                  (Ex-Factory)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
+                  End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>
+                  <input type="button" value="Search" title="Search" class="btn btn-primary btn-lg active"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp;
                   <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="printItem()" />--%>
                   <input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />
                </div>               
@@ -32,7 +41,6 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-
             $('#RecordsContainer').jtable({
                 paging: true,
                 columnResizable: true,
@@ -142,11 +150,26 @@ $(document).ready(function () {
                         width: '8%'
                     }
                 }
+            });           
+            $('#GetAttenList').click(function (e) {
+                e.preventDefault();
+                $('#RecordsContainer').jtable('load', {
+                    StartDate: $('#StartDate').val(),
+                    EndDate: $('#EndDate').val()
+                });
             });
-            $('#RecordsContainer').jtable('load');
-        });  
+        }); 
 </script>
 <script type="text/javascript">
-    $.hik.jtable.prototype.options.columnResizable = true;
+    $(function () {
+        $("#StartDate, #EndDate ").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '-100y:c+nn',
+            maxDate: '1d'
+        });
+    });
+
 </script>
 </asp:Content>

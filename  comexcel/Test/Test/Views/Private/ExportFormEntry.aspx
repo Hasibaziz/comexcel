@@ -481,7 +481,7 @@
             $("#Port").html(data.Port);
         });
     });
-    $('#TTNo').hover(function () {
+    $('#TTNo').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);

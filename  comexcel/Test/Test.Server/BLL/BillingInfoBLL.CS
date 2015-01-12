@@ -103,5 +103,30 @@ namespace Test.Server.BLL
             retObj = (object)billDAL.GetBillingfromSalesInvoiceno(param, InvNo);
             return retObj;
         }
+
+
+        public object SaveBillingImportExcelRecord(object param)
+        {
+            object retObj = null;
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            BillingImportExcelEntity obj = (BillingImportExcelEntity)param;
+            retObj = (object)billDAL.SaveBillingImportExcelRecord(obj, param);
+            return retObj;
+        }
+        public object GETAllBillingImportExcelList(object param)
+        {
+            object retObj = null;
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            retObj = (object)billDAL.GETAllBillingImportExcelList(param);
+            return retObj;
+        }
+        public object GETBillingPostRecord(object param)
+        {
+            object retObj = null;
+            BillingInfoDAL billDAL = new BillingInfoDAL();
+            BillingImportExcelEntity obj = (BillingImportExcelEntity)param;
+            retObj = (object)billDAL.GETBillingPostRecord(obj, param);
+            return retObj;
+        }
     }
 }

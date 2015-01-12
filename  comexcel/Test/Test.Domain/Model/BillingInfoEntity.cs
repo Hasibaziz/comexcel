@@ -19,14 +19,11 @@ namespace Test.Domain.Model
         public string SBDate{set;get;}
        
         public string DocSubmitDate{set;get;}
-        [Display(Name = "Courier No")]
-        [Required(ErrorMessage = "{0} is required!")]
+       
         public string CourierNo{set;get;}
-        [Display(Name = "Courier Date")]
-        [Required(ErrorMessage = "{0} is required!")]
+      
         public string CourierDate{set;get;}
-        [Display(Name = "Buyer Courier No")]
-        [Required(ErrorMessage = "{0} is required!")]
+       
         public string BuyerCourierNo{set;get;}
        
         public string BuyerCourierDate{set;get;}

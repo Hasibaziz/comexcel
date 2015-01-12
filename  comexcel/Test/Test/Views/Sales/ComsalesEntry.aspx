@@ -18,9 +18,35 @@
  <script src="<%: Url.Content("~/Scripts/validationEngine/jquery.validationEngine.js")  %>" type="text/javascript" ></script>
           <%--**************--------------------------**************************--%>
 
-<script src="<%: Url.Content("~/Scripts/Exportform.js") %>" type="text/javascript"></script>
+
 
 <script type="text/javascript" >
+    $(document).ready(function () {
+        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
+        $.datepicker.setDefaults($.extend({},
+            {
+                changeMonth: true,
+                changeYear: true,
+                showStatus: true,
+                dateFormat: 'mm/dd/yy',
+                duration: 'fast',
+                yearRange: '1890:2100'
+            }
+            )
+        );
+            $("input#BLDate, #ETADate, #ShipbordingDate").datepicker({
+            onSelect: function () {
+                document.all ? $(this).get(0).fireEevent("onChange") :
+                            $(this).change();
+                this.focus();
+            },
+            onClose: function (dateText, inst) {
+                if (!document.all)
+                    this.select();
+            }
+        });
+        //$('#frmID').validationEngine();
+    });
     $(function () {
         $("#tabs").tabs();
     });

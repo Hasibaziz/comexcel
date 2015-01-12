@@ -261,6 +261,11 @@ namespace Test.Structure
         public const string AG_GetBillingEntryUpdateByInvoiceNo = "AG_GetBillingEntryUpdateByInvoiceNo";
         public const string AG_GetBillingInvoiceSearchByNo = "AG_GetBillingInvoiceSearchByNo";
         public const string AG_GetBillingfromSalesInvoiceno = "AG_GetBillingfromSalesInvoiceno";
+
+        public const string AG_SaveBillingImportExcelRecord = "AG_SaveBillingImportExcelRecord";
+        public const string AG_GETAllBillingImportExcelList = "AG_GETAllBillingImportExcelList";
+        public const string AG_GETBillingPostRecord = "AG_GETBillingPostRecord";
+        
         #endregion
 
         /// <summary>

@@ -175,7 +175,7 @@ $(document).ready(function () {
             <label for="CourierNo">HK Courier No:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.CourierNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.CourierNo)%>
             <%: Html.ValidationMessageFor(model => model.CourierNo) %>
         </div>
 
@@ -183,7 +183,7 @@ $(document).ready(function () {
             <label for="CourierDate">HK Courier Date:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.CourierDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.CourierDate)%>
             <%: Html.ValidationMessageFor(model => model.CourierDate) %>
         </div>
 
@@ -191,7 +191,7 @@ $(document).ready(function () {
             <label for="BuyerCourierNo">Buyer Courier No:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BuyerCourierNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BuyerCourierNo)%>
             <%: Html.ValidationMessageFor(model => model.BuyerCourierNo) %>
         </div>
 

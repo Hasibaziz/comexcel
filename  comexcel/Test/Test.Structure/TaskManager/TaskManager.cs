@@ -742,6 +742,18 @@ namespace Test.Structure.TaskManager
                     billBLL = new BillingInfoBLL();
                     return billBLL.GetBillingfromSalesInvoiceno(param);
                     break;
+                case TestTask.AG_SaveBillingImportExcelRecord:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.SaveBillingImportExcelRecord(param);
+                    break;
+                case TestTask.AG_GETAllBillingImportExcelList:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GETAllBillingImportExcelList(param);
+                    break;
+                case TestTask.AG_GETBillingPostRecord:
+                    billBLL = new BillingInfoBLL();
+                    return billBLL.GETBillingPostRecord(param);
+                    break;
                 #endregion
 
                 ///

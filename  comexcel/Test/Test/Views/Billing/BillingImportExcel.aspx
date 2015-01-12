@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Test.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    SalesImportExcel
+    BillingImportExcel
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -19,6 +19,8 @@
 }
 </style>
 <title><%: (string) ViewBag.message %></title>
+
+
 <div class="mp_left_menu">
    <% Html.RenderPartial("LeftMenu"); %>
 </div>
@@ -30,7 +32,7 @@
             <a>Excel Format For Download: </a><a class="btn btn-mini" <%: Html.ActionLink(file,"Download",new {Action="Download", fn=file})  %>  </a>  <br />
        <%} %>
     </fieldset>    --%>
-   <% using (Html.BeginForm("SalesImportExcel", "Sales", FormMethod.Post, new { enctype = "multipart/form-data" }))
+   <% using (Html.BeginForm("BillingImportExcel", "Billing", FormMethod.Post, new { enctype = "multipart/form-data" }))
        { %>
         <%: Html.ValidationSummary(true) %>
         <fieldset>
@@ -46,8 +48,9 @@
         <% } %>        
    <div id="RecordsContainer"></div>
    </div>
-   <div id="dialog" title="Dialog Title" style="display:none"> Some text</div> 
+   <div id="dialog" title="Dialog Title" style="display:none"> Some Text </div> 
 </div>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -58,7 +61,7 @@
             sorting: false,
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '<%=Url.Content("~/Sales/AllSalesImportExcelList") %>',
+                listAction: '<%=Url.Content("~/Billing/AllBillingImportExcelList") %>',
                 //createAction: '<%=Url.Content("~/Configuration/AddUpdateCategoryDetails") %>'
                 //deleteAction: '<%=Url.Content("~/Configuration/DeleteAllImportExcelList") %>'
                 //updateAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>',
@@ -73,27 +76,15 @@
                 },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '15%'
+                    width: '30%'
                 },                             
-                BLNo: {
-                    title: 'B/L No',
-                    width: '15%'
+                CourierNo: {
+                    title: 'Courier No',
+                    width: '30%'
                 },
-                BLDate: {
-                    title: 'B/L Date',
-                    width: '15%'
-                },
-                ETADate: {
-                    title: 'ETA Date',
-                    width: '15%'
-                }, 
-                ShipbordingDate: {
-                    title: 'Ship Bording Date',
-                    width: '15%'
-                },
-                VesselName: {
-                    title: 'Vessel Name',
-                    width: '15%'
+                CourierDate: {
+                    title: 'Courier Date',
+                    width: '30%'
                 }
             }
         });
@@ -101,6 +92,9 @@
     });
  
 </script>
+
+
+
 <script type="text/javascript">
     function CheckFileName() {
         var fileName = document.getElementById("FileUpload").value
@@ -130,7 +124,7 @@
                 "Yes": function () {
                     $(this).dialog("close");
                     //$.post('<%: ResolveUrl("/Configuration/Postdata")%>');
-                    $.post('<%: ResolveUrl("/Sales/SalesPostRecord")%>', function (result) {
+                    $.post('<%: ResolveUrl("/Billing/BillingPostRecord")%>', function (result) {
                         if (result.result) {
                             //alert("Already Posted  " + result.result);
                             alert("Data Already Posted!  ");

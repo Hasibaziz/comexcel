@@ -16,7 +16,8 @@ namespace Test.Server.BLL
         {
             object retObj = null;
             AllReportInfoDAL allDAL = new AllReportInfoDAL();
-            retObj = (object)allDAL.GetAllSalesreportRecord(param);
+            SalesreportEntity obj = (SalesreportEntity)param;
+            retObj = (object)allDAL.GetAllSalesreportRecord(obj, param);
             return retObj;
         }
 

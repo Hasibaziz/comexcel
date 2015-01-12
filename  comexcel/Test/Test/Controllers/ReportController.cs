@@ -241,13 +241,16 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public JsonResult SalesreportList(string invoice = "", string CatName = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult SalesreportList(string StartDate = "", string EndDate = "", string CatName = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
                 try
                 {
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, null);
+                    SalesreportEntity _Model = new SalesreportEntity();
+                    _Model.StartDate = StartDate;
+                    _Model.EndDate = EndDate;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, _Model);
                     List<SalesreportEntity> ItemList = null;
                     ItemList = new List<SalesreportEntity>();
                     int iCount = 0;
@@ -343,8 +346,8 @@ namespace Test.Controllers
         {
 
             SalesreportEntity _Model = new SalesreportEntity();
-            //_Model.StartDate = EX1;
-            //_Model.EndDate = EX2;
+            _Model.StartDate = EX1;
+            _Model.EndDate = EX2;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, _Model);
             StringBuilder sb = new StringBuilder();
             sb.Append("<table border='" + "2px" + "'b>");

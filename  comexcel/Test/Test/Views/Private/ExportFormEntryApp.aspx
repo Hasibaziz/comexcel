@@ -443,13 +443,14 @@
             $("#Port").html(data.Port);
         });
     });
-    $('#TTNo').change(function () {
+    $('#TTNo').keyup(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
-            $("#ttAmount").html(data.TTAmount);
-            $("#ttBalance").html(data.TTBalance);
-//            $("#ExporterID").val(data.ExporterDetailsID);
-        });
+            //$("#ttAmount").html(data.TTAmount);
+            var tball = parseFloat(data.TTBalance).toFixed(2);
+            $("#ttBalance").html(tball);
+            $("#ExporterID").val(data.ExporterDetailsID);
+         });
     });
 
     $(document).ready(function () {
