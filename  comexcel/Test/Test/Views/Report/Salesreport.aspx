@@ -12,11 +12,6 @@
         //alert("Report");
         window.open("/Report/SalesExcelReport");
     }
-//    function PrintExcel() {
-//        //alert("Report");
-//        window.open("/Report/ExcelReport");
-//    }
-//    <script type="text/javascript">
     function PrintExcel() {
         EX1 = $("#StartDate").val();
         EX2 = $("#EndDate").val();        

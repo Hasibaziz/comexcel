@@ -436,6 +436,7 @@
     <Content Include="Views\Billing\BillingEntryUpdate.aspx" />
     <Content Include="Views\Billing\BillingImportExcel.aspx" />
     <Content Include="Views\Billing\BillingInfo.aspx" />
+    <Content Include="Views\Billing\ExcelFormat.aspx" />
     <Content Include="Views\Billing\Index.aspx" />
     <Content Include="Views\Billing\LeftMenu.ascx" />
     <Content Include="Views\Configuration\BEInfo.aspx" />
@@ -485,6 +486,7 @@
     <Content Include="Views\Sales\ComsalesEntry.aspx" />
     <Content Include="Views\Sales\ComsalesEntryUpd.aspx" />
     <Content Include="Views\Sales\ComsalesInfo.aspx" />
+    <Content Include="Views\Sales\ExcelFormat.aspx" />
     <Content Include="Views\Sales\Export.aspx" />
     <Content Include="Views\Sales\Index.aspx" />
     <Content Include="Views\Sales\LeftMenu.ascx" />

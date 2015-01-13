@@ -357,7 +357,10 @@ div.jtable-busy-panel-background
 div.jtable-busy-message
 {
     z-index: 999;
-    position: absolute;
+ /*   position: absolute;   */
+    position: fixed;
+    margin-top: 250px;
+    margin-left: 250px;
     margin: 5px;
     padding: 5px;
     color: black;

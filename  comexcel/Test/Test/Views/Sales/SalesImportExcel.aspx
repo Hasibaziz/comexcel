@@ -23,13 +23,7 @@
    <% Html.RenderPartial("LeftMenu"); %>
 </div>
 <div class="mp_right_content">
-   <div class="page_list_container"> 
-   <%-- <fieldset>  
-       <%foreach (string file in Model)
-          {%>
-            <a>Excel Format For Download: </a><a class="btn btn-mini" <%: Html.ActionLink(file,"Download",new {Action="Download", fn=file})  %>  </a>  <br />
-       <%} %>
-    </fieldset>    --%>
+   <div class="page_list_container">   
    <% using (Html.BeginForm("SalesImportExcel", "Sales", FormMethod.Post, new { enctype = "multipart/form-data" }))
        { %>
         <%: Html.ValidationSummary(true) %>

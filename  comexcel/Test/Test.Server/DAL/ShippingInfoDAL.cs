@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //ShippinginfoEntity obj = (ShippinginfoEntity)param;
             //if (obj.UserName == null)
             //{
-                string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 DataSet ds = db.ExecuteDataSet(dbCommand);
                 return ds.Tables[0];

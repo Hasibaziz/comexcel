@@ -480,13 +480,8 @@ namespace Test.Controllers
         }
 
         public ActionResult SalesImportExcel()
-        {
-            var files = from f in System.IO.Directory.GetFiles(
-                                 Server.MapPath("~/Temp/ExcelFormat/"),
-                                 "*.*",
-                                 SearchOption.TopDirectoryOnly)
-                        select System.IO.Path.GetFileName(f);
-            return View(files);
+        {            
+            return View();
         }
         [HttpPost]
         public ActionResult SalesImportExcel(HttpPostedFileBase file, SalesImportExcelEntity _Model)
@@ -604,6 +599,16 @@ namespace Test.Controllers
 
             }
             return View();
+        }
+
+        public ActionResult ExcelFormat()
+        {
+            var files = from f in System.IO.Directory.GetFiles(
+                                Server.MapPath("~/Temp/ExcelFormat/"),
+                                "*.*",
+                                SearchOption.TopDirectoryOnly)
+                        select System.IO.Path.GetFileName(f);
+            return View(files);
         }
         public ActionResult Download(string fn)
         {

@@ -178,35 +178,7 @@
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
 <div class="New_Right_Begin"> 
-        <div class="editor-label01">
-          <label for="TTNo">TT No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.TTNo)%>
-            <%: Html.ValidationMessageFor(model => model.TTNo)%>
-            <p style="color: Green;" id="ttAmount" ></p>
-        </div>
-        <%-- <div class="editor-label01" style="color: Green;">                
-            <p id="ttAmount" ></p>            
-        </div>--%>
-        <div class="editor-label01">
-          <label for="TTDate">TT Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.EditorFor(model => model.TTDate)%>
-            <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>     
-        <div class="editor-label01">
-            <label for="ExporterID">Exporter No:</label>
-        </div>
-        <div class="editor-field01">
-            <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"],  new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.ExporterID)%>
-        </div>        
-        <div class="editor-label01" style="color: Green;">       
-            <p id="Exporter" ></p>
-        </div>
+        
         <div class="editor-label01">
             <label for="ConsigneeID">Consignee No:</label>
         </div>
@@ -262,6 +234,35 @@
             <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
             <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
+        </div>
+        <div class="editor-label01">
+          <label for="TTNo">TT No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.TTNo)%>
+            <%: Html.ValidationMessageFor(model => model.TTNo)%>
+            <p style="color: Green;" id="ttAmount" ></p>
+        </div>
+        <%-- <div class="editor-label01" style="color: Green;">                
+            <p id="ttAmount" ></p>            
+        </div>--%>
+        <div class="editor-label01">
+          <label for="TTDate">TT Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.TTDate)%>
+            <%: Html.ValidationMessageFor(model => model.TTDate)%>
+        </div>     
+        <div class="editor-label01">
+            <label for="ExporterID">Exporter No:</label>
+        </div>
+        <div class="editor-field01">
+            <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"],  new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.ExporterID)%>
+        </div>        
+        <div class="editor-label01" style="color: Green;">       
+            <p id="Exporter" ></p>
         </div>
   </div>
      </fieldset>
@@ -446,7 +447,7 @@
     $('#TTNo').keyup(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
-            //$("#ttAmount").html(data.TTAmount);
+            $("#ttAmount").html(data.TTAmount);
             var tball = parseFloat(data.TTBalance).toFixed(2);
             $("#ttBalance").html(tball);
             $("#ExporterID").val(data.ExporterDetailsID);

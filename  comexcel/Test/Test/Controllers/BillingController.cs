@@ -8,6 +8,8 @@ using System.Data;
 using Test.Structure;
 using Test.Models;
 using System.Data.OleDb;
+using System.IO;
+using Test.Utility;
 
 namespace Test.Controllers
 {
@@ -262,6 +264,35 @@ namespace Test.Controllers
             {
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
+        }
+
+        public ActionResult ExcelFormat()
+        {
+            var files = from f in System.IO.Directory.GetFiles(
+                                 Server.MapPath("~/Temp/ExcelFormat/"),
+                                 "*.*",
+                                 SearchOption.TopDirectoryOnly)
+                        select System.IO.Path.GetFileName(f);
+            return View(files);
+        }
+        /// <summary>
+        /// action for file download
+        /// </summary>
+        public ActionResult Download(string fn)
+        {
+            string pfn = Server.MapPath("~/Temp/ExcelFormat/" + fn);
+            if (!System.IO.File.Exists(pfn))
+            {
+                throw new ArgumentException("Invalid file name or file not exists!");
+            }
+
+            return new BinaryContentResult()
+            {
+                FileName = fn,
+                ContentType = "application/octet-stream",
+                Content = System.IO.File.ReadAllBytes(pfn)
+            };
+
         }
 
         public ActionResult BillingImportExcel()

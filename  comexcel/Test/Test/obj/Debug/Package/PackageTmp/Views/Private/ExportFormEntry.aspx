@@ -211,38 +211,7 @@
             <%: Html.ValidationMessageFor(model => model.ContractDate)%>
         </div>
 <div class="New_Right_Begin"> 
-        <div class="editor-label01">
-          <label for="TTNo">TT No:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.TTNo)%>
-            <%: Html.ValidationMessageFor(model => model.TTNo)%>
-            <p style="color: Green;" id="ttAmount" ></p>              
-        </div>
-       <%-- <div class="editor-label01">
-            <label for="ttAmount">TT Amount:</label>
-        </div>  --%>
-       <%-- <div class="editor-label01" style="color: Green;">                
-            <p id="ttAmount" ></p>            
-        </div>--%>
-        <div class="editor-label01">
-          <label for="TTDate">TT Date:</label>
-        </div>
-        <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.TTDate)%>
-            <%: Html.ValidationMessageFor(model => model.TTDate)%>
-        </div>     
-        <div class="editor-label01">
-            <label for="ExporterID">Exporter No:</label>
-        </div>
-        <div class="editor-field01">
-            <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
-            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.ExporterID)%>
-        </div>        
-        <div class="editor-label01" style="color: Green;">       
-            <p id="Exporter" ></p>
-        </div>
+        
         <div class="editor-label01">
             <label for="ConsigneeID">Consignee No:</label>
         </div>
@@ -298,6 +267,38 @@
             <%--<%: Html.DropDownListFor(model => model.Section, new SelectList("Section", "Sections", Model.Section))%>--%>
             <%: Html.DropDownListFor(model => model.Section, Enum.GetValues(typeof(Test.Domain.Model.ExportformEntity.Sections)).Cast<Test.Domain.Model.ExportformEntity.Sections>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>
             <%: Html.ValidationMessageFor(model => model.Section)%>
+        </div>
+        <div class="editor-label01">
+          <label for="TTNo">TT No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.TTNo)%>
+            <%: Html.ValidationMessageFor(model => model.TTNo)%>
+            <p style="color: Green;" id="ttAmount" ></p>              
+        </div>
+       <%-- <div class="editor-label01">
+            <label for="ttAmount">TT Amount:</label>
+        </div>  --%>
+       <%-- <div class="editor-label01" style="color: Green;">                
+            <p id="ttAmount" ></p>            
+        </div>--%>
+        <div class="editor-label01">
+          <label for="TTDate">TT Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.TTDate)%>
+            <%: Html.ValidationMessageFor(model => model.TTDate)%>
+        </div>     
+        <div class="editor-label01">
+            <label for="ExporterID">Exporter No:</label>
+        </div>
+        <div class="editor-field01">
+            <%--<%: Html.DropDownListFor(model => model.ExporterID, Model.ExporterName)%>  --%>         
+            <%: Html.DropDownListFor(model => model.ExporterID, (List<SelectListItem>)ViewData["ExporterNo"], "Select Exporter", new { @class = "validate[required]" })%>
+            <%: Html.ValidationMessageFor(model => model.ExporterID)%>
+        </div>        
+        <div class="editor-label01" style="color: Green;">       
+            <p id="Exporter" ></p>
         </div>
   </div>
      </fieldset>
@@ -383,6 +384,8 @@
           <%-- CPT Value: <%: Html.TextBoxFor(model => model.CPTValue, new { style = "width: 100px;", @class = "validate[required]" })%>--%>
            CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
            FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;", @readonly = "readonly" })%> 
+           <%--CM  Value: <%: Html.TextBoxFor(model => model.CPTCMValue, new { style = "width: 100px;" })%> 
+           FOB Value: <%: Html.TextBoxFor(model => model.CPTFOBValue, new { style = "width: 100px;" })%> --%>
            Freight Value:  <%: Html.TextBoxFor(model => model.Freight, new { style = "width: 100px;" })%>      
         </div>
 
@@ -479,7 +482,7 @@
             $("#Port").html(data.Port);
         });
     });
-    $('#TTNo').hover(function () {
+    $('#TTNo').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);
@@ -586,9 +589,8 @@
             $("#InvoiceDate").val(data.InvoiceDate);
             $("#ContractNo").val(data.ContractNo);
             $("#ContractDate").val(data.ContractDate);
-            $("#TTNo").val(data.TTNo);         
-
-
+            $("#TTNo").val(data.TTNo);
+            
             $("#TTDate").val(data.TTDate);
            
             $("#ExporterID").val(data.ExporterID);
@@ -610,9 +612,9 @@
 
                 $("#CPTValue").prop("disabled", false);
                 $("#CPTValue").val(data.FOBValue)
-                $("#CPTCMValue").prop("disabled", true);
+                //$("#CPTCMValue").prop("disabled", true);
                 $("#CPTCMValue").val(data.CMValue);
-                $("#CPTFOBValue").prop("disabled", true);
+                //$("#CPTFOBValue").prop("disabled", true);
                 $("#CPTFOBValue").val(data.CPTFOBValue);
                 $("#Freight").prop("disabled", false);
                 $("#Freight").val(data.Freight);

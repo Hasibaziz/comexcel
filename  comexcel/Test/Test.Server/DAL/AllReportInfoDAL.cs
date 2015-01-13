@@ -29,10 +29,11 @@ namespace Test.Server.DAL
             return ds.Tables[0];
         }
 
-        public DataTable GetAllBillingReportRecord(object param)
+        public DataTable GetAllBillingReportRecord( ReportBillinInfoEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            DbCommand dbCommand = db.GetStoredProcCommand("spGetAllBillingReportRecord");
+            object[] parameters = new object[] { obj.CourierNo};
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetAllBillingReportRecord", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

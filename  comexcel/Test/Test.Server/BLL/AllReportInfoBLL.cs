@@ -33,7 +33,8 @@ namespace Test.Server.BLL
         {
             object retObj = null;
             AllReportInfoDAL allDAL = new AllReportInfoDAL();
-            retObj = (object)allDAL.GetAllBillingReportRecord(param);
+            ReportBillinInfoEntity obj = (ReportBillinInfoEntity)param;
+            retObj = (object)allDAL.GetAllBillingReportRecord(obj, param);
             return retObj;
         }
     }

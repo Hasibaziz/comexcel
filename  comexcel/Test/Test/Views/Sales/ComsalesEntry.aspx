@@ -28,7 +28,7 @@
                 changeMonth: true,
                 changeYear: true,
                 showStatus: true,
-                dateFormat: 'mm/dd/yy',
+                dateFormat: 'dd-mm-yy',
                 duration: 'fast',
                 yearRange: '1890:2100'
             }
