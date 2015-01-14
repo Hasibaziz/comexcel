@@ -556,6 +556,7 @@ namespace Test.Controllers
                                 BLAWBDate = dr["BLAWBDate"].ToString(),
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
+                                ModeStatus = dr["ModeStatus"].ToString(),
 
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
 

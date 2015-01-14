@@ -100,7 +100,23 @@
             <%: Html.TextBoxFor(model => model.BankSubmitDate, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
         </div>             
-
+         <div class="editor-label01">
+            <label for="ModeStatus">Mode :</label>            
+        </div>
+        <div class="editor-field01">           
+            <%: Html.DropDownListFor(model => model.ModeStatus, new List<SelectListItem> 
+               {  
+                 new SelectListItem { Text = " " },
+                 new SelectListItem { Text = "AIR PP" },
+                 new SelectListItem { Text = "AIR CC" },
+                 new SelectListItem { Text = "ROAD PP" },
+                 new SelectListItem { Text = "ROAD CC" },
+                 new SelectListItem { Text = "SEA PP" },
+                 new SelectListItem { Text = "SEA CC" }
+                })%>
+            <%--<%: Html.DropDownListFor(model => model.Mode, Enum.GetValues(typeof(Test.Domain.Model.BillingInfoEntity.ModeStatus)).Cast<Test.Domain.Model.BillingInfoEntity.ModeStatus>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>--%>
+            <%: Html.ValidationMessageFor(model => model.ModeStatus)%>
+        </div> 
         <p>
             <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Update" />     
             <input type="button" onclick="window.location='<%: Url.Action("BillingInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />   

@@ -248,6 +248,7 @@
     <Content Include="Content\images\ico-stat1.gif" />
     <Content Include="Content\images\ico-system.png" />
     <Content Include="Content\images\ico-warnings.gif" />
+    <Content Include="Content\images\Index.png" />
     <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.gif" />
     <Content Include="Content\images\Logo.png" />

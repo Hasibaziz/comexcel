@@ -59,7 +59,8 @@ namespace Test.Controllers
 
                                 BuyerCourierDate = dr["BuyerCourierDate"].ToString(),
                                 LeadTime = dr["LeadTime"].ToString(),
-                                BankSubmitDate = dr["BankSubmitDate"].ToString()
+                                BankSubmitDate = dr["BankSubmitDate"].ToString(),
+                                ModeStatus = dr["ModeStatus"].ToString()
                             });
                         }
                         iCount += 1;
@@ -188,6 +189,7 @@ namespace Test.Controllers
                     _Model.BuyerCourierDate = dr["BuyerCourierDate"].ToString();
                     _Model.LeadTime = dr["LeadTime"].ToString();                    
                     _Model.BankSubmitDate = dr["BankSubmitDate"].ToString();
+                    _Model.ModeStatus = dr["ModeStatus"].ToString();
                     
                 }
             }
@@ -232,7 +234,8 @@ namespace Test.Controllers
 
                                 BuyerCourierDate = dr["BuyerCourierDate"].ToString(),
                                 LeadTime = dr["LeadTime"].ToString(),
-                                BankSubmitDate = dr["BankSubmitDate"].ToString()
+                                BankSubmitDate = dr["BankSubmitDate"].ToString(),
+                                ModeStatus = dr["ModeStatus"].ToString()
                             });
                         }
                         iCount += 1;

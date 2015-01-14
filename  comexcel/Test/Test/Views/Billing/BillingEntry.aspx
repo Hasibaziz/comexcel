@@ -96,7 +96,9 @@ $(document).ready(function () {
 
                         $("#LeadTime").val(" ");
 
-                        $("#BankSubmitDate").val(" ");                       
+                        $("#BankSubmitDate").val(" ");
+                        $("#ModeStatus").val(" "); 
+                                             
                         $(this).dialog("close");
                         $("#SInvoiceNo").focus();
                     }
@@ -151,7 +153,7 @@ $(document).ready(function () {
             <label for="SBNo">SB No:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.SBNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.SBNo, new { @Value = "C ", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.SBNo) %>
         </div>
 
@@ -218,6 +220,33 @@ $(document).ready(function () {
             <%: Html.TextBoxFor(model => model.BankSubmitDate)%>
             <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
         </div>             
+        <div class="editor-label01">
+            <label for="ModeStatus">Mode :</label>            
+        </div>
+        <div class="editor-field01">
+           <%-- <%: Html.DropDownListFor(model => model.ModeStatus, new List<SelectListItem> 
+               {  
+                 new SelectListItem { Text = " " },
+                 new SelectListItem { Text = "AIR PP" },
+                 new SelectListItem { Text = "AIR CC" },
+                 new SelectListItem { Text = "ROAD PP" },
+                 new SelectListItem { Text = "ROAD CC" },
+                 new SelectListItem { Text = "SEA PP" },
+                 new SelectListItem { Text = "SEA CC" }
+                }, new { @class = "validate[required]" })%>--%>
+            <%: Html.DropDownListFor(model => model.ModeStatus, new List<SelectListItem> 
+               {  
+                 new SelectListItem { Text = " " },
+                 new SelectListItem { Text = "AIR PP" },
+                 new SelectListItem { Text = "AIR CC" },
+                 new SelectListItem { Text = "ROAD PP" },
+                 new SelectListItem { Text = "ROAD CC" },
+                 new SelectListItem { Text = "SEA PP" },
+                 new SelectListItem { Text = "SEA CC" }
+                })%>
+            <%--<%: Html.DropDownListFor(model => model.Mode, Enum.GetValues(typeof(Test.Domain.Model.BillingInfoEntity.ModeStatus)).Cast<Test.Domain.Model.BillingInfoEntity.ModeStatus>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>--%>
+            <%: Html.ValidationMessageFor(model => model.ModeStatus)%>
+        </div> 
 
         <p>
             <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     

@@ -12,11 +12,17 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
-                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>               
-                 <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />                --%>
+                 <div style=" margin: 0em .5cm -20px 29cm;"> 
+                   <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
+                 </div>
+                 <div id="dialog" title="Search">
+                 Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>   
+                             
+                 <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" /> --%>                 
+                 </div>
                  <div>
                    <%: Html.ActionLink("Add New Entry", "BillingEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>
-                 </div> 
+                 </div>                  
                </div>
      </fieldset>                
    </div>
@@ -157,5 +163,37 @@
 
 
  </script>
+ <script type="text/javascript">
+     $(document).ready(function () {
+         // Dialog
+         $('#dialog').dialog({
+             autoOpen: false,
+             resizable: false,    /// To make the Popup Window Customs resize (Big or Small)
+             width: 500,
+             modal: true,    // For Background Disable... 
+             show: {
+                 effect: "blind",
+                 duration: 1000
+             },
+             hide: {
+                 effect: "blind",       //effect: "explode",
+                 duration: 1000
+             },
+             buttons: {
+                 "Search": function () {
+                     $(this).dialog("close");                   
+                 },
+                 "Cancel": function () {
+                     $(this).dialog("close");
+                 }
+             }
+         });
+         // Dialog Link
+         $('#dialog_link').click(function () {
+             $('#dialog').dialog('open');
+             return false;
+         });
+     });
 
+</script>
 </asp:Content>

@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="E:\Commercial\CHOST" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Content/styles.css" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Content/images/ico-configuration.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Views/Sales/ExcelFormat.aspx" publishTime="01/13/2015 10:02:44" />
     <file relUrl="Scripts/syntaxhighligher/shBrushPhp.js" publishTime="06/07/2014 10:23:43" />
     <file relUrl="Views/Report/Salesreport.aspx" publishTime="01/13/2015 11:02:59" />
+    <file relUrl="Content/images/Index.png" publishTime="01/14/2015 16:11:16" />
     <file relUrl="Content/images/Themes/purple.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/images/1pix.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/images/home-bg.png" publishTime="09/09/2014 16:44:59" />
-    <file relUrl="Content/themes/base/images/ui-icons_454545_256x240.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Scripts/jtable/themes/standard/green/title-bg.png" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Content/images/warnings-cross.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Reportpvt/TTCMInformation.aspx" publishTime="11/23/2014 10:39:42" />
@@ -35,14 +33,13 @@
     <file relUrl="Content/images/admin-menu-bg.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/themes/base/jquery.ui.tabs.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Content/images/Misc/note.png" publishTime="06/07/2014 10:25:26" />
-    <file relUrl="bin/Test.dll" publishTime="01/13/2015 15:57:28" />
+    <file relUrl="bin/Test.dll" publishTime="01/14/2015 16:57:39" />
     <file relUrl="Scripts/jtable/themes/standard/green/header-bg.gif" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Content/images/ico-stat1.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/images/ui-bg_glass_85_dfeffc_1x400.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Shipping/ShippingformEntryUpd.aspx" publishTime="12/06/2014 15:21:54" />
     <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="06/07/2014 10:23:58" />
     <file relUrl="Content/images/ui-icons_217bc0_256x240.png" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="Content/images/Misc/phone.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/Treview/images/minus.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/TopMenu/Images/pointer.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Scripts/slides.min.jquery.js" publishTime="09/10/2014 08:48:53" />
@@ -53,16 +50,16 @@
     <file relUrl="Content/images/Menu_bg.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Scripts/modernizr-1.7.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Content/Bootstrap/Customized/img/glyphicons-halflings-white.png" publishTime="08/19/2013 10:41:45" />
-    <file relUrl="Views/Report/AllUDInfo.aspx" publishTime="11/23/2014 10:39:50" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="06/07/2014 10:25:25" />
+    <file relUrl="Content/Treview/images/treeview-red-line.gif" publishTime="06/07/2014 10:25:26" />
+    <file relUrl="Scripts/syntaxhighligher/shBrushSql.js" publishTime="06/07/2014 10:23:44" />
     <file relUrl="Content/themes/redmond/jquery-ui-1.8.16.custom.css" publishTime="06/07/2014 10:25:24" />
+    <file relUrl="Views/Private/ExportForm.aspx" publishTime="12/31/2014 10:24:28" />
     <file relUrl="Content/Treview/images/folder-closed.gif" publishTime="06/07/2014 10:25:26" />
-    <file relUrl="Scripts/jtable/themes/standard/red/jtable_red.css" publishTime="06/07/2014 10:23:54" />
     <file relUrl="Areas/Admin/Views/GSP/GSPFormInfo.aspx" publishTime="11/25/2014 10:13:42" />
     <file relUrl="Scripts/jtable/themes/standard/jtable_standard_base.css" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Content/images/Themes/red.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/themes/base/jquery.ui.dialog.css" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="bin/Test.pdb" publishTime="01/13/2015 15:57:28" />
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Content/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Content/uploadify.css" publishTime="06/07/2014 10:25:24" />
@@ -76,7 +73,7 @@
     <file relUrl="Scripts/validationEngine/jquery.validationEngine-en.js" publishTime="06/07/2014 10:23:43" />
     <file relUrl="Areas/Admin/Views/GSP/LeftMenu.ascx" publishTime="11/24/2014 16:02:40" />
     <file relUrl="Content/themes/redmond/images/ui-icons_d8e7f3_256x240.png" publishTime="06/07/2014 10:25:24" />
-    <file relUrl="Areas/Admin/Views/GSP/GSPItemInfo.aspx" publishTime="11/23/2014 09:15:46" />
+    <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Content/Bootstrap/img/glyphicons-halflings-white.png" publishTime="08/19/2013 10:41:50" />
     <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="06/07/2014 10:23:43" />
     <file relUrl="Views/Sales/LeftMenu.ascx" publishTime="01/13/2015 10:03:40" />
@@ -84,20 +81,22 @@
     <file relUrl="Content/DashboardStyle.css" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Content/images/ui-bg_flat_55_fbec88_40x100.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Areas/Admin/Views/GSP/GSPFormItemInfo.aspx" publishTime="11/25/2014 09:29:25" />
-    <file relUrl="Content/Treview/images/treeview-red-line.gif" publishTime="06/07/2014 10:25:26" />
+    <file relUrl="Scripts/jtable/themes/standard/purple/loading.gif" publishTime="06/07/2014 10:23:53" />
+    <file relUrl="Content/Treview/images/treeview-black.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/images/Themes/blue.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/Bootstrap/css/bootstrap.css" publishTime="08/19/2013 10:41:48" />
+    <file relUrl="Content/images/ui-icons_f9bd01_256x240.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/images/logo-bg.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/TopMenu/Images/header_bg.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/TopMenu/Images/pix.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/images/blue_button_bg.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Content/images/ico-system.png" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="Content/images/search.png" publishTime="09/09/2014 16:46:31" />
     <file relUrl="Views/Private/Consignee.aspx" publishTime="01/07/2015 09:08:27" />
     <file relUrl="Views/Private/GSPItemInfo.aspx" publishTime="11/23/2014 10:35:20" />
     <file relUrl="Views/Private/Transhipment.aspx" publishTime="11/03/2014 12:34:57" />
     <file relUrl="Views/Private/Destination.aspx" publishTime="01/07/2015 09:07:35" />
+    <file relUrl="Areas/Comsales/Views/CSales/ComsalesEntryUpd.aspx" publishTime="12/21/2014 09:10:45" />
     <file relUrl="Content/themes/redmond/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Content/Treview/images/treeview-default.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/Bootstrap/css/bootstrap-responsive.css" publishTime="10/05/2013 12:49:21" />
@@ -109,6 +108,7 @@
     <file relUrl="Content/images/admin-gvw-bg.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Audit/LeftMenu.ascx" publishTime="12/28/2014 10:43:23" />
     <file relUrl="Content/themes/redmond/images/ui-bg_flat_55_fbec88_40x100.png" publishTime="06/07/2014 10:25:24" />
+    <file relUrl="Views/Configuration/NewServiceDetails.aspx" publishTime="06/07/2014 10:24:01" />
     <file relUrl="Views/User/Index.aspx" publishTime="01/01/2015 09:12:47" />
     <file relUrl="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll" publishTime="11/24/2013 14:16:28" />
     <file relUrl="Scripts/jtable/jquery.jtable.js" publishTime="12/31/2014 10:48:13" />
@@ -122,14 +122,15 @@
     <file relUrl="Global.asax" publishTime="06/07/2014 10:23:59" />
     <file relUrl="Content/Bootstrap/Customized/js/bootstrap.min.js" publishTime="08/19/2013 10:41:45" />
     <file relUrl="Content/themes/base/jquery.ui.all.css" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Views/Reportpvt/ExportFormReport.aspx" publishTime="01/04/2015 08:07:31" />
+    <file relUrl="Areas/Comsales/Views/CSales/Index.aspx" publishTime="11/26/2014 15:10:13" />
+    <file relUrl="Content/themes/base/jquery.ui.resizable.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Content/Treview/images/treeview-gray.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Web.config" publishTime="06/07/2014 10:23:59" />
+    <file relUrl="Content/images/warnings-ajax-loader.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Report/Index.aspx" publishTime="06/07/2014 10:24:01" />
     <file relUrl="Scripts/jtable/themes/standard/blue/loading.gif" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Views/Private/ExportFormEntryApp.aspx" publishTime="01/13/2015 13:35:23" />
     <file relUrl="Content/images/tab-line.png" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Content/images/Themes/green.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Scripts/Treview/jquery.js" publishTime="06/07/2014 10:23:46" />
     <file relUrl="Views/AssignJob/Index.aspx" publishTime="06/07/2014 10:23:59" />
     <file relUrl="Content/themes/redmond/images/ui-icons_cd0a0a_256x240.png" publishTime="06/07/2014 10:25:24" />
@@ -144,19 +145,19 @@
     <file relUrl="Views/Audit/CustomsAuditDetails.aspx" publishTime="12/30/2014 15:08:01" />
     <file relUrl="Scripts/jtable/themes/standard/green/jtable_green.css" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Views/Shipping/ShippingformEntry.aspx" publishTime="01/06/2015 15:30:05" />
-    <file relUrl="bin/Test.Server.pdb" publishTime="01/13/2015 15:57:27" />
+    <file relUrl="bin/Test.Server.pdb" publishTime="01/14/2015 16:57:38" />
     <file relUrl="Content/TopMenu/menu.css" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Views/Billing/BillingInfo.aspx" publishTime="01/04/2015 13:50:00" />
+    <file relUrl="Views/Billing/BillingInfo.aspx" publishTime="01/14/2015 16:46:46" />
     <file relUrl="Views/Sales/Index.aspx" publishTime="12/01/2014 14:39:21" />
-    <file relUrl="bin/Test.Domain.pdb" publishTime="01/13/2015 15:57:27" />
     <file relUrl="Scripts/jquery-ui-1.8.11.min.js" publishTime="06/07/2014 10:23:59" />
     <file relUrl="Views/Private/GSPItemEntry.aspx" publishTime="11/23/2014 10:35:12" />
     <file relUrl="Views/Shared/ModuleMenu/Menu.ascx" publishTime="01/06/2015 15:02:31" />
     <file relUrl="Content/images/ErrorMessage.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Private/Notifyparty.aspx" publishTime="11/23/2014 10:35:49" />
     <file relUrl="Content/Bootstrap/Customized/css/bootstrap.css" publishTime="08/19/2013 10:41:44" />
-    <file relUrl="Views/Shipping/ShippingInfo.aspx" publishTime="01/04/2015 13:10:20" />
+    <file relUrl="Views/Shipping/ShippingInfo.aspx" publishTime="01/14/2015 16:47:45" />
     <file relUrl="Views/Private/ExportFormApp.aspx" publishTime="12/31/2014 10:24:58" />
+    <file relUrl="Scripts/jtable/themes/standard/red/title-bg.png" publishTime="06/07/2014 10:23:54" />
     <file relUrl="Content/jquery-ui-1.8.9.custom.css" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Reportpvt/Index.aspx" publishTime="11/23/2014 10:39:35" />
     <file relUrl="Views/Sales/ComsalesEntryUpd.aspx" publishTime="12/21/2014 09:12:36" />
@@ -164,6 +165,7 @@
     <file relUrl="Views/User/CreateUsers.aspx" publishTime="01/01/2015 12:19:31" />
     <file relUrl="Content/themes/base/images/ui-icons_cd0a0a_256x240.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Scripts/jtable/external/json2.min.js" publishTime="06/07/2014 10:23:52" />
+    <file relUrl="Views/User/LeftMenu.ascx" publishTime="01/01/2015 10:45:26" />
     <file relUrl="Scripts/jtable/themes/standard/column-desc.png" publishTime="06/07/2014 10:23:54" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="06/07/2014 10:23:46" />
     <file relUrl="Content/images/ico-dashboard.png" publishTime="06/07/2014 10:25:26" />
@@ -177,23 +179,21 @@
     <file relUrl="Scripts/jquery-1.5.1.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Scripts/syntaxhighligher/shBrushJava.js" publishTime="06/07/2014 10:23:44" />
     <file relUrl="Content/images/warnings-warning.png" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="bin/Test.Domain.dll" publishTime="01/13/2015 15:57:27" />
+    <file relUrl="bin/Test.Domain.dll" publishTime="01/14/2015 16:57:37" />
     <file relUrl="Scripts/jtable/themes/standard/delete.png" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Scripts/jtable/extensions/jquery.jtable.aspnetpagemethods.min.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Views/Configuration/ExcelFormat.aspx" publishTime="01/08/2015 08:52:55" />
     <file relUrl="Views/Private/GSPFormInfo.aspx" publishTime="11/23/2014 10:35:05" />
-    <file relUrl="Content/jquery-ui-1.8.16.custom.css" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Scripts/syntaxhighligher/shBrushJScript.js" publishTime="06/07/2014 10:23:44" />
     <file relUrl="Content/images/ico-warnings.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/Treview/images/ajax-loader.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Content/TopMenu/Images/back.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/TopMenu/Images/arrow.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/Treview/images/treeview-red.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Scripts/jtable/themes/standard/red/header-bg.gif" publishTime="06/07/2014 10:23:54" />
     <file relUrl="Content/TopMenu/Images/header_active.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Views/Reportpvt/Control/LeftMenu.ascx" publishTime="11/24/2014 11:51:45" />
-    <file relUrl="bin/Test.Structure.dll" publishTime="01/13/2015 15:57:27" />
+    <file relUrl="bin/Test.Structure.dll" publishTime="01/14/2015 16:57:38" />
     <file relUrl="Content/Bootstrap/Customized/css/bootstrap.min.css" publishTime="08/19/2013 10:41:44" />
     <file relUrl="Scripts/Treview/jquery.cookie.js" publishTime="06/07/2014 10:23:46" />
     <file relUrl="Content/TopMenu/Images/header.gif" publishTime="06/07/2014 10:25:32" />
@@ -206,11 +206,11 @@
     <file relUrl="Views/Billing/Index.aspx" publishTime="01/04/2015 09:50:58" />
     <file relUrl="Content/images/ajax-loading.gif" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Views/Private/ExporterFormUpdate.aspx" publishTime="01/13/2015 13:35:59" />
-    <file relUrl="Views/Billing/BillingEntry.aspx" publishTime="01/12/2015 15:41:06" />
+    <file relUrl="Views/Billing/BillingEntry.aspx" publishTime="01/14/2015 16:57:34" />
     <file relUrl="Areas/Comsales/Views/Home/Index.aspx" publishTime="12/20/2014 15:43:52" />
-    <file relUrl="Views/Billing/BillingEntryUpdate.aspx" publishTime="01/04/2015 12:45:20" />
+    <file relUrl="Views/Billing/BillingEntryUpdate.aspx" publishTime="01/14/2015 14:27:39" />
     <file relUrl="Content/Bootstrap/js/bootstrap.js" publishTime="08/19/2013 10:41:50" />
-    <file relUrl="Content/images/ui-icons_d8e7f3_256x240.png" publishTime="06/07/2014 10:25:32" />
+    <file relUrl="Views/Report/AllUDInfo.aspx" publishTime="11/23/2014 10:39:50" />
     <file relUrl="Scripts/jtable/themes/standard/edit.png" publishTime="06/07/2014 10:23:54" />
     <file relUrl="Content/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Views/Shared/LogOnUserControl.ascx" publishTime="06/07/2014 10:24:00" />
@@ -219,6 +219,7 @@
     <file relUrl="Content/Bootstrap/css/bootstrap-responsive.min.css" publishTime="08/19/2013 10:41:48" />
     <file relUrl="Content/images/calendar.png" publishTime="06/08/2014 17:00:39" />
     <file relUrl="Scripts/jtable/themes/standard/column-asc.png" publishTime="06/07/2014 10:23:53" />
+    <file relUrl="Content/images/ico-news.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Configuration/UDInfo.aspx" publishTime="06/19/2014 12:52:38" />
     <file relUrl="AppSettings.config" publishTime="01/05/2015 11:04:22" />
     <file relUrl="Content/themes/base/jquery.ui.autocomplete.css" publishTime="06/07/2014 10:25:25" />
@@ -226,10 +227,9 @@
     <file relUrl="Views/Audit/CustomsAuditDetailsUpdate.aspx" publishTime="12/29/2014 15:36:56" />
     <file relUrl="packages.config" publishTime="09/20/2014 10:08:05" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Content/Treview/images/plus.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Sales/Export.aspx" publishTime="06/19/2014 16:11:45" />
     <file relUrl="Content/images/back-top.png" publishTime="09/10/2014 08:52:31" />
-    <file relUrl="Scripts/syntaxhighligher/shBrushSql.js" publishTime="06/07/2014 10:23:44" />
+    <file relUrl="bin/Test.Domain.pdb" publishTime="01/14/2015 16:57:37" />
     <file relUrl="Content/images/menu_bg.jpg" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Shared/Error.aspx" publishTime="06/07/2014 10:23:59" />
     <file relUrl="Content/images/logo.gif" publishTime="06/07/2014 10:25:31" />
@@ -237,7 +237,7 @@
     <file relUrl="Content/images/grid_header_back.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/Treview/jquery.treeview.css" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/Site.css" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Views/Account/Login.aspx" publishTime="10/13/2014 14:09:37" />
+    <file relUrl="Content/Treview/images/plus.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Configuration/Modeinfo.aspx" publishTime="06/19/2014 12:52:14" />
     <file relUrl="Views/Sales/ComsalesEntry.aspx" publishTime="01/13/2015 09:47:30" />
     <file relUrl="Scripts/syntaxhighligher/shBrushCss.js" publishTime="06/07/2014 10:23:43" />
@@ -248,7 +248,6 @@
     <file relUrl="Content/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Report/Control/LeftMenu.ascx" publishTime="01/06/2015 09:37:14" />
     <file relUrl="Content/images/warnings-tick.png" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="Content/themes/base/jquery.ui.core.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Content/themes/base/jquery.ui.progressbar.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Views/Configuration/LeftMenu.ascx" publishTime="09/22/2014 17:16:57" />
     <file relUrl="Content/images/ico-customers.png" publishTime="06/07/2014 10:25:26" />
@@ -257,18 +256,21 @@
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="06/07/2014 10:23:58" />
     <file relUrl="Content/images/ui-icons_2e83ff_256x240.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/Bootstrap/img/glyphicons-halflings.png" publishTime="08/19/2013 10:41:50" />
+    <file relUrl="Content/images/ico-help.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Scripts/jquery-ui-1.8.11.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Areas/Admin/Views/Web.config" publishTime="11/22/2014 16:47:06" />
     <file relUrl="Content/Bootstrap/Customized/js/bootstrap.js" publishTime="08/19/2013 10:41:45" />
+    <file relUrl="Content/themes/redmond/images/ui-icons_f9bd01_256x240.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Content/themes/base/jquery.ui.accordion.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Scripts/syntaxhighligher/shBrushCSharp.js" publishTime="06/07/2014 10:23:44" />
     <file relUrl="Views/Configuration/Index.aspx" publishTime="06/07/2014 10:24:01" />
     <file relUrl="Scripts/AccCommon.js" publishTime="06/07/2014 10:23:59" />
-    <file relUrl="Views/Private/ExportForm.aspx" publishTime="12/31/2014 10:24:28" />
+    <file relUrl="Content/images/ui-icons_d8e7f3_256x240.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Views/Shipping/Index.aspx" publishTime="12/03/2014 15:00:02" />
     <file relUrl="Views/Private/Modeinfo.aspx" publishTime="11/23/2014 10:35:42" />
     <file relUrl="Views/Sales/ComsalesInfo.aspx" publishTime="01/08/2015 11:28:50" />
+    <file relUrl="Content/themes/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Content/images/Logo.png" publishTime="09/09/2014 16:45:09" />
     <file relUrl="Content/themes/base/jquery.ui.theme.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Content/Bootstrap/Customized/img/glyphicons-halflings.png" publishTime="08/19/2013 10:41:45" />
@@ -277,16 +279,14 @@
     <file relUrl="Views/Audit/CustomsAuditInfo.aspx" publishTime="12/29/2014 10:54:35" />
     <file relUrl="Content/images/ico-promotions.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/themes/base/jquery.ui.button.css" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Content/Treview/images/treeview-black.gif" publishTime="06/07/2014 10:25:26" />
+    <file relUrl="Views/Account/Login.aspx" publishTime="10/13/2014 14:09:37" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Content/themes/base/jquery.ui.datepicker.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Views/Report/Invoice.aspx" publishTime="09/22/2014 17:23:36" />
     <file relUrl="Content/Treview/images/treeview-famfamfam.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Shared/Footer.ascx" publishTime="06/07/2014 10:24:00" />
     <file relUrl="Views/Private/Exporter.aspx" publishTime="11/23/2014 10:33:45" />
     <file relUrl="bin/EPPlus.dll" publishTime="11/24/2013 14:10:25" />
     <file relUrl="Content/images/ui-icons_469bdd_256x240.png" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Scripts/Treview/jquery.treeview.js" publishTime="06/07/2014 10:23:46" />
     <file relUrl="Scripts/MicrosoftMvcValidation.js" publishTime="06/07/2014 10:23:52" />
     <file relUrl="Views/Shipping/LeftMenu.ascx" publishTime="01/04/2015 15:18:12" />
     <file relUrl="Content/Treview/images/file.gif" publishTime="06/07/2014 10:25:26" />
@@ -300,63 +300,64 @@
     <file relUrl="Content/images/spinner.gif" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/themes/redmond/images/ui-icons_217bc0_256x240.png" publishTime="06/07/2014 10:25:24" />
     <file relUrl="bin/Microsoft.Practices.ObjectBuilder.dll" publishTime="11/24/2013 14:16:28" />
+    <file relUrl="Areas/Admin/Views/GSP/Index.aspx" publishTime="11/23/2014 09:04:36" />
     <file relUrl="Content/images/ui-icons_6da8d5_256x240.png" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Scripts/jtable/themes/standard/purple/loading.gif" publishTime="06/07/2014 10:23:53" />
+    <file relUrl="Views/Configuration/BEInfo.aspx" publishTime="06/19/2014 12:51:38" />
     <file relUrl="Content/themes/base/images/ui-icons_2e83ff_256x240.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Scripts/validationEngine/jquery.validationEngine.js" publishTime="06/07/2014 10:23:43" />
     <file relUrl="Views/Shared/ModuleHeader/ModuleUserControl.ascx" publishTime="09/22/2014 17:16:27" />
     <file relUrl="Content/images/tab.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Audit/Index.aspx" publishTime="12/28/2014 08:27:49" />
     <file relUrl="Content/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="06/07/2014 10:25:32" />
+    <file relUrl="Content/images/ico-sales.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/Bootstrap/css/bootstrap.min.css" publishTime="10/25/2014 12:48:06" />
-    <file relUrl="Areas/Comsales/Views/CSales/Index.aspx" publishTime="11/26/2014 15:10:13" />
+    <file relUrl="Areas/Admin/Views/GSP/GSPItemInfo.aspx" publishTime="11/23/2014 09:15:46" />
     <file relUrl="Scripts/jquery.validate.min.js" publishTime="06/07/2014 10:23:58" />
     <file relUrl="Scripts/MicrosoftAjax.js" publishTime="06/07/2014 10:23:46" />
-    <file relUrl="Content/images/ico-help.gif" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="Content/images/ico-sales.png" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="Content/themes/base/jquery.ui.resizable.css" publishTime="06/07/2014 10:25:25" />
+    <file relUrl="bin/Test.pdb" publishTime="01/14/2015 16:57:39" />
+    <file relUrl="Scripts/jtable/themes/standard/red/jtable_red.css" publishTime="06/07/2014 10:23:54" />
+    <file relUrl="Scripts/Treview/jquery.treeview.js" publishTime="06/07/2014 10:23:46" />
     <file relUrl="Content/themes/base/images/ui-icons_222222_256x240.png" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Scripts/jtable/themes/standard/red/title-bg.png" publishTime="06/07/2014 10:23:54" />
+    <file relUrl="Content/themes/base/images/ui-icons_454545_256x240.png" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Views/Configuration/CategoryDetails.aspx" publishTime="06/19/2014 12:51:48" />
     <file relUrl="EmailTemplates/Common.Html" publishTime="01/05/2015 09:36:59" />
     <file relUrl="Views/Billing/LeftMenu.ascx" publishTime="01/13/2015 09:59:30" />
     <file relUrl="Scripts/jtablesite.js" publishTime="06/07/2014 10:23:58" />
-    <file relUrl="Web.config" publishTime="01/13/2015 15:57:41" />
+    <file relUrl="Web.config" publishTime="01/14/2015 16:58:44" />
     <file relUrl="Views/User/CreateGroup.aspx" publishTime="01/01/2015 11:33:47" />
-    <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="06/07/2014 10:23:52" />
+    <file relUrl="Content/images/Themes/green.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Content/images/menu-item-right.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Private/HSCode.aspx" publishTime="11/23/2014 10:35:27" />
-    <file relUrl="bin/Test.Server.dll" publishTime="01/13/2015 15:57:27" />
-    <file relUrl="Content/ControlStyle.css" publishTime="06/07/2014 10:25:32" />
-    <file relUrl="bin/Test.Structure.pdb" publishTime="01/13/2015 15:57:27" />
+    <file relUrl="bin/Test.Server.dll" publishTime="01/14/2015 16:57:38" />
+    <file relUrl="bin/Test.Structure.pdb" publishTime="01/14/2015 16:57:38" />
     <file relUrl="Views/Private/ExportFormEntry.aspx" publishTime="01/13/2015 13:34:53" />
     <file relUrl="bin/hibernate.cfg.xml" publishTime="06/07/2014 10:24:02" />
     <file relUrl="Scripts/syntaxhighligher/styles/shCore.css" publishTime="06/07/2014 10:23:43" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" publishTime="06/07/2014 10:25:25" />
-    <file relUrl="Views/User/LeftMenu.ascx" publishTime="01/01/2015 10:45:26" />
+    <file relUrl="Content/images/ico-configuration.png" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Content/themes/redmond/images/ui-icons_469bdd_256x240.png" publishTime="06/07/2014 10:25:24" />
-    <file relUrl="Content/themes/redmond/images/ui-icons_f9bd01_256x240.png" publishTime="06/07/2014 10:25:24" />
-    <file relUrl="Content/themes/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" publishTime="06/07/2014 10:25:24" />
+    <file relUrl="Views/Reportpvt/ExportFormReport.aspx" publishTime="01/04/2015 08:07:31" />
+    <file relUrl="Content/images/search.png" publishTime="09/09/2014 16:46:31" />
     <file relUrl="Views/Report/BillingReport.aspx" publishTime="01/13/2015 10:59:12" />
     <file relUrl="Views/Sales/SalesImportExcel.aspx" publishTime="01/13/2015 10:01:44" />
     <file relUrl="Content/images/cancel-uploading.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Content/images/SuccessMessage.gif" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Scripts/jtable/themes/standard/blue/title-bg.png" publishTime="06/07/2014 10:23:53" />
     <file relUrl="Content/Treview/images/folder.gif" publishTime="06/07/2014 10:25:26" />
-    <file relUrl="Content/images/warnings-ajax-loader.gif" publishTime="06/07/2014 10:25:31" />
-    <file relUrl="Content/images/ui-icons_f9bd01_256x240.png" publishTime="06/07/2014 10:25:26" />
+    <file relUrl="Content/styles.css" publishTime="06/07/2014 10:25:32" />
+    <file relUrl="Content/ControlStyle.css" publishTime="06/07/2014 10:25:32" />
     <file relUrl="Scripts/jtable/themes/standard/purple/jtable_purple.css" publishTime="06/07/2014 10:23:53" />
-    <file relUrl="Views/Configuration/NewServiceDetails.aspx" publishTime="06/07/2014 10:24:01" />
+    <file relUrl="Content/jquery-ui-1.8.16.custom.css" publishTime="06/07/2014 10:25:24" />
     <file relUrl="Views/Configuration/ServiceDetails.aspx" publishTime="06/07/2014 10:24:01" />
     <file relUrl="Content/images/ui-icons_cd0a0a_256x240.png" publishTime="06/07/2014 10:25:31" />
     <file relUrl="Views/Configuration/CategoryName.aspx" publishTime="06/19/2014 12:51:55" />
-    <file relUrl="Areas/Admin/Views/GSP/Index.aspx" publishTime="11/23/2014 09:04:36" />
+    <file relUrl="Content/images/Misc/phone.png" publishTime="06/07/2014 10:25:26" />
     <file relUrl="Views/Private/Index.aspx" publishTime="11/23/2014 10:35:34" />
     <file relUrl="Scripts/jquery-1.5.1-vsdoc.js" publishTime="06/07/2014 10:23:58" />
     <file relUrl="bin/EntityFramework.xml" publishTime="06/07/2014 10:29:30" />
-    <file relUrl="Views/Configuration/BEInfo.aspx" publishTime="06/19/2014 12:51:38" />
+    <file relUrl="Content/themes/base/jquery.ui.core.css" publishTime="06/07/2014 10:25:25" />
     <file relUrl="Views/Private/ExporterFormUpdateApp.aspx" publishTime="01/13/2015 13:36:40" />
-    <file relUrl="Content/images/ico-news.gif" publishTime="06/07/2014 10:25:26" />
-    <file relUrl="Areas/Comsales/Views/CSales/ComsalesEntryUpd.aspx" publishTime="12/21/2014 09:10:45" />
+    <file relUrl="Content/themes/base/jquery.ui.datepicker.css" publishTime="06/07/2014 10:25:25" />
+    <file relUrl="Content/TopMenu/Images/back.png" publishTime="06/07/2014 10:25:32" />
   </publishProfile>
 </publishData>
