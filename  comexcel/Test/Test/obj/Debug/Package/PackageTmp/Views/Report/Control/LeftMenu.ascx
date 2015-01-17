@@ -6,6 +6,7 @@
     { %>
          <a href="<%=Url.Content("~/Report/Invoice") %>">Invoice</a>
          <a href="<%=Url.Content("~/Report/AllUDInfo") %>">U/D Information</a>
+         <a href="<%=Url.Content("~/Report/InvoiceMonitor") %>">Invoice Monitor</a>
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
          <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Report</a>
          <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>

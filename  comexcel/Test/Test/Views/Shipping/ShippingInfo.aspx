@@ -13,13 +13,13 @@
 <div class="mp_right_content">
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">
-                 <div style=" margin: 0em .5cm -20px 29cm;"> 
+                <%-- <div style=" margin: 0em .5cm -20px 29cm;"> 
                    <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
                  </div>
-                 <div id="dialog" title="Search">
+                 <div id="dialog" title="Search">--%>
                      Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>               
                      <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />                --%>
-                 </div>
+                <%-- </div>--%>
                  <div>
                    <%: Html.ActionLink("Add New Entry", "ShippingformEntry", new { @href = "#", @id = "dialog_link", title = "Receive Item" })%>
                  </div> 
@@ -70,14 +70,6 @@
                     title: 'EXP Date',
                     width: '8%'
                 },
-                SBNo: {
-                    title: 'SB No',
-                    width: '8%'
-                },
-                SBDate: {
-                    title: 'SB Date',
-                    width: '8%'
-                },
                 VesselNo: {
                     title: 'Truck No',
                     width: '8%'
@@ -93,8 +85,16 @@
                 ExFactoryDate: {
                     title: 'Ex-Factory Date',
                     width: '10%'
-                }
-                
+                },
+                CargorptDate: {
+                    title: 'CargoRecevie Date',
+                    width: '10%'
+                },
+                TransportID: {
+                    title: 'Transport',
+                    width: '8%',
+                    options: '<%=Url.Content("~/Private/AllModeinfoDetails") %>'
+                }                
             }
         });
         $('#RecordsContainer').jtable('load');
@@ -160,7 +160,16 @@
                 ExFactoryDate: {
                     title: 'Ex-Factory Date',
                     width: '10%'
-                }
+                },
+                CargorptDate: {
+                    title: 'CargoRecevie Date',
+                    width: '10%'
+                },
+                TransportID: {
+                    title: 'Transport',
+                    width: '8%',
+                    options: '<%=Url.Content("~/Private/AllModeinfoDetails") %>'
+                }      
             }
         });
         $('#RecordsContainer').jtable('load');

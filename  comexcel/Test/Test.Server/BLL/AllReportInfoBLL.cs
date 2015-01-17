@@ -37,5 +37,14 @@ namespace Test.Server.BLL
             retObj = (object)allDAL.GetAllBillingReportRecord(obj, param);
             return retObj;
         }
+
+        public object GetInvoiceMonitorListRecords(object param)
+        {
+            object retObj = null;
+            AllReportInfoDAL allDAL = new AllReportInfoDAL();
+            ReportBillinInfoEntity obj = (ReportBillinInfoEntity)param;
+            retObj = (object)allDAL.GetInvoiceMonitorListRecords(obj, param);
+            return retObj;
+        }
     }
 }

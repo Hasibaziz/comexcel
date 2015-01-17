@@ -15,8 +15,9 @@ namespace Test.Domain.Model
         [Display(Name = "SB No")]
         [Required(ErrorMessage = "{0} is required!")]
         public string SBNo{set;get;}
-        [Display(Name = "SB Date")]
-        [Required(ErrorMessage = "{0} is required!")]
+        [Display(Name = "SB Date")]        
+        [Required(ErrorMessage = "SB Date is required!")]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public string SBDate{set;get;}
        
         public string DocSubmitDate{set;get;}

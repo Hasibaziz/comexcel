@@ -774,6 +774,10 @@ namespace Test.Structure.TaskManager
                     allBLL = new AllReportInfoBLL();
                     return allBLL.GetAllBillingReportRecord(param);
                     break;
+                case TestTask.AG_GetInvoiceMonitorListRecords:
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetInvoiceMonitorListRecords(param);
+                    break;
                 #endregion
                 
                 ///

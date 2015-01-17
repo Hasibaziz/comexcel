@@ -49,3 +49,12 @@ FROM TTInformation WHERE TTNumber='IT06591406110037'
 Matchin Column FOR SHIPPING AND SALES TABLES
 ----------------------------------------------------------------------------------------------------------
 SELECT InvoiceNo from SalesinfoDetails AS SA where not exists(SELECT InvoiceNo FROM ShippingInfo AS SP WHERE SA.InvoiceNo=SP.InvoiceNo )
+
+
+
+DataBase Policies:
+-----------------------------------------------------------------------------------------------------------
+USE Task
+CREATE MASTER KEY ENCRYPTION BY PASSWORD ='HopLun@123'
+CREATE CERTIFICATE HopLun123 WITH SUBJECT='HopLun123 Certificate', 
+EXPIRY_DATE = '01/16/2015'

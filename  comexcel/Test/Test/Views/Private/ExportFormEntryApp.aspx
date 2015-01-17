@@ -186,8 +186,9 @@
             <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Select Consignee", new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ConsigneeID)%>
         </div>
-        <div class="editor-label01" style="color: Green;">       
-            <p id="ConsigneeName" ></p>
+        <%--<div class="editor-label01" style="color: Green;"> --%>
+        <div class="col-xs-8 col-sm-6" style="color: Green;">       
+            <p class="text-right" id="ConsigneeName" ></p>
         </div>
         <div class="editor-label01">
             <label for="NotifyID">Notify No:</label>
@@ -196,8 +197,9 @@
             <%: Html.DropDownListFor(model => model.NotifyID, (List<SelectListItem>)ViewData["NotifyNo"], new { @class = "validate[required]" })%>  
             <%: Html.ValidationMessageFor(model => model.NotifyID)%>
         </div>
-        <div class="editor-label01" style="color: Green;">       
-            <p id="Notify" ></p>
+        <%--<div class="editor-label01" style="color: Green;">  --%> 
+        <div class="col-xs-8 col-sm-6" style="color: Green;">     
+            <p class="text-right" id="Notify" ></p>
         </div>        
         <div class="editor-label01">
             <label for="TransportID">Local Transport:</label>

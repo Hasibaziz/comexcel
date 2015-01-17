@@ -25,10 +25,11 @@
    <div class="page_list_container">
      <fieldset><div id="RecordsContainer">  
                   (Ex-Factory)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
-                  End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>
-                  <input type="button" value="Search" title="Search" class="btn btn-primary btn-lg active"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp;
+                  End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
+                  <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp;
                   <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="printItem()" />--%>
-                  <input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />
+                  <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />--%>
+                  <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Print" onclick="PrintExcel()" />
                </div>               
      </fieldset>                
    </div>

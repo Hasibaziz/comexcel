@@ -21,7 +21,7 @@
 
         $('#RecordsContainer').jtable({
             paging: true,
-            pageSize: 10,
+            pageSize: 20,
             sorting: false,
             defaultSorting: 'Name ASC',
             actions: {

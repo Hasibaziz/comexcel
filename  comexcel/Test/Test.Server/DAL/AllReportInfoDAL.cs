@@ -37,5 +37,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetInvoiceMonitorListRecords(ReportBillinInfoEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            //object[] parameters = new object[] { obj.CourierNo };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetInvoiceMonitorRecords");
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

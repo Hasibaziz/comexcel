@@ -39,7 +39,7 @@
              <div>       
                 <input type="file" id="FileUpload" name="FileUpload"  required-data-val="true" data-val-required="please select a file" />            
                 <input type="submit" id="Submit"  value="FileUpload"  title="Click to Upload file" class="btn btn-primary btn-lg active" onclick="return CheckFileName();"/>  
-                <input type="button" value="Post" title="Post" class="btn btn-primary btn-lg active"   onclick="Forpost()" />
+                <input type="button" value="Post" title="Post" class="btn btn-primary btn-lg active"   onclick="Forpost()" data-toggle="tooltip" data-placement="top" />
                 <input id="Button1" type="button" value="Delete" title="Delete"  class="btn btn-primary btn-lg active"  onclick="Fordelete()" />       
              </div>
              <div><asp:Label ID="lblMessage" runat="server"  Font-Bold="true" /></div>
