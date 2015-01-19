@@ -342,6 +342,7 @@ namespace Test.Controllers
             Test.Utility.Excelimport.ExcelFileResult actionResult = new Test.Utility.Excelimport.ExcelFileResult(dt) { FileDownloadName = "SalesReport.xls" };
             return actionResult;
         }
+        
         public ActionResult ExcelReport(string EX1 = "", string EX2 = "")
         {
 
@@ -391,6 +392,8 @@ namespace Test.Controllers
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
             return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
         }
+        
+        
         public ActionResult CustomsAuditReport()
         {
             return View();
@@ -486,6 +489,8 @@ namespace Test.Controllers
             }
         }
 
+
+
         public ActionResult BillingReport()
         {
             return View();
@@ -579,6 +584,7 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        
         public ActionResult BillingReportOnExcel(string EX1 = "")
         {
 
@@ -629,6 +635,8 @@ namespace Test.Controllers
             return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
         }
 
+
+
         public ActionResult InvoiceMonitor()
         {
             return View();
@@ -655,35 +663,28 @@ namespace Test.Controllers
                         if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
                         {
                             ItemList.Add(new ReportBillinInfoEntity()
-                            {
-                                // ID = dr["ID"].ToString(),
+                            {                               
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
-
-                                //ItemName = dr["ItemName"].ToString(),
+                               
                                 CONTRACTNO = dr["CONTRACTNO"].ToString(),
                                 ContractDate = dr["ContractDate"].ToString(),
 
-                                ORDERNO = dr["ORDERNO"].ToString(),
-                                //ExporterID = dr["ExporterID"].ToString(),
-                                ExporterNo = dr["ExporterNo"].ToString(),
-                                //ExporterName = dr["ExporterName"].ToString(),
-                                //RegDetails = dr["RegDetails"].ToString(),
+                                ORDERNO = dr["ORDERNO"].ToString(),                                
+                                ExporterNo = dr["ExporterNo"].ToString(),                                
 
-                                //ConsigneeID = dr["ConsigneeID"].ToString(),
+                               
                                 BUYERNAME = dr["BUYERNAME"].ToString(),
                                 //ConsigneeName = dr["ConsigneeName"].ToString(),
-
-                                //DestinationID = dr["DestinationID"].ToString(),
+                               
                                 CountryCode = dr["CountryCode"].ToString(),
                                 DESTINATION = dr["DESTINATION"].ToString(),
-
-                                //TransportID = dr["TransportID"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+                               
                                 TName = dr["TName"].ToString(),
                                 MODE = dr["MODE"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
-                                CMValue = dr["CMValue"].ToString(),
-                                //CPTValue = dr["CPTValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),                                
                                 Freight = dr["Freight"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
 
@@ -723,6 +724,55 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        
+        public ActionResult InvoiceMonitorExcel(string EX1 = "")
+        {
 
+            ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
+            _Model.CourierNo = EX1;
+            //_Model.EndDate = EX2;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + "Inventory Monitor Report" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            this.Response.ContentType = "application/vnd.ms-excel";
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
+        }
      }
 }

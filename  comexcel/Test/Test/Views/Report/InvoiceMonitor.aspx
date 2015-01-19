@@ -6,6 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<script type="text/javascript">
+    function PrintExcel() {
+        window.location = "/Report/InvoiceMonitorExcel"
+    }
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("Control/LeftMenu"); %>
 </div>
@@ -15,6 +20,7 @@
                   <%-- Invoice No:  <%: Html.TextBoxFor(model => model.InvoiceNo, new { style = "width: 120px;" })%>                 
                    Buyer Name: <%: Html.DropDownListFor(model => model.ConsigneeID, (List<SelectListItem>)ViewData["ConsigneeNo"], "Please Select", new { @class = "validate[required]" })%>                  
                  <input type="button" value="Print Preview" title="Print" class="btn btn-info btn-lg active"  onclick="printPDF()" />--%>
+                 <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Export" onclick="PrintExcel()" />
                </div>
                
      </fieldset>                 
@@ -40,60 +46,32 @@
                     edit: false,
                     list: false
                 },
-                //                ItemName: {
-                //                    title: 'Item Name',
-                //                    width: '25%'
-                //                },
-                ContractNo: {
-                    title: 'Contract No',
-                    width: '10%'
-                },
-                ContractDate: {
-                    title: 'Contract Date',
-                    width: '10%'
-                },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '10%',
-                    display: function (data) {
-                        return '<a href="/Private/ExporterFormUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
-                    }
+                    width: '10%'
                 },
                 InvoiceDate: {
                     title: 'Invoice Date',
                     width: '10%'
                 },
-                ExporterID: {
+                ExporterNo: {
                     title: 'Exporter',
-                    width: '6%',
-                    options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
+                    width: '4%'
                 },
-                ConsigneeID: {
-                    title: 'Consignee No',
-                    width: '10%',
-                    options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
+                BUYERNAME: {
+                    title: 'BUYERNAME',
+                    width: '10%'
                 },
-                //                NotifyID: {
-                //                    title: 'Notify No',
-                //                    width: '10%',
-                //                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                //                },
-                //                HSCodeID: {
-                //                    title: 'H.S. Code',
-                //                    width: '10%',
-                //                    options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
-                //                },
+                DESTINATION: {
+                    title: 'Destination',
+                    width: '5%'
+                },
                 HSCode: {
-                    title: 'H.S.Code',
+                    title: 'H.S. Code',
                     width: '6%'
                 },
-                DestinationID: {
-                    title: 'Destination',
-                    width: '5%',
-                    options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
-                },
-                Port: {
-                    title: 'Port',
+                MODE: {
+                    title: 'MODE',
                     width: '12%'
                 },
                 Quantity: {
@@ -110,11 +88,11 @@
                 },
                 CMValue: {
                     title: 'C.M.',
-                    width: '8%'
+                    width: '6%'
                 },
-                ExFactoryDate: {
-                    title: 'Ex-Factory',
-                    width: '8%'
+                EXPNo: {
+                    title: 'Exp No',
+                    width: '14%'
                 }
             }
         });
@@ -130,11 +108,7 @@
             title: 'Invoice List for HLBD,HLHY,Apparel',
             defaultSorting: 'Name ASC',
             actions: {
-                listAction: '<%=Url.Content("~/Report/InvoiceMonitorList") %>'
-                //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
-                //                    createAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>',
-                //                    updateAction: '<%=Url.Content("~/Private/AddUpdateExporterDetails") %>' 
-                //                    createAction: '<%=Url.Content("~/Configuration/AddUpdateServiceNameDetils") %>'
+                listAction: '<%=Url.Content("~/Report/InvoiceMonitorList") %>'               
             },
             fields: {
                 ID: {
@@ -142,61 +116,33 @@
                     create: false,
                     edit: false,
                     list: false
-                },
-                //                ItemName: {
-                //                    title: 'Item Name',
-                //                    width: '25%'
-                //                },
-                //                ContractNo: {
-                //                    title: 'Contract No',
-                //                    width: '10%'
-                //                },
-                //                ContractDate: {
-                //                    title: 'Contract Date',
-                //                    width: '10%'
-                //                },
+                },               
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '10%'
-                    //                    display: function (data) {
-                    //                        return '<a href="/Shipping/ShippingformEntryUpdByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
-                    //                    }
+                    width: '10%'                   
                 },
                 InvoiceDate: {
                     title: 'Invoice Date',
                     width: '10%'
                 },
-                ExporterID: {
+                ExporterNo: {
                     title: 'Exporter',
-                    width: '6%',
-                    options: '<%=Url.Content("~/Private/AllExporterDetails") %>'
+                    width: '4%'
                 },
-                ConsigneeID: {
-                    title: 'Consignee No',
-                    width: '10%',
-                    options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
+                BUYERNAME: {
+                    title: 'BUYERNAME',
+                    width: '10%'
                 },
-                //                    NotifyID: {
-                //                        title: 'Notify No',
-                //                        width: '10%',
-                //                        options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-                //                    },
-                //                    HSCodeID: {
-                //                        title: 'H.S. Code',
-                //                        width: '10%',
-                //                        options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
-                //                    },
+                DESTINATION: {
+                    title: 'Destination',
+                    width: '5%'
+                },              
                 HSCode: {
                     title: 'H.S. Code',
                     width: '6%'
-                },
-                DestinationID: {
-                    title: 'Destination',
-                    width: '5%',
-                    options: '<%=Url.Content("~/Private/AllDestinationDetails") %>'
-                },
-                Port: {
-                    title: 'Port',
+                },                
+                MODE: {
+                    title: 'MODE',
                     width: '12%'
                 },
                 Quantity: {
@@ -215,7 +161,7 @@
                     title: 'C.M.',
                     width: '6%'
                 },
-                ExpNo: {
+                EXPNo: {
                     title: 'Exp No',
                     width: '14%'
                 }
