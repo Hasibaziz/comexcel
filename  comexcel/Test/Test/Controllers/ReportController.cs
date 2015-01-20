@@ -643,16 +643,16 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public JsonResult InvoiceMonitorList(string Invno, string consigneeid, int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult InvoiceMonitorList(string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
                 try
                 {
-                    //ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
-                    //_Model.InvoiceNo = Invno;
-                    //_Model.ConsigneeID = consigneeid;
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, null);
+                    ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
+                    _Model.StartDate = StartDate;
+                    _Model.EndDate = EndDate;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
                     List<ReportBillinInfoEntity> ItemList = null;
                     ItemList = new List<ReportBillinInfoEntity>();
                     int iCount = 0;

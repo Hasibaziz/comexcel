@@ -5,7 +5,33 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
+        $.datepicker.setDefaults($.extend({},
+            {
+                changeMonth: true,
+                changeYear: true,
+                showStatus: true,
+                dateFormat: 'dd-mm-yy',
+                duration: 'fast',
+                yearRange: '1890:2100'
+            }
+            )
+        );
+        $("input#DocsendingDate, #ETADate, #SBDate, #EPDate, #DocSubmitDate, #CourierDate, #BuyerCourierDate, #BankSubmitDate").datepicker({
+            onSelect: function () {
+                document.all ? $(this).get(0).fireEevent("onChange") :
+                            $(this).change();
+                this.focus();
+            },
+            onClose: function (dateText, inst) {
+                if (!document.all)
+                    this.select();
+            }
+        });
+    });
+</script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
 </div>

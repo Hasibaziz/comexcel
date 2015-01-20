@@ -41,8 +41,8 @@ namespace Test.Server.DAL
         public DataTable GetInvoiceMonitorListRecords(ReportBillinInfoEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            //object[] parameters = new object[] { obj.CourierNo };
-            DbCommand dbCommand = db.GetStoredProcCommand("spGetInvoiceMonitorRecords");
+            object[] parameters = new object[] { obj.StartDate, obj.EndDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetInvoiceMonitorRecords", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

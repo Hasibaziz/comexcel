@@ -3,7 +3,7 @@
     <div id="top-menu" style="float: left; width: 100%">
         <ul class="menu">
         <%string GROUP = Session["Groups"].ToString(); %>
-        <%if (GROUP == "Admin")
+        <%if (GROUP == Test.Utility.AppConstants.Area.ADMIN)
           { %>
                  <%--<li><a href="<%=Url.Content("~/Settings/Index") %>" class="last"><span>Settings</span></a></li>--%>
                  <li><a href="<%=Url.Content("~/Configuration/Index") %>"><span>Import Info</span></a></li>

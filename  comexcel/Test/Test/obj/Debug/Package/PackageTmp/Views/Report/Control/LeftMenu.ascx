@@ -15,6 +15,7 @@
      <% }%>
      <%else if (GROUP == "ShipNsales")
       { %>
+         <a href="<%=Url.Content("~/Report/InvoiceMonitor") %>">Invoice Monitor</a>
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
      <% }%>
      <%else if (GROUP == "Billing")

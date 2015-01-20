@@ -7,6 +7,16 @@ namespace Test.Utility
 {
     public class AppConstants
     {
+        #region Area Definitions
+        public class Area
+        {
+            public const String ADMIN = "Admin";
+            public const String PRIVATE = "Private";
+            public const String SALES = "Sales";
+            public const String SHIPPING = "Shipping";
+        }       
+        #endregion
+
         #region Email Templates
         public class EmailTemplate
         {

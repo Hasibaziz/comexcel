@@ -84,7 +84,7 @@ $(document).ready(function () {
                     "OK": function () {
                         //closeDialog($(this))
                         $("#InvoiceNo").val(" ");
-                        $("#SBNo").val(" ");
+                        $("#SBNo").val("C ");
                         $("#SBDate").val(" ");
                         $("#DocSubmitDate").val(" ");
                         $("#CourierNo").val(" ");
@@ -146,7 +146,8 @@ $(document).ready(function () {
         </div>
         <div class="editor-field01">
             <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true", @class = "validate[required]" })%>
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo, "*") %>
+            <%: Html.ValidationMessage("InvoiceNo", "*")%>
         </div>
 
         <div class="editor-label01">
