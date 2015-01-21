@@ -14,6 +14,8 @@ namespace Test.Utility
             public const String PRIVATE = "Private";
             public const String SALES = "Sales";
             public const String SHIPPING = "Shipping";
+            public const String EXPORTALL = "ExportAll";
+
         }       
         #endregion
 

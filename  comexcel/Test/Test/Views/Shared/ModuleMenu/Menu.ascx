@@ -6,7 +6,7 @@
         <%if (GROUP == Test.Utility.AppConstants.Area.ADMIN)
           { %>
                  <%--<li><a href="<%=Url.Content("~/Settings/Index") %>" class="last"><span>Settings</span></a></li>--%>
-                 <li><a href="<%=Url.Content("~/Configuration/Index") %>"><span>Import Info</span></a></li>
+                 <%--<li><a href="<%=Url.Content("~/Configuration/Index") %>"><span>Import Info</span></a></li>--%>
                  <li><a href="<%=Url.Content("~/Sales/Export") %>"><span>Export Info</span></a></li>
                  <li><a href="<%=Url.Content("~/Private/Index") %>"><span>Export Form</span></a></li>
                  <li><a href="<%=Url.Content("~/Shipping/Index") %>"><span>Shipping Info</span></a></li> 
@@ -55,6 +55,16 @@
                 <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
              <%} %>
+              <%else if (GROUP == Test.Utility.AppConstants.Area.EXPORTALL)
+             { %>
+                <li><a href="<%=Url.Content("~/Private/Index") %>"><span>Export Form</span></a></li>                             
+                <li><a href="<%=Url.Content("~/Shipping/Index") %>"><span>Shipping Info</span></a></li> 
+                <li><a href="<%=Url.Content("~/Sales/Index") %>"><span>Sales Info</span></a></li> 
+                <li><a href="<%=Url.Content("~/Billing/Index") %>"><span>Billing Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
+                <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>      
+              <%} %>
 
         </ul>
     </div>

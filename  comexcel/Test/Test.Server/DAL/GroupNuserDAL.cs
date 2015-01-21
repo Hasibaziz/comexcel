@@ -64,7 +64,7 @@ namespace Test.Server.DAL
         public DataTable GetAllCreateUsersListRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], Created=CONVERT(varchar, CONVERT(datetime, [Created], 105), 6), [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
+            string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
