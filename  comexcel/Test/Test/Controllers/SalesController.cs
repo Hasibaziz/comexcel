@@ -412,6 +412,8 @@ namespace Test.Controllers
                                 RevisedCMValue = dr["RevisedCMValue"].ToString(),
                                 CartonQty = dr["CartonQty"].ToString(),
                                 CBMValue = dr["CBMValue"].ToString(),
+                                TTNo = dr["TTNo"].ToString(),
+                                TTDate = dr["TTDate"].ToString(),
                                 //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString()
                             });

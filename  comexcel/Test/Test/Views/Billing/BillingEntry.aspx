@@ -335,6 +335,14 @@ $(document).ready(function () {
                     BLDate: {
                         title: 'B/L Date',
                         width: '8%'
+                    },
+                    TTNo: {
+                        title: 'TTNo',
+                        width: '11%'
+                    },
+                    TTDate: {
+                        title: 'TT Date',
+                        width: '10%'
                     }
                 }
             });

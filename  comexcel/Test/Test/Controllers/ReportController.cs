@@ -496,7 +496,7 @@ namespace Test.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult BillingReportList( string courierno = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult BillingReportList(string courierno = "", string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
@@ -504,6 +504,8 @@ namespace Test.Controllers
                 {
                     ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
                     _Model.CourierNo = courierno;
+                    _Model.StartDate = StartDate;
+                    _Model.EndDate = EndDate;
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
                     List<ReportBillinInfoEntity> ItemList = null;
                     ItemList = new List<ReportBillinInfoEntity>();
@@ -562,6 +564,8 @@ namespace Test.Controllers
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
                                 ModeStatus = dr["ModeStatus"].ToString(),
+                                CourierNo = dr["CourierNo"].ToString(),
+                                CourierDate = dr["CourierDate"].ToString(),   
 
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
 

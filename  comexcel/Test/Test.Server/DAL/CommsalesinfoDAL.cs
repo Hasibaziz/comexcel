@@ -115,7 +115,10 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ComsalesinfoEntity obj = (ComsalesinfoEntity)param;
-            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, CurrentDate, UserName FROM SalesinfoDetails where InvoiceNo like '%" + obj.InvoiceNo + "%'";
+            string sql = " SELECT     SA.ID, SA.InvoiceNo, SA.OrderNo, SA.StyleNo, SA.ProductType, SA.ShipbordingDate, SA.BLNo, SA.BLDate, SA.ETADate, SA.RevQty, SA.RevisedFOBValue,  ";
+            sql = sql + "  SA.RevisedCMValue, SA.CartonQty, SA.CBMValue, SA.VesselName, SA.CurrentDate, SA.UserName, EX.TTNo, EX.TTDate  ";
+            sql = sql + "  FROM   SalesinfoDetails AS SA INNER JOIN  ExportformDetails AS EX ON SA.InvoiceNo = EX.InvoiceNo";
+            sql = sql + "  where SA.InvoiceNo like '%" + obj.InvoiceNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
