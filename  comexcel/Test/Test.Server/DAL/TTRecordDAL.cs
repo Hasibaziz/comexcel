@@ -15,7 +15,11 @@ namespace Test.Server.DAL
         public DataTable GetTTRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, BankName FROM TTInformation";
+            //string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, BankName FROM TTInformation";
+            string sql = "SELECT     TTIN.ID, TTIN.ExporterDetailsID, TTIN.TTNumber, TTIN.TTAmount, TTIN.BankName, TTIN.TTDate ";
+            sql = sql + " , COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] AS EX   WHERE EX.TTNo=TTIN.TTNumber AND Status IS NULL GROUP BY TTNo),0) AS CMTotal ";
+            sql = sql + " ,(COALESCE(CAST(TTIN.TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2),CMValue)),0) FROM [ExportformDetails] AS EX   WHERE EX.TTNo=TTIN.TTNumber AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
+            sql = sql + " FROM   TTInformation AS TTIN ORDER BY TTIN.TTNumber ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

@@ -145,7 +145,7 @@
 </div>        
 
     <p>
-        <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     
+        <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Update" />     
         <input type="button" onclick="window.location='<%: Url.Action("ShippingInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />   
     </p>
    

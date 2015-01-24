@@ -3070,6 +3070,8 @@ namespace Test.Controllers
                                 ExporterDetailsID = dr["ExporterDetailsID"].ToString(),
                                 TTNumber = dr["TTNumber"].ToString(),
                                 TTAmount = dr["TTAmount"].ToString(),
+                                CMTotal = dr["CMTotal"].ToString(),
+                                TTBalance = dr["TTBalance"].ToString(),
                                 BankName = dr["BankName"].ToString(),
                                 TTDate = dr["TTDate"].ToString()
                             });

@@ -461,7 +461,7 @@ namespace Test.Controllers
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
 
-                                IRegisterNo = dr["SBDate"].ToString(),
+                                IRegisterNo = dr["IRegisterNo"].ToString(),
                                 IBond = dr["IBond"].ToString(),
                                 TotalFabric = dr["TotalFabric"].ToString(),
                                 AdjustReg = dr["AdjustReg"].ToString(),

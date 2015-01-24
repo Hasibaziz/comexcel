@@ -15,7 +15,7 @@ namespace Test.Domain.Model
        public string TTDate { set; get; }
        public string TTBalance { set; get; }
 
-       public string CMValue { set; get; }
+       public string CMTotal { set; get; }
 
     }
 }

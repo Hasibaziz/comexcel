@@ -27,7 +27,7 @@
 
             $('#RecordsContainer').jtable({
                 paging: true,
-                pageSize: 15,
+                pageSize: 20,
                 sorting: false,
                 defaultSorting: 'Name ASC',
                 actions: {
@@ -49,9 +49,21 @@
                     },
                     TTAmount: {
                         title: 'TT Amount',
-                        width: '10%',
+                        width: '15%',
                         //inputClass: 'validate[required,minSize[6]]' ---For Interger Value----validate[required,custom[integer],max[50]]
                         inputClass: 'validate[optional,maxSize[50]]'
+                    },
+                    CMTotal: {
+                        title: 'CM Total',
+                        width: '15%',
+                        create: false,
+                        edit: false
+                    },
+                    TTBalance: {
+                        title: 'TT Balance',
+                        width: '20%',
+                        create: false,
+                        edit: false
                     },
                     BankName: {
                         title: 'Bank Name',

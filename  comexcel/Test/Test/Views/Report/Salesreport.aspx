@@ -23,13 +23,22 @@
 </div>
 <div class="mp_right_content">
    <div class="page_list_container">
-     <fieldset><div id="RecordsContainer">  
-                  (Ex-Factory)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
-                  End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
+     <fieldset><div id="RecordsContainer"> 
+               <div style=" margin: 0em .5cm 0px 29cm;"> 
+                  <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
+               </div>
+               <div id="dialog" title="Search"> 
+                  <div style=" margin: 0em .5cm 0px 0.3cm;">
+                     (Ex-Factory)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
+                  </div>
+                  <div style=" margin: 0em .5cm 0px 2.7cm;">
+                     End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
+                  </div>
                   <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp;
                   <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="printItem()" />--%>
                   <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />--%>
                   <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Print" onclick="PrintExcel()" />
+                </div>
                </div>               
      </fieldset>                
    </div>
@@ -157,6 +166,37 @@ $(document).ready(function () {
         }); 
 </script>
 <script type="text/javascript">
+     $(document).ready(function () {
+         // Dialog
+         $('#dialog').dialog({
+             autoOpen: false,
+             resizable: false,    /// To make the Popup Window Customs resize (Big or Small)
+             width: 500,
+             modal: true,    // For Background Disable... 
+             show: {
+                 effect: "blind",
+                 duration: 1000
+             },
+             hide: {
+                 effect: "blind",       //effect: "explode",
+                 duration: 1000
+             },
+             buttons: {
+                 "Ok": function () {
+                     $(this).dialog("close");
+                 },
+//                 "Cancel": function () {
+//                     $(this).dialog("close");
+//                 }
+             }
+         });
+         // Dialog Link
+         $('#dialog_link').click(function () {
+             $('#dialog').dialog('open');
+             return false;
+         });
+     });    
+
     $(function () {
         $("#StartDate, #EndDate ").datepicker({
             dateFormat: 'dd-mm-yy',
