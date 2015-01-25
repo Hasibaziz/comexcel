@@ -46,6 +46,15 @@ namespace Test.Domain.Model
       //[Required(ErrorMessage = "{0} is required!")]
       public string CargorptDate { set; get; }
 
+       //------ Final Status of Invoices --------
+
+      public string BringBack { set; get; }
+      public string ShippedOut { set; get; }
+      public string ShippedCancel { set; get; }
+      public string ShippedBack { set; get; }
+      public string Unshipped { set; get; }
+
+
       public string SInvoiceNo { set; get; }
 
       public string UserName { set; get; }

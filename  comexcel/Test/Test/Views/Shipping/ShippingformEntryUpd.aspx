@@ -40,7 +40,8 @@
 <div id="tabs">
         <ul>
           <li><a href="#tabs-1">Shipment Status Info</a></li>
-          <li><a href="#tabs-2">Other Info</a></li>                  
+          <li><a href="#tabs-2">Other Info</a></li> 
+          <li><a href="#tabs-3">Invoice Remarks</a></li>                    
         </ul>
     <div id="tabs-1">
       <fieldset>         
@@ -142,6 +143,49 @@
         </div>
       </fieldset>
     </div>
+
+     <div id="tabs-3">
+      <fieldset>         
+             <legend>Invoice Remarks</legend>
+        <div class="editor-label01">
+            <label for="BringBack">Bring Back:</label>             
+        </div>
+        <div class="editor-field01">
+           <%: Html.EditorFor(model => model.BringBack)%>
+           <%: Html.ValidationMessageFor(model => model.BringBack)%>
+        </div>
+        <div class="editor-label01">
+           <label for="ShippedOut">Shipped Out:</label>            
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.ShippedOut)%>
+            <%: Html.ValidationMessageFor(model => model.ShippedOut)%>
+        </div>        
+         <div class="editor-label01">
+           <label for="ShippedCancel">Shipped Cancel:</label>            
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.ShippedCancel)%>
+            <%: Html.ValidationMessageFor(model => model.ShippedCancel)%>
+        </div>
+
+        <div class="editor-label01">
+            <label for="ShippedBack">Shipped Back:</label>             
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.ShippedBack)%>
+            <%: Html.ValidationMessageFor(model => model.ShippedBack)%>
+        </div>
+         <div class="editor-label01">
+            <label for="Unshipped">Un-Shipped:</label>             
+        </div>
+        <div class="editor-field01">
+            <%: Html.EditorFor(model => model.Unshipped)%>
+            <%: Html.ValidationMessageFor(model => model.Unshipped)%>
+        </div>
+      </fieldset>
+    </div>
+
 </div>        
 
     <p>

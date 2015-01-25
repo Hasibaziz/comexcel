@@ -64,7 +64,7 @@
                 },
                 EXPNo: {
                     title: 'EXP No',
-                    width: '7%'
+                    width: '10%'
                 },
                 EXPDate: {
                     title: 'EXP Date',

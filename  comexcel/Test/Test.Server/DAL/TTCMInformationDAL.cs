@@ -34,7 +34,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ExportformEntity obj = (ExportformEntity)param;
-            string sql = "SELECT TTNo, SUM(CONVERT(FLOAT,CMValue)) AS CMTotal FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo";
+            string sql = "SELECT TTNo, SUM(CONVERT(DECIMAL(10,2), CMValue)) AS CMTotal FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo";
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -74,6 +74,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             //sql = sql + " WHERE  EX.ExporterNo in('HY001','BD001')";
+            sql = sql + " WHERE A.Status IS NULL ";
             sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -112,6 +113,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             //sql = sql + " WHERE  EX.ExporterNo in('HY001','BD001')";
+            sql = sql + " WHERE A.Status IS NULL ";
             sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) ASC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

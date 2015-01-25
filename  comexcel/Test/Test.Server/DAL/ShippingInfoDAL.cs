@@ -33,7 +33,7 @@ namespace Test.Server.DAL
         }
         public bool SaveShippingformEntry(ShippinginfoEntity sppEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO ShippingInfo (  InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, UserName, CurrentDate  ) VALUES ( @InvoiceNo, @EPNo, @EPDate, @EXPNo, @EXPDate, @ExFactoryDate, @CnFAgent, @TransportID, @SBNo, @SBDate, @VesselNo, @CargorptDate, @UserName, @CurrentDate  )";
+            string sql = "INSERT INTO ShippingInfo (  InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, UserName, CurrentDate  ) VALUES ( @InvoiceNo, @EPNo, @EPDate, @EXPNo, @EXPDate, @ExFactoryDate, @CnFAgent, @TransportID, @SBNo, @SBDate, @VesselNo, @CargorptDate, @BringBack, @ShippedOut, @ShippedCancel, @ShippedBack, @Unshipped, @UserName, @CurrentDate  )";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, sppEntity.InvoiceNo);
@@ -48,6 +48,12 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "SBDate", DbType.String, sppEntity.SBDate);
             db.AddInParameter(dbCommand, "VesselNo", DbType.String, sppEntity.VesselNo);
             db.AddInParameter(dbCommand, "CargorptDate", DbType.String, sppEntity.CargorptDate);
+
+            db.AddInParameter(dbCommand, "BringBack", DbType.String, sppEntity.BringBack);
+            db.AddInParameter(dbCommand, "ShippedOut", DbType.String, sppEntity.ShippedOut);
+            db.AddInParameter(dbCommand, "ShippedCancel", DbType.String, sppEntity.ShippedCancel);
+            db.AddInParameter(dbCommand, "ShippedBack", DbType.String, sppEntity.ShippedBack);
+            db.AddInParameter(dbCommand, "Unshipped", DbType.String, sppEntity.Unshipped);
            
             db.AddInParameter(dbCommand, "UserName", DbType.String, sppEntity.UserName);
             db.AddInParameter(dbCommand, "CurrentDate", DbType.String, sppEntity.CurrentDate);
@@ -57,7 +63,10 @@ namespace Test.Server.DAL
         }
         public bool UpdateShippingformEntry(ShippinginfoEntity sppEntity, Database db, DbTransaction transaction)
         {
-            string sql = "Update ShippingInfo SET EPNo=@EPNo, EPDate=@EPDate, EXPNo=@EXPNo, EXPDate=@EXPDate, ExFactoryDate=@ExFactoryDate, CnFAgent=@CnFAgent, TransportID=@TransportID, SBNo=@SBNo, SBDate=@SBDate, VesselNo=@VesselNo, CargorptDate=@CargorptDate   WHERE ID=@ID";
+            string sql = "Update ShippingInfo SET EPNo=@EPNo, EPDate=@EPDate, EXPNo=@EXPNo, EXPDate=@EXPDate, ExFactoryDate=@ExFactoryDate, CnFAgent=@CnFAgent, TransportID=@TransportID, SBNo=@SBNo, SBDate=@SBDate, VesselNo=@VesselNo, CargorptDate=@CargorptDate, ";
+            sql = sql + " BringBack=@BringBack, ShippedOut=@ShippedOut, ShippedCancel=@ShippedCancel, ShippedBack=@ShippedBack, Unshipped=@Unshipped ";
+            sql = sql + " WHERE ID=@ID ";
+
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, sppEntity.ID);
@@ -73,6 +82,12 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "SBDate", DbType.String, sppEntity.SBDate);
             db.AddInParameter(dbCommand, "VesselNo", DbType.String, sppEntity.VesselNo);
             db.AddInParameter(dbCommand, "CargorptDate", DbType.String, sppEntity.CargorptDate);
+
+            db.AddInParameter(dbCommand, "BringBack", DbType.String, sppEntity.BringBack);
+            db.AddInParameter(dbCommand, "ShippedOut", DbType.String, sppEntity.ShippedOut);
+            db.AddInParameter(dbCommand, "ShippedCancel", DbType.String, sppEntity.ShippedCancel);
+            db.AddInParameter(dbCommand, "ShippedBack", DbType.String, sppEntity.ShippedBack);
+            db.AddInParameter(dbCommand, "Unshipped", DbType.String, sppEntity.Unshipped);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;

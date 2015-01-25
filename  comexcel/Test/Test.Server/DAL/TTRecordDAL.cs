@@ -17,7 +17,7 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             //string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate, BankName FROM TTInformation";
             string sql = "SELECT     TTIN.ID, TTIN.ExporterDetailsID, TTIN.TTNumber, TTIN.TTAmount, TTIN.BankName, TTIN.TTDate ";
-            sql = sql + " , COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] AS EX   WHERE EX.TTNo=TTIN.TTNumber AND Status IS NULL GROUP BY TTNo),0) AS CMTotal ";
+            sql = sql + " , COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] AS EX   WHERE EX.TTNo=TTIN.TTNumber AND Status IS NULL GROUP BY TTNo),0) AS CMTotal ";
             sql = sql + " ,(COALESCE(CAST(TTIN.TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2),CMValue)),0) FROM [ExportformDetails] AS EX   WHERE EX.TTNo=TTIN.TTNumber AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
             sql = sql + " FROM   TTInformation AS TTIN ORDER BY TTIN.TTNumber ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
@@ -59,8 +59,8 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             TTRecordEntity obj = (TTRecordEntity)param;
             string sql = "SELECT ID, ExporterDetailsID, TTNumber, TTAmount, TTDate  ";
-            sql = sql + ", (SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' AND Status IS NULL GROUP BY TTNo) AS allCMsum";
-            sql = sql + ", (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
+            sql = sql + ", (SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' AND Status IS NULL GROUP BY TTNo) AS allCMsum";
+            sql = sql + ", (COALESCE(CAST(TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' GROUP BY TTNo),0)) AS TTBalance ";
             sql = sql + " FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -72,7 +72,7 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             TTRecordEntity obj = (TTRecordEntity)param;
             string sql = "SELECT ID, TTNumber, TTAmount, ";
-            sql = sql + " (COALESCE(CAST(TTAmount AS FLOAT),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(FLOAT,CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
+            sql = sql + " (COALESCE(CAST(TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNumber + "' AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
             sql=sql+" FROM TTInformation WHERE TTNumber='" + obj.TTNumber + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

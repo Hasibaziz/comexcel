@@ -97,8 +97,8 @@
                     title: 'C.M.',
                     width: '6%'
                 },
-                EXPNo: {
-                    title: 'Exp No',
+                ExFactoryDate: {
+                    title: 'Ex-Factory Date',
                     width: '14%'
                 }
             }
