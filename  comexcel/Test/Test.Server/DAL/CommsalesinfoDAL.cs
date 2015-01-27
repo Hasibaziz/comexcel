@@ -204,7 +204,7 @@ namespace Test.Server.DAL
         public bool SaveSalesImportExcelRecord(SalesImportExcelEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.BLNo, obj.BLDate, obj.ETADate, obj.ShipbordingDate, obj.VesselName};
+            object[] parametersImportinfo = new object[] { obj.InvoiceNo, obj.StyleNo, obj.BLNo, obj.BLDate, obj.ETADate, obj.ShipbordingDate, obj.VesselName};
             DbCommand dbCommand = db.GetStoredProcCommand("spGetSalesImportExcelRecord", parametersImportinfo);         
 
 
@@ -214,7 +214,7 @@ namespace Test.Server.DAL
         public DataTable GETAllSalesImportExcelList(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, [InvoiceNo], [BLNo], [BLDate], [ETADate], [ShipbordingDate], [VesselName] FROM SalesExcel";
+            string sql = "SELECT ID, [InvoiceNo], [StyleNo], [BLNo], [BLDate], [ETADate], [ShipbordingDate], [VesselName] FROM SalesExcel";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

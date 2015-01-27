@@ -9,6 +9,8 @@ using Test.Models;
 using System.Data;
 using Test.DAL;
 using System.Collections;
+using Test.Structure;
+using Test.Domain.Model;
 
 namespace Test.Controllers
 {
@@ -21,7 +23,7 @@ namespace Test.Controllers
             return View("Login", model);
         }
         [HttpPost]
-        public ActionResult Login(string submit, LoginModel model)
+        public ActionResult Login(string submit, LoginModel model, LicenceVerification _Model)
         {
             User iUser = new User();
             DataTable dt = iUser.GetUserInfo(model);
@@ -37,12 +39,12 @@ namespace Test.Controllers
                     model.Groups = dt.Rows[0]["Groups"].ToString();
                     SetLoginSessionData(model, false);
                     Session["UserName"] = CurrentUserName;
-                    Session["Groups"] = CurrentGroups;
+                    Session["Groups"] = CurrentGroups;                   
                     //if(CurrentGroups=="Admin")
                     //   return RedirectToAction("Index", "Home");
                     //else if (CurrentGroups == "Private")
                     //   return RedirectToAction("Index", "Private");
-                    //else
+                    //else                    
                         return RedirectToAction("Index", "Home");                    
                 }
                 else

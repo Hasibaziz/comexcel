@@ -34,7 +34,15 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ExportformEntity obj = (ExportformEntity)param;
-            string sql = "SELECT TTNo, SUM(CONVERT(DECIMAL(10,2), CMValue)) AS CMTotal FROM ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo";
+            //string sql = "SELECT TTNo, SUM(CONVERT(DECIMAL(10,2), CMValue)) AS CMTotal ";
+            //sql = sql + " (COALESCE(CAST(TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
+            //sql = sql + " FROM TTInformation, ExportformDetails WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo";
+
+            string sql = " SELECT TTNumber AS TTNo, TTAmount  ";
+            sql = sql + ", (SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo) AS CMTotal";
+            sql = sql + ", (COALESCE(CAST(TTAmount AS DECIMAL(10,2)),0) - COALESCE((SELECT COALESCE(SUM(CONVERT(DECIMAL(10,2), CMValue)),0) FROM [ExportformDetails] WHERE TTNo='" + obj.TTNo + "' AND Status IS NULL GROUP BY TTNo),0)) AS TTBalance ";
+            sql = sql + " FROM TTInformation WHERE TTNumber='" + obj.TTNo + "'";
+
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);

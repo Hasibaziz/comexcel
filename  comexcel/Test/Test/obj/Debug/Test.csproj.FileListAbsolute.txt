@@ -57,3 +57,5 @@ E:\ comexcel\Test\Test\bin\EntityFramework.xml
 E:\ comexcel\Test\Test\obj\Debug\ResolveAssemblyReference.cache
 E:\ comexcel\Test\Test\obj\Debug\Test.dll
 E:\ comexcel\Test\Test\obj\Debug\Test.pdb
+E:\ comexcel\Test\Test\bin\Test.Common.dll
+E:\ comexcel\Test\Test\bin\Test.Common.pdb

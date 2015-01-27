@@ -31,6 +31,24 @@
             }
         });
     });
+
+$(document).ready(function () {
+    // Define a custom validation function.
+    //        $.validationEngineLanguage.allRules['test_value'] = {
+    //            "func": function (field, rules, i, options) {
+    //                return (field.val() == 'test');
+    //            },
+    //            "alertText": "* Value must be 'test'."
+    //        };
+
+    // Initiate the validation engine.
+    $('#frmSpID').validationEngine();
+    $(function () {
+        $("#InvoiceNo option, #SBDate option").each(function () {
+            $(this).attr({ 'title': $(this).html() });
+        });
+    });
+});
 </script>
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -67,7 +85,7 @@
             <label for="SBDate">SB Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.SBDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.SBDate, new { style = "width: 130px;", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.SBDate) %>
         </div>
 
@@ -75,7 +93,7 @@
             <label for="DocSubmitDate">Doc Submit Date:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.DocSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.DocSubmitDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.DocSubmitDate) %>
         </div>
 
@@ -83,7 +101,7 @@
             <label for="CourierNo">Courier No:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.CourierNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.CourierNo)%>
             <%: Html.ValidationMessageFor(model => model.CourierNo) %>
         </div>
 
@@ -91,7 +109,7 @@
             <label for="CourierDate">Courier Date:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.CourierDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.CourierDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.CourierDate) %>
         </div>
 
@@ -99,7 +117,7 @@
             <label for="BuyerCourierNo">Buyer Courier No:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BuyerCourierNo, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BuyerCourierNo)%>
             <%: Html.ValidationMessageFor(model => model.BuyerCourierNo) %>
         </div>
 
@@ -107,7 +125,7 @@
             <label for="BuyerCourierDate">Buyer Courier Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BuyerCourierDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BuyerCourierDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.BuyerCourierDate) %>
         </div>
 
@@ -115,7 +133,7 @@
             <label for="LeadTime">Lead Time:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.LeadTime, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.LeadTime)%>
             <%: Html.ValidationMessageFor(model => model.LeadTime) %>
         </div>
 
@@ -123,7 +141,7 @@
             <label for="BankSubmitDate">Bank Submit Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BankSubmitDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.BankSubmitDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
         </div>             
          <div class="editor-label01">
@@ -139,10 +157,19 @@
                  new SelectListItem { Text = "ROAD CC" },
                  new SelectListItem { Text = "SEA PP" },
                  new SelectListItem { Text = "SEA CC" }
-                })%>
+                }, new { style = "width: 120px;" })%>
             <%--<%: Html.DropDownListFor(model => model.Mode, Enum.GetValues(typeof(Test.Domain.Model.BillingInfoEntity.ModeStatus)).Cast<Test.Domain.Model.BillingInfoEntity.ModeStatus>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>--%>
             <%: Html.ValidationMessageFor(model => model.ModeStatus)%>
         </div> 
+
+         <div class="editor-label01">
+            <label for="BDTHC">BD THC:</label>             
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.BDTHC, new { style = "width: 120px;" })%>
+            <%: Html.ValidationMessageFor(model => model.BDTHC)%>
+        </div>
+
         <p>
             <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Update" />     
             <input type="button" onclick="window.location='<%: Url.Action("BillingInfo") %>'" class="btn btn-default btn-lg" value="Cancel" />   

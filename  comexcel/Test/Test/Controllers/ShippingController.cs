@@ -60,7 +60,12 @@ namespace Test.Controllers
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
                                 VesselNo = dr["VesselNo"].ToString(),
-                                CargorptDate = dr["CargorptDate"].ToString()                               
+                                CargorptDate = dr["CargorptDate"].ToString(),
+                                BringBack = dr["BringBack"].ToString(),
+                                ShippedOut = dr["ShippedOut"].ToString(),
+                                ShippedCancel = dr["ShippedCancel"].ToString(),
+                                ShippedBack = dr["ShippedBack"].ToString(),
+                                Unshipped = dr["Unshipped"].ToString()
                             });
                         }
                         iCount += 1;
@@ -338,7 +343,12 @@ namespace Test.Controllers
 
                     _Model.SBDate = dr["SBDate"].ToString();
                     _Model.VesselNo = dr["VesselNo"].ToString();
-                    _Model.CargorptDate = dr["CargorptDate"].ToString();                   
+                    _Model.CargorptDate = dr["CargorptDate"].ToString(); 
+                    _Model.BringBack = dr["BringBack"].ToString();
+                    _Model.ShippedOut = dr["ShippedOut"].ToString();
+                    _Model.ShippedCancel = dr["ShippedCancel"].ToString();
+                    _Model.ShippedBack = dr["ShippedBack"].ToString();
+                    _Model.Unshipped = dr["Unshipped"].ToString();
                 }
             }
             else

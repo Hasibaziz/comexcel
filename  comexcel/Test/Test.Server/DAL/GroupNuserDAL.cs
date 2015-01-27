@@ -64,8 +64,9 @@ namespace Test.Server.DAL
         public DataTable GetAllCreateUsersListRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], Created=CONVERT(varchar, CONVERT(datetime, [Created], 105), 6), [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
-            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            //string sql = "SELECT [ID], [UserName], [Password], [FullName], [Email], [IsActive], [Created], [GroupID]  FROM [Commercial].[dbo].[User] ORDER BY UserName ASC";
+            //DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetUserRecord");  
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
@@ -121,6 +122,26 @@ namespace Test.Server.DAL
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
+        }
+
+        public DataTable GetAllLincenceKeyRecord(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = " SELECT  ID, LicenceKey, KeyDate  FROM [Commercial].[dbo].[LicenceVerify] ";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+        public bool SaveLincenceKeyInfo(LicenceVerification guEntity, Database db, DbTransaction transaction)
+        {
+            string sql = "INSERT INTO [Commercial].[dbo].[LicenceVerify] ( LicenceKey, KeyDate) VALUES (  @LicenceKey, @KeyDate )";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+
+            db.AddInParameter(dbCommand, "LicenceKey", DbType.String, guEntity.LicenceKey);
+            db.AddInParameter(dbCommand, "KeyDate", DbType.String, guEntity.KeyDate); 
+
+            db.ExecuteNonQuery(dbCommand, transaction);
+            return true;
         }
     }
 }

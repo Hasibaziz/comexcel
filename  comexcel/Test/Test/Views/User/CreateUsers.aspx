@@ -65,8 +65,8 @@
                 Created: {
                     title: 'Created',
                     width: '10%',
-                    type: 'date',
-                    displayFormat: 'dd-mm-yy',
+                    //type: 'date',
+                   // displayFormat: 'dd-mm-yy',
                     create: false,
                     edit: false
                 },

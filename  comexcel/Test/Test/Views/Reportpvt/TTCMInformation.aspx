@@ -14,7 +14,9 @@
      <fieldset><div id="RecordsContainer">
                  TT No:  <%: Html.TextBoxFor(model => model.TTNo, new { style = "width: 150px;" })%>
                  <input type="button" value="Export Excel" title="Export Excel" class="btn btn-info btn-lg active"  onclick="SaveEXL()" />
+                 <div>TT Amount : <span style="color:Green;" id="TTAmount" ></span> </div> 
                  <div>CM TOTAL : <span style="color:Green;" id="CMTotal" ></span> </div> 
+                 <div>TT Balance : <span style="color:Green;" id="TTBalance" ></span> </div> 
                </div>                    
      </fieldset>                
    </div>
@@ -22,7 +24,9 @@
 <script type="text/javascript">
     $('#TTNo').change(function () {
         var Result = $.post('<%: ResolveUrl("~/Reportpvt/GetCMTotalTTNo?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
-            $("#CMTotal").html(data.CMTotal);            
+            $("#TTAmount").html(data.TTAmount);
+            $("#CMTotal").html(data.CMTotal);
+            $("#TTBalance").html(data.TTBalance); 
         });
     });
 </script>

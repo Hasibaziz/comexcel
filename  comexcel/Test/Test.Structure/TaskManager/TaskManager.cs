@@ -108,6 +108,14 @@ namespace Test.Structure.TaskManager
                     guBLL = new GroupNuserBLL();
                     return guBLL.GetGetDeplicateMailCheck(param);
                     break;
+                case TestTask.AG_GetAllLincenceKeyRecord:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.GetAllLincenceKeyRecord(param);
+                    break;
+                case TestTask.AG_SaveLincenceKeyInfo:
+                    guBLL = new GroupNuserBLL();
+                    return guBLL.SaveLincenceKeyInfo(param);
+                    break;
                 #endregion
 
                 #region Auto Generated - CategoryName

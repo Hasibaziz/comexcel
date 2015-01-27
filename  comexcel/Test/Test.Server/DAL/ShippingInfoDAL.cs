@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //ShippinginfoEntity obj = (ShippinginfoEntity)param;
             //if (obj.UserName == null)
             //{
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 DataSet ds = db.ExecuteDataSet(dbCommand);
                 return ds.Tables[0];
@@ -105,15 +105,15 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ShippinginfoEntity obj = (ShippinginfoEntity)param;
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo Where InvoiceNo='"+obj.InvoiceNo+"'";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped  FROM ShippingInfo Where InvoiceNo='" + obj.InvoiceNo + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
         public DataTable GetShippingformEntryUpdByInvoiceNo(object param)
         {
-            Database db = DatabaseFactory.CreateDatabase();           
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate  FROM ShippingInfo Where ID=@id";
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped  FROM ShippingInfo Where ID=@id";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "id", DbType.String, param.ToString()); 
             DataSet ds = db.ExecuteDataSet(dbCommand);

@@ -99,6 +99,7 @@
     <Compile Include="Model\GSPItemInfoEntity.cs" />
     <Compile Include="Model\HSCodeEntity.cs" />
     <Compile Include="Model\ImportexcelEntity.cs" />
+    <Compile Include="Model\LicenceVerification.cs" />
     <Compile Include="Model\LocationEntity.cs" />
     <Compile Include="Model\ModeinfoEntity.cs" />
     <Compile Include="Model\NotifypartyEntity.cs" />

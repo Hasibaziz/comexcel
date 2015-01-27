@@ -525,13 +525,19 @@
     $('#FOBValue').change(function () {
         var X = $(this).val();
         //var DX = parseInt(X);
-        var FOB = parseFloat(X).toFixed(2);
-        CM = (FOB * 20) / 100;
-        var cmvalue = parseFloat(CM).toFixed(2);
-        var fbvalue = parseFloat(FOB).toFixed(2);
+        if (X == "") {
+            $("#FOBValue").val("0");
+            $("#CMValue").val("0");
+        }
+        else {
+            var FOB = parseFloat(X).toFixed(2);
+            CM = (FOB * 20) / 100;
+            var cmvalue = parseFloat(CM).toFixed(2);
+            var fbvalue = parseFloat(FOB).toFixed(2);
+        }
         //var Q = $("#ttBalance").val();
-        var Q = document.getElementById("ttBalance").innerHTML;        
-        if (Q - cmvalue <= 0) {           
+        var Q = document.getElementById("ttBalance").innerHTML;
+        if (Q - cmvalue <= 0) {
             $('<div></div>').html('TT Amount is not available!').dialog({
                 modal: true,
                 resizable: false,

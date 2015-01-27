@@ -97,7 +97,8 @@ $(document).ready(function () {
                         $("#LeadTime").val(" ");
 
                         $("#BankSubmitDate").val(" ");
-                        $("#ModeStatus").val(" "); 
+                        $("#ModeStatus").val(" ");
+                        $("#BDTHC").val(" "); 
                                              
                         $(this).dialog("close");
                         $("#SInvoiceNo").focus();
@@ -162,7 +163,7 @@ $(document).ready(function () {
             <label for="SBDate">SB Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.SBDate, new { @class = "validate[required]" })%>
+            <%: Html.TextBoxFor(model => model.SBDate, new { style = "width: 130px;", @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.SBDate) %>
         </div>
 
@@ -170,7 +171,7 @@ $(document).ready(function () {
             <label for="DocSubmitDate">Doc Submit Date:</label>             
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.DocSubmitDate)%>
+            <%: Html.TextBoxFor(model => model.DocSubmitDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.DocSubmitDate) %>
         </div>
 
@@ -186,7 +187,7 @@ $(document).ready(function () {
             <label for="CourierDate">HK Courier Date:</label>              
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.CourierDate)%>
+            <%: Html.TextBoxFor(model => model.CourierDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.CourierDate) %>
         </div>
 
@@ -202,7 +203,7 @@ $(document).ready(function () {
             <label for="BuyerCourierDate">Buyer Courier Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BuyerCourierDate)%>
+            <%: Html.TextBoxFor(model => model.BuyerCourierDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.BuyerCourierDate) %>
         </div>
 
@@ -218,7 +219,7 @@ $(document).ready(function () {
             <label for="BankSubmitDate">Bank Submit Date:</label>            
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.BankSubmitDate)%>
+            <%: Html.TextBoxFor(model => model.BankSubmitDate, new { style = "width: 130px;" })%>
             <%: Html.ValidationMessageFor(model => model.BankSubmitDate) %>
         </div>             
         <div class="editor-label01">
@@ -244,10 +245,18 @@ $(document).ready(function () {
                  new SelectListItem { Text = "ROAD CC" },
                  new SelectListItem { Text = "SEA PP" },
                  new SelectListItem { Text = "SEA CC" }
-                })%>
+                }, new { style = "width: 120px;" })%>
             <%--<%: Html.DropDownListFor(model => model.Mode, Enum.GetValues(typeof(Test.Domain.Model.BillingInfoEntity.ModeStatus)).Cast<Test.Domain.Model.BillingInfoEntity.ModeStatus>().Select(x => new SelectListItem { Value = ((int)x).ToString(), Text = x.ToString() }))%>--%>
             <%: Html.ValidationMessageFor(model => model.ModeStatus)%>
         </div> 
+
+        <div class="editor-label01">
+            <label for="BDTHC">BD THC:</label>             
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.BDTHC, new { style = "width: 120px;" })%>
+            <%: Html.ValidationMessageFor(model => model.BDTHC)%>
+        </div>
 
         <p>
             <input type="submit" class="btn btn-info btn-lg active" data-toggle="button" value="Save" />     

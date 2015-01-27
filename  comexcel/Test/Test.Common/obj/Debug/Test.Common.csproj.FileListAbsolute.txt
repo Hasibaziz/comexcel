@@ -1,0 +1,5 @@
+E:\ comexcel\Test\Test.Common\bin\Test.Common.dll
+E:\ comexcel\Test\Test.Common\bin\Test.Common.pdb
+E:\ comexcel\Test\Test.Common\obj\Debug\ResolveAssemblyReference.cache
+E:\ comexcel\Test\Test.Common\obj\Debug\Test.Common.dll
+E:\ comexcel\Test\Test.Common\obj\Debug\Test.Common.pdb

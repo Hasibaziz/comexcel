@@ -730,7 +730,9 @@ namespace Test.Controllers
             foreach (DataRow dr in dt.Rows)
             {
                 _Model.TTNo = dr["TTNo"].ToString();
-                _Model.CMTotal = dr["CMTotal"].ToString();               
+                _Model.TTAmount = dr["TTAmount"].ToString();
+                _Model.CMTotal = dr["CMTotal"].ToString();
+                _Model.TTBalance = dr["TTBalance"].ToString();
             }
             return _Model;
         }

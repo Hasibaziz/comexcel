@@ -42,6 +42,8 @@ namespace Test.Domain.Model
         public string TTNo { set; get; }
         public string TTDate { set; get; }
 
+        public string BDTHC { set; get; }
+
         public string CurrentDate{set;get;}
         public string UserName { set; get; }
 

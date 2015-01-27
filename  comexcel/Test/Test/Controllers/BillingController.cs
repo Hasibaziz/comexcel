@@ -60,7 +60,8 @@ namespace Test.Controllers
                                 BuyerCourierDate = dr["BuyerCourierDate"].ToString(),
                                 LeadTime = dr["LeadTime"].ToString(),
                                 BankSubmitDate = dr["BankSubmitDate"].ToString(),
-                                ModeStatus = dr["ModeStatus"].ToString()
+                                ModeStatus = dr["ModeStatus"].ToString(),
+                                BDTHC = dr["BDTHC"].ToString()
                             });
                         }
                         iCount += 1;
@@ -190,6 +191,7 @@ namespace Test.Controllers
                     _Model.LeadTime = dr["LeadTime"].ToString();                    
                     _Model.BankSubmitDate = dr["BankSubmitDate"].ToString();
                     _Model.ModeStatus = dr["ModeStatus"].ToString();
+                    _Model.BDTHC = dr["BDTHC"].ToString();
                     
                 }
             }

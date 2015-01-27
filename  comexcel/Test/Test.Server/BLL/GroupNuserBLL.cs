@@ -202,5 +202,41 @@ namespace Test.Server.BLL
             retObj = (object)guDAL.GetGetDeplicateMailCheck(Email, param);
             return retObj;
         }
+
+        public object GetAllLincenceKeyRecord(object param)
+        {
+            object retObj = null;
+            GroupNuserDAL guDAL = new GroupNuserDAL();
+            retObj = (object)guDAL.GetAllLincenceKeyRecord(param);
+            return retObj;
+        }
+        public object SaveLincenceKeyInfo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object retObj = null;
+            using (DbConnection connection = db.CreateConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    LicenceVerification guEntity = (LicenceVerification)param;
+                    GroupNuserDAL guDAL = new GroupNuserDAL();
+                    retObj = (object)guDAL.SaveLincenceKeyInfo(guEntity, db, transaction);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return retObj;
+        }
+
     }
 }

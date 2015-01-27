@@ -9,6 +9,7 @@ using Test.Structure;
 using Test.Models;
 using System.Threading;
 using Test.Utility;
+using Test.Common.Authentication;
 
 
 namespace Test.Controllers
@@ -161,7 +162,8 @@ namespace Test.Controllers
                                 FullName = dr["FullName"].ToString(),
                                 Email = dr["Email"].ToString(),
                                 IsActive = Convert.ToBoolean(dr["IsActive"].ToString()),
-                                Created =Convert.ToDateTime( dr["Created"].ToString()),
+                                //Created =Convert.ToDateTime( dr["Created"].ToString()),
+                                Created = dr["Created"].ToString(),
                                 GroupID = dr["GroupID"].ToString()
                             });
                         }
@@ -193,7 +195,7 @@ namespace Test.Controllers
 
 
                 bool isUpdate = false;
-                _Model.Created = DateTime.Today;
+                _Model.Created = Convert.ToString(DateTime.Today);
                 if (_Model.ID == null)
                 {
                     if (DeplicateMailCheck(_Model.Email) != false)
@@ -261,6 +263,80 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult LincenceKey()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult LincenceKeyList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllLincenceKeyRecord, null);
+                    List<LicenceVerification> ItemList = null;
+                    ItemList = new List<LicenceVerification>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new LicenceVerification()
+                            {
+                                ID = dr["ID"].ToString(),
+                                LicenceKey = dr["LicenceKey"].ToString(),
+                                KeyDate = dr["KeyDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUpdateLincenceKey(LicenceVerification _Model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
+                }
 
+                string Encript = _Model.LicenceKey;
+                _Model.LicenceKey = ViewsAuthentication.Encryptdata(Encript);
+                bool isUpdate = false;
+                if (_Model.ID == null)
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_SaveLincenceKeyInfo, _Model);
+                else
+                    isUpdate = (bool)ExecuteDB(TestTask.AG_UpdateLincenceKeyInfo, _Model);
+                if (isUpdate)
+                {
+                    var addedModel = _Model;
+                    return Json(new { Result = "OK", Record = addedModel });
+                }
+                else
+                    return Json(new { Result = "ERROR", Message = "Information failed to save" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+      
     }
 }

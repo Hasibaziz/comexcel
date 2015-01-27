@@ -37,6 +37,11 @@ namespace Test.Structure
         public const string AG_UpdateCreateUsersInfo = "AG_UpdateCreateUsersInfo";
         public const string AG_DeleteCreateUsersById = "AG_DeleteCreateUsersById";
         public const string AG_GetGetDeplicateMailCheck = "AG_GetGetDeplicateMailCheck";
+
+        public const string AG_GetAllLincenceKeyRecord = "AG_GetAllLincenceKeyRecord";
+        public const string AG_SaveLincenceKeyInfo = "AG_SaveLincenceKeyInfo";
+        public const string AG_UpdateLincenceKeyInfo = "AG_UpdateLincenceKeyInfo";
+
         #endregion
 
 

@@ -67,15 +67,19 @@
                 },
                 InvoiceNo: {
                     title: 'Invoice No',
+                    width: '10%'
+                }, 
+                StyleNo: {
+                    title: 'Style No',
                     width: '15%'
                 },                             
                 BLNo: {
                     title: 'B/L No',
-                    width: '15%'
+                    width: '10%'
                 },
                 BLDate: {
                     title: 'B/L Date',
-                    width: '15%'
+                    width: '10%'
                 },
                 ETADate: {
                     title: 'ETA Date',

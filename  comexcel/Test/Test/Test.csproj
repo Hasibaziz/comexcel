@@ -509,6 +509,7 @@
     <Content Include="Views\User\CreateUsers.aspx" />
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\LeftMenu.ascx" />
+    <Content Include="Views\User\LincenceKey.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -568,6 +569,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Test.Common\Test.Common.csproj">
+      <Project>{2C5E39D1-E231-4465-A2E5-AFA1DF0AE6E9}</Project>
+      <Name>Test.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Test.Domain\Test.Domain.csproj">
       <Project>{154968D2-C09A-4621-BA92-077646169662}</Project>
       <Name>Test.Domain</Name>

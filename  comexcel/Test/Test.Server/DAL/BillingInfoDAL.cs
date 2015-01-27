@@ -15,14 +15,14 @@ namespace Test.Server.DAL
         public DataTable GetBillingInfoRecord(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus],  [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo]  ORDER BY convert(datetime, CurrentDate, 120) DESC";
+            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus],  [BDTHC],  [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo]  ORDER BY convert(datetime, CurrentDate, 120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
         public bool SaveBillinginfoEntry(BillingInfoEntity billEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO BillingInfo (  InvoiceNo, SBNo, SBDate, DocSubmitDate, CourierNo, CourierDate, BuyerCourierNo, BuyerCourierDate, LeadTime, BankSubmitDate, ModeStatus, CurrentDate, UserName  ) VALUES ( @InvoiceNo, @SBNo, @SBDate, @DocSubmitDate, @CourierNo, @CourierDate, @BuyerCourierNo, @BuyerCourierDate, @LeadTime, @BankSubmitDate, @ModeStatus, @CurrentDate, @UserName )";
+            string sql = "INSERT INTO BillingInfo (  InvoiceNo, SBNo, SBDate, DocSubmitDate, CourierNo, CourierDate, BuyerCourierNo, BuyerCourierDate, LeadTime, BankSubmitDate, ModeStatus, BDTHC, CurrentDate, UserName  ) VALUES ( @InvoiceNo, @SBNo, @SBDate, @DocSubmitDate, @CourierNo, @CourierDate, @BuyerCourierNo, @BuyerCourierDate, @LeadTime, @BankSubmitDate, @ModeStatus, @BDTHC, @CurrentDate, @UserName )";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, billEntity.InvoiceNo);
@@ -35,7 +35,8 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "BuyerCourierDate", DbType.String, billEntity.BuyerCourierDate);
             db.AddInParameter(dbCommand, "LeadTime", DbType.String, billEntity.LeadTime);
             db.AddInParameter(dbCommand, "BankSubmitDate", DbType.String, billEntity.BankSubmitDate);
-            db.AddInParameter(dbCommand, "ModeStatus", DbType.String, billEntity.ModeStatus); 
+            db.AddInParameter(dbCommand, "ModeStatus", DbType.String, billEntity.ModeStatus);
+            db.AddInParameter(dbCommand, "BDTHC", DbType.String, billEntity.BDTHC); 
 
             db.AddInParameter(dbCommand, "UserName", DbType.String, billEntity.UserName);
             db.AddInParameter(dbCommand, "CurrentDate", DbType.String, billEntity.CurrentDate);
@@ -45,7 +46,7 @@ namespace Test.Server.DAL
         }
         public bool UpdateBillinginfoEntry(BillingInfoEntity billEntity, Database db, DbTransaction transaction)
         {
-            string sql = "Update BillingInfo SET SBNo=@SBNo, SBDate=@SBDate, DocSubmitDate=@DocSubmitDate, CourierNo=@CourierNo, CourierDate=@CourierDate, BuyerCourierNo=@BuyerCourierNo, BuyerCourierDate=@BuyerCourierDate, LeadTime=@LeadTime, BankSubmitDate=@BankSubmitDate, ModeStatus=@ModeStatus   WHERE ID=@ID";
+            string sql = "Update BillingInfo SET SBNo=@SBNo, SBDate=@SBDate, DocSubmitDate=@DocSubmitDate, CourierNo=@CourierNo, CourierDate=@CourierDate, BuyerCourierNo=@BuyerCourierNo, BuyerCourierDate=@BuyerCourierDate, LeadTime=@LeadTime, BankSubmitDate=@BankSubmitDate, ModeStatus=@ModeStatus, BDTHC=@BDTHC   WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, billEntity.ID);
@@ -59,6 +60,7 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "LeadTime", DbType.String, billEntity.LeadTime);
             db.AddInParameter(dbCommand, "BankSubmitDate", DbType.String, billEntity.BankSubmitDate);
             db.AddInParameter(dbCommand, "ModeStatus", DbType.String, billEntity.ModeStatus);
+            db.AddInParameter(dbCommand, "BDTHC", DbType.String, billEntity.BDTHC);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
@@ -74,7 +76,7 @@ namespace Test.Server.DAL
         public DataTable GetBillingEntryUpdateByInvoiceNo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where ID=@id";
+            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus], [BDTHC], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where ID=@id";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "id", DbType.String, param.ToString());
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -84,7 +86,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             BillingInfoEntity obj = (BillingInfoEntity)param;
-            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where InvoiceNo='" + obj.InvoiceNo + "'";
+            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus],  [BDTHC], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where InvoiceNo='" + obj.InvoiceNo + "'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

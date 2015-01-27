@@ -64,6 +64,7 @@ namespace Test.Domain.Model
        public string FOBValue { set; get; }
        //[Display(Name = "CM Value")]
        //[Required(ErrorMessage = "{0} is required!")]
+       //[RegularExpression("^[0-9]{10}$", ErrorMessage = "Invalid CM Value")]
        public string CMValue { set; get; }
        public string CPTValue { set; get; }
        public string CPTCMValue { set; get; }
@@ -71,7 +72,9 @@ namespace Test.Domain.Model
        public string Freight { set; get; }
        public string Section { set; get; }
 
+       public string TTAmount { set; get; }
        public string CMTotal { set; get; }
+       public string TTBalance { set; get; }
        /// <summary>
        /// if use like public Units Unit { set; get; }  Units type Unit variable the it 
        /// will pass the Content of A DropDown List But

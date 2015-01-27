@@ -3,4 +3,5 @@
 <div class="clear nav_sub_menu">   
     <a href="<%=Url.Content("~/User/CreateGroup") %>">Create Group</a> 
     <a href="<%=Url.Content("~/User/CreateUsers") %>">Create Users</a> 
+    <a href="<%=Url.Content("~/User/LincenceKey") %>">Lincence Key</a> 
 </div>

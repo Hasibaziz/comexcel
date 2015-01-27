@@ -580,6 +580,7 @@ namespace Test.Controllers
                     {
                         // _Model.ID = ds.Tables[0].Rows[i]["ID"].ToString();
                         _Model.InvoiceNo = ds.Tables[0].Rows[i]["Invoice No"].ToString();
+                        _Model.StyleNo = ds.Tables[0].Rows[i]["Style No"].ToString();
                         _Model.BLNo = ds.Tables[0].Rows[i]["BL No"].ToString();
                         _Model.BLDate = ds.Tables[0].Rows[i]["BL Date"].ToString();
                         _Model.ETADate = ds.Tables[0].Rows[i]["ETA Date"].ToString();
@@ -652,7 +653,8 @@ namespace Test.Controllers
                             ItemList.Add(new SalesImportExcelEntity()
                             {
                                 ID = dr["ID"].ToString(),
-                                InvoiceNo = dr["InvoiceNo"].ToString(),                               
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                StyleNo = dr["StyleNo"].ToString(),
                                 ShipbordingDate = dr["ShipbordingDate"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLDate"].ToString(),

@@ -307,7 +307,7 @@ namespace Test.Server.DAL
         public DataTable GetDuplicateInvoiceno(object para, string Dupinv)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, InvoiceNo  FROM [Commercial].[dbo].[ExportformDetails] where InvoiceNo like '%" + Dupinv + "%'";
+            string sql = " SELECT ID, InvoiceNo  FROM [Commercial].[dbo].[ExportformDetails] where InvoiceNo like '%" + Dupinv + "%' AND Status IS NULL";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);           
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
