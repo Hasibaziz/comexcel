@@ -99,7 +99,7 @@
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
 
-<div class="mp_right_content">
+<div class="mp_right_content"><div class="scroll-text"  style="background-color: #3399FF; text-align:center; color:White; font-size: medium;">Apparel</div>
    <div class="page_list_container">
      <div id="RecordsContainer"></div>
    </div>
@@ -115,7 +115,7 @@
         <li><a href="#tabs-3">Ex-Factory Information</a></li>      
         </ul>
     <div id="tabs-1">
-     <fieldset>
+     <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Basic Information Entry</legend>
          <div class="editor-label01">
           <label for="ContractNo">Item Name:</label>

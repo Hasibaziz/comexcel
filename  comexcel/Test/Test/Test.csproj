@@ -222,6 +222,7 @@
     <Content Include="Content\images\admin-header-bg.gif" />
     <Content Include="Content\images\admin-menu-bg.gif" />
     <Content Include="Content\images\ajax-loading.gif" />
+    <Content Include="Content\images\Apparel.png" />
     <Content Include="Content\images\back-top.png" />
     <Content Include="Content\images\background.gif" />
     <Content Include="Content\images\blue_button_bg.gif" />

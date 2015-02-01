@@ -11,9 +11,10 @@
         <%--<a href="<%=Url.Content("~/Private/HSCode") %>">H.S. Code Entry</a>  --%>
         <a href="<%=Url.Content("~/Private/TTRecord") %>">TT Value Information</a> 
         <a href="<%=Url.Content("~/Private/Modeinfo") %>">Local Transport Info</a> 
-        <a href="<%=Url.Content("~/Private/Destination") %>">Destination Details</a>   
+        <a href="<%=Url.Content("~/Private/Destination") %>">Destination Details</a>
+        <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a>    
         <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>   
-        <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a> 
+        
       <% }%>
    <%else if (GROUP == Test.Utility.AppConstants.Area.PRIVATE)
     { %>         
@@ -23,13 +24,13 @@
         <%--<a href="<%=Url.Content("~/Private/HSCode") %>">H.S. Code Entry</a>  --%>
         <a href="<%=Url.Content("~/Private/TTRecord") %>">TT Value Information</a> 
         <a href="<%=Url.Content("~/Private/Modeinfo") %>">Local Transport Info</a> 
-        <a href="<%=Url.Content("~/Private/Destination") %>">Destination Details</a>   
-        <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>   
-        <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a> 
+        <a href="<%=Url.Content("~/Private/Destination") %>">Destination Details</a>
+        <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a>    
+        <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>          
     <% }%>
    <%else if (GROUP == Test.Utility.AppConstants.Area.EXPORTALL)
     { %>         
-         <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>   
-        <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a> 
+         <a href="<%=Url.Content("~/Private/ExportFormApp") %>">Export Form App</a> 
+         <a href="<%=Url.Content("~/Private/ExportForm") %>">Export Form Record</a>            
     <% }%>
 </div>

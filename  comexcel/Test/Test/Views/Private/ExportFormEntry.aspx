@@ -132,7 +132,7 @@
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
 
-<div class="mp_right_content">
+<div class="mp_right_content"><div class="scroll-text"  style="background-color: #3399FF; text-align:center; color:White; font-size:medium; font-style:oblique;">HLBD & HYPIC </div>
    <div class="page_list_container">
      <div id="RecordsContainer"></div>
    </div>

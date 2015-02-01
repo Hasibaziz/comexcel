@@ -118,6 +118,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 
 .mp_right_content
 {
+   /* background: #fff url('/Content/images/calendar.png');    */
     float: right;
     width: 89%;          /* 90%   */
     padding: 0px 0%;

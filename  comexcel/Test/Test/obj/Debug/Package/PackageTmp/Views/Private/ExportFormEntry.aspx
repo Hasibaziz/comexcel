@@ -132,7 +132,7 @@
         <% Html.RenderPartial("LeftMenu"); %>
 </div>
 
-<div class="mp_right_content">
+<div class="mp_right_content"><div class="scroll-text"  style="background-color: #3399FF; text-align:center; color:White; font-size:medium; font-style:oblique;">HLBD & HYPIC </div>
    <div class="page_list_container">
      <div id="RecordsContainer"></div>
    </div>
@@ -484,7 +484,7 @@
             $("#Port").html(data.Port);
         });
     });
-    $('#TTNo').change(function () {
+    $('#TTNo').hover(function () {
         var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNo=")%>' + $("#TTNo").attr("value"), function (data) {
             $("#TTDate").val(data.TTDate);
             $("#ttAmount").html(data.TTAmount);
@@ -525,13 +525,19 @@
     $('#FOBValue').change(function () {
         var X = $(this).val();
         //var DX = parseInt(X);
-        var FOB = parseFloat(X).toFixed(2);
-        CM = (FOB * 20) / 100;
-        var cmvalue = parseFloat(CM).toFixed(2);
-        var fbvalue = parseFloat(FOB).toFixed(2);
+        if (X == "") {
+            $("#FOBValue").val("0");
+            $("#CMValue").val("0");
+        }
+        else {
+            var FOB = parseFloat(X).toFixed(2);
+            CM = (FOB * 20) / 100;
+            var cmvalue = parseFloat(CM).toFixed(2);
+            var fbvalue = parseFloat(FOB).toFixed(2);
+        }
         //var Q = $("#ttBalance").val();
-        var Q = document.getElementById("ttBalance").innerHTML;        
-        if (Q - cmvalue <= 0) {           
+        var Q = document.getElementById("ttBalance").innerHTML;
+        if (Q - cmvalue <= 0) {
             $('<div></div>').html('TT Amount is not available!').dialog({
                 modal: true,
                 resizable: false,
