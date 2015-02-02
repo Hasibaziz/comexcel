@@ -50,7 +50,7 @@
                 InvoiceNo: {
                     title: 'Invoice No',
                     width: '8%',
-                    display: function (data) {
+                    display: function (data) {                        
                         return '<a href="/Billing/BillingEntryUpdateByInvoiceNo/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
                 },
@@ -160,7 +160,6 @@
         });
         $('#RecordsContainer').jtable('load');
     });
-
 
  </script>
  <script type="text/javascript">

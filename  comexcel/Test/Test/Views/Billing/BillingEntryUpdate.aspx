@@ -178,5 +178,69 @@ $(document).ready(function () {
     <% } %>   
    
 </div>
+<script type="text/javascript">
 
+$('input#InvoiceNo').hover(function () {
+   $('#RecordsContainer').jtable({
+                paging: true,
+                pageSize: 5,
+                sorting: false,
+                title: 'Invoice Records',
+                defaultSorting: 'Name ASC',
+                actions: {
+                    listAction: '/Sales/CSalesInvoiceSearchByNo?Invno=' + $("#InvoiceNo").val()
+                    //deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'               
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    InvoiceNo: {
+                        title: 'Invoice No',
+                        width: '8%'
+                    },
+                    OrderNo: {
+                        title: 'Order No',
+                        width: '6%'
+                    },
+                    StyleNo: {
+                        title: 'Style No',
+                        width: '10%'
+                    },
+                    RevQty: {
+                        title: 'RevQty',
+                        width: '5%'
+                    },
+                    RevisedFOBValue: {
+                        title: 'ShippedFOB',
+                        width: '8%'
+                    },
+                    RevisedCMValue: {
+                        title: 'ShippedC.M.',
+                        width: '8%'
+                    },
+                    BLNo: {
+                        title: 'B/L No',
+                        width: '6%'
+                    },
+                    BLDate: {
+                        title: 'B/L Date',
+                        width: '8%'
+                    },
+                    TTNo: {
+                        title: 'TTNo',
+                        width: '11%'
+                    },
+                    TTDate: {
+                        title: 'TT Date',
+                        width: '10%'
+                    }
+                 }               
+            });
+            $('#RecordsContainer').jtable('load');       
+    });   
+</script>
 </asp:Content>

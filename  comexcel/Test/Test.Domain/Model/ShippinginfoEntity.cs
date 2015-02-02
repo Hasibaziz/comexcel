@@ -13,8 +13,8 @@ namespace Test.Domain.Model
       [Display(Name = "This Field")]
       [Required(ErrorMessage = "{0} is required!")]
       public string EPNo{ set;get;}
-      [Display(Name = "This Field")]
-      [Required(ErrorMessage = "{0} is required!")]
+      //[Display(Name = "This Field")]
+      //[Required(ErrorMessage = "{0} is required!")]
       public string EPDate{ set;get;}
       [Display(Name = "This Field")]
       [Required(ErrorMessage = "{0} is required!")]

@@ -162,7 +162,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " LEFT JOIN ShippingInfo   AS SPI ON SPI.InvoiceNo=A.InvoiceNo";
             sql = sql + " LEFT JOIN Transport   AS T ON T.ID=SPI.TransportID";
-            sql = sql + " WHERE A.InvoiceNo='" + obj.InvoiceNo + "' ";
+            sql = sql + " WHERE A.InvoiceNo='" + obj.InvoiceNo + "' AND A.Status is null ";
 
             //OR CON.ConsigneeNo like '%" + obj.ConsigneeID + "%' ";
             //OR A.ConsigneeID='" + obj.ConsigneeID + "'";
