@@ -233,7 +233,8 @@ namespace Test.Controllers
                     ExportformEntity _Model = new ExportformEntity();
                     _Model.InvoiceNo = Invno;
                     _Model.ConsigneeID = consigneeid;
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNo, _Model);
+                    //DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceSearchByNo, _Model);
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetALLInvoiceSearchByNo, _Model);
                     List<ExportformEntity> ItemList = null;
                     ItemList = new List<ExportformEntity>();
                     int iCount = 0;

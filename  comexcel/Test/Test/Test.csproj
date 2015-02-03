@@ -455,6 +455,7 @@
     <Content Include="Views\Configuration\ServiceDetails.aspx" />
     <Content Include="Views\Configuration\ServiceName.aspx" />
     <Content Include="Views\Configuration\UDInfo.aspx" />
+    <Content Include="Views\Home\Contract.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Private\Consignee.aspx" />
     <Content Include="Views\Private\Destination.aspx" />

@@ -728,13 +728,13 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-        
-        public ActionResult InvoiceMonitorExcel(string EX1 = "")
+
+        public ActionResult InvoiceMonitorExcel(string EX1 = "", string EX2 = "")
         {
 
             ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
-            _Model.CourierNo = EX1;
-            //_Model.EndDate = EX2;
+            _Model.StartDate = EX1;
+            _Model.EndDate = EX2;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
             StringBuilder sb = new StringBuilder();
             sb.Append("<table border='" + "2px" + "'b>");

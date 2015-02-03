@@ -513,6 +513,14 @@ namespace Test.Structure.TaskManager
                     return ExfBLL.GetInvoiceSearchByNoAPP(param);
                     break;
 
+                    ////
+                    /// All Invoice Search.
+                    ///
+                case TestTask.AG_GetALLInvoiceSearchByNo:
+                    ExfBLL = new ExportFormEntryBLL();
+                    return ExfBLL.AG_GetALLInvoiceSearchByNo(param);
+                    break;
+
                 #endregion
 
                 #region Auto Generated - GSPItemInfoRecord
@@ -712,7 +720,7 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetShippingMonitorInvoiceSearchByNo:
                     sppBLL = new ShippingInfoBLL();
                     return sppBLL.GetShippingMonitorInvoiceSearchByNo(param);
-                    break;
+                    break;               
                 #endregion
 
 

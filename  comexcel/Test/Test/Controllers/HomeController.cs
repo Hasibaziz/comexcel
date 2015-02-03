@@ -19,5 +19,10 @@ namespace Test.Controllers
         {
             return View();
         }
+
+        public ActionResult Contract()
+        {
+            return View();
+        }
     }
 }

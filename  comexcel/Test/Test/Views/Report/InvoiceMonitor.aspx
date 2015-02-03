@@ -6,9 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<script type="text/javascript">
+<script type="text/javascript">    
     function PrintExcel() {
-        window.location = "/Report/InvoiceMonitorExcel"
+        EX1 = $("#StartDate").val();
+        EX2 = $("#EndDate").val();
+        window.location = "/Report/InvoiceMonitorExcel?EX1=" + EX1 + "&EX2=" + EX2;
     }
 </script>
 <div class="mp_left_menu">

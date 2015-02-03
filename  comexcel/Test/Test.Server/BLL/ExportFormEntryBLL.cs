@@ -130,6 +130,15 @@ namespace Test.Server.BLL
             return retObj;
         }
 
+        public object AG_GetALLInvoiceSearchByNo(object param)
+        {
+            object retObj = null;
+            //ExportformEntity obj = new ExportformEntity();
+            ExportFormEntryDAL exfDAL = new ExportFormEntryDAL();
+            retObj = (object)exfDAL.AG_GetALLInvoiceSearchByNo(param);
+            return retObj;
+        }
+
         ///
         /// Export Form for Apparel Ltd.
         /// 

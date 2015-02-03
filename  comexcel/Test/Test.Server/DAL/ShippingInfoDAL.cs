@@ -150,7 +150,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + "  LEFT OUTER JOIN ShippingInfo AS B ON A.InvoiceNo=B.InvoiceNo ";
-            sql = sql + " WHERE  EX.ExporterNo in('HOPYICK','HLBD', 'APPAREL') AND A.Status is null  ";
+            sql = sql + " WHERE  EX.ExporterNo in ('HOPYICK','HLBD','APPAREL') AND A.Status is null  ";
             //sql = sql + " AND A.InvoiceNo=B.InvoiceNo";
             sql = sql + " ORDER BY convert(datetime,A.CurrentDate,120) DESC";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);

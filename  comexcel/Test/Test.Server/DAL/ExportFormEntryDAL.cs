@@ -303,6 +303,18 @@ namespace Test.Server.DAL
 
 
         }
+        public DataTable AG_GetALLInvoiceSearchByNo(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            ExportformEntity obj = (ExportformEntity)param;            
+
+            object[] parameters = new object[] { obj.InvoiceNo, obj.ConsigneeID };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetALLInvoiceSearchByNo", parameters);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+
+
+        }
 
         public DataTable GetDuplicateInvoiceno(object para, string Dupinv)
         {

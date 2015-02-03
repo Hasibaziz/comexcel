@@ -11,6 +11,7 @@ using Test.DAL;
 using System.Collections;
 using Test.Structure;
 using Test.Domain.Model;
+using Test.Common.Authentication;
 
 namespace Test.Controllers
 {
@@ -44,8 +45,16 @@ namespace Test.Controllers
                     //   return RedirectToAction("Index", "Home");
                     //else if (CurrentGroups == "Private")
                     //   return RedirectToAction("Index", "Private");
-                    //else                    
-                        return RedirectToAction("Index", "Home");                    
+                    //else
+                    //DateTime VDATA = DateTime.Now;
+                    string VDATA = DateTime.Now.ToString("MM/dd/yyyy");
+                    //DateTime vDATE=ViewsAuthentication.DateCheck.VDATE;
+                    DateTime dtSuppliedDate = DateTime.Parse(ViewsAuthentication.DateCheck.VDATE);
+                    //int day = dtSuppliedDate.Subtract(DateTime.Now).Days;
+                    if (dtSuppliedDate.Subtract(DateTime.Now).Days <= 0)
+                        return RedirectToAction("Contract", "Home");
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
                 else
                 {

@@ -172,6 +172,7 @@ namespace Test.Structure
         public const string AG_GetInvoiceSearchByNo = "AG_GetInvoiceSearchByNo";
         public const string AG_GetDuplicateInvoiceno = "GetDuplicateInvoiceno";
         public const string AG_DeleteExportFormEntryDetailsById = "AG_DeleteExportFormEntryDetailsById";
+        public const string AG_GetALLInvoiceSearchByNo = "AG_GetALLInvoiceSearchByNo";
         /// <summary>
         /// Export Form for Apparel Ltd.
         /// </summary>
@@ -255,7 +256,7 @@ namespace Test.Structure
         public const string AG_GetShippingInvoiceSearchByNo = "AG_GetShippingInvoiceSearchByNo";
         public const string AG_GetDuplicateshipInvoiceNo = "AG_GetDuplicateshipInvoiceNo";
         public const string AG_GetShippingformEntryUpdByInvoiceNo = "AG_GetShippingformEntryUpdByInvoiceNo";
-        public const string AG_GetShippingMonitorInvoiceSearchByNo = "AG_GetShippingMonitorInvoiceSearchByNo";
+        public const string AG_GetShippingMonitorInvoiceSearchByNo = "AG_GetShippingMonitorInvoiceSearchByNo";        
         #endregion
 
         #region Auto Generated - BillingInfoRecord.
