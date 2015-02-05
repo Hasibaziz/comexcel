@@ -79,7 +79,7 @@
         }
     }
     $(document).ready(function () {
-        // Define a custom validation function.
+        // Define a custom validation function. ON Class-  @class = "validate[required, custom[test_value]]"
         //        $.validationEngineLanguage.allRules['test_value'] = {
         //            "func": function (field, rules, i, options) {
         //                return (field.val() == 'test');
@@ -95,6 +95,13 @@
             });
         });
     });
+
+  $('#EPDate').each(function () {
+    var element = $(this);
+    if (element.val() != "") {
+        isValid = false;
+    }
+  });
 </script>
 
 <div class="mp_left_menu">

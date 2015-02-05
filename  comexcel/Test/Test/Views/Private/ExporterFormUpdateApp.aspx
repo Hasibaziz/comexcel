@@ -51,7 +51,7 @@
         <li><a href="#tabs-3">Ex-Factory Information</a></li>      
         </ul>
     <div id="tabs-1">
-     <fieldset>
+     <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Basic Information Entry</legend>
          <div class="editor-label01">
           <label for="ContractNo">Item Name:</label>
@@ -87,7 +87,7 @@
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
               <span>Search</span>
             </a>--%>
-            <a id="Invoiceno" href="#"><span>Search</span></a>
+           <%-- <a id="Invoiceno" href="#"><span>Search</span></a>--%>
             <%--<button id="Invoiceno">Click</button>--%>
             <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
         </div>
@@ -208,7 +208,7 @@
  <%--   </div>
  
     <div id="tabs-2">--%>
-     <fieldset>
+     <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Quantity & Value Entry</legend>
         <div class="editor-label01">
             <label for="Unit">Unit:</label>
@@ -254,7 +254,7 @@
 
         </div> --%>
         </div>
-         <fieldset> 
+         <fieldset style="background: #fff url('/Content/images/Apparel.png');"> 
           <legend>FOB/CFR/FCA/EXW Value</legend>       
             <div class="editor-field01">
                 <%: Html.TextBoxFor(model => model.FOBValue, new { @class = "validate[required]", tabindex = 8 })%>
@@ -276,7 +276,7 @@
              <p id="ttBalance" ></p>            
         </div>
 </div>
-        <fieldset> 
+        <fieldset style="background: #fff url('/Content/images/Apparel.png');"> 
           <legend>CPT/DDP/CIF/DAP Value</legend>       
             <div class="editor-field01">
                 <%: Html.TextBoxFor(model => model.CPTValue, new { @class = "validate[required]" })%>
@@ -295,7 +295,7 @@
       </fieldset>
    </div>  
     <div id="tabs-3">
-      <fieldset>
+      <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Ex-Factory Information Entry</legend>
         <div class="editor-label01">
           <label for="ExpNo">Exp No:</label>
@@ -417,51 +417,123 @@
             });
         });
     });
-
-    $(document).ready(function () {
-        // $("#Incoterm").bind('focus', function () {
-        $("#Incoterm").live("focusout", function () {
-            var x = $(this).val();
-            if (x == 1) {
-                $("#CPTFOBValue").attr("disabled", true);
-                $("#Freight").attr("disabled", true);
-            }
-            else {
-                $("#CPTFOBValue").prop('disabled', false);
-                $("#Freight").prop('disabled', false);
-            }
-        });
-        $('#FOBValue').change(function () {
-            var X = $(this).val();
-            //var DX = parseInt(X);
-            if (X == "") {
-                $("#FOBValue").val("0");
-                $("#CMValue").val("0");
-            }
-            else {
-                var FOB = parseFloat(X).toFixed(2);
-                CM = (FOB * 20) / 100;
-                var cmvalue = parseFloat(CM).toFixed(2);
-                var fbvalue = parseFloat(FOB).toFixed(2);
-            }
+</script>
+<script type="text/javascript">
+    $('#FOBValue').change(function () {
+        var X = $(this).val();
+        //var DX = parseInt(X);
+        if (X == "") {
+            $("#FOBValue").val(parseFloat(0).toFixed(2));
+            $("#CMValue").val(parseFloat(0).toFixed(2));
+        }
+        else {
+            var FOB = parseFloat(X).toFixed(2);
+            CM = (FOB * 20) / 100;
+            var cmvalue = parseFloat(CM).toFixed(2);
+            var fbvalue = parseFloat(FOB).toFixed(2);
+        }
+        var Q = document.getElementById("ttBalance").innerHTML;
+        if (Q - cmvalue <= 0) {
+            $('<div></div>').html('TT Amount is not available!').dialog({
+                modal: true,
+                resizable: false,
+                title: "Message",
+                dataType: "json",
+                width: 300,
+                buttons: {
+                    "OK": function () {
+                        $("#FOBValue").val(" ");
+                        $("#CMValue").val(" ");
+                        $(this).dialog("close");
+                        $("#FOBValue").focus();
+                    }
+                }
+            });
+        }
+        else {
             $("#CMValue").val(cmvalue);
             $("#FOBValue").val(fbvalue);
-            //            $("#CMValue").attr("disabled", true);
-            //            $("#CPTFOBValue").attr("disabled", true);
-            $("#Freight").focus();
+            //$("#FOBValue").attr("disabled", true);
+        }
+    });
+    $(document).ready(function () {
+        $('#CPTValue').change(function () {
+            var cptval = $(this).val();
+            if (cptval == 0) {
+                $('#CPTCMValue').val(parseFloat(0).toFixed(2));
+                $('#CPTValue').val(parseFloat(0).toFixed(2));
+            }
+            else {
+                var cptfob = parseFloat(cptval).toFixed(2);
+                cmcpt = (cptfob * 20) / 100;
+                var cmcp = parseFloat(cmcpt).toFixed(2);
+                $('#CPTCMValue').val(cmcp);
+                $('#CPTValue').val(cptfob);
+                //            $('#CPTCMValue').attr("disabled", true);
+                //            $('#CPTFOBValue').attr("disabled", true);
+                $("#Freight").focus();
+            }
         });
         $('#Freight').change(function () {
-            var Y = $(this).val();
-            var X = $('#FOBValue').val();
-            //var DX = parseInt(X);
-            var fre = parseFloat(Y).toFixed(2);
-            cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);
-            $("#CPTFOBValue").val(cf);
-            $("#Freight").val(fre);
+            var Y = $('#Freight').val();
+            var X = $('#CPTValue').val();
+            if (Y == 0) {
+                Y = parseFloat(0).toFixed(2);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(Y);
+            }
+            else {
+                //var DX = parseInt(X);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(fre);
+            }
         });
-    });
 
+    });
+$(function () // Shorthand for $(document).ready(function() {
+    {
+        $("#FOBValue").prop("disabled", false);
+        $("#CMValue").prop("disabled", false);
+
+        $("#CPTValue").prop("disabled", true);
+        $("#CPTCMValue").prop("disabled", true);
+        $("#CPTFOBValue").prop("disabled", true);
+        $("#Freight").prop("disabled", true);
+
+        $("#Incoterm").change(function () {
+            // var value = $("#Incoterm option:selected").val();
+            //alert($(this).val());
+            var cpt = $(this).val();
+            if (cpt == 2 || cpt == 4 || cpt == 6 || cpt == 7) {
+                $("#CPTValue").prop("disabled", false);
+                $("#CPTCMValue").prop("disabled", false);
+                $("#CPTFOBValue").prop("disabled", false);
+                $("#Freight").prop("disabled", false);
+
+                $("#FOBValue").prop("disabled", true);
+                $("#CMValue").prop("disabled", true);
+            }
+            else if (cpt == 1 || cpt == 3 || cpt == 5 || cpt == 8) {
+                $("#FOBValue").prop("disabled", false);
+                $("#CMValue").prop("disabled", false);
+
+                $("#CPTValue").prop("disabled", true);
+                $("#CPTCMValue").prop("disabled", true);
+                $("#CPTFOBValue").prop("disabled", true);
+                $("#Freight").prop("disabled", true);
+            }
+            else {
+                $("#CPT").hide();
+                $("#FOB").hide();
+            }
+        });
+    });  
 </script>
 
 </asp:Content>

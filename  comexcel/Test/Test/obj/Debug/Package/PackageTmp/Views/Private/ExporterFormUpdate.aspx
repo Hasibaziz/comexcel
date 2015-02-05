@@ -82,7 +82,7 @@
             <%--<a href="<%: Url.Action("ExporterFormSearchByInvoiceNo", new {@value= @Html.DisplayFor(m => m.Name)}) %>">
               <span>Search</span>
             </a>--%>
-            <a id="Invoiceno" href="#"><span>Search</span></a>
+           <%-- <a id="Invoiceno" href="#"><span>Search</span></a>--%>
             <%--<button id="Invoiceno">Click</button>--%>
             <%: Html.ValidationMessageFor(model => model.InvoiceNo)%>
         </div>
@@ -412,51 +412,128 @@
             });
         });
     });
+</script>
 
+<script type="text/javascript">
+       $('#FOBValue').change(function () {
+           var X = $(this).val();
+           //var DX = parseInt(X);
+           if (X == "") {
+               $("#FOBValue").val("0");
+               $("#CMValue").val("0");
+           }
+           else {
+               var FOB = parseFloat(X).toFixed(2);
+               CM = (FOB * 20) / 100;
+               var cmvalue = parseFloat(CM).toFixed(2);
+               var fbvalue = parseFloat(FOB).toFixed(2);
+           }
+           //var Q = $("#ttBalance").val();
+           var Q = document.getElementById("ttBalance").innerHTML;
+           if (Q - cmvalue <= 0) {
+               $('<div></div>').html('TT Amount is not available!').dialog({
+                   modal: true,
+                   resizable: false,
+                   title: "Message",
+                   dataType: "json",
+                   width: 300,
+                   buttons: {
+                       "OK": function () {
+                           $("#FOBValue").val(" ");
+                           $("#CMValue").val(" ");
+                           $(this).dialog("close");
+                           $("#FOBValue").focus();
+                       }
+                   }
+               });
+           }
+           else {
+               $("#CMValue").val(cmvalue);
+               $("#FOBValue").val(fbvalue);
+               //$("#FOBValue").attr("disabled", true);
+           }
+       });
+       $(document).ready(function () {
+           $('#CPTValue').change(function () {
+               var cptval = $(this).val();
+               if (cptval == 0) {
+                   $('#CPTCMValue').val(parseFloat(0).toFixed(2));
+                   $('#CPTValue').val(parseFloat(0).toFixed(2));
+               }
+               else {
+                   var cptfob = parseFloat(cptval).toFixed(2);
+                   cmcpt = (cptfob * 20) / 100;
+                   var cmcp = parseFloat(cmcpt).toFixed(2);
+                   $('#CPTCMValue').val(cmcp);
+                   $('#CPTValue').val(cptfob);
+                   //            $('#CPTCMValue').attr("disabled", true);
+                   //            $('#CPTFOBValue').attr("disabled", true);
+                   $("#Freight").focus();
+               }
+           });
+           $('#Freight').change(function () {
+               var Y = $('#Freight').val();
+               var X = $('#CPTValue').val();
+               if (Y == 0) {
+                   Y = parseFloat(0).toFixed(2);
+                   var fre = parseFloat(Y).toFixed(2);
+                   cptfob = (X - Y);
+                   var cf = parseFloat(cptfob).toFixed(2);
+                   $("#CPTFOBValue").val(cf);
+                   $("#Freight").val(Y);
+               }
+               else {
+                   //var DX = parseInt(X);
+                   var fre = parseFloat(Y).toFixed(2);
+                   cptfob = (X - Y);
+                   var cf = parseFloat(cptfob).toFixed(2);
+                   $("#CPTFOBValue").val(cf);
+                   $("#Freight").val(fre);
+               }
+           });
 
-    $(document).ready(function () {
-        // $("#Incoterm").bind('focus', function () {
-        $("#Incoterm").live("focusout", function () {
-            var x = $(this).val();
-            if (x == 1) {
-                $("#CPTFOBValue").attr("disabled", true);
-                $("#Freight").attr("disabled", true);
-            }
-            else {
-                $("#CPTFOBValue").prop('disabled', false);
-                $("#Freight").prop('disabled', false);
-            }
-        });
-        $('#FOBValue').change(function () {
-            var X = $(this).val();
-            //var DX = parseInt(X);
-            if (X == "") {
-                $("#FOBValue").val("0");
-                $("#CMValue").val("0");
-            }
-            else {
-                var FOB = parseFloat(X).toFixed(2);
-                CM = (FOB * 20) / 100;
-                var cmvalue = parseFloat(CM).toFixed(2);
-                var fbvalue = parseFloat(FOB).toFixed(2);
-            }
-            $("#CMValue").val(cmvalue);
-            $("#FOBValue").val(fbvalue);
-            //            $("#CMValue").attr("disabled", true);
-            //            $("#CPTFOBValue").attr("disabled", true);
-            $("#Freight").focus();
-        });
-        $('#Freight').change(function () {
-            var Y = $(this).val();
-            var X = $('#FOBValue').val();
-            //var DX = parseInt(X);
-            var fre = parseFloat(Y).toFixed(2);
-            cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);
-            $("#CPTFOBValue").val(cf);
-            $("#Freight").val(fre);
-        });
-    });
+       });
+$(function () // Shorthand for $(document).ready(function() {
+       {
+           $("#FOBValue").prop("disabled", false);
+           $("#CMValue").prop("disabled", false);
 
+           $("#CPTValue").prop("disabled", true);
+           $("#CPTCMValue").prop("disabled", true);
+           $("#CPTFOBValue").prop("disabled", true);
+           $("#Freight").prop("disabled", true);
+
+           $("#Incoterm").change(function () {
+               // var value = $("#Incoterm option:selected").val();
+               //alert($(this).val());
+               var cpt = $(this).val();
+               if (cpt == 2 || cpt == 4 || cpt == 6 || cpt == 7) {
+                   $("#CPTValue").prop("disabled", false);
+                   $("#CPTCMValue").prop("disabled", false);
+                   $("#CPTFOBValue").prop("disabled", false);
+                   $("#Freight").prop("disabled", false);
+
+                   $("#FOBValue").prop("disabled", true);
+                   $("#CMValue").prop("disabled", true);
+               }
+               else if (cpt == 1 || cpt == 3 || cpt == 5 || cpt == 8) {
+                   $("#FOBValue").prop("disabled", false);
+                   $("#CMValue").prop("disabled", false);
+
+                   $("#CPTValue").prop("disabled", true);
+                   $("#CPTCMValue").prop("disabled", true);
+                   $("#CPTFOBValue").prop("disabled", true);
+                   $("#Freight").prop("disabled", true);
+               }
+               else {
+                   $("#FOBValue").prop("disabled", true);
+                   $("#CMValue").prop("disabled", true);
+                   $("#CPTValue").prop("disabled", true);
+                   $("#CPTCMValue").prop("disabled", true);
+                   $("#CPTFOBValue").prop("disabled", true);
+                   $("#Freight").prop("disabled", true);
+               }
+           });
+       });  
 </script>
 </asp:Content>

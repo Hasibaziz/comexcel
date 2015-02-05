@@ -526,8 +526,8 @@
         var X = $(this).val();
         //var DX = parseInt(X);
         if (X == "") {
-            $("#FOBValue").val("0");
-            $("#CMValue").val("0");
+            $("#FOBValue").val(parseFloat(0).toFixed(2));
+            $("#CMValue").val(parseFloat(0).toFixed(2));
         }
         else {
             var FOB = parseFloat(X).toFixed(2);
@@ -559,28 +559,44 @@
             $("#FOBValue").val(fbvalue);
             //$("#FOBValue").attr("disabled", true);
         }
-    });   
+    });
     $(document).ready(function () {
         $('#CPTValue').change(function () {
             var cptval = $(this).val();
-            var cptfob = parseFloat(cptval).toFixed(2);
-            cmcpt = (cptfob * 20) / 100;
-            var cmcp = parseFloat(cmcpt).toFixed(2);
-            $('#CPTCMValue').val(cmcp);
-            $('#CPTValue').val(cptfob);
-//            $('#CPTCMValue').attr("disabled", true);
-//            $('#CPTFOBValue').attr("disabled", true);
-            $("#Freight").focus();
+            if (cptval == 0) {
+                $('#CPTCMValue').val(parseFloat(0).toFixed(2));
+                $('#CPTValue').val(parseFloat(0).toFixed(2));
+            }
+            else {
+                var cptfob = parseFloat(cptval).toFixed(2);
+                cmcpt = (cptfob * 20) / 100;
+                var cmcp = parseFloat(cmcpt).toFixed(2);
+                $('#CPTCMValue').val(cmcp);
+                $('#CPTValue').val(cptfob);
+                //            $('#CPTCMValue').attr("disabled", true);
+                //            $('#CPTFOBValue').attr("disabled", true);
+                $("#Freight").focus();
+            }
         });
         $('#Freight').change(function () {
             var Y = $('#Freight').val();
             var X = $('#CPTValue').val();
-            //var DX = parseInt(X);
-            var fre = parseFloat(Y).toFixed(2);
-            cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);
-            $("#CPTFOBValue").val(cf);
-            $("#Freight").val(fre);
+            if (Y == 0) {
+                Y = parseFloat(0).toFixed(2);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(Y);
+            }
+            else {
+                //var DX = parseInt(X);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(fre);
+            }
         });
 
     });

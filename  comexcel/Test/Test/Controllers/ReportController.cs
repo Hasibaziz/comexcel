@@ -388,9 +388,13 @@ namespace Test.Controllers
             sb.Append("</tr>");
             sb.Append("</table>");
 
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=SalesReport" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
             this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-            return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
         }
         
         
@@ -634,9 +638,18 @@ namespace Test.Controllers
             sb.Append("</tr>");
             sb.Append("</table>");
 
+            //this.Response.ContentType = "application/vnd.ms-excel";
+            //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
+
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=BillingReport" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
             this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-            return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
+
         }
 
 
@@ -774,9 +787,18 @@ namespace Test.Controllers
             sb.Append("</tr>");
             sb.Append("</table>");
 
+            //this.Response.ContentType = "application/vnd.ms-excel";
+            //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
+
+            //HttpContext.Response.AddHeader("content-disposition", "attachment; filename=PO NO_" + PurchaseOrder.Id + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=InvoiceRecords" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
             this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-            return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
         }
      }
 }

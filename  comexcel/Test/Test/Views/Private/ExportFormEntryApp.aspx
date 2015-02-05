@@ -271,7 +271,7 @@
  <%--   </div>
  
     <div id="tabs-2">--%>
-     <fieldset>
+     <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Quantity & Value Entry</legend>
         <div class="editor-label01">
             <label for="Unit">Unit:</label>
@@ -317,7 +317,7 @@
 
         </div> --%>
         </div>
-         <fieldset> 
+         <fieldset style="background: #fff url('/Content/images/Apparel.png');"> 
           <legend>FOB/CFR/FCA/EXW Value</legend>       
             <div class="editor-field01">
                 <%: Html.TextBoxFor(model => model.FOBValue, new { @class = "validate[required]", tabindex = 8 })%>
@@ -339,7 +339,7 @@
              <p id="ttBalance" ></p>            
         </div>
 </div>
-        <fieldset> 
+        <fieldset style="background: #fff url('/Content/images/Apparel.png');"> 
           <legend>CPT/DDP/CIF/DAP Value</legend>       
             <div class="editor-field01">
                 <%: Html.TextBoxFor(model => model.CPTValue, new { @class = "validate[required]" })%>
@@ -356,7 +356,7 @@
       </fieldset>
    </div>  
     <div id="tabs-3">
-      <fieldset>
+      <fieldset style="background: #fff url('/Content/images/Apparel.png');">
         <legend>Ex-Factory Information Entry</legend>
         <div class="editor-label01">
           <label for="ExpNo">Exp No:</label>
@@ -490,8 +490,8 @@
         var X = $(this).val();
         //var DX = parseInt(X);
         if (X == "") {
-            $("#FOBValue").val("0");
-            $("#CMValue").val("0");
+            $("#FOBValue").val(parseFloat(0).toFixed(2));
+            $("#CMValue").val(parseFloat(0).toFixed(2));
         }
         else {
             var FOB = parseFloat(X).toFixed(2);
@@ -526,24 +526,40 @@
     $(document).ready(function () {
         $('#CPTValue').change(function () {
             var cptval = $(this).val();
-            var cptfob = parseFloat(cptval).toFixed(2);
-            cmcpt = (cptfob * 20) / 100;
-            var cmcp = parseFloat(cmcpt).toFixed(2);
-            $('#CPTCMValue').val(cmcp);
-            $('#CPTValue').val(cptfob);
-            //            $('#CPTCMValue').attr("disabled", true);
-            //            $('#CPTFOBValue').attr("disabled", true);
-            $("#Freight").focus();
+            if (cptval == 0) {
+                $('#CPTCMValue').val(parseFloat(0).toFixed(2));
+                $('#CPTValue').val(parseFloat(0).toFixed(2));
+            }
+            else {
+                var cptfob = parseFloat(cptval).toFixed(2);
+                cmcpt = (cptfob * 20) / 100;
+                var cmcp = parseFloat(cmcpt).toFixed(2);
+                $('#CPTCMValue').val(cmcp);
+                $('#CPTValue').val(cptfob);
+                //            $('#CPTCMValue').attr("disabled", true);
+                //            $('#CPTFOBValue').attr("disabled", true);
+                $("#Freight").focus();
+            }
         });
         $('#Freight').change(function () {
             var Y = $('#Freight').val();
             var X = $('#CPTValue').val();
-            //var DX = parseInt(X);
-            var fre = parseFloat(Y).toFixed(2);
-            cptfob = (X - Y);
-            var cf = parseFloat(cptfob).toFixed(2);
-            $("#CPTFOBValue").val(cf);
-            $("#Freight").val(fre);
+            if (Y == 0) {
+                Y = parseFloat(0).toFixed(2);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(Y);
+            }
+            else {
+                //var DX = parseInt(X);
+                var fre = parseFloat(Y).toFixed(2);
+                cptfob = (X - Y);
+                var cf = parseFloat(cptfob).toFixed(2);
+                $("#CPTFOBValue").val(cf);
+                $("#Freight").val(fre);
+            }
         });
 
     });
