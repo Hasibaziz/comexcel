@@ -699,6 +699,21 @@ namespace Test.Controllers
             }
         }
 
+        
+        public JsonResult DeleteExcelRecords()
+        {            
+            SalesImportExcelEntity _Model = new SalesImportExcelEntity();
+            try
+            {
+
+                DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GETDeleteExcelRecords, null);
+                return Json(new { Result = "OK" });               
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
        
     }
 }

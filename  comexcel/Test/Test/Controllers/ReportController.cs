@@ -7,6 +7,12 @@ using System.Data;
 using Test.Domain.Model;
 using Test.Structure;
 using System.Text;
+using System.IO;
+using OfficeOpenXml;
+using Test.Utility;
+using OfficeOpenXml.Style;
+using System.Diagnostics;
+
 
 namespace Test.Controllers
 {
@@ -345,7 +351,6 @@ namespace Test.Controllers
         
         public ActionResult ExcelReport(string EX1 = "", string EX2 = "")
         {
-
             SalesreportEntity _Model = new SalesreportEntity();
             _Model.StartDate = EX1;
             _Model.EndDate = EX2;
@@ -390,13 +395,31 @@ namespace Test.Controllers
 
             HttpContext.Response.AddHeader("content-disposition", "attachment; filename=SalesReport" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
             this.Response.ContentType = "application/vnd.ms-excel";
+            //HttpContext.Current.Response.ContentType = "Application/x-msexcel"
             //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
             //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
             //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
             return File(buffer, "application/vnd.ms-excel");
+
+            //var service = new ExcelService();
+            //var stream=service.
+            //var memoryStream = stream as MemoryStream;
+            //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            //Response.AddHeader=("content-disposition","attachment; filename=ExcelDemo.xlsx");
+            //Response.BinaryWrite(MemoryStream.ToArray());
         }
-        
+
+        public ActionResult SalesReport01(string EX1 = "", string EX2 = "")
+        {
+            SalesreportEntity _Model = new SalesreportEntity();
+            _Model.StartDate = EX1;
+            _Model.EndDate = EX2;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, _Model);
+            //Excelimport.GenerateReport(dt);
+            //return View();  
+            return Excelimport.GenerateReportExcel(dt);
+        }
         
         public ActionResult CustomsAuditReport()
         {
@@ -800,5 +823,7 @@ namespace Test.Controllers
             //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
             return File(buffer, "application/vnd.ms-excel");
         }
+
+        
      }
 }

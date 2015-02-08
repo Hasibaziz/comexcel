@@ -686,6 +686,10 @@ namespace Test.Structure.TaskManager
                     csBLL = new CommsalesinfoBLL();
                     return csBLL.GETSalesPostRecord(param);
                     break;
+                case TestTask.AG_GETDeleteExcelRecords:
+                    csBLL = new CommsalesinfoBLL();
+                    return csBLL.GETDeleteExcelRecords(param);
+                    break;
                 #endregion
 
                     //// 

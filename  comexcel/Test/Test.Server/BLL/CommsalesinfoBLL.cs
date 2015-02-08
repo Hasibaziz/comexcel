@@ -150,5 +150,12 @@ namespace Test.Server.BLL
             retObj = (object)csDAL.GETSalesPostRecord(obj, param);
             return retObj;
         }
+        public object GETDeleteExcelRecords(object param)
+        {
+            object retObj = null;
+            CommsalesinfoDAL csDAL = new CommsalesinfoDAL();
+            retObj = (object)csDAL.GETDeleteExcelRecords(param);
+            return retObj;
+        }
     }
 }

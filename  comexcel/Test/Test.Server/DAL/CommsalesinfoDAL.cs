@@ -229,5 +229,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return true;
         }
+        public DataTable GETDeleteExcelRecords(object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            string sql = "DELETE FROM SalesExcel ";
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+              
+        }
     }
 }

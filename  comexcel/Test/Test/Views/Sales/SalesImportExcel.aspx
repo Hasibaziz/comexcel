@@ -176,6 +176,29 @@
         });
         return true;
 
+    }
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Fordelete() {        
+        $('<div></div>').html('Want to Delete Data! Yes/Cancel').dialog({
+            modal: true,
+            dataType: "json",
+            buttons: {
+                "Yes": function () {
+                    $(this).dialog("close");
+                    $.post('<%: ResolveUrl("/Sales/DeleteExcelRecords")%>', function (result) {
+                        window.location.href = window.location.href;                        
+                    }, "json");                
+
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        return true;
+
     }   
+
+
 </script>
 </asp:Content>

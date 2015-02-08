@@ -51,9 +51,9 @@ namespace Test.Controllers
                     //DateTime vDATE=ViewsAuthentication.DateCheck.VDATE;
                     DateTime dtSuppliedDate = DateTime.Parse(ViewsAuthentication.DateCheck.VDATE);
                     //int day = dtSuppliedDate.Subtract(DateTime.Now).Days;
-                    if (dtSuppliedDate.Subtract(DateTime.Now).Days <= 0)
-                        return RedirectToAction("Contract", "Home");
-                    else
+                    //if (dtSuppliedDate.Subtract(DateTime.Now).Days <= 0)
+                    //    return RedirectToAction("Contract", "Home");
+                    //else
                         return RedirectToAction("Index", "Home");
                 }
                 else

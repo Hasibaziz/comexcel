@@ -243,6 +243,7 @@ namespace Test.Structure
         public const string AG_SaveSalesImportExcelRecord = "AG_SaveSalesImportExcelRecord";
         public const string AG_GETAllSalesImportExcelList = "AG_GETAllSalesImportExcelList";
         public const string AG_GETSalesPostRecord = "AG_GETSalesPostRecord";
+        public const string AG_GETDeleteExcelRecords = "AG_GETDeleteExcelRecords";
         #endregion
 
         /// <summary>
