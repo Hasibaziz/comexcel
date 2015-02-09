@@ -101,6 +101,7 @@
     <Compile Include="Model\ImportexcelEntity.cs" />
     <Compile Include="Model\LicenceVerification.cs" />
     <Compile Include="Model\LocationEntity.cs" />
+    <Compile Include="Model\LogisticsInfoEntity.cs" />
     <Compile Include="Model\ModeinfoEntity.cs" />
     <Compile Include="Model\NotifypartyEntity.cs" />
     <Compile Include="Model\ReportBillinInfoEntity.cs" />

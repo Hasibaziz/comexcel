@@ -102,6 +102,7 @@
     <Compile Include="BLL\HSCodeBLL.cs" />
     <Compile Include="BLL\ImportexcelBLL.cs" />
     <Compile Include="BLL\LocationInfoBLL.cs" />
+    <Compile Include="BLL\LogisticsInfoRecordBLL.cs" />
     <Compile Include="BLL\ModeinfoBLL.cs" />
     <Compile Include="BLL\NotifypartyDetailsBLL.cs" />
     <Compile Include="BLL\ShippingInfoBLL.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="DAL\HSCodeDAL.cs" />
     <Compile Include="DAL\ImportexcelDAL.cs" />
     <Compile Include="DAL\LocationInfoDAL.cs" />
+    <Compile Include="DAL\LogisticsInfoRecordDAL.cs" />
     <Compile Include="DAL\ModeinfoDAL.cs" />
     <Compile Include="DAL\NotifypartyDetailsDAL.cs" />
     <Compile Include="DAL\ShippingInfoDAL.cs" />

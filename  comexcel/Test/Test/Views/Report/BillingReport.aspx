@@ -7,9 +7,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <script type="text/javascript">   
-    function PrintExcel() {        
-        EX1 = $("#CourierNo").val();        
-        window.location = "/Report/BillingReportOnExcel?EX1=" + EX1;
+    function PrintExcel() {
+        EX1 = $("#CourierNo").val();
+        SDATE = $("#StartDate").val();
+        EDATE = $("#EndDate").val();
+        window.location = "/Report/BillingReportOnExcel?Courier=" + EX1 + "&StartDate=" + SDATE + "&EndDate=" + EDATE;
     }
 </script>
 <div class="mp_left_menu">

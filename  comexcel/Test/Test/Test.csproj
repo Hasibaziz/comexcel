@@ -137,6 +137,7 @@
     <Compile Include="Controllers\BillingController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogisticsController.cs" />
     <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportpvtController.cs" />
@@ -458,6 +459,9 @@
     <Content Include="Views\Configuration\UDInfo.aspx" />
     <Content Include="Views\Home\Contract.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Logistics\Index.aspx" />
+    <Content Include="Views\Logistics\LeftMenu.ascx" />
+    <Content Include="Views\Logistics\LogisticsInfo.aspx" />
     <Content Include="Views\Private\Consignee.aspx" />
     <Content Include="Views\Private\Destination.aspx" />
     <Content Include="Views\Private\Exporter.aspx" />

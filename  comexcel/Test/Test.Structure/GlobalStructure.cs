@@ -275,6 +275,14 @@ namespace Test.Structure
         
         #endregion
 
+        #region Auto Generated - LogisticsInfoRecords.
+        public const string AG_GetLogisticsInfoRecord = "AG_GetLogisticsInfoRecord";
+        //public const string AG_GetAllGSPFormItemInfoRecord = "AG_GetAllGSPFormItemInfoRecord";
+        //public const string AG_SaveGSPFormDetailsRecord = "AG_SaveGSPFormDetailsRecord";
+        //public const string AG_UpdateGSPFormDetailsRecord = "AG_UpdateGSPFormDetailsRecord";
+        //public const string AG_GetGSPFormSearchByInvoiceno = "AG_GetGSPFormSearchByInvoiceno";
+        #endregion
+
         /// <summary>
         /// Report Controller 
         /// </summary>

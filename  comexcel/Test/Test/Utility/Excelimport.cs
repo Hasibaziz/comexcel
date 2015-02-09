@@ -12,7 +12,8 @@ using System.Text;
 using OfficeOpenXml.Drawing;      ///Reference EPPLUS
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System.Diagnostics;  ///Reference EPPLUS
+using System.Diagnostics;
+using System.Security.Policy;  ///Reference EPPLUS
 
 
 
@@ -434,7 +435,28 @@ namespace Test.Utility
             // and replace the every backslash with forward slashes
             return Path.Combine(filePath, Guid.NewGuid() + "_" + fileName).Replace("\\", "/");
         }
-
+        /// <summary>
+        /// Adds the image in excel sheet.
+        /// </summary>
+        /// <param name="ws">Worksheet</param>
+        /// <param name="colIndex">Column Index</param>
+        /// <param name="rowIndex">Row Index</param>
+        /// <param name="filePath">The file path</param>
+        private static void AddImage(ExcelWorksheet ws, int columnIndex, int rowIndex, string filePath)
+        {
+            //How to Add a Image using EP Plus
+            Bitmap image = new Bitmap(filePath);
+            ExcelPicture picture = null;
+            if (image != null)
+            {
+                picture = ws.Drawings.AddPicture("pic" + rowIndex.ToString() + columnIndex.ToString(), image);
+                picture.From.Column = columnIndex;
+                picture.From.Row = rowIndex;
+                picture.From.ColumnOff = Pixel2MTU(2); //Two pixel space for better alignment
+                picture.From.RowOff = Pixel2MTU(2);//Two pixel space for better alignment
+                picture.SetSize(100, 100);
+            }
+        }
 
         public static FileStreamResult GenerateReportExcel(DataTable dt)
         {
@@ -460,7 +482,7 @@ namespace Test.Utility
                 //DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllSalesreportRecord, null); //My Function which generates DataTable
 
                 //Merging cells and create a center heading for out table
-                ws.Cells[1, 1].Value = " Export Report";
+                ws.Cells[1, 1].Value = " Export Report";               
                 ws.Cells[1, 1, 1, dt.Columns.Count].Merge = true;
                 ws.Cells[1, 1, 1, dt.Columns.Count].Style.Font.Bold = true;
                 ws.Cells[1, 1, 1, dt.Columns.Count].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -474,7 +496,10 @@ namespace Test.Utility
                 Excelimport.AddComment(ws, 5, 10, "Md. Hasib's,  IT Department", "Md. Hasib");
 
                 //string path = Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)), "iMAGE.jpg");
-                //AddImage(ws, 10, 0, path);
+                //string path = System.IO.Path.GetFileName("~/Content/Images/Logo.png");
+                //string path = Path.Combine(System.IO.Path.GetDirectoryName(@"C:\\Content\Images\"), "Logo.jpg");
+                string path = Path.Combine(HttpContext.Current.Server.MapPath(@"~/Content/Images/"), "Logo.png");
+                AddImage(ws, 10, 0, path);
 
                 Excelimport.AddCustomShape(ws, 10, 7, eShapeStyle.Ellipse, "Export Excel Reports.");               
                 package.SaveAs(MS);                

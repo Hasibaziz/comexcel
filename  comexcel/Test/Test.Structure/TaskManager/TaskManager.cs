@@ -727,7 +727,24 @@ namespace Test.Structure.TaskManager
                     break;               
                 #endregion
 
-
+                ///
+                /// Logistics Information
+                /// 
+                #region Auto Generated - LogisticsInfoRecords
+                case TestTask.AG_GetLogisticsInfoRecord:
+                    LogisticsInfoRecordBLL lgsBLL = null;
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.GetLogisticsInfoRecord(param);
+                    break;
+                //case TestTask.AG_SaveGSPItemInfoRecord:
+                //    lgsBLL = new LogisticsInfoRecordBLL();
+                //    return lgsBLL.SaveGSPItemInfoRecord(param);
+                //    break;
+                //case TestTask.AG_UpdateGSPItemInfoRecord:
+                //    lgsBLL = new LogisticsInfoRecordBLL();
+                //    return lgsBLL.UpdateGSPItemInfoRecord(param);
+                //    break;
+                #endregion
 
                 //// 
                 /// Billing Team Information***

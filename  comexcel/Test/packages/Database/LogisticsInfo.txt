@@ -1,0 +1,46 @@
+USE [Commercial]
+GO
+
+/****** Object:  Table [dbo].[LogisticsInfo]    Script Date: 02/09/2015 14:41:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[LogisticInfo](
+	[ID]					        [uniqueidentifier]      NOT NULL,
+	[InvoiceNo]                     [nvarchar](max)         NOT NULL,
+	[ReceitableAmount]				[nvarchar](20)              NULL,
+	[DocProcessFee]				    [nvarchar](20)              NULL,
+	[SSCertificateFee]				[nvarchar](20)				NULL,
+	[SealLockCharge]				[nvarchar](20)				NULL,
+	[AgencyCommission]				[nvarchar](20)				NULL,
+	[DocumentaionCharge]			[nvarchar](20)			    NULL,
+	[TransportationCharge]			[nvarchar](20)				NULL,
+	[FactoryLoadingFee]				[nvarchar](20)				NULL,
+	[ForwarderWHUFee]				[nvarchar](20)				NULL,
+	[DemurrageDUNLoadingFee]		[nvarchar](20)				NULL,
+	[CFSMixedCargoLoadingFee]		[nvarchar](20)				NULL,
+	[CustomsMiscCharge]				[nvarchar](20)				NULL,
+	[CustomsRemarkCharge]			[nvarchar](20)				NULL,
+	[CargoHODate]					[nvarchar](50)				NULL,
+	[DealineSubmission]				[nvarchar](50)				NULL,
+	[BillrcvdDate]					[nvarchar](50)				NULL,
+	[LStatus]					    [nvarchar](50)				NULL,
+	[ForwarderName]					[nvarchar](MAX)				NULL,
+	
+	[CurrentDate]					[nvarchar](50)				NULL,
+	[UserName]						[nvarchar](100)				NULL,
+ CONSTRAINT [PK_LogisticsInfo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[LogisticsInfo] ADD  CONSTRAINT [DF_LogisticsInfo_ID]  DEFAULT (newid()) FOR [ID]
+GO
+
+
