@@ -2235,7 +2235,7 @@ namespace Test.Controllers
                        cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        t0.AddCell(cell);
                        cell = new PdfPCell(new Phrase(dr.RegDetails, new Font(Font.GetFamilyIndex("Arial"), 8f, Font.BOLD)));
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                       
                        cell.Colspan = 2;
                        cell.PaddingBottom = 10f;
                        t0.AddCell(cell);
@@ -2245,7 +2245,7 @@ namespace Test.Controllers
                        //cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
                        //t0.AddCell(cell);
                        cell = new PdfPCell();
-                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);
+                       cell.BorderColor = new iTextSharp.text.Color(System.Drawing.Color.White);                       
                        t0.AddCell(cell);
                        if (dr.Section == "2")
                        {

@@ -325,9 +325,11 @@ namespace Test.Utility
                 foreach (DataColumn dc in dt.Columns)
                 {
                     var cell = ws.Cells[rowIndex, colIndex];
-
+                    //var cell = ws.Cells[rowIndex, colIndex].Style.Numberformat.Format;
+                    
                     //Setting Value in cell
-                    cell.Value = Convert.ToString(dr[dc.ColumnName]);
+                    //cell.Value = Convert.ToString(dr[dc.ColumnName]);                    
+                    cell.Value = dr[dc].ToString();
 
                     //Setting borders of cell
                     var border = cell.Style.Border;
@@ -459,7 +461,7 @@ namespace Test.Utility
         }
 
         public static FileStreamResult GenerateReportExcel(DataTable dt)
-        {
+        {            
             string fileName = "Report" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xlsx";
             var serverPath = HttpContext.Current.Server.MapPath("~/ExportFiles/");
             DirectoryInfo outputDir = new DirectoryInfo(serverPath);

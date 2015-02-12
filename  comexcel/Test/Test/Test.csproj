@@ -461,6 +461,7 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Logistics\Index.aspx" />
     <Content Include="Views\Logistics\LeftMenu.ascx" />
+    <Content Include="Views\Logistics\LogisticsEntry.aspx" />
     <Content Include="Views\Logistics\LogisticsInfo.aspx" />
     <Content Include="Views\Private\Consignee.aspx" />
     <Content Include="Views\Private\Destination.aspx" />

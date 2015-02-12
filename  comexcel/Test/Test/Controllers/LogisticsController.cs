@@ -65,7 +65,7 @@ namespace Test.Controllers
                                 CustomsMiscCharge = dr["CustomsMiscCharge"].ToString(),
                                 CustomsRemarkCharge = dr["CustomsRemarkCharge"].ToString(),
                                 CargoHODate = dr["CargoHODate"].ToString(),
-                                DealineSubmission = dr["DealineSubmission"].ToString(),
+                                DeadlineSubmission = dr["DealineSubmission"].ToString(),
                                 BillrcvdDate = dr["BillrcvdDate"].ToString(),
                                 LStatus = dr["LStatus"].ToString(),
                                 ForwarderName = dr["ForwarderName"].ToString()
@@ -87,6 +87,12 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-      
+
+        public ActionResult LogisticsEntry()
+        {
+            return View();
+        }
+
+
     }
 }

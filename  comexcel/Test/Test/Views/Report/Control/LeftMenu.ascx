@@ -14,11 +14,12 @@
          <a href="<%=Url.Content("~/Reportpvt/ExportFormReport") %>">Export Form Report</a>
      <% }%>
      <%else if (GROUP == "ShipNsales")
-      { %>         
+      { %>
+         <a href="<%=Url.Content("~/Report/InvoiceMonitor") %>">Invoice Monitor</a>         
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
      <% }%>
      <%else if (GROUP == "Billing")
-      { %>
+      { %>         
          <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>
       <%} %>
       <%else if (GROUP == "ExportAll")

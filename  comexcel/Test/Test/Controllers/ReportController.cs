@@ -615,75 +615,76 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-        
-        //public ActionResult BillingReportOnExcel(string EX1 = "")
-        //{
-
-        //    ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
-        //    _Model.CourierNo = EX1;
-        //    //_Model.EndDate = EX2;
-        //    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("<table border='" + "2px" + "'b>");
-
-        //    ////For Header
-        //    sb.Append("<td><td><td><b><font face=Arial size=2>" + "Billing Report" + "</font></b></td></td></td>");
-        //    //write column headings
-        //    sb.Append("<tr>");
-
-        //    foreach (System.Data.DataColumn dc in dt.Columns)
-        //    {
-        //        sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
-        //    }
-        //    sb.Append("</tr>");
-
-        //    foreach (System.Data.DataRow dr in dt.Rows)
-        //    {
-        //        sb.Append("<tr>");
-        //        foreach (System.Data.DataColumn dc in dt.Columns)
-        //        {
-        //            sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
-        //        }
-        //        sb.Append("</tr>");
-        //    }
-        //    ////For Footer
-        //    sb.Append("<tr>");
-        //    sb.Append("<tr>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</tr>");
-        //    sb.Append("</tr>");
-        //    sb.Append("</table>");
-
-        //    //this.Response.ContentType = "application/vnd.ms-excel";
-        //    //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-        //    //return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
-
-        //    HttpContext.Response.AddHeader("content-disposition", "attachment; filename=BillingReport" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
-        //    this.Response.ContentType = "application/vnd.ms-excel";
-        //    //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
-        //    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-        //    //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
-        //    //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
-        //    return File(buffer, "application/vnd.ms-excel");
-
-        //}
 
         public ActionResult BillingReportOnExcel(string Courier = "", string StartDate = "", string EndDate = "")
         {
+
             ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
             _Model.CourierNo = Courier;
             _Model.StartDate = StartDate;
             _Model.EndDate = EndDate;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
-            return Excelimport.GenerateReportExcel(dt);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + "Billing Report" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            //this.Response.ContentType = "application/vnd.ms-excel";
+            //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "BillingReport.xls");
+
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=BillingReport" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
+
         }
+
+        //public ActionResult BillingReportOnExcel(string Courier = "", string StartDate = "", string EndDate = "")
+        //{
+        //    ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
+        //    _Model.CourierNo = Courier;
+        //    _Model.StartDate = StartDate;
+        //    _Model.EndDate = EndDate;
+        //    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
+        //    return Excelimport.GenerateReportExcel(dt);
+        //}
 
 
         public ActionResult InvoiceMonitor()
@@ -774,72 +775,72 @@ namespace Test.Controllers
             }
         }
 
-        //public ActionResult InvoiceMonitorExcel(string EX1 = "", string EX2 = "")
-        //{
-
-        //    ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
-        //    _Model.StartDate = EX1;
-        //    _Model.EndDate = EX2;
-        //    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("<table border='" + "2px" + "'b>");
-
-        //    ////For Header
-        //    sb.Append("<td><td><td><b><font face=Arial size=2>" + "Inventory Monitor Report" + "</font></b></td></td></td>");
-        //    //write column headings
-        //    sb.Append("<tr>");
-
-        //    foreach (System.Data.DataColumn dc in dt.Columns)
-        //    {
-        //        sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
-        //    }
-        //    sb.Append("</tr>");
-
-        //    foreach (System.Data.DataRow dr in dt.Rows)
-        //    {
-        //        sb.Append("<tr>");
-        //        foreach (System.Data.DataColumn dc in dt.Columns)
-        //        {
-        //            sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
-        //        }
-        //        sb.Append("</tr>");
-        //    }
-        //    ////For Footer
-        //    sb.Append("<tr>");
-        //    sb.Append("<tr>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td>");
-        //    sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</td>");
-        //    sb.Append("</tr>");
-        //    sb.Append("</tr>");
-        //    sb.Append("</table>");
-
-        //    //this.Response.ContentType = "application/vnd.ms-excel";
-        //    //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-        //    //return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
-
-        //    //HttpContext.Response.AddHeader("content-disposition", "attachment; filename=PO NO_" + PurchaseOrder.Id + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
-        //    HttpContext.Response.AddHeader("content-disposition", "attachment; filename=InvoiceRecords" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
-        //    this.Response.ContentType = "application/vnd.ms-excel";
-        //    //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
-        //    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-        //    //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
-        //    //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
-        //    return File(buffer, "application/vnd.ms-excel");
-        //}
-
         public ActionResult InvoiceMonitorExcel(string EX1 = "", string EX2 = "")
         {
+
             ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
             _Model.StartDate = EX1;
             _Model.EndDate = EX2;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
-            return Excelimport.GenerateReportExcel(dt);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + "Inventory Monitor Report" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            //this.Response.ContentType = "application/vnd.ms-excel";
+            //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
+
+            //HttpContext.Response.AddHeader("content-disposition", "attachment; filename=PO NO_" + PurchaseOrder.Id + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=InvoiceRecords" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
         }
+
+        //public ActionResult InvoiceMonitorExcel(string EX1 = "", string EX2 = "")
+        //{
+        //    ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
+        //    _Model.StartDate = EX1;
+        //    _Model.EndDate = EX2;
+        //    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
+        //    return Excelimport.GenerateReportExcel(dt);
+        //}
      }
 }
