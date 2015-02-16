@@ -353,7 +353,11 @@ namespace Test.Controllers
                                     ExpDate = dr["ExpDate"].ToString(),
                                     EPNo = dr["EPNo"].ToString(),
                                     ExFactoryDate = dr["ExFactoryDate"].ToString(),
-                                    RTransport = dr["RTransport"].ToString()
+                                    RTransport = dr["RTransport"].ToString(),
+                                    CnFAgent = dr["CnFAgent"].ToString(),
+                                    CartonQty = dr["CartonQty"].ToString(),
+                                    CBMValue = dr["CBMValue"].ToString(),
+                                    CargorptDate = dr["CargorptDate"].ToString()
                                 });
                             }
                             iCount += 1;
@@ -416,6 +420,7 @@ namespace Test.Controllers
                                 TTDate = dr["TTDate"].ToString(),
                                 //TTLCTN = dr["TTLCTN"].ToString(),
                                 VesselName = dr["VesselName"].ToString()
+                                
                             });
                         }
                         iCount += 1;

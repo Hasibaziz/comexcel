@@ -276,11 +276,12 @@ namespace Test.Structure
         #endregion
 
         #region Auto Generated - LogisticsInfoRecords.
-        public const string AG_GetLogisticsInfoRecord = "AG_GetLogisticsInfoRecord";
-        //public const string AG_GetAllGSPFormItemInfoRecord = "AG_GetAllGSPFormItemInfoRecord";
-        //public const string AG_SaveGSPFormDetailsRecord = "AG_SaveGSPFormDetailsRecord";
-        //public const string AG_UpdateGSPFormDetailsRecord = "AG_UpdateGSPFormDetailsRecord";
-        //public const string AG_GetGSPFormSearchByInvoiceno = "AG_GetGSPFormSearchByInvoiceno";
+        public const string AG_GetLogisticsInfoRecord = "AG_GetLogisticsInfoRecord";       
+        public const string AG_SaveLogisticsEntryInfo = "AG_SaveLogisticsEntryInfo";
+        public const string AG_UpdateLogisticsEntryInfo = "AG_UpdateLogisticsEntryInfo";
+        public const string AG_GetDuplicateLogisticInvoiceNo = "AG_GetDuplicateLogisticInvoiceNo";
+        public const string AG_GetLogisticsUpdateByInvoiceNo = "AG_GetLogisticsUpdateByInvoiceNo";
+        public const string AG_GetLogisticsInvoiceSearchByNo = "AG_GetLogisticsInvoiceSearchByNo";
         #endregion
 
         /// <summary>
@@ -292,6 +293,7 @@ namespace Test.Structure
         public const string AG_GetCustomsAuditReportRecord = "AG_GetCustomsAuditReportRecord";
         public const string AG_GetAllBillingReportRecord = "AG_GetAllBillingReportRecord";
         public const string AG_GetInvoiceMonitorListRecords = "AG_GetInvoiceMonitorListRecords";
+        public const string AG_GetAllLogisticsReports = "AG_GetAllLogisticsReports";
         #endregion
 
         /// <summary>

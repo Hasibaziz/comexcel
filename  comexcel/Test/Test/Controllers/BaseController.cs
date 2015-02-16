@@ -775,6 +775,20 @@ namespace Test.Controllers
             }
             return _Model;
         }
+        public object GetDuplicateLogisticInvoiceNo(string invoice)
+        {
+            LogisticsInfoEntity _Model = new LogisticsInfoEntity();
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetDuplicateLogisticInvoiceNo, invoice);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                _Model.ID = dr["ID"].ToString();
+                _Model.InvoiceNo = dr["InvoiceNo"].ToString();
+
+            }
+            return _Model;
+        }
+
 
         public object GetCheckshippingInvoiceNo(string invoice)
         {

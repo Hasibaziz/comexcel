@@ -736,14 +736,26 @@ namespace Test.Structure.TaskManager
                     lgsBLL = new LogisticsInfoRecordBLL();
                     return lgsBLL.GetLogisticsInfoRecord(param);
                     break;
-                //case TestTask.AG_SaveGSPItemInfoRecord:
-                //    lgsBLL = new LogisticsInfoRecordBLL();
-                //    return lgsBLL.SaveGSPItemInfoRecord(param);
-                //    break;
-                //case TestTask.AG_UpdateGSPItemInfoRecord:
-                //    lgsBLL = new LogisticsInfoRecordBLL();
-                //    return lgsBLL.UpdateGSPItemInfoRecord(param);
-                //    break;
+                case TestTask.AG_SaveLogisticsEntryInfo:
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.SaveLogisticsEntryInfo(param);
+                    break;
+                case TestTask.AG_UpdateLogisticsEntryInfo:
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.UpdateLogisticsEntryInfo(param);
+                    break;
+                case TestTask.AG_GetDuplicateLogisticInvoiceNo:
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.GetDuplicateLogisticInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetLogisticsUpdateByInvoiceNo:
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.GetLogisticsUpdateByInvoiceNo(param);
+                    break;
+                case TestTask.AG_GetLogisticsInvoiceSearchByNo:
+                    lgsBLL = new LogisticsInfoRecordBLL();
+                    return lgsBLL.GetLogisticsInvoiceSearchByNo(param);
+                    break;
                 #endregion
 
                 //// 
@@ -814,6 +826,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetInvoiceMonitorListRecords:
                     allBLL = new AllReportInfoBLL();
                     return allBLL.GetInvoiceMonitorListRecords(param);
+                    break;
+                case TestTask.AG_GetAllLogisticsReports:
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetAllLogisticsReports(param);
                     break;
                 #endregion
                 

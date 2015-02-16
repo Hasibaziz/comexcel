@@ -86,7 +86,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             BillingInfoEntity obj = (BillingInfoEntity)param;
-            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus],  [BDTHC], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where InvoiceNo='" + obj.InvoiceNo + "'";
+            string sql = "SELECT [ID], [InvoiceNo], [SBNo], [SBDate], [DocSubmitDate], [CourierNo], [CourierDate], [BuyerCourierNo], [BuyerCourierDate], [LeadTime], [BankSubmitDate], [ModeStatus],  [BDTHC], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[BillingInfo] Where InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -95,7 +95,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             //BillingInfoEntity obj = (BillingInfoEntity)param;
-            string sql = "SELECT ID, InvoiceNo FROM SalesinfoDetails Where InvoiceNo='" + InvNo + "'";
+            string sql = "SELECT ID, InvoiceNo FROM SalesinfoDetails Where InvoiceNo LIKE '%" + InvNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

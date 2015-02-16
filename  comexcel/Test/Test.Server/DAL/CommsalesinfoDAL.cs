@@ -151,7 +151,8 @@ namespace Test.Server.DAL
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " SPI.EXPNo, SPI.EXPDate, SPI.EPNo, SPI.EPDate, SPI.ExFactoryDate, SPI.TransportID, T.Port AS RTransport ";
+            sql = sql + " SPI.EXPNo, SPI.EXPDate, SPI.EPNo, SPI.EPDate, SPI.ExFactoryDate, SPI.TransportID, SPI.CnFAgent, SPI.CargorptDate, T.Port AS RTransport,  ";
+            sql = sql + " SLD.CartonQty, SLD.CBMValue  ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -161,6 +162,7 @@ namespace Test.Server.DAL
             sql = sql + " LEFT JOIN DestCountry   AS DC ON DC.ID=A.DestinationID";
             sql = sql + " LEFT JOIN Transport   AS TR ON TR.ID=A.TransportID";
             sql = sql + " LEFT JOIN ShippingInfo   AS SPI ON SPI.InvoiceNo=A.InvoiceNo";
+            sql = sql + " LEFT JOIN SalesinfoDetails AS SLD ON SLD.InvoiceNo=A.InvoiceNo";
             sql = sql + " LEFT JOIN Transport   AS T ON T.ID=SPI.TransportID";
             sql = sql + " WHERE A.InvoiceNo LIKE '%" + obj.InvoiceNo + "%' AND A.Status is null ";
 

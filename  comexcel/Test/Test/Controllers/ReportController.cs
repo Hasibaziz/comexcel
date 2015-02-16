@@ -842,5 +842,95 @@ namespace Test.Controllers
         //    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetInvoiceMonitorListRecords, _Model);
         //    return Excelimport.GenerateReportExcel(dt);
         //}
+
+        public ActionResult LogisticsReport()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult LogisticsReportList(string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
+            {
+                try
+                {
+                    ReportlogisticsRecordEntity _Model = new ReportlogisticsRecordEntity();
+                    _Model.StartDate = StartDate;
+                    _Model.EndDate = EndDate;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllLogisticsReports, _Model);
+                    List<ReportlogisticsRecordEntity> ItemList = null;
+                    ItemList = new List<ReportlogisticsRecordEntity>();
+                    int iCount = 0;
+                    int offset = 0;
+                    offset = jtStartIndex / jtPageSize;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (iCount >= jtStartIndex && iCount < (jtPageSize * (offset + 1)))
+                        {
+                            ItemList.Add(new ReportlogisticsRecordEntity()
+                            {
+                                InvoiceNo = dr["InvoiceNo"].ToString(),
+                                InvoiceDate = dr["InvoiceDate"].ToString(),
+
+                                CONTRACTNO = dr["CONTRACTNO"].ToString(),
+                                ContractDate = dr["ContractDate"].ToString(),
+
+                                ORDERNO = dr["ORDERNO"].ToString(),
+                                ExporterNo = dr["ExporterNo"].ToString(),
+
+
+                                BUYERNAME = dr["BUYERNAME"].ToString(),
+                                //ConsigneeName = dr["ConsigneeName"].ToString(),
+
+                                CountryCode = dr["CountryCode"].ToString(),
+                                DESTINATION = dr["DESTINATION"].ToString(),
+                                HSCode = dr["HSCode"].ToString(),
+
+                                TName = dr["TName"].ToString(),
+                                MODE = dr["MODE"].ToString(),
+                                FOBValue = dr["FOBValue"].ToString(),
+                                CMValue = dr["CMValue"].ToString(),
+                                Freight = dr["Freight"].ToString(),
+                                Quantity = dr["Quantity"].ToString(),
+
+                                QtyPCS = dr["QtyPCS"].ToString(),
+                                FOBValueUSD = dr["FOBValueUSD"].ToString(),
+                                CMValueUSD = dr["CMValueUSD"].ToString(),
+                                Incoterm = dr["Incoterm"].ToString(),
+
+                                EXPNo = dr["EXPNo"].ToString(),
+                                EXPDate = dr["EXPDate"].ToString(),
+                                //EPNo = dr["EPNo"].ToString(),
+                                //EPDate = dr["EPDate"].ToString(),
+
+                                BLAWBNO = dr["BLAWBNO"].ToString(),
+                                BLAWBDate = dr["BLAWBDate"].ToString(),
+                                SBNo = dr["SBNo"].ToString(),
+                                SBDate = dr["SBDate"].ToString(),
+                                ModeStatus = dr["ModeStatus"].ToString(),
+
+                                ExFactoryDate = dr["ExFactoryDate"].ToString()
+                            });
+                        }
+                        iCount += 1;
+                    }
+                    var RecordCount = dt.Rows.Count;
+                    var Record = ItemList;
+                    Session["LOGSEntry"] = ItemList;
+                    return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+
      }
 }

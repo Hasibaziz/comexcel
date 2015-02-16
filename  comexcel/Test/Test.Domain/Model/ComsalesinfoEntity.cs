@@ -58,6 +58,7 @@ namespace Test.Domain.Model
       public string EXPDate { set; get; }
       public string ExFactoryDate { set; get; }
       public string RTransport { set; get; }      //Revise Transport;
+      public string CnFAgent { set; get; }
 
       public string TTNo { set; get; }
       public string TTDate { set; get; }

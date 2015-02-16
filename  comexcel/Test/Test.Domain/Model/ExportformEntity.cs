@@ -101,6 +101,11 @@ namespace Test.Domain.Model
        public string BLDate { set; get; }
        public string ExFactoryDate { set; get; }
        public string RTransport { set; get; }      //Revise Transport;
+       public string CnFAgent { set; get; }
+
+       public string CartonQty { set; get; }
+       public string CBMValue { set; get; }
+       public string CargorptDate { set; get; }
 
        public string CurrentDate { set; get; }
 

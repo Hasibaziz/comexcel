@@ -65,7 +65,12 @@
                 <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
                 <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Report</span></a></li>
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>      
-              <%} %>              
+              <%} %>  
+             <%else if (GROUP == Test.Utility.AppConstants.Area.LOGISTICS)
+             { %>
+                <li><a href="<%=Url.Content("~/Logistics/Index") %>"><span>Logistic Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
+             <%} %>            
              <%else if (GROUP == null)
               { %>
                    <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li> 

@@ -105,6 +105,7 @@
     <Compile Include="Model\ModeinfoEntity.cs" />
     <Compile Include="Model\NotifypartyEntity.cs" />
     <Compile Include="Model\ReportBillinInfoEntity.cs" />
+    <Compile Include="Model\ReportlogisticsRecordEntity.cs" />
     <Compile Include="Model\SalesImportExcelEntity.cs" />
     <Compile Include="Model\SalesreportEntity.cs" />
     <Compile Include="Model\ShippinginfoEntity.cs" />

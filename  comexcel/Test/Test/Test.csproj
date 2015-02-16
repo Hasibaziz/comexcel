@@ -463,6 +463,7 @@
     <Content Include="Views\Logistics\LeftMenu.ascx" />
     <Content Include="Views\Logistics\LogisticsEntry.aspx" />
     <Content Include="Views\Logistics\LogisticsInfo.aspx" />
+    <Content Include="Views\Logistics\LogisticsUpdate.aspx" />
     <Content Include="Views\Private\Consignee.aspx" />
     <Content Include="Views\Private\Destination.aspx" />
     <Content Include="Views\Private\Exporter.aspx" />
@@ -494,6 +495,7 @@
     <Content Include="Views\Report\Index.aspx" />
     <Content Include="Views\Report\Invoice.aspx" />
     <Content Include="Views\Report\InvoiceMonitor.aspx" />
+    <Content Include="Views\Report\LogisticsReport.aspx" />
     <Content Include="Views\Report\Salesreport.aspx" />
     <Content Include="Views\Report\SalesReport01.aspx" />
     <Content Include="Views\Sales\ComsalesEntry.aspx" />

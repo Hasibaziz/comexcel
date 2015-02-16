@@ -10,6 +10,7 @@
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
          <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Report</a>
          <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>
+         <a href="<%=Url.Content("~/Report/LogisticsReport") %>">Logistics Report</a>
          <a href="<%=Url.Content("~/Reportpvt/TTCMInformation") %>">TT & CM Information</a>
          <a href="<%=Url.Content("~/Reportpvt/ExportFormReport") %>">Export Form Report</a>
      <% }%>
