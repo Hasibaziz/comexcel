@@ -858,7 +858,7 @@ namespace Test.Controllers
                     ReportlogisticsRecordEntity _Model = new ReportlogisticsRecordEntity();
                     _Model.StartDate = StartDate;
                     _Model.EndDate = EndDate;
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllLogisticsReports, _Model);
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllLogisticsReports, null);
                     List<ReportlogisticsRecordEntity> ItemList = null;
                     ItemList = new List<ReportlogisticsRecordEntity>();
                     int iCount = 0;
@@ -880,23 +880,23 @@ namespace Test.Controllers
                                 ExporterNo = dr["ExporterNo"].ToString(),
 
 
-                                BUYERNAME = dr["BUYERNAME"].ToString(),
+                               // BUYERNAME = dr["BUYERNAME"].ToString(),
                                 //ConsigneeName = dr["ConsigneeName"].ToString(),
 
                                 CountryCode = dr["CountryCode"].ToString(),
-                                DESTINATION = dr["DESTINATION"].ToString(),
-                                HSCode = dr["HSCode"].ToString(),
+                                //DESTINATION = dr["DESTINATION"].ToString(),
+                                //HSCode = dr["HSCode"].ToString(),
 
                                 TName = dr["TName"].ToString(),
-                                MODE = dr["MODE"].ToString(),
+                                //MODE = dr["MODE"].ToString(),
                                 FOBValue = dr["FOBValue"].ToString(),
                                 CMValue = dr["CMValue"].ToString(),
                                 Freight = dr["Freight"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
 
-                                QtyPCS = dr["QtyPCS"].ToString(),
-                                FOBValueUSD = dr["FOBValueUSD"].ToString(),
-                                CMValueUSD = dr["CMValueUSD"].ToString(),
+                                //QtyPCS = dr["QtyPCS"].ToString(),
+                                //FOBValueUSD = dr["FOBValueUSD"].ToString(),
+                                //CMValueUSD = dr["CMValueUSD"].ToString(),
                                 Incoterm = dr["Incoterm"].ToString(),
 
                                 EXPNo = dr["EXPNo"].ToString(),
@@ -904,11 +904,12 @@ namespace Test.Controllers
                                 //EPNo = dr["EPNo"].ToString(),
                                 //EPDate = dr["EPDate"].ToString(),
 
-                                BLAWBNO = dr["BLAWBNO"].ToString(),
-                                BLAWBDate = dr["BLAWBDate"].ToString(),
-                                SBNo = dr["SBNo"].ToString(),
-                                SBDate = dr["SBDate"].ToString(),
-                                ModeStatus = dr["ModeStatus"].ToString(),
+                                //BLAWBNO = dr["BLAWBNO"].ToString(),
+                                //BLAWBDate = dr["BLAWBDate"].ToString(),
+                                //SBNo = dr["SBNo"].ToString(),
+                                //SBDate = dr["SBDate"].ToString(),
+                                //ModeStatus = dr["ModeStatus"].ToString(),
+                                ReceitableAmount = dr["Receitable Amount"].ToString(),
 
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
