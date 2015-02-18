@@ -50,8 +50,8 @@ namespace Test.Server.DAL
         public DataTable GetAllLogisticsReports(ReportlogisticsRecordEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            //object[] parameters = new object[] { obj.StartDate, obj.EndDate };
-            DbCommand dbCommand = db.GetStoredProcCommand("spGetAllLogisticsRecord");
+            object[] parameters = new object[] { obj.StartDate, obj.EndDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetAllLogisticsRecord", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

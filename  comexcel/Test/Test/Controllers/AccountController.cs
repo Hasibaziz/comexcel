@@ -25,10 +25,10 @@ namespace Test.Controllers
         }
         [HttpPost]
         public ActionResult Login(string submit, LoginModel model, LicenceVerification _Model)
-        {
+        {           
             User iUser = new User();
             DataTable dt = iUser.GetUserInfo(model);
-
+          
             if (dt.Rows.Count > 0)
             {
                 model.IsActive = dt.Rows[0]["IsActive"].ToString();
@@ -46,10 +46,11 @@ namespace Test.Controllers
                     //else if (CurrentGroups == "Private")
                     //   return RedirectToAction("Index", "Private");
                     //else
-                    //DateTime VDATA = DateTime.Now;
+                    //DateTime VDATA = DateTime.Now;                   
                     string VDATA = DateTime.Now.ToString("MM/dd/yyyy");
-                    //DateTime vDATE=ViewsAuthentication.DateCheck.VDATE;
-                    DateTime dtSuppliedDate = DateTime.Parse(ViewsAuthentication.DateCheck.VDATE);
+                    //*DateTime vDATE = ViewsAuthentication.DateCheck.VDATE;
+                    //DateTime dtSuppliedDate = DateTime.Parse(ViewsAuthentication.DateCheck.VDATE);
+                    //bool IsValid = Convert.ToBoolean(ViewsAuthentication.DateCheck.IsActive);
                     //int day = dtSuppliedDate.Subtract(DateTime.Now).Days;
                     //if (dtSuppliedDate.Subtract(DateTime.Now).Days <= 0)
                     //    return RedirectToAction("Contract", "Home");

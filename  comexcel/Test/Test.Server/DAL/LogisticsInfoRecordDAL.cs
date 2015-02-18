@@ -59,7 +59,7 @@ namespace Test.Server.DAL
        }
        public bool UpdateLogisticsEntryInfo(LogisticsInfoEntity lgsEntity, Database db, DbTransaction transaction)
        {
-           string sql = "Update LogisticsInfo SET ReceitableAmount=@ReceitableAmount, DocProcessFee=@DocProcessFee, SSCertificateFee=@SSCertificateFee, SealLockCharge=@SealLockCharge, AgencyCommission=@AgencyCommission, DocumentaionCharge=@DocumentaionCharge, TransportationCharge=@TransportationCharge, ForwarderWHUFee=@ForwarderWHUFee, DemurrageDUNLoadingFee=@DemurrageDUNLoadingFee, CFSMixedCargoLoadingFee=@CFSMixedCargoLoadingFee, CustomsMiscCharge=@CustomsMiscCharge, CustomsRemarkCharge=@CustomsRemarkCharge, CargoHODate=@CargoHODate, DeadlineSubmission=@DeadlineSubmission, BillrcvdDate=@BillrcvdDate, LStatus=@LStatus, ForwarderName=@ForwarderName, TotalFees=@TotalFees   WHERE ID=@ID";
+           string sql = "Update LogisticsInfo SET ReceitableAmount=@ReceitableAmount, DocProcessFee=@DocProcessFee, SSCertificateFee=@SSCertificateFee, SealLockCharge=@SealLockCharge, AgencyCommission=@AgencyCommission, DocumentaionCharge=@DocumentaionCharge, TransportationCharge=@TransportationCharge, FactoryLoadingFee=@FactoryLoadingFee, ForwarderWHUFee=@ForwarderWHUFee, DemurrageDUNLoadingFee=@DemurrageDUNLoadingFee, CFSMixedCargoLoadingFee=@CFSMixedCargoLoadingFee, CustomsMiscCharge=@CustomsMiscCharge, CustomsRemarkCharge=@CustomsRemarkCharge, CargoHODate=@CargoHODate, DeadlineSubmission=@DeadlineSubmission, BillrcvdDate=@BillrcvdDate, LStatus=@LStatus, ForwarderName=@ForwarderName, TotalFees=@TotalFees   WHERE ID=@ID";
            DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
            db.AddInParameter(dbCommand, "ID", DbType.String, lgsEntity.ID);

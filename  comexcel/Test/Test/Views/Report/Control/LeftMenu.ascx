@@ -30,6 +30,10 @@
          <a href="<%=Url.Content("~/Report/BillingReport") %>">Billing Report</a>
          <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Report</a>
      <% }%>
+     <%else if (GROUP == Test.Utility.AppConstants.Area.LOGISTICS)
+      { %>
+         <a href="<%=Url.Content("~/Report/LogisticsReport") %>">Logistics Report</a>
+     <%} %>   
 </div>
 
 

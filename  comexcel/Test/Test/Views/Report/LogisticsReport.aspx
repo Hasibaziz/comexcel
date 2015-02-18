@@ -10,7 +10,7 @@
     function PrintExcel() {
         EX1 = $("#StartDate").val();
         EX2 = $("#EndDate").val();
-        window.location = "/Report/InvoiceMonitorExcel?EX1=" + EX1 + "&EX2=" + EX2;
+        window.location = "/Report/LogisticsReportsOnExcel?EX1=" + EX1 + "&EX2=" + EX2;
     }
 </script>
 <div class="mp_left_menu">
@@ -24,12 +24,12 @@
             </div>
             <div id="dialog" title="Search">                
                   <div style=" margin: 0em .5cm 0px 0.3cm;">
-                     (Invoice Date)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
+                     (Ex-Factory Date)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
                   </div>
                   <div style=" margin: 0em .5cm 0px 3.2cm;">
                      End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
                  </div>
-                  <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetInvoiceList" /> &nbsp; &nbsp;&nbsp;
+                  <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetLogisticsList" /> &nbsp; &nbsp;&nbsp;
                  <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Export" onclick="PrintExcel()" />
                </div>
             </div>  
@@ -91,13 +91,17 @@
                     title: 'FOB',
                     width: '8%'
                 },
-                CMValue: {
-                    title: 'C.M.',
-                    width: '6%'
-                },
+//                CMValue: {
+//                    title: 'C.M.',
+//                    width: '6%'
+//                },
                 ExFactoryDate: {
                     title: 'Ex-Factory Date',
                     width: '14%'
+                },
+                CargoHODate: {
+                    title: 'CargoH/ODate',
+                    width: '10%'
                 },
                 ReceitableAmount: {
                     title: 'Receitable Amount',
@@ -105,7 +109,14 @@
                 }
             }
         });
-        $('#RecordsContainer').jtable('load');     
+        // $('#RecordsContainer').jtable('load');     
+        $('#GetLogisticsList').click(function (e) {
+            e.preventDefault();
+            $('#RecordsContainer').jtable('load', {
+                StartDate: $('#StartDate').val(),
+                EndDate: $('#EndDate').val()
+            });
+        });
     });
 </script>
 <script type="text/javascript">
