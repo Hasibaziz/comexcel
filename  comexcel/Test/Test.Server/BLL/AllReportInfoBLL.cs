@@ -55,5 +55,14 @@ namespace Test.Server.BLL
             retObj = (object)allDAL.GetAllLogisticsReports(obj, param);
             return retObj;
         }
+
+        public object GetAllLogisticsMonitorRecords(object param)
+        {
+            object retObj = null;
+            AllReportInfoDAL allDAL = new AllReportInfoDAL();
+            ReportlogisticsRecordEntity obj = (ReportlogisticsRecordEntity)param;
+            retObj = (object)allDAL.GetAllLogisticsMonitorRecords(obj, param);
+            return retObj;
+        }
     }
 }

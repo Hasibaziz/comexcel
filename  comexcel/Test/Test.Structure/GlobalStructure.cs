@@ -294,6 +294,7 @@ namespace Test.Structure
         public const string AG_GetAllBillingReportRecord = "AG_GetAllBillingReportRecord";
         public const string AG_GetInvoiceMonitorListRecords = "AG_GetInvoiceMonitorListRecords";
         public const string AG_GetAllLogisticsReports = "AG_GetAllLogisticsReports";
+        public const string AG_GetAllLogisticsMonitorRecords = "AG_GetAllLogisticsMonitorRecords";
         #endregion
 
         /// <summary>

@@ -171,7 +171,10 @@ namespace Test.Controllers
                     _Model.RevisedCMValue = dr["RevisedCMValue"].ToString();
                     _Model.CartonQty = dr["CartonQty"].ToString();
                     _Model.CBMValue = dr["CBMValue"].ToString();
-                    //_Model.TTLCTN = dr["TTLCTN"].ToString();
+                    _Model.FinalQty = dr["FinalQty"].ToString();
+                    _Model.FinalFOB = dr["FinalFOB"].ToString();
+                    _Model.FinalCM = dr["FinalCM"].ToString();
+                    _Model.Remarks = dr["Remarks"].ToString();
                     _Model.VesselName = dr["VesselName"].ToString();                   
                 }
             }

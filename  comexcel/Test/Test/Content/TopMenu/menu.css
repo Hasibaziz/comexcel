@@ -17,7 +17,7 @@ div#top-menu {
 #top-menu .menu {
     position:absolute;
     padding-left:0px;
-  /*  background: url(images/header.gif) right top no-repeat; */
+    background: url(images/header.gif) right top no-repeat;
 }
 #top-menu * {
     list-style:none;

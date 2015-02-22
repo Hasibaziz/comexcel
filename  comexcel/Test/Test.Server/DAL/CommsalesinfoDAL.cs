@@ -33,7 +33,7 @@ namespace Test.Server.DAL
         }
         public bool SaveComsalesEntryInfo(ComsalesinfoEntity csEntity, Database db, DbTransaction transaction)
         {
-            string sql = "INSERT INTO SalesinfoDetails (  InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, BLNo, BLDate, UserName, CurrentDate  ) VALUES ( @InvoiceNo, @OrderNo, @StyleNo, @ProductType, @ShipbordingDate, @ETADate, @RevQty, @RevisedFOBValue, @RevisedCMValue, @CartonQty, @CBMValue, @VesselName, @BLNo, @BLDate, @UserName, @CurrentDate)";
+            string sql = "INSERT INTO SalesinfoDetails (  InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, BLNo, BLDate, FinalQty, FinalFOB, FinalCM, Remarks, UserName, CurrentDate  ) VALUES ( @InvoiceNo, @OrderNo, @StyleNo, @ProductType, @ShipbordingDate, @ETADate, @RevQty, @RevisedFOBValue, @RevisedCMValue, @CartonQty, @CBMValue, @VesselName, @BLNo, @BLDate, @FinalQty, @FinalFOB, @FinalCM, @Remarks, @UserName, @CurrentDate)";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, csEntity.InvoiceNo);
@@ -53,8 +53,12 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "CartonQty", DbType.String, csEntity.CartonQty);
             db.AddInParameter(dbCommand, "CBMValue", DbType.String, csEntity.CBMValue);
 
-            //db.AddInParameter(dbCommand, "TTLCTN", DbType.String, csEntity.TTLCTN);
+            
             db.AddInParameter(dbCommand, "VesselName", DbType.String, csEntity.VesselName);
+            db.AddInParameter(dbCommand, "FinalQty", DbType.String, csEntity.FinalQty);
+            db.AddInParameter(dbCommand, "FinalFOB", DbType.String, csEntity.FinalFOB);
+            db.AddInParameter(dbCommand, "FinalCM", DbType.String, csEntity.FinalCM);
+            db.AddInParameter(dbCommand, "Remarks", DbType.String, csEntity.Remarks);
 
             db.AddInParameter(dbCommand, "UserName", DbType.String, csEntity.UserName);
             db.AddInParameter(dbCommand, "CurrentDate", DbType.String, csEntity.CurrentDate);
@@ -64,7 +68,7 @@ namespace Test.Server.DAL
         }
         public bool UpdateComsalesEntryInfo(ComsalesinfoEntity csEntity, Database db, DbTransaction transaction)
         {
-            string sql = "Update SalesinfoDetails SET OrderNo=@OrderNo, StyleNo=@StyleNo, ProductType=@ProductType, ShipbordingDate=@ShipbordingDate, BLNo=@BLNo, BLDate=@BLDate, ETADate=@ETADate, RevQty=@RevQty, RevisedFOBValue=@RevisedFOBValue, RevisedCMValue=@RevisedCMValue, CartonQty=@CartonQty, CBMValue=@CBMValue, VesselName=@VesselName   WHERE ID=@ID";
+            string sql = "Update SalesinfoDetails SET OrderNo=@OrderNo, StyleNo=@StyleNo, ProductType=@ProductType, ShipbordingDate=@ShipbordingDate, BLNo=@BLNo, BLDate=@BLDate, ETADate=@ETADate, RevQty=@RevQty, RevisedFOBValue=@RevisedFOBValue, RevisedCMValue=@RevisedCMValue, CartonQty=@CartonQty, CBMValue=@CBMValue, VesselName=@VesselName, FinalQty=@FinalQty, FinalFOB=@FinalFOB, FinalCM=@FinalCM, Remarks=@Remarks   WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, csEntity.ID);
@@ -85,8 +89,13 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "CartonQty", DbType.String, csEntity.CartonQty);
             db.AddInParameter(dbCommand, "CBMValue", DbType.String, csEntity.CBMValue);
 
-            //db.AddInParameter(dbCommand, "TTLCTN", DbType.String, csEntity.TTLCTN);
+            
             db.AddInParameter(dbCommand, "VesselName", DbType.String, csEntity.VesselName);
+
+            db.AddInParameter(dbCommand, "FinalQty", DbType.String, csEntity.FinalQty);
+            db.AddInParameter(dbCommand, "FinalFOB", DbType.String, csEntity.FinalFOB);
+            db.AddInParameter(dbCommand, "FinalCM", DbType.String, csEntity.FinalCM);
+            db.AddInParameter(dbCommand, "Remarks", DbType.String, csEntity.Remarks);
 
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
@@ -95,7 +104,7 @@ namespace Test.Server.DAL
         public DataTable GetSalesUpdateByInvoiceNo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, CurrentDate, UserName FROM SalesinfoDetails WHERE ID=@id"; 
+            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, FinalQty, FinalFOB, FinalCM, Remarks, CurrentDate, UserName FROM SalesinfoDetails WHERE ID=@id"; 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "id", DbType.String, param.ToString());            
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -118,7 +127,7 @@ namespace Test.Server.DAL
             string sql = " SELECT     SA.ID, SA.InvoiceNo, SA.OrderNo, SA.StyleNo, SA.ProductType, SA.ShipbordingDate, SA.BLNo, SA.BLDate, SA.ETADate, SA.RevQty, SA.RevisedFOBValue,  ";
             sql = sql + "  SA.RevisedCMValue, SA.CartonQty, SA.CBMValue, SA.VesselName, SA.CurrentDate, SA.UserName, EX.TTNo, EX.TTDate  ";
             sql = sql + "  FROM   SalesinfoDetails AS SA INNER JOIN  ExportformDetails AS EX ON SA.InvoiceNo = EX.InvoiceNo";
-            sql = sql + "  where SA.InvoiceNo like '%" + obj.InvoiceNo + "%'";
+            sql = sql + "  where SA.InvoiceNo like '%" + obj.InvoiceNo + "%' AND EX.Status IS NULL ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

@@ -809,7 +809,7 @@ namespace Test.Structure.TaskManager
                 /// Report Information***
                 ///
 
-                #region Auto Generated - AllReport Information
+                #region Auto Generated - AllReports Information
                 case TestTask.AG_GetAllSalesreportRecord:
                     AllReportInfoBLL allBLL = null;
                     allBLL = new AllReportInfoBLL();
@@ -830,6 +830,10 @@ namespace Test.Structure.TaskManager
                 case TestTask.AG_GetAllLogisticsReports:
                     allBLL = new AllReportInfoBLL();
                     return allBLL.GetAllLogisticsReports(param);
+                    break;
+                case TestTask.AG_GetAllLogisticsMonitorRecords:
+                    allBLL = new AllReportInfoBLL();
+                    return allBLL.GetAllLogisticsMonitorRecords(param);
                     break;
                 #endregion
                 

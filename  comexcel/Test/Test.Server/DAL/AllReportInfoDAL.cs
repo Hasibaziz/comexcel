@@ -55,5 +55,14 @@ namespace Test.Server.DAL
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }
+
+        public DataTable GetAllLogisticsMonitorRecords(ReportlogisticsRecordEntity obj, object param)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+            object[] parameters = new object[] { obj.CnFAgent, obj.StartDate, obj.EndDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetAllLogisticsMonitorRecords", parameters);
+            DataSet ds = db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
     }
 }

@@ -145,7 +145,8 @@
         <ul>
         <li><a href="#tabs-1">Item Info Entry</a></li>
         <li><a href="#tabs-2">Quantity & Value</a></li>  
-        <li><a href="#tabs-3">Shipment Status Info</a></li>          
+        <li><a href="#tabs-3">Shipment Status Info</a></li>    
+        <li><a href="#tabs-4">Exception Value</a></li>      
         </ul>
     <div id="tabs-1">
         <div class="editor-label01">           
@@ -153,14 +154,13 @@
         </div>
         <div class="editor-field01">
             <%: Html.TextBoxFor(model => model.InvoiceNo, new { @readonly = "true", @class = "validate[required]" })%>            
-            <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>
-            <a id="Invoiceno" href="#"><span>Search</span></a>
+            <%: Html.ValidationMessageFor(model => model.InvoiceNo) %>            
         </div>
         <div class="editor-label01">            
             <label for="OrderNo">Order No:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.OrderNo, new { @class = "validate[required]" })%>
+            <%: Html.TextAreaFor(model => model.OrderNo, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.OrderNo) %>
         </div>
          <div class="editor-label01">           
@@ -190,7 +190,7 @@
             <label for="CartonQty">Carton Qty:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.CartonQty) %>
+            <%: Html.TextBoxFor(model => model.CartonQty, new { style = "width: 60px;" })%>
             <%: Html.ValidationMessageFor(model => model.CartonQty) %>
         </div>
        
@@ -198,7 +198,7 @@
             <label for="RevisedFOBValue">Shipped FOB Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.EditorFor(model => model.RevisedFOBValue) %>
+            <%: Html.TextBoxFor(model => model.RevisedFOBValue, new { style = "width: 80px;" })%>
             <%: Html.ValidationMessageFor(model => model.RevisedFOBValue) %>
         </div>
 
@@ -206,7 +206,7 @@
             <label for="RevisedCMValue">Shipped CM Value:</label>
         </div>
         <div class="editor-field01">
-            <%: Html.TextBoxFor(model => model.RevisedCMValue, new { @readonly = "true" })%>
+            <%: Html.TextBoxFor(model => model.RevisedCMValue, new { @readonly = "true", style = "width: 80px;" })%>
             <%: Html.ValidationMessageFor(model => model.RevisedCMValue) %>
         </div>
          <div class="editor-label01">           
@@ -218,8 +218,7 @@
         </div>
     </div>
     <div id="tabs-3">
-      <fieldset>
-        <legend>Shipment Status Entry</legend>
+      <fieldset>        
          <div class="editor-label01">           
             <label for="CBMValue">ETA Date:</label>
         </div>
@@ -262,8 +261,44 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.BLDate) %>
             <%: Html.ValidationMessageFor(model => model.BLDate) %>
+        </div>           
+     </fieldset>
+   </div>
+   <div id="tabs-4">
+      <fieldset>
+       <div class="editor-label01">           
+            <label for="FinalQty">Final Qty:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.FinalQty, new { style = "width: 80px;" })%>
+            <%: Html.ValidationMessageFor(model => model.FinalQty)%>
         </div>      
-   </fieldset>
+
+         <div class="editor-label01">           
+            <label for="FinalFOB">Final FOB:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.FinalFOB, new { style = "width: 60px;" })%>
+            <%: Html.ValidationMessageFor(model => model.FinalFOB)%>
+        </div>      
+
+         <div class="editor-label01">           
+            <label for="FinalCM">Final CM:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.FinalCM, new { @readonly = "true", style = "width: 60px;" })%>
+            <%: Html.ValidationMessageFor(model => model.FinalCM)%>
+        </div>      
+
+         <div class="editor-label01">           
+            <label for="Remarks">Remarks:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextAreaFor(model => model.Remarks)%>
+            <%: Html.ValidationMessageFor(model => model.Remarks)%>
+        </div>      
+
+      </fieldset>
     </div>   
 </div>   
     <p>
@@ -392,8 +427,18 @@
              cmcpt = (cptfob * 20) / 100;
              var cmcp = parseFloat(cmcpt).toFixed(2);
              $('#RevisedCMValue').val(cmcp);
-             $('#RevisedFOBValue').val(cptfob);            
+             $('#RevisedFOBValue').val(cptfob);
          });
+
+         $('#FinalFOB').change(function () {
+             var fFOB = $(this).val();
+             var finalFOB = parseFloat(fFOB).toFixed(2);             
+             finalCM = (finalFOB * 20) / 100;
+             var cmcp = parseFloat(finalCM).toFixed(2);
+             $('#FinalCM').val(cmcp);
+             $('#FinalFOB').val(finalFOB);
+         });
+
          $('#SInvoiceNo').change(function () {
              $('#InvoiceNo').val($(this).val());
          });
@@ -404,8 +449,11 @@
              $('#SailinExBDDate').val($(this).val());
          });
 
+
      });
 
+         
+   
  </script>
 
 </asp:Content>

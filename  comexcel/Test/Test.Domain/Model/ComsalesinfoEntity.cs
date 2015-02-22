@@ -63,6 +63,11 @@ namespace Test.Domain.Model
       public string TTNo { set; get; }
       public string TTDate { set; get; }
 
+      public string FinalQty { set; get; }
+      public string FinalFOB { set; get; }
+      public string FinalCM { set; get; }
+      public string Remarks { set; get; }
+
       public string UserName { set; get; }
       public string CurrentDate { set; get; }
 

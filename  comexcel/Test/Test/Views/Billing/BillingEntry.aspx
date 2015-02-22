@@ -241,6 +241,7 @@ $(document).ready(function () {
                  new SelectListItem { Text = " " },
                  new SelectListItem { Text = "AIR PP" },
                  new SelectListItem { Text = "AIR CC" },
+                 new SelectListItem { Text = "COURIOER" },
                  new SelectListItem { Text = "ROAD PP" },
                  new SelectListItem { Text = "ROAD CC" },
                  new SelectListItem { Text = "SEA PP" },
