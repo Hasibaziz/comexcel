@@ -592,7 +592,8 @@ namespace Test.Controllers
                                 SBDate = dr["SBDate"].ToString(),
                                 ModeStatus = dr["ModeStatus"].ToString(),
                                 CourierNo = dr["CourierNo"].ToString(),
-                                CourierDate = dr["CourierDate"].ToString(),   
+                                CourierDate = dr["CourierDate"].ToString(),
+                                //BuyerCourierNo = dr["BuyerCourierNo"].ToString(),  
 
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
 
@@ -602,7 +603,7 @@ namespace Test.Controllers
                     }
                     var RecordCount = dt.Rows.Count;
                     var Record = ItemList;
-                    Session["SALESRPT"] = ItemList;
+                    Session["BILLRPT"] = ItemList;
                     return Json(new { Result = "OK", Records = Record, TotalRecordCount = RecordCount });
                 }
                 catch (Exception ex)

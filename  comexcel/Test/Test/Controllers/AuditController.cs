@@ -125,6 +125,7 @@ namespace Test.Controllers
                                 //CPTValue = dr["CPTValue"].ToString(),
                                 Freight = dr["Freight"].ToString(),
                                 Quantity = dr["Quantity"].ToString(),
+                                
 
                                 RevQty = dr["RevQty"].ToString(),
                                 RevisedFOBValue = dr["RevisedFOBValue"].ToString(),

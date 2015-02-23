@@ -45,7 +45,7 @@
         <li><a href="#tabs-1">Item Info Entry</a></li>
         <li><a href="#tabs-2">Quantity & Value</a></li>  
         <li><a href="#tabs-3">Shipment Status Info</a></li> 
-        <li><a href="#tabs-4">Shipment Status Info</a></li>           
+        <li><a href="#tabs-4">Exception Value</a></li>           
         </ul>
     <div id="tabs-1">
         <div class="editor-label01">           
