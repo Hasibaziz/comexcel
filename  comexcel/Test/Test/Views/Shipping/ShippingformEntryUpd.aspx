@@ -67,6 +67,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.EPDate) %>
             <%: Html.ValidationMessageFor(model => model.EPDate) %>
+            <span style="color:Red;" class="EPerror"> Invalid Date( dd-mm-yyyy)</span>
         </div>
         <div class="editor-label01">
             <label for="EXPNo">EXP No:</label>             
@@ -89,6 +90,7 @@
         <div class="editor-field01">
             <%: Html.TextBoxFor(model => model.ExFactoryDate, new { @class = "validate[required]" })%>
             <%: Html.ValidationMessageFor(model => model.ExFactoryDate) %>
+            <span style="color:Red;" class="EXerror"> Invalid Date( dd-mm-yyyy)</span>
         </div>
          <div class="editor-label01">
             <label for="SBNo">SB No:</label>            
@@ -195,5 +197,39 @@
    
 <% } %>
 </div>
+<script type="text/javascript">
+    function ValidateDate(dtValue) {
+        //var dtRegex = new RegExp(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
+        //var dtRegex = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+        var dtRegex = new RegExp(/\d{1,2}[\/-]\b\d{1,2}[\/-]\d{4}\b/);
+        return dtRegex.test(dtValue);
+    }
+    $('.EPerror').hide();
+    $('input#EPDate').change(function () {
+        var Val_date = $('#EPDate').val();
+        //alert(Val_date);
+        if ($(this).val().length != 0) {
+            if ((ValidateDate(Val_date)))
+                $('.EPerror').hide();
+            else
+                $('.EPerror').show();
+        } else {
+            $('#EPDate').attr('disabled', true);
+        }
+    });
+    $('.EXerror').hide();
+    $('input#ExFactoryDate').change(function () {
+        var Val_date = $('#ExFactoryDate').val();
+        //alert(Val_date);
+        if ($(this).val().length != 0) {
+            if ((ValidateDate(Val_date)))
+                $('.EXerror').hide();
+            else
+                $('.EXerror').show();
+        } else {
+            $('#ExFactoryDate').attr('disabled', true);
+        }
+    });
 
+</script>
 </asp:Content>
