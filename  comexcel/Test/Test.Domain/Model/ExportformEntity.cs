@@ -18,6 +18,9 @@ namespace Test.Domain.Model
        [Required(ErrorMessage = "{0} is required!")]
        public string ContractDate { set; get; }
 
+       public string MasterContractNo { set; get; }
+       public string MasterContractDate { set; get; }
+
        public string TTNo { set; get; }
        public string TTDate { set; get; }
 

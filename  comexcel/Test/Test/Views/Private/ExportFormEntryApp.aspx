@@ -79,6 +79,8 @@
                         $("#CPTCMValue").val(" ");
                         $("#CPTFOBValue").val(" ");
                         $("#Freight").val(" ");
+                        $("#MasterContractNo").val(" ");
+                        $("#MasterContractDate").val(" ");
 
                         $("#EPNo").val(data.EPNo);
                         $("#ExpNo").val(data.ExpNo);
@@ -179,6 +181,22 @@
         </div>
 <div class="New_Right_Begin"> 
         
+        <div class="editor-label01">
+          <label for="MasterContractNo">Master Contract No:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.MasterContractNo)%>
+            <%--<%: Html.EditorFor(model => model.ContractNo)%>--%>
+            <%: Html.ValidationMessageFor(model => model.MasterContractNo)%>
+        </div>
+        <div class="editor-label01">
+          <label for="MasterContractDate">Master Contract Date:</label>
+        </div>
+        <div class="editor-field01">
+            <%: Html.TextBoxFor(model => model.MasterContractDate)%>
+            <%: Html.ValidationMessageFor(model => model.MasterContractDate)%>
+        </div>
+
         <div class="editor-label01">
             <label for="ConsigneeID">Consignee No:</label>
         </div>

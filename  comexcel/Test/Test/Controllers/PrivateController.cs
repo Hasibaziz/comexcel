@@ -1261,6 +1261,10 @@ namespace Test.Controllers
                     _Model.ItemName = dr["ItemName"].ToString();
                     _Model.ContractNo = dr["ContractNo"].ToString();
                     _Model.ContractDate = dr["ContractDate"].ToString();
+
+                    _Model.MasterContractNo = dr["MasterContractNo"].ToString();
+                    _Model.MasterContractDate = dr["MasterContractDate"].ToString();
+
                     _Model.InvoiceNo = dr["InvoiceNo"].ToString();
                     _Model.InvoiceDate = dr["InvoiceDate"].ToString();
                     _Model.TTNo = dr["TTNo"].ToString();

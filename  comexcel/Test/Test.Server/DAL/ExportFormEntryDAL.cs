@@ -19,6 +19,7 @@ namespace Test.Server.DAL
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
             sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
+            sql = sql + " A.MasterContractNo, A.MasterContractDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
@@ -50,15 +51,15 @@ namespace Test.Server.DAL
         {
             //string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ( ContractNo, InvoiceNo, InvoiceDate, ExporterID, ConsigneeID, NotifyID, HSCodeID, DestinationID, FOBValue, CMValue ) VALUES ( @ContractNo, @InvoiceNo, @InvoiceDate, @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @DestinationID, @FOBValue, @CMValue )";
             string sql = "INSERT INTO [Commercial].[dbo].[ExportformDetails] ";
-            sql = sql + "( [ItemName],  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
-            //sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCodeID], [HSCodesecond], [TransportID], [DestinationID], [Section]";
+            sql = sql + "(  [ItemName],  [ContractNo], [ContractDate], [TTNo], [TTDate], [InvoiceNo], [InvoiceDate] ";
+            sql = sql + " , [MasterContractNo], [MasterContractDate] ";
             sql = sql + " , [ExporterID], [ConsigneeID],[NotifyID], [HSCode], [HSCodesecond], [TransportID], [DestinationID], [Section]";
             sql = sql + " , [Unit], [Quantity],[Currency], [Incoterm], [FOBValue], [CMValue], [CPTFOBValue], [Freight] ";
             sql = sql + "  , [ExpNo], [ExpDate], [EPNo], [BLNo], [BLDate], [ExFactoryDate], [CurrentDate], [UserName]";
             sql = sql + " )";
             sql = sql + "values ( ";
             sql = sql + "  @ItemName, @ContractNo, @ContractDate, @TTNo , @TTDate, @InvoiceNo, @InvoiceDate";
-            //sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCodeID, @HSCodesecond, @TransportID, @DestinationID, @Section";
+            sql = sql + ", @MasterContractNo, @MasterContractDate ";
             sql = sql + ", @ExporterID, @ConsigneeID, @NotifyID, @HSCode, @HSCodesecond, @TransportID, @DestinationID, @Section";
             sql = sql + ", @Unit, @Quantity, @Currency, @Incoterm, @FOBValue, @CMValue, @CPTFOBValue, @Freight";
             sql = sql + ", @ExpNo, @ExpDate, @EPNo, @BLNo, @BLDate, @ExFactoryDate, @CurrentDate, @UserName ";
@@ -73,6 +74,9 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "TTDate", DbType.String, exfEntity.TTDate);
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, exfEntity.InvoiceNo);
             db.AddInParameter(dbCommand, "InvoiceDate", DbType.String, exfEntity.InvoiceDate);
+
+            db.AddInParameter(dbCommand, "MasterContractNo", DbType.String, exfEntity.MasterContractNo);
+            db.AddInParameter(dbCommand, "MasterContractDate", DbType.String, exfEntity.MasterContractDate);
 
             db.AddInParameter(dbCommand, "ExporterID", DbType.String, exfEntity.ExporterID);
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
@@ -123,7 +127,7 @@ namespace Test.Server.DAL
             string sql = "UPDATE [Commercial].[dbo].[ExportformDetails] ";
             //sql = sql + " SET ItemName=@ItemName, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCodeID=@HSCodeID, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
             sql = sql + " SET ItemName=@ItemName, InvoiceDate=@InvoiceDate, ContractNo=@ContractNo, ContractDate=@ContractDate, TTNo=@TTNo, TTDate=@TTDate, ExporterID=@ExporterID, ConsigneeID=@ConsigneeID, NotifyID=@NotifyID, HSCode=@HSCode, HSCodesecond=@HSCodesecond, TransportID=@TransportID, DestinationID=@DestinationID, ";
-            sql = sql + " Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, CPTFOBValue=@CPTFOBValue, Freight=@Freight, ";
+            sql = sql + " MasterContractNo=@MasterContractNo, MasterContractDate=@MasterContractDate, Unit=@Unit, Quantity=@Quantity, Currency=@Currency, Incoterm=@Incoterm, FOBValue=@FOBValue, CMValue=@CMValue, CPTFOBValue=@CPTFOBValue, Freight=@Freight, ";
             sql = sql + " ExpNo=@ExpNo, ExpDate=@ExpDate, EPNo=@EPNo, BLNo=@BLNo, BLDate=@BLDate, ExFactoryDate=@ExFactoryDate WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
@@ -135,6 +139,9 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "TTNo", DbType.String, exfEntity.TTNo);
             db.AddInParameter(dbCommand, "TTDate", DbType.String, exfEntity.TTDate);
             db.AddInParameter(dbCommand, "InvoiceNo", DbType.String, exfEntity.InvoiceNo);
+
+            db.AddInParameter(dbCommand, "MasterContractNo", DbType.String, exfEntity.MasterContractNo);
+            db.AddInParameter(dbCommand, "MasterContractDate", DbType.String, exfEntity.MasterContractDate);
            
             db.AddInParameter(dbCommand, "ExporterID", DbType.String, exfEntity.ExporterID);
             db.AddInParameter(dbCommand, "ConsigneeID", DbType.String, exfEntity.ConsigneeID);
@@ -174,6 +181,7 @@ namespace Test.Server.DAL
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
             sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
+            sql = sql + " A.MasterContractNo, A.MasterContractDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
@@ -216,6 +224,7 @@ namespace Test.Server.DAL
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
             sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
+            sql = sql + " A.MasterContractNo, A.MasterContractDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
@@ -347,6 +356,7 @@ namespace Test.Server.DAL
             string sql = "SELECT A.ID, A.ContractNo, A.ContractDate, A.InvoiceNo, A.InvoiceDate, ";
             sql = sql + " A.ItemName,  ";
             sql = sql + " A.TTNo, A.TTDate,  ";
+            sql = sql + " A.MasterContractNo, A.MasterContractDate,  ";
             sql = sql + " A.ExporterID, EX.ExporterName, EX.RegDetails,  ";
             sql = sql + " A.ConsigneeID, CON.ConsigneeName, ";
             sql = sql + " A.NotifyID, NOTI.NotifyName, ";
