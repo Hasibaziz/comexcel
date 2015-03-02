@@ -64,7 +64,12 @@
                 },
                 EXPNo: {
                     title: 'EXP No',
-                    width: '10%'
+                    width: '10%',
+                    display: function (data) {
+                        //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.EXPNo + '</label>');
+                        return $img;
+                    }
                 },
                 EXPDate: {
                     title: 'EXP Date',
@@ -135,7 +140,12 @@
                 },
                 EXPNo: {
                     title: 'EXP No',
-                    width: '7%'
+                    width: '7%',
+                    display: function (data) {
+                        //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.EXPNo + '</label>');
+                        return $img;
+                    }
                 },
                 EXPDate: {
                     title: 'EXP Date',

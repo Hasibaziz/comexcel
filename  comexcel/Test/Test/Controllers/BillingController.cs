@@ -61,7 +61,9 @@ namespace Test.Controllers
                                 LeadTime = dr["LeadTime"].ToString(),
                                 BankSubmitDate = dr["BankSubmitDate"].ToString(),
                                 ModeStatus = dr["ModeStatus"].ToString(),
-                                BDTHC = dr["BDTHC"].ToString()
+                                BDTHC = dr["BDTHC"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString()
                             });
                         }
                         iCount += 1;
@@ -237,7 +239,9 @@ namespace Test.Controllers
                                 BuyerCourierDate = dr["BuyerCourierDate"].ToString(),
                                 LeadTime = dr["LeadTime"].ToString(),
                                 BankSubmitDate = dr["BankSubmitDate"].ToString(),
-                                ModeStatus = dr["ModeStatus"].ToString()
+                                ModeStatus = dr["ModeStatus"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString()
                             });
                         }
                         iCount += 1;
@@ -464,6 +468,7 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
         public JsonResult BillingPostRecord()
         {
             bool result = true;

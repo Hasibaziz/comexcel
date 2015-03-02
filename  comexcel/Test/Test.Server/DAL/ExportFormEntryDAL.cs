@@ -32,7 +32,8 @@ namespace Test.Server.DAL
             sql = sql + " A.Unit, A.Quantity, A.Currency, ";
             sql = sql + " CASE A.Incoterm  WHEN '1' Then 'FOB' WHEN '2' Then 'CPT' WHEN '3' Then 'CFR' WHEN '4' Then 'DDP' WHEN '5' Then 'FCA' WHEN '6' Then 'CIF' WHEN '7' Then 'DAP' WHEN '8' Then 'EXW' END AS Incoterm ,  ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate, ";
+            sql = sql + " A.CurrentDate, A.UserName ";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -243,7 +244,8 @@ namespace Test.Server.DAL
             //sql = sql + " CASE A.Incoterm WHEN '1' Then 'FOB' ELSE 'Others' END AS Incoterm , ";
             sql = sql + " A.Incoterm, ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate, ";
+            sql = sql + " A.CurrentDate, A.UserName";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";
@@ -369,7 +371,8 @@ namespace Test.Server.DAL
             sql = sql + " A.Unit, A.Quantity, A.Currency,";
             sql = sql + " CASE A.Incoterm  WHEN '1' Then 'FOB' WHEN '2' Then 'CPT' WHEN '3' Then 'CFR' WHEN '4' Then 'DDP' WHEN '5' Then 'FCA' WHEN '6' Then 'CIF' WHEN '7' Then 'DAP' WHEN '8' Then 'EXW' END AS Incoterm ,  ";
             sql = sql + " A.FOBValue, A.CMValue, A.CPTFOBValue, A.Freight, ";
-            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate ";
+            sql = sql + " A.ExpNo, A.ExpDate, A.EPNo, A.BLNo, A.BLDate, A.ExFactoryDate, ";
+            sql = sql + " A.CurrentDate, A.UserName";
             sql = sql + " FROM ExportformDetails AS A";
             sql = sql + " LEFT JOIN ExporterDetails AS EX ON EX.ID=A.ExporterID";
             sql = sql + " LEFT JOIN ConsigneeDetails AS CON ON CON.ID=A.ConsigneeID";

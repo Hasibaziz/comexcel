@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //ShippinginfoEntity obj = (ShippinginfoEntity)param;
             //if (obj.UserName == null)
             //{
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 DataSet ds = db.ExecuteDataSet(dbCommand);
                 return ds.Tables[0];
@@ -105,7 +105,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ShippinginfoEntity obj = (ShippinginfoEntity)param;
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped  FROM ShippingInfo Where InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName   FROM ShippingInfo Where InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

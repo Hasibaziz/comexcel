@@ -47,11 +47,14 @@ namespace Test.Controllers
                     //   return RedirectToAction("Index", "Private");
                     //else
                     //DateTime VDATA = DateTime.Now;                   
-                    string VDATA = DateTime.Now.ToString("MM/dd/yyyy");
+                    //string VDATA = DateTime.Now.ToString("MM/dd/yyyy");
+                    DateTime VDATA = DateTime.Now;
                     //*DateTime vDATE = ViewsAuthentication.DateCheck.VDATE;
                     //DateTime dtSuppliedDate = DateTime.Parse(ViewsAuthentication.DateCheck.VDATE);
-                    //bool IsValid = Convert.ToBoolean(ViewsAuthentication.DateCheck.IsActive);
+                    ////bool IsValid = Convert.ToBoolean(ViewsAuthentication.DateCheck.IsActive);
                     //int day = dtSuppliedDate.Subtract(DateTime.Now).Days;
+                    ////int sysDay = VDATA.Subtract(DateTime.Now).Days;
+
                     //if (dtSuppliedDate.Subtract(DateTime.Now).Days <= 0)
                     //    return RedirectToAction("Contract", "Home");
                     //else

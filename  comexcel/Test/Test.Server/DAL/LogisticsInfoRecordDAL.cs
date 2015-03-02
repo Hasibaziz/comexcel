@@ -109,11 +109,12 @@ namespace Test.Server.DAL
            DataSet ds = db.ExecuteDataSet(dbCommand);
            return ds.Tables[0];
        }
-       public DataTable GetLogisticsInvoiceSearchByNo(object param, string Inv)
+       public DataTable GetLogisticsInvoiceSearchByNo(object param)
        {
            Database db = DatabaseFactory.CreateDatabase();
+           LogisticsInfoEntity obj = (LogisticsInfoEntity)param;
            string sql = " SELECT [ID], [InvoiceNo], [ReceitableAmount], [DocProcessFee], [SSCertificateFee], [SealLockCharge], [AgencyCommission], [DocumentaionCharge], [TransportationCharge], [FactoryLoadingFee], [ForwarderWHUFee], [DemurrageDUNLoadingFee], [CFSMixedCargoLoadingFee], [CustomsMiscCharge], [CustomsRemarkCharge], [CargoHODate], [DeadlineSubmission], [BillrcvdDate], [LStatus], [ForwarderName], [TotalFees], [CurrentDate], [UserName] FROM [Commercial].[dbo].[LogisticsInfo] ";
-           sql = sql + " WHERE InvoiceNo LIKE '%" + Inv + "%' ";
+           sql = sql + " WHERE InvoiceNo LIKE '%" + obj.InvoiceNo + "%' ";
            DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
            DataSet ds = db.ExecuteDataSet(dbCommand);

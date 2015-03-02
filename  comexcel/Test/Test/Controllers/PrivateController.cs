@@ -750,6 +750,8 @@ namespace Test.Controllers
                 _Model.EPNo = dr["EPNo"].ToString();
                 _Model.BLNo = dr["BLNo"].ToString();
                 _Model.BLDate = dr["BLDate"].ToString();
+                _Model.CurrentDate = dr["CurrentDate"].ToString();
+                _Model.UserName = dr["UserName"].ToString();
                 _Model.ExFactoryDate = dr["ExFactoryDate"].ToString();
 
             }
@@ -824,6 +826,10 @@ namespace Test.Controllers
                                 EPNo=dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
+
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString(),
+
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }
@@ -935,6 +941,8 @@ namespace Test.Controllers
                                 EPNo=dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
+                                UserName = dr["UserName"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }
@@ -1104,6 +1112,8 @@ namespace Test.Controllers
                                 EPNo = dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }
@@ -1386,6 +1396,8 @@ namespace Test.Controllers
                                 EPNo = dr["EPNo"].ToString(),
                                 BLNo = dr["BLNo"].ToString(),
                                 BLDate = dr["BLNo"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString(),
                                 ExFactoryDate = dr["ExFactoryDate"].ToString()
                             });
                         }

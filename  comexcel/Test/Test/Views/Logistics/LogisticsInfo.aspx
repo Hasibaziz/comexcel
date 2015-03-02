@@ -123,12 +123,12 @@ $('input#InvoiceNo').change(function () {
                     }
                 },
                 ReceitableAmount: {
-                    title: 'Receitable Amt',
-                    width: '8%'
+                    title: 'ReceitableAmt',
+                    width: '6%'
                 },
                 DocProcessFee: {
-                    title: 'DocProcess Fee',
-                    width: '10%'
+                    title: 'DocProcessFee',
+                    width: '8%'
                 },
                 SSCertificateFee: {
                     title: 'ShortSCerFee',
@@ -139,8 +139,8 @@ $('input#InvoiceNo').change(function () {
                     width: '7%'
                 },
                 AgencyCommission: {
-                    title: 'Agency Com',
-                    width: '7%'
+                    title: 'AgencyCom',
+                    width: '6%'
                 },
                 DocumentaionCharge: {
                     title: 'Doc Charge',
@@ -153,6 +153,10 @@ $('input#InvoiceNo').change(function () {
                 FactoryLoadingFee: {
                     title: 'FactoryLoadingFee',
                     width: '12%'
+                },
+                TotalFees: {
+                    title: 'TotalCharges',
+                    width: '5%'
                 },
                 CargoHODate: {
                     title: 'CargoH/O Date',

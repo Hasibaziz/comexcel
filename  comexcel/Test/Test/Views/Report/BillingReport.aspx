@@ -11,7 +11,10 @@
         EX1 = $("#CourierNo").val();
         SDATE = $("#StartDate").val();
         EDATE = $("#EndDate").val();
-        window.location = "/Report/BillingReportOnExcel?Courier=" + EX1 + "&StartDate=" + SDATE + "&EndDate=" + EDATE;
+        ExStart = $("#ExStartDate").val();
+        ExEnd = $("#ExEndDate").val();
+        window.location = "/Report/BillingReportOnExcel?Courier=" + EX1 + "&StartDate=" + SDATE + "&EndDate=" + EDATE + "&ExStartDate=" + ExStart + "&ExEndDate=" + ExEnd;
+        //window.location = "/Report/BillingReportOnExcel?Courier=" + EX1 + "&StartDate=" + SDATE + "&EndDate=" + EDATE;
     }
 </script>
 <div class="mp_left_menu">
@@ -24,12 +27,24 @@
                    <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
                  </div>
                  <div id="dialog" title="Search">
-                         Courier No:  <%: Html.TextBoxFor(model => model.CourierNo, new {  style = "width: 120px;" })%>                
-                       <div style=" margin: 0em .5cm 0px 0.3cm;">
+                         Courier No:  <%: Html.TextBoxFor(model => model.CourierNo, new {  style = "width: 120px;" })%> 
+                       <div style=" margin: 0em 0cm 0px 0.3cm; font-size:14; background-color:Gray">
+                        Courier Date:
+                       </div>               
+                       <div style=" margin: 1em 0cm 0px 0.3cm;">
                          Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
                        </div>
-                       <div style=" margin: 0em .5cm 0px 0.4cm;">
+                       <div style=" margin: 1em .5cm 0px 0.4cm;">
                          End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>  
+                       </div>
+                       <div style=" margin: 0em 0cm 0px 0.3cm; font-size:14; background-color:Gray">
+                        Ex-Factory Date:
+                       </div>
+                       <div style=" margin: 1em 0cm 0px 0.3cm;">
+                         Start Date:  <%: Html.TextBoxFor(model => model.ExStartDate, new { style = "width: 120px;" })%>
+                       </div>
+                       <div style=" margin: 0em .5cm 0px 0.4cm;">
+                         End Date:  <%: Html.TextBoxFor(model => model.ExEndDate, new {  style = "width: 120px;" })%>  
                        </div>
                       <%--<input type="button" value="Search" title="Search" class="btn btn-primary btn-lg active"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp; --%>
                       <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetAttenList" data-toggle="tooltip" data-placement="top"/> &nbsp; &nbsp;&nbsp;
@@ -227,7 +242,9 @@
             $('#RecordsContainer').jtable('load', {
                 CourierNo: $('#CourierNo').val(),
                 StartDate: $('#StartDate').val(),
-                EndDate: $('#EndDate').val()
+                EndDate: $('#EndDate').val(),
+                ExStartDate: $('#ExStartDate').val(),
+                ExEndDate: $('#ExEndDate').val()
             });
         });
     });   
@@ -264,7 +281,8 @@
          });
      });
      $(function () {
-         $("#StartDate, #EndDate ").datepicker({
+         $("#StartDate, #EndDate, #ExStartDate, #ExEndDate").datepicker({
+         //$("#StartDate, #EndDate").datepicker({
              dateFormat: 'dd-mm-yy',
              changeMonth: true,
              changeYear: true,

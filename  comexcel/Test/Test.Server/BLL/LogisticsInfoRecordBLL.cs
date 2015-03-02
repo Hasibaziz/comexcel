@@ -91,9 +91,9 @@ namespace Test.Server.BLL
        public object GetLogisticsInvoiceSearchByNo(object param)
        {
            object retObj = null;
-           string invno = param.ToString();
+           //string invno = param.ToString();
            LogisticsInfoRecordDAL lgsDAL = new LogisticsInfoRecordDAL();
-           retObj = (object)lgsDAL.GetLogisticsInvoiceSearchByNo(param, invno);
+           retObj = (object)lgsDAL.GetLogisticsInvoiceSearchByNo(param);
            return retObj;
        }
     }

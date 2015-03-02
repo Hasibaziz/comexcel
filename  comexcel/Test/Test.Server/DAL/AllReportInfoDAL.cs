@@ -32,7 +32,8 @@ namespace Test.Server.DAL
         public DataTable GetAllBillingReportRecord( ReportBillinInfoEntity obj, object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            object[] parameters = new object[] { obj.CourierNo, obj.StartDate, obj.EndDate};
+            object[] parameters = new object[] { obj.CourierNo, obj.StartDate, obj.EndDate, obj.ExStartDate, obj.ExEndDate};
+            //object[] parameters = new object[] { obj.CourierNo, obj.StartDate, obj.EndDate };
             DbCommand dbCommand = db.GetStoredProcCommand("spGetAllBillingReportRecord", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

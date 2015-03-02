@@ -39,7 +39,7 @@ namespace Test.Server.DAL
             sql = sql + " Transport ON EXF.TransportID = Transport.ID INNER JOIN";
             sql = sql + " DestCountry ON EXF.DestinationID = DestCountry.ID INNER JOIN ";
             sql = sql + " ConsigneeDetails ON EXF.ConsigneeID = ConsigneeDetails.ID ";
-            sql = sql + " WHERE EXF.InvoiceNo='" + obj.InvoiceNo + "'";
+            sql = sql + " WHERE EXF.InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -91,7 +91,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             CustomsAuditEntity obj = (CustomsAuditEntity)param;
-            string sql = "SELECT [ID], [InvoiceNo], [IRegisterNo], [IBond], [TotalFabric], [AdjustReg], [AdjustRegPage], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[CustomAuditDetails] WHERE  InvoiceNo='"+obj.InvoiceNo+"' ";
+            string sql = "SELECT [ID], [InvoiceNo], [IRegisterNo], [IBond], [TotalFabric], [AdjustReg], [AdjustRegPage], [CurrentDate], [UserName]  FROM [Commercial].[dbo].[CustomAuditDetails] WHERE  InvoiceNo LIKE '%"+obj.InvoiceNo+"%' ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             //db.AddInParameter(dbCommand, "invoiceNo", DbType.String, param.ToString());
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -127,7 +127,7 @@ namespace Test.Server.DAL
             sql = sql + " Transport ON EXF.TransportID = Transport.ID INNER JOIN";
             sql = sql + " DestCountry ON EXF.DestinationID = DestCountry.ID INNER JOIN ";
             sql = sql + " ConsigneeDetails ON EXF.ConsigneeID = ConsigneeDetails.ID ";
-            sql = sql + " WHERE EXF.InvoiceNo='" + invNo + "'";
+            sql = sql + " WHERE EXF.InvoiceNo LIKE '%" + invNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

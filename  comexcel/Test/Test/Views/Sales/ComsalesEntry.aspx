@@ -225,6 +225,7 @@
         <div class="editor-field01">
             <%: Html.EditorFor(model => model.ETADate)%>
             <%: Html.ValidationMessageFor(model => model.ETADate)%>
+            <span style="color:Red;" class="ETAError"> Invalid Date( dd-mm-yyyy)</span>
         </div>
        <%-- <div class="editor-label01">            
             <label for="TTLCTN">TTL CTN:</label>
@@ -448,11 +449,28 @@
          $('#ShipbordingDate').change(function () {
              $('#SailinExBDDate').val($(this).val());
          });
-
-
      });
 
-         
+    function ValidateDate(dtValue) {
+        //var dtRegex = new RegExp(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
+        //var dtRegex = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+        var dtRegex = new RegExp(/\d{1,2}[\/-]\b\d{1,2}[\/-]\d{4}\b/);
+        return dtRegex.test(dtValue);
+    }
+
+    $('.ETAError').hide();
+    $('input#ETADate').change(function () {
+        var Val_date = $('#ETADate').val();
+        //alert(Val_date);
+        if ($(this).val().length != 0) {
+            if ((ValidateDate(Val_date)))
+                $('.ETAError').hide();
+            else
+                $('.ETAError').show();
+        } else {
+            $('#ExFactoryDate').attr('disabled', true);
+        }
+    });        
    
  </script>
 

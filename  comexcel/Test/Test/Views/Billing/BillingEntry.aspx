@@ -23,6 +23,9 @@
 <script type="text/javascript">
 $(document).ready(function () {
     ////////////////***********  For Not to Loose the Cursore Focus from Selecting Date Picker *****///////////////////////
+    var currentTime = new Date()
+    var minDate = new Date(currentTime.getYear(), currentTime.getMonth() - 1); //previous month
+    var maxDate = new Date(currentTime.getFullYear(), currentTime.getMonth()); // this month
     $.datepicker.setDefaults($.extend({},
             {
                 changeMonth: true,
@@ -30,6 +33,10 @@ $(document).ready(function () {
                 showStatus: true,
                 dateFormat: 'dd-mm-yy',
                 duration: 'fast',
+                numberOfMonths: 3,
+                minDate: minDate,
+                //maxDate: maxDate,
+                maxDate: currentTime,
                 yearRange: '1890:2100'
             }
             )

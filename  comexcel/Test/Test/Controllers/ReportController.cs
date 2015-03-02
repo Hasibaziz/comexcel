@@ -523,7 +523,7 @@ namespace Test.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult BillingReportList(string courierno = "", string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult BillingReportList(string ExStartDate="", string ExEndDate="", string courierno = "", string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
@@ -533,6 +533,8 @@ namespace Test.Controllers
                     _Model.CourierNo = courierno;
                     _Model.StartDate = StartDate;
                     _Model.EndDate = EndDate;
+                    _Model.ExStartDate = ExStartDate;
+                    _Model.ExEndDate = ExEndDate;
                     DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
                     List<ReportBillinInfoEntity> ItemList = null;
                     ItemList = new List<ReportBillinInfoEntity>();
@@ -617,13 +619,15 @@ namespace Test.Controllers
             }
         }
 
-        public ActionResult BillingReportOnExcel(string Courier = "", string StartDate = "", string EndDate = "")
+        public ActionResult BillingReportOnExcel( string ExStartDate = "", string ExEndDate = "", string Courier = "", string StartDate = "", string EndDate = "")
         {
 
             ReportBillinInfoEntity _Model = new ReportBillinInfoEntity();
             _Model.CourierNo = Courier;
             _Model.StartDate = StartDate;
             _Model.EndDate = EndDate;
+            _Model.ExStartDate = ExStartDate;
+            _Model.ExEndDate = ExEndDate;
             DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetAllBillingReportRecord, _Model);
             StringBuilder sb = new StringBuilder();
             sb.Append("<table border='" + "2px" + "'b>");

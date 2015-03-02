@@ -82,7 +82,12 @@
                 },
                 ItemName: {
                     title: 'Item Name',
-                    width: '25%'
+                    width: '25%',
+                    display: function (data) {
+                        //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.ItemName + '</label>');
+                        return $img;
+                    }
                 },
                 ContractNo: {
                     title: 'Contract No',
@@ -185,7 +190,12 @@
                 },
                 ItemName: {
                     title: 'Item Name',
-                    width: '25%'
+                    width: '25%',
+                    display: function (data) {
+                        //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.ItemName + '</label>');
+                        return $img;
+                    }
                 },
                 ContractNo: {
                     title: 'Contract No',

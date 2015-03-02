@@ -5,6 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script src="<%: Url.Content("~/Content/Bootstrap/js/bootstrap.js")  %>" type="text/javascript" ></script>
+
 
 <div class="mp_left_menu">
         <% Html.RenderPartial("LeftMenu"); %>
@@ -57,16 +59,34 @@
     } 
 </script>
 <script type="text/javascript">
-    $('input#InvoiceNo, #ConsigneeID').change(function () {  
+    $('input#InvoiceNo, #ConsigneeID').change(function () {
 
         $('#RecordsContainer').jtable({
             paging: true,
             pageSize: 15,
             sorting: false,
             title: 'Invoice List for HLBD/HLHY',
+            toolbar: {
+                hoverAnimation: true, //Enable/disable small animation on mouse hover to a toolbar item.
+                hoverAnimationDuration: 60, //Duration of the hover animation.
+                hoverAnimationEasing: undefined, //Easing of the hover animation. Uses jQuery's default animation ('swing') if set to undefined.    
+                items: [{
+                    icon: '/Content/images/Index.png',
+                    text: 'Export to Excel',
+                    click: function () {
+                        //perform your custom job...
+                    }
+                }, {
+                    icon: '/images/pdf.png',
+                    text: 'Export to Pdf',
+                    click: function () {
+                        //perform your custom job...
+                    }
+                }]
+            },
             defaultSorting: 'Name ASC',      //+ "&consigneeid=" + $("#ConsigneeID").attr()
             actions: {
-                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID" ).val(),                              //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
+                listAction: '/Private/InvoiceSearchByNo?Invno=' + $("#InvoiceNo").val() + "&consigneeid=" + $("#ConsigneeID").val(),                              //+ "&consigneeid=" + $("#ConsigneeID option:selected").text(),
                 deleteAction: '<%=Url.Content("~/Private/DeleteExportFormEntryDetails") %>'
             },
             fields: {
@@ -78,7 +98,12 @@
                 },
                 ItemName: {
                     title: 'Item Name',
-                    width: '25%'
+                    width: '25%',
+                    display: function (data) {
+                        //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.ItemName + '</label>');
+                        return $img;                        
+                    }
                 },
                 ContractNo: {
                     title: 'Contract No',
@@ -109,16 +134,16 @@
                     width: '10%',
                     options: '<%=Url.Content("~/Private/AllConsigneeDetails") %>'
                 },
-//                NotifyID: {
-//                    title: 'Notify No',
-//                    width: '10%',
-//                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
-//                },
-//                HSCodeID: {
-//                    title: 'H.S. Code',
-//                    width: '10%',
-//                    options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
-//                },
+                //                NotifyID: {
+                //                    title: 'Notify No',
+                //                    width: '10%',
+                //                    options: '<%=Url.Content("~/Private/AllNotifypartyDetails") %>'
+                //                },
+                //                HSCodeID: {
+                //                    title: 'H.S. Code',
+                //                    width: '10%',
+                //                    options: '<%=Url.Content("~/Private/AllHSCodeDetails") %>'
+                //                },
                 HSCode: {
                     title: 'H.S.Code',
                     width: '6%'
@@ -181,7 +206,26 @@ $(document).ready(function () {
                     },
                     ItemName: {
                         title: 'Item Name',
-                        width: '25%'
+                        width: '25%',
+                        display: function (data) {
+                            //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
+                            var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName +"\n"+ data.record.CurrentDate + '">' + data.record.ItemName + '</label>');
+                            //alert(img);
+                            //$($img).hover(function (e) {                            
+                            //$('body').append("<div class='hoveringTooltip' style='position:fixed;'></div>");
+                            //$('.hoveringTooltip').html("<div><div class='leftaligns'><strong><label class='jtable-input-label'>Employee Details </label><hr></strong><table min-height:200px; height:200px;width='100%'><tr><td>Employee Number</td><td>:</td><td>" + Data.record.ID + "</td></tr><tr><td>Employee Name</td><td>:</td><td> " + Data.record.HSCode + "</td></table><hr class='hrstyle'>" + "<strong><label class='jtable-input-label'>About Activity </label></strong><hr><table width='180'><tr><td>Details</td><td>:</td><td>" + Data.record.HSCode + "</td></tr><tr><td>Work Category</td><td>:</td><td> " + Data.record.HSCode + "</td></tr><tr><td>Account</td><td>:</td><td> " + Data.record.HSCode + "</td></tr><tr><td>Dimension</td><td>:</td><td> " + Data.record.HSCode + "</td></tr></div></div>");
+                             //},
+                            //function () {
+                            //$('.hoveringTooltip').remove();
+                            //});
+                            return $img;
+                            //if (data.record) {
+                            //alert(data.record.ItemName);
+                            //return '<input type="text" name="Name" style="width:200px" value="' + data.record.ItemName + '" />';
+                            //} else {
+                            //return '<input type="text" name="Name" style="width:200px" value="enter your name here" />';
+                            //}
+                        }
                     },
                     ContractNo: {
                         title: 'Contract No',

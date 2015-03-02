@@ -65,6 +65,10 @@ namespace Test.Controllers
                                 ShippedOut = dr["ShippedOut"].ToString(),
                                 ShippedCancel = dr["ShippedCancel"].ToString(),
                                 ShippedBack = dr["ShippedBack"].ToString(),
+
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString(),
+
                                 Unshipped = dr["Unshipped"].ToString()
                             });
                         }
@@ -119,6 +123,8 @@ namespace Test.Controllers
                                 SBNo = dr["SBNo"].ToString(),
                                 SBDate = dr["SBDate"].ToString(),
                                 VesselNo = dr["VesselNo"].ToString(),
+                                CurrentDate = dr["CurrentDate"].ToString(),
+                                UserName = dr["UserName"].ToString(),
                                 CargorptDate = dr["CargorptDate"].ToString()
                             });
                         }

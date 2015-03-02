@@ -115,7 +115,9 @@ namespace Test.Common.Authentication
             //public const DateTime VDATE = DateTime.Parse("02/03/2014 9:38:23 AM");   //---mm/dd/yyyy and Time
             public const String VDATE = "02/07/2015 9:38:23 AM";   //---mm/dd/yyyy and Time
            //public const String todaydate = DateTime.Now.ToString("03/02/2015");     //dd/MM/yyyy
-            public const bool IsActive=true;
+            public const bool IsActive=true;     
+
+
         }
     }
 }
