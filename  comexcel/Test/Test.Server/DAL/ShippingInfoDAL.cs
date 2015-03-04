@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //ShippinginfoEntity obj = (ShippinginfoEntity)param;
             //if (obj.UserName == null)
             //{
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName, ModifiedBy, ModifiedOn  FROM ShippingInfo ORDER BY convert(datetime, CurrentDate,120) DESC";
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 DataSet ds = db.ExecuteDataSet(dbCommand);
                 return ds.Tables[0];
@@ -64,7 +64,8 @@ namespace Test.Server.DAL
         public bool UpdateShippingformEntry(ShippinginfoEntity sppEntity, Database db, DbTransaction transaction)
         {
             string sql = "Update ShippingInfo SET EPNo=@EPNo, EPDate=@EPDate, EXPNo=@EXPNo, EXPDate=@EXPDate, ExFactoryDate=@ExFactoryDate, CnFAgent=@CnFAgent, TransportID=@TransportID, SBNo=@SBNo, SBDate=@SBDate, VesselNo=@VesselNo, CargorptDate=@CargorptDate, ";
-            sql = sql + " BringBack=@BringBack, ShippedOut=@ShippedOut, ShippedCancel=@ShippedCancel, ShippedBack=@ShippedBack, Unshipped=@Unshipped ";
+            sql = sql + " BringBack=@BringBack, ShippedOut=@ShippedOut, ShippedCancel=@ShippedCancel, ShippedBack=@ShippedBack, Unshipped=@Unshipped, ";
+            sql = sql + " ModifiedBy=@ModifiedBy, ModifiedOn=@ModifiedOn ";
             sql = sql + " WHERE ID=@ID ";
 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
@@ -89,6 +90,9 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "ShippedBack", DbType.String, sppEntity.ShippedBack);
             db.AddInParameter(dbCommand, "Unshipped", DbType.String, sppEntity.Unshipped);
 
+            db.AddInParameter(dbCommand, "ModifiedBy", DbType.String, sppEntity.ModifiedBy);
+            db.AddInParameter(dbCommand, "ModifiedOn", DbType.String, sppEntity.ModifiedOn);
+
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
@@ -105,7 +109,7 @@ namespace Test.Server.DAL
         {
             Database db = DatabaseFactory.CreateDatabase();
             ShippinginfoEntity obj = (ShippinginfoEntity)param;
-            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName   FROM ShippingInfo Where InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
+            string sql = "SELECT ID, InvoiceNo, EPNo, EPDate, EXPNo, EXPDate, ExFactoryDate, CnFAgent, TransportID, SBNo, SBDate, VesselNo, CargorptDate, BringBack, ShippedOut, ShippedCancel, ShippedBack, Unshipped, CurrentDate, UserName, ModifiedBy, ModifiedOn   FROM ShippingInfo Where InvoiceNo LIKE '%" + obj.InvoiceNo + "%'";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];

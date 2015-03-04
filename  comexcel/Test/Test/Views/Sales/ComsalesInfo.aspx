@@ -53,7 +53,8 @@
                     width: '8%',
                     display: function (data) {
                         //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
-                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.OrderNo + '</label>');
+                        //var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.OrderNo + '</label>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="Created: ' + data.record.UserName + "\n" + data.record.CurrentDate + "\n" + "ModifiedBy: " + data.record.ModifiedBy + "\n" + data.record.ModifiedOn + '">' + data.record.OrderNo + '</label>');
                         return $img;
                     }
                 },
@@ -124,7 +125,7 @@
                     width: '6%',
                     display: function (data) {
                         //var $img = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="' + data.record.TTNo + '">' + data.record.ItemName + '</button>');
-                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="' + data.record.UserName + "\n" + data.record.CurrentDate + '">' + data.record.OrderNo + '</label>');
+                        var $img = $('<label style="font: normal 11px courier;"  class="jtable-input-label" data-toggle="tooltip" data-placement="left" title="Created: ' + data.record.UserName + "\n" + data.record.CurrentDate + "\n" + "ModifiedBy: " + data.record.ModifiedBy + "\n" + data.record.ModifiedOn + '">' + data.record.OrderNo + '</label>');
                         return $img;
                     }
                 },

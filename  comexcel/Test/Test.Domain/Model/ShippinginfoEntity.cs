@@ -54,6 +54,8 @@ namespace Test.Domain.Model
       public string ShippedBack { set; get; }
       public string Unshipped { set; get; }
 
+      public string ModifiedBy { set; get; }
+      public string ModifiedOn { set; get; }
 
       public string SInvoiceNo { set; get; }
 

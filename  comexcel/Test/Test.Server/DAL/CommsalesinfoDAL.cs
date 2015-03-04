@@ -18,7 +18,7 @@ namespace Test.Server.DAL
             //ComsalesinfoEntity obj = (ComsalesinfoEntity)param;
             //if (obj.UserName == "Admin")
             //{
-            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, CurrentDate, UserName FROM SalesinfoDetails  ORDER BY convert(datetime, CurrentDate,120) DESC";
+            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, CurrentDate, UserName, ModifiedBy, ModifiedOn FROM SalesinfoDetails  ORDER BY convert(datetime, CurrentDate,120) DESC";
                 DbCommand dbCommand = db.GetSqlStringCommand(sql);
                 DataSet ds = db.ExecuteDataSet(dbCommand);
                 return ds.Tables[0];
@@ -68,7 +68,7 @@ namespace Test.Server.DAL
         }
         public bool UpdateComsalesEntryInfo(ComsalesinfoEntity csEntity, Database db, DbTransaction transaction)
         {
-            string sql = "Update SalesinfoDetails SET OrderNo=@OrderNo, StyleNo=@StyleNo, ProductType=@ProductType, ShipbordingDate=@ShipbordingDate, BLNo=@BLNo, BLDate=@BLDate, ETADate=@ETADate, RevQty=@RevQty, RevisedFOBValue=@RevisedFOBValue, RevisedCMValue=@RevisedCMValue, CartonQty=@CartonQty, CBMValue=@CBMValue, VesselName=@VesselName, FinalQty=@FinalQty, FinalFOB=@FinalFOB, FinalCM=@FinalCM, Remarks=@Remarks   WHERE ID=@ID";
+            string sql = "Update SalesinfoDetails SET OrderNo=@OrderNo, StyleNo=@StyleNo, ProductType=@ProductType, ShipbordingDate=@ShipbordingDate, BLNo=@BLNo, BLDate=@BLDate, ETADate=@ETADate, RevQty=@RevQty, RevisedFOBValue=@RevisedFOBValue, RevisedCMValue=@RevisedCMValue, CartonQty=@CartonQty, CBMValue=@CBMValue, VesselName=@VesselName, FinalQty=@FinalQty, FinalFOB=@FinalFOB, FinalCM=@FinalCM, Remarks=@Remarks,  ModifiedBy=@ModifiedBy, ModifiedOn=@ModifiedOn   WHERE ID=@ID";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
 
             db.AddInParameter(dbCommand, "ID", DbType.String, csEntity.ID);
@@ -97,6 +97,9 @@ namespace Test.Server.DAL
             db.AddInParameter(dbCommand, "FinalCM", DbType.String, csEntity.FinalCM);
             db.AddInParameter(dbCommand, "Remarks", DbType.String, csEntity.Remarks);
 
+            db.AddInParameter(dbCommand, "ModifiedBy", DbType.String, csEntity.ModifiedBy);
+            db.AddInParameter(dbCommand, "ModifiedOn", DbType.String, csEntity.ModifiedOn);
+
             db.ExecuteNonQuery(dbCommand, transaction);
             return true;
         }
@@ -104,7 +107,7 @@ namespace Test.Server.DAL
         public DataTable GetSalesUpdateByInvoiceNo(object param)
         {
             Database db = DatabaseFactory.CreateDatabase();
-            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, FinalQty, FinalFOB, FinalCM, Remarks, CurrentDate, UserName FROM SalesinfoDetails WHERE ID=@id"; 
+            string sql = "SELECT ID, InvoiceNo, OrderNo, StyleNo, ProductType, ShipbordingDate, BLNo, BLDate, ETADate, RevQty, RevisedFOBValue, RevisedCMValue, CartonQty, CBMValue, VesselName, FinalQty, FinalFOB, FinalCM, Remarks, CurrentDate, UserName, ModifiedBy, ModifiedOn FROM SalesinfoDetails WHERE ID=@id"; 
             DbCommand dbCommand = db.GetSqlStringCommand(sql);
             db.AddInParameter(dbCommand, "id", DbType.String, param.ToString());            
             DataSet ds = db.ExecuteDataSet(dbCommand);
@@ -125,7 +128,7 @@ namespace Test.Server.DAL
             Database db = DatabaseFactory.CreateDatabase();
             ComsalesinfoEntity obj = (ComsalesinfoEntity)param;
             string sql = " SELECT     SA.ID, SA.InvoiceNo, SA.OrderNo, SA.StyleNo, SA.ProductType, SA.ShipbordingDate, SA.BLNo, SA.BLDate, SA.ETADate, SA.RevQty, SA.RevisedFOBValue,  ";
-            sql = sql + "  SA.RevisedCMValue, SA.CartonQty, SA.CBMValue, SA.VesselName, SA.CurrentDate, SA.UserName, EX.TTNo, EX.TTDate  ";
+            sql = sql + "  SA.RevisedCMValue, SA.CartonQty, SA.CBMValue, SA.VesselName, SA.CurrentDate, SA.UserName, SA.ModifiedBy, SA.ModifiedOn, EX.TTNo, EX.TTDate  ";
             sql = sql + "  FROM   SalesinfoDetails AS SA INNER JOIN  ExportformDetails AS EX ON SA.InvoiceNo = EX.InvoiceNo";
             sql = sql + "  where SA.InvoiceNo like '%" + obj.InvoiceNo + "%' AND EX.Status IS NULL ";
             DbCommand dbCommand = db.GetSqlStringCommand(sql);

@@ -13,7 +13,7 @@
         EX2 = $("#EndDate").val();  
         //alert("Report");
         //window.open("/Report/SalesReport01");
-        window.open("/Report/SalesReport01?EX1=" + EX1 + "&EX2=" + EX2);
+        window.open("/Report/SalesReports?EX1=" + EX1 + "&EX2=" + EX2);
     }
     function PrintExcel() {
         EX1 = $("#StartDate").val();
@@ -31,14 +31,17 @@
                   <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
                </div>
                <div id="dialog" title="Search"> 
-                  <div style=" margin: 0em .5cm 0px 0.3cm;">
-                     (Ex-Factory)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
+                  <div style=" margin: 0em 0cm 0px 0.3cm; font-size:14; background-color:Gray">
+                    Ex-Factory:
+                  </div> 
+                  <div style=" margin: 1em .5cm 0px 0.3cm;">
+                     Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
                   </div>
-                  <div style=" margin: 0em .5cm 0px 2.7cm;">
+                  <div style=" margin: 1em .5cm 0px .4cm;">
                      End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
                   </div>
                   <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetAttenList" /> &nbsp; &nbsp;&nbsp;
-                  <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Print"   onclick="printItem()" />
+                  <input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Print"   onclick="PrintExcel()" />
                   <%--<input type="button" value="Export to Excel" title="Print" class="btn btn-primary btn-lg active"   onclick="PrintExcel()" />--%>
                   <%--<input type="image" src="../../Content/images/ExportExl.png" value="Export to Excel" title="Print" onclick="PrintExcel()" />--%>
                 </div>

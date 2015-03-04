@@ -18,6 +18,7 @@ namespace Test.Utility
             public const String BILLING = "Billing";
             public const String SHIPPINGnSALES = "ShipNsales";
             public const String LOGISTICS = "Logistics";
+            public const String REPORTS = "Reports";
         }       
         #endregion
 

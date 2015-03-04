@@ -124,6 +124,10 @@ namespace Test.Controllers
                                 CBMValue = dr["CBMValue"].ToString(),
                                 CurrentDate = dr["CurrentDate"].ToString(),
                                 UserName = dr["UserName"].ToString(),
+
+                                ModifiedBy = dr["ModifiedBy"].ToString(),
+                                ModifiedOn = dr["ModifiedOn"].ToString(),
+
                                 VesselName = dr["VesselName"].ToString()                               
                             });
                         }
@@ -207,6 +211,8 @@ namespace Test.Controllers
             var message = "";
             _Model.UserName = CurrentUserName;
             _Model.CurrentDate = DateTime.Now.ToString();
+            _Model.ModifiedBy = CurrentUserName;
+            _Model.ModifiedOn = DateTime.Now.ToString();
             try
             {
                 if (!ModelState.IsValid)
@@ -424,6 +430,8 @@ namespace Test.Controllers
                                 TTDate = dr["TTDate"].ToString(),
                                 CurrentDate = dr["CurrentDate"].ToString(),
                                 UserName = dr["UserName"].ToString(),
+                                ModifiedBy = dr["ModifiedBy"].ToString(),
+                                ModifiedOn = dr["ModifiedOn"].ToString(),
                                 VesselName = dr["VesselName"].ToString()
                                 
                             });

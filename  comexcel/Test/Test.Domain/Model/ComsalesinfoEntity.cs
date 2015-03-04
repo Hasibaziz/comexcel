@@ -63,6 +63,9 @@ namespace Test.Domain.Model
       public string TTNo { set; get; }
       public string TTDate { set; get; }
 
+      public string ModifiedBy { set; get; }
+      public string ModifiedOn { set; get; }    
+
       public string FinalQty { set; get; }
       public string FinalFOB { set; get; }
       public string FinalCM { set; get; }

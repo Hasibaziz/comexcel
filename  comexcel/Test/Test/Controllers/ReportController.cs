@@ -410,7 +410,7 @@ namespace Test.Controllers
             //Response.BinaryWrite(MemoryStream.ToArray());
         }
 
-        public ActionResult SalesReport01(string EX1 = "", string EX2 = "")
+        public ActionResult SalesReports(string EX1 = "", string EX2 = "")
         {
             SalesreportEntity _Model = new SalesreportEntity();
             _Model.StartDate = EX1;
