@@ -22,11 +22,14 @@
             <div style=" margin: 0em .5cm 0px 29cm;"> 
                <a href="#" id="dialog_link" ><img src="../../Content/images/Index.png", alt="Search" /></a> 
             </div>
-            <div id="dialog" title="Search">                
-                  <div style=" margin: 0em .5cm 0px 0.3cm;">
-                     (Ex-Factory Date)Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
+            <div id="dialog" title="Search">  
+                  <div style=" margin: 0em 0cm 0px 0.3cm; font-size:14; background-color:Gray">
+                        Ex-Factory Date:
+                  </div>                
+                  <div style=" margin: 1em 0cm 0px 0.3cm;">
+                     Start Date:  <%: Html.TextBoxFor(model => model.StartDate, new { style = "width: 120px;" })%>
                   </div>
-                  <div style=" margin: 0em .5cm 0px 3.2cm;">
+                  <div style=" margin: 1em .5cm 0px 3.2cm;">
                      End Date:  <%: Html.TextBoxFor(model => model.EndDate, new {  style = "width: 120px;" })%>                  
                  </div>
                   <input type="image" src="../../Content/images/Searchimg.png" value="Search" title="Search"  id="GetLogisticsList" /> &nbsp; &nbsp;&nbsp;

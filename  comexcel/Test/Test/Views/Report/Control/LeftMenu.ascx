@@ -21,6 +21,7 @@
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
          <a href="<%=Url.Content("~/Report/LogisticsReport") %>">Logistics Report</a>
          <a href="<%=Url.Content("~/Report/LogisticsMonitor") %>">Logistics Monitor</a>
+         <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Report</a>
      <% }%>
      <%else if (GROUP == "Billing")
       { %>         
@@ -38,12 +39,17 @@
          <a href="<%=Url.Content("~/Report/LogisticsReport") %>">Logistics Report</a>
          <a href="<%=Url.Content("~/Report/LogisticsMonitor") %>">Logistics Monitor</a>
      <%} %>  
+      <%else if (GROUP == Test.Utility.AppConstants.Area.AUDIT)
+      { %>
+         <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Reports</a>
+     <%} %> 
       <%else if (GROUP == Test.Utility.AppConstants.Area.REPORTS)
       { %>
          <a href="<%=Url.Content("~/Report/InvoiceMonitor") %>">Invoice Monitor</a>         
          <a href="<%=Url.Content("~/Report/Salesreport") %>">Sales Report</a>
          <a href="<%=Url.Content("~/Report/LogisticsReport") %>">Logistics Report</a>
          <a href="<%=Url.Content("~/Report/LogisticsMonitor") %>">Logistics Monitor</a>
+         <a href="<%=Url.Content("~/Report/CustomsAuditReport") %>">Customs Audit Reports</a>
      <%} %>  
 </div>
 

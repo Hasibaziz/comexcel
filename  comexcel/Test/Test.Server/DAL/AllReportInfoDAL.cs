@@ -21,10 +21,11 @@ namespace Test.Server.DAL
             return ds.Tables[0];
         }
 
-        public DataTable GetCustomsAuditReportRecord(object param)
+        public DataTable GetCustomsAuditReportRecord(CustomsAuditReportEntity obj, object param)
         {
-            Database db = DatabaseFactory.CreateDatabase();           
-            DbCommand dbCommand = db.GetStoredProcCommand("spGetCustomsAuditReportRecord");
+            Database db = DatabaseFactory.CreateDatabase();
+            object[] parameters = new object[] { obj.StartDate, obj.EndDate };
+            DbCommand dbCommand = db.GetStoredProcCommand("spGetCustomsAuditReportRecord", parameters);
             DataSet ds = db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
         }

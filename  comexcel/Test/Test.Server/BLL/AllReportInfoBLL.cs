@@ -25,7 +25,8 @@ namespace Test.Server.BLL
         {
             object retObj = null;
             AllReportInfoDAL allDAL = new AllReportInfoDAL();
-            retObj = (object)allDAL.GetCustomsAuditReportRecord(param);
+            CustomsAuditReportEntity obj = (CustomsAuditReportEntity)param;
+            retObj = (object)allDAL.GetCustomsAuditReportRecord(obj, param);
             return retObj;
         }
 

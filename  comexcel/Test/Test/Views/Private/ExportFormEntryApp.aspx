@@ -478,7 +478,7 @@
 
     $(document).ready(function () {
         var cmValue = document.getElementById("CMValue").value;
-        $('#CMValue').mouseenter(function () {
+        $('#CMValue').change(function () {
             //var Result = $.post('<%: ResolveUrl("~/Private/GetTTBalance?ttNO=")%>' + $("#TTNo").attr("value") + "&cmVal=" + $("#CMValue").attr("value"), function (data) {
             var Result = $.post('<%: ResolveUrl("~/Private/GetTTRecordID?ttNO=")%>' + $("#TTNo").attr("value"), function (data) {
                 var X = $("*[id$='CMValue']").val();

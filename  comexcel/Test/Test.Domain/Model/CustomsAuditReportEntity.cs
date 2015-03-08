@@ -67,6 +67,9 @@ namespace Test.Domain.Model
         public string AdjustReg { set; get; }
         public string AdjustRegPage { set; get; }
 
+        public string StartDate { set; get; }
+        public string EndDate { set; get; }
+
         public string CurrentDate { set; get; }
 
         public string UserName { set; get; }

@@ -47,6 +47,7 @@
             <%else if (GROUP == "CustomsAudit")
              { %>
                 <li><a href="<%=Url.Content("~/Audit/Index") %>"><span>Audit Info</span></a></li>
+                <li><a href="<%=Url.Content("~/Report/Index") %>"><span>Reports</span></a></li>
                 <li><a href="<%=Url.Content("~/Account/Logout") %>"><span>Log Out</span></a></li>
              <%} %>
              <%else if (GROUP == "Billing")

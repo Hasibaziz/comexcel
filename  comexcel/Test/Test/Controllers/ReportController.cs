@@ -426,13 +426,16 @@ namespace Test.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult CustomsAuditReportList(string invoice = "", string CatName = "", string SDate = "", string EDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult CustomsAuditReportList(string StartDate = "", string EndDate = "", int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
                 try
                 {
-                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCustomsAuditReportRecord, null);
+                    CustomsAuditReportEntity _Model = new CustomsAuditReportEntity();
+                    _Model.StartDate = StartDate;
+                    _Model.EndDate = EndDate;
+                    DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCustomsAuditReportRecord, _Model);
                     List<CustomsAuditReportEntity> ItemList = null;
                     ItemList = new List<CustomsAuditReportEntity>();
                     int iCount = 0;
@@ -444,7 +447,7 @@ namespace Test.Controllers
                         {
                             ItemList.Add(new CustomsAuditReportEntity()
                             {
-                                ID = dr["ID"].ToString(),
+                                //ID = dr["ID"].ToString(),
                                 InvoiceNo = dr["InvoiceNo"].ToString(),
                                 InvoiceDate = dr["InvoiceDate"].ToString(),
 
@@ -453,18 +456,18 @@ namespace Test.Controllers
                                 ContractDate = dr["ContractDate"].ToString(),
 
                                 OrderNo = dr["OrderNo"].ToString(),
-                                ExporterID = dr["ExporterID"].ToString(),
-                                ExporterName = dr["ExporterName"].ToString(),
-                                RegDetails = dr["RegDetails"].ToString(),
+                                //ExporterID = dr["ExporterID"].ToString(),
+                                //ExporterName = dr["ExporterName"].ToString(),
+                                //RegDetails = dr["RegDetails"].ToString(),
 
-                                ConsigneeID = dr["ConsigneeID"].ToString(),
-                                ConsigneeName = dr["ConsigneeName"].ToString(),
+                                //ConsigneeID = dr["ConsigneeID"].ToString(),
+                                //ConsigneeName = dr["ConsigneeName"].ToString(),
 
-                                DestinationID = dr["DestinationID"].ToString(),
+                                //DestinationID = dr["DestinationID"].ToString(),
                                 CountryCode = dr["CountryCode"].ToString(),
                                 Name = dr["Name"].ToString(),
 
-                                TransportID = dr["TransportID"].ToString(),
+                                //TransportID = dr["TransportID"].ToString(),
                                 TName = dr["TName"].ToString(),
                                 TPort = dr["TPort"].ToString(),
                                 //FOBValue = dr["FOBValue"].ToString(),
@@ -515,7 +518,65 @@ namespace Test.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+        
+        public ActionResult AuditReportsOnExcel(string EX1 = "", string EX2 = "")
+        {
 
+            CustomsAuditReportEntity _Model = new CustomsAuditReportEntity();
+            _Model.StartDate = EX1;
+            _Model.EndDate = EX2;
+            DataTable dt = (DataTable)ExecuteDB(TestTask.AG_GetCustomsAuditReportRecord, _Model);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table border='" + "2px" + "'b>");
+
+            ////For Header
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + " C&F Bill Receiving Status (Export)" + "</font></b></td></td></td>");
+            //write column headings
+            sb.Append("<tr>");
+
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                sb.Append("<td><b><font face=Arial size=2>" + dc.ColumnName + "</font></b></td>");
+            }
+            sb.Append("</tr>");
+
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+                sb.Append("<tr>");
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    sb.Append("<td><font face=Arial size=" + "14px" + ">" + dr[dc].ToString() + "</font></td>");
+                }
+                sb.Append("</tr>");
+            }
+            ////For Footer
+            sb.Append("<tr>");
+            sb.Append("<tr>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td>");
+            sb.Append("<td><b><font face=Arial size=2>" + "Powered By: Hasib, IT Department" + "</font></b></td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</td>");
+            sb.Append("</tr>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+
+            //this.Response.ContentType = "application/vnd.ms-excel";
+            //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "InventoryRecordsReport.xls");
+
+            //HttpContext.Response.AddHeader("content-disposition", "attachment; filename=PO NO_" + PurchaseOrder.Id + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=AuditRecords" + "_" + DateTime.Now.ToString("dd-MMM-yy") + ".xls");
+            this.Response.ContentType = "application/vnd.ms-excel";
+            //this.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+            //return File(buffer, "application/vnd.ms-excel", "SalesReport.xls");
+            //return File(buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "SalesReport.xlsx");
+            return File(buffer, "application/vnd.ms-excel");
+        }
 
 
         public ActionResult BillingReport()
