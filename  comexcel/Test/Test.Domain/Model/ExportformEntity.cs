@@ -112,6 +112,9 @@ namespace Test.Domain.Model
 
        public string CurrentDate { set; get; }
 
+       public string ModifiedBy { set; get; }
+       public string ModifiedOn { set; get; } 
+
        public int HeaderSpaces { set; get; }
        public int LeftSpaces { set; get; }
        public int iFontSize { set; get; }

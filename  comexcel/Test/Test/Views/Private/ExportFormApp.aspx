@@ -99,7 +99,7 @@
                 },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '10%',
+                    width: '15%',
                     display: function (data) {
                         return '<a href="/Private/ExporterFormUpdateByInvoiceNoApp/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
@@ -156,10 +156,6 @@
                 CMValue: {
                     title: 'C.M.',
                     width: '8%'
-                },
-                ExFactoryDate: {
-                    title: 'Ex-Factory',
-                    width: '8%'
                 }
             }
         });
@@ -207,7 +203,7 @@
                 },
                 InvoiceNo: {
                     title: 'Invoice No',
-                    width: '10%',
+                    width: '15%',
                     display: function (data) {
                         return '<a href="/Private/ExporterFormUpdateByInvoiceNoApp/' + data.record.ID + '">' + data.record.InvoiceNo + '</a>';
                     }
@@ -263,10 +259,6 @@
                 },
                 CMValue: {
                     title: 'C.M.',
-                    width: '8%'
-                },
-                ExFactoryDate: {
-                    title: 'Ex-Factory',
                     width: '8%'
                 }
             }

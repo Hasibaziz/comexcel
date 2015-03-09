@@ -47,6 +47,9 @@ namespace Test.Domain.Model
         public string CurrentDate{set;get;}
         public string UserName { set; get; }
 
+        public string ModifiedBy { set; get; }
+        public string ModifiedOn { set; get; } 
+
         //public enum ModeStatus
         //{
         //    [Description("SEA PP")]

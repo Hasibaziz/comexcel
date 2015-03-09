@@ -530,7 +530,7 @@ namespace Test.Controllers
             sb.Append("<table border='" + "2px" + "'b>");
 
             ////For Header
-            sb.Append("<td><td><td><b><font face=Arial size=2>" + " C&F Bill Receiving Status (Export)" + "</font></b></td></td></td>");
+            sb.Append("<td><td><td><b><font face=Arial size=2>" + " Customs Audit Reports (Export)" + "</font></b></td></td></td>");
             //write column headings
             sb.Append("<tr>");
 

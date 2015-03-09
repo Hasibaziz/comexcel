@@ -58,3 +58,9 @@ USE Task
 CREATE MASTER KEY ENCRYPTION BY PASSWORD ='HopLun@123'
 CREATE CERTIFICATE HopLun123 WITH SUBJECT='HopLun123 Certificate', 
 EXPIRY_DATE = '01/16/2015'
+
+
+
+Second Highest Salary:
+-----------------------------------------------------------------------------------------
+SELECT TOP 1 Salary FROM ( SELECT TOP 2 Salary FROM Emp ORDER BY Salary DESC) AS Emp ORDER BY Salary ASC

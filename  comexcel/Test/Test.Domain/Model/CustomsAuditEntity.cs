@@ -15,9 +15,12 @@ namespace Test.Domain.Model
        public string TotalFabric{set;get;}
        public string AdjustReg{set;get;}
        public string AdjustRegPage{set;get;}
+
        public string CurrentDate{set;get;}
        public string UserName { set; get; }
 
+       public string ModifiedBy { set; get; }
+       public string ModifiedOn { set; get; } 
 
     }
 }

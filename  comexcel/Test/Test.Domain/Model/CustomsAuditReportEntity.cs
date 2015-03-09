@@ -71,7 +71,9 @@ namespace Test.Domain.Model
         public string EndDate { set; get; }
 
         public string CurrentDate { set; get; }
-
         public string UserName { set; get; }
+
+        public string ModifiedBy { set; get; }
+        public string ModifiedOn { set; get; } 
     }
 }
