@@ -13,6 +13,7 @@ namespace Test.Common.Authentication
     /// </summary>
     public class ViewsAuthentication
     {
+        
         private ViewsAuthentication()
         {
             //
@@ -114,10 +115,26 @@ namespace Test.Common.Authentication
         {
             //public const DateTime VDATE = DateTime.Parse("02/03/2014 9:38:23 AM");   //---mm/dd/yyyy and Time
             public const String VDATE = "02/07/2015 9:38:23 AM";   //---mm/dd/yyyy and Time
-           //public const String todaydate = DateTime.Now.ToString("03/02/2015");     //dd/MM/yyyy
-            public const bool IsActive=true;     
-
-
+            //public const String todaydate = DateTime.Now.ToString("03/02/2015");     //dd/MM/yyyy
         }
+        /// <summary>
+        /// IsValid the datetime and retun boolean type.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsValid()
+        {
+            bool IsActive = false;
+            DateTime VDATE = DateTime.Parse("03/15/2015 9:38:23 AM");   //---mm/dd/yyyy and Time
+            int day = VDATE.Subtract(DateTime.Now).Days;
+
+            if (day <= 0)
+                IsActive = false;
+            else
+                IsActive = false;
+
+             return IsActive;
+          }
+
+        
     }
 }
